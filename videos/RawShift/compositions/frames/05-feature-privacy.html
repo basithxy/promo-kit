@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "__Inter_f367f3";
+          font-weight: 100 900;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Interf367f3-Regular.woff2") format("woff2");
+        }
+
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "__Inter_f367f3", sans-serif;
+        }
+
+        .ground {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .title-wrap {
+          position: absolute;
+          top: 110px;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: center;
+        }
+        .title {
+          font-size: 60px;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          color: #111827;
+          opacity: 0;
+          transform: translateY(-16px);
+          will-change: transform, opacity;
+        }
+        .title .accent {
+          color: #4f46e5;
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          perspective: 1600px;
+        }
+        .split {
+          display: flex;
+          gap: 70px;
+          transform-style: preserve-3d;
+        }
+        .card {
+          width: 560px;
+          min-height: 480px;
+          padding: 48px;
+          border-radius: 24px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 26px;
+          transform-style: preserve-3d;
+          will-change: transform, opacity;
+        }
+        .card-left {
+          background: #f9fafb;
+          border: 1.5px solid #e5e7eb;
+          box-shadow: -18px 26px 60px rgba(17, 24, 39, 0.12);
+        }
+        .card-right {
+          background: rgba(79, 70, 229, 0.04);
+          border: 1.5px solid rgba(79, 70, 229, 0.2);
+          box-shadow: 18px 26px 60px rgba(79, 70, 229, 0.12);
+        }
+        .card-eyebrow {
+          font-size: 22px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+        .card-left .card-eyebrow { color: #9ca3af; }
+        .card-right .card-eyebrow { color: #4f46e5; }
+
+        .path {
+          position: relative;
+          width: 100%;
+          height: 160px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .node {
+          width: 68px;
+          height: 68px;
+          border-radius: 16px;
+          display: grid;
+          place-items: center;
+          font-size: 30px;
+        }
+        .card-left .node.file { background: #e5e7eb; color: #6b6b6b; }
+        .card-left .node.cloud { background: #e5e7eb; color: #9ca3af; opacity: 0.6; }
+        .card-right .node.file { background: rgba(79, 70, 229, 0.12); color: #4f46e5; }
+        .card-right .node.device { background: #4f46e5; color: #fff; }
+        .dashed {
+          flex: 1;
+          height: 2px;
+          margin: 0 14px;
+          border-top: 2px dashed #d1d5db;
+        }
+        .blocked-x {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          background: #dc2626;
+          color: #fff;
+          display: grid;
+          place-items: center;
+          font-size: 26px;
+          font-weight: 700;
+          will-change: transform;
+        }
+        .check-wrap {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 46px;
+          height: 46px;
+        }
+        .check-wrap svg {
+          width: 100%;
+          height: 100%;
+          fill: none;
+          stroke: #059669;
+          stroke-width: 3;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .glow {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 220px;
+          height: 220px;
+          margin-left: -110px;
+          margin-top: -110px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(79, 70, 229, 0.28) 0%, rgba(79, 70, 229, 0) 70%);
+          opacity: 0;
+          will-change: opacity;
+        }
+
+        .caption {
+          font-size: 22px;
+          color: #6b6b6b;
+          text-align: center;
+        }
+
+        .badge {
+          position: absolute;
+          top: 50%;
+          padding: 10px 20px;
+          border-radius: 100px;
+          font-size: 20px;
+          font-weight: 600;
+          transform: translateY(-50%) scale(0);
+          will-change: transform, opacity;
+          opacity: 0;
+        }
+        .badge-left {
+          right: -30px;
+          background: #f3f4f6;
+          color: #6b6b6b;
+          border: 1.5px solid #e5e7eb;
+        }
+        .badge-right {
+          left: -30px;
+          background: #4f46e5;
+          color: #ffffff;
+        }
+      </style>
+
+      <div id="root" data-composition-id="05-feature-privacy" data-width="1920" data-height="1080">
+        <div id="ground" class="ground clip" data-start="0" data-duration="9.195" data-track-index="0"></div>
+
+        <div id="title-wrap" class="title-wrap clip" data-start="0" data-duration="9.195" data-track-index="1">
+          <div class="title" id="title">No <span class="accent">upload</span>.</div>
+        </div>
+
+        <div id="stage" class="stage clip" data-start="0" data-duration="9.195" data-track-index="2">
+          <div class="split">
+            <div class="card card-left" id="card-left">
+              <div class="card-eyebrow">The old way</div>
+              <div class="path">
+                <div class="node file">📄</div>
+                <div class="dashed"></div>
+                <div class="node cloud">☁</div>
+                <div class="blocked-x" id="blocked-x">✕</div>
+              </div>
+              <div class="caption">Blocked at the upload.</div>
+              <div class="badge badge-left" id="badge-left">blocked</div>
+            </div>
+            <div class="card card-right" id="card-right">
+              <div class="card-eyebrow">RawShift</div>
+              <div class="path">
+                <div class="node file">📄</div>
+                <div class="dashed"></div>
+                <div class="node device">💻</div>
+                <div class="check-wrap" id="check-wrap">
+                  <svg viewBox="0 0 24 24"><path id="check-path" d="M4 13 L9.5 18.5 L20 6"></path></svg>
+                </div>
+              </div>
+              <div class="glow" id="glow"></div>
+              <div class="caption">Done, instantly, on your device.</div>
+              <div class="badge badge-right" id="badge-right">instant · local</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Scene 1 (0.0-1.0s): title slides down into place.
+        tl.fromTo("#title", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.1);
+
+        // Scene 2 (1.0-2.8s): the split-tilt entry — mirrored book-open cards from opposite wings.
+        tl.fromTo(
+          "#card-left",
+          { x: -420, rotateY: 22, opacity: 0 },
+          { x: 0, rotateY: 12, opacity: 1, duration: 0.85, ease: "power3.out" },
+          1.0,
+        );
+        tl.fromTo(
+          "#card-right",
+          { x: 420, rotateY: -22, opacity: 0 },
+          { x: 0, rotateY: -12, opacity: 1, duration: 0.85, ease: "power3.out" },
+          1.2,
+        );
+        tl.fromTo("#blocked-x", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.4)" }, 1.9);
+
+        // Scene 3 (2.8-5.6s): checkmark draws itself, glow blooms behind it; left card dims further.
+        const checkPath = document.getElementById("check-path");
+        const len = checkPath.getTotalLength();
+        checkPath.style.strokeDasharray = String(len);
+        checkPath.style.strokeDashoffset = String(len);
+        tl.to(checkPath, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 2.8);
+        tl.to("#glow", { opacity: 1, duration: 0.7, ease: "power1.out" }, 2.9);
+        tl.to("#card-left", { opacity: 0.55, duration: 0.6, ease: "power1.out" }, 3.2);
+
+        // Scene 4 (5.6-9.195s): inner-edge badges pop, gentle phase-opposed idle float, hold.
+        tl.fromTo("#badge-left", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)" }, 5.6);
+        tl.fromTo("#badge-right", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)" }, 5.9);
+
+        const phase = { p: 0 };
+        tl.to(
+          phase,
+          {
+            p: Math.PI * 2 * 1.2,
+            duration: 3.0,
+            ease: "none",
+            onUpdate: () => {
+              const l = document.getElementById("card-left");
+              const r = document.getElementById("card-right");
+              l.style.transform = `translateY(${Math.sin(phase.p) * 5}px) rotateY(12deg)`;
+              r.style.transform = `translateY(${Math.sin(phase.p + Math.PI) * 5}px) rotateY(-12deg)`;
+            },
+          },
+          6.2,
+        );
+
+        window.__timelines["05-feature-privacy"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

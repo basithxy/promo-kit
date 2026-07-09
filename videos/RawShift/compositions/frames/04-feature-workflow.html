@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "__Inter_f367f3";
+          font-weight: 100 900;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Interf367f3-Regular.woff2") format("woff2");
+        }
+
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "__Inter_f367f3", sans-serif;
+        }
+
+        .ground {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(110px);
+          will-change: transform;
+        }
+        .blob-a {
+          width: 800px;
+          height: 800px;
+          left: -280px;
+          bottom: -300px;
+          background: radial-gradient(circle, rgba(79, 70, 229, 0.07) 0%, rgba(79, 70, 229, 0) 70%);
+        }
+        .blob-b {
+          width: 700px;
+          height: 700px;
+          right: -240px;
+          top: -240px;
+          background: radial-gradient(circle, rgba(129, 140, 248, 0.06) 0%, rgba(129, 140, 248, 0) 70%);
+        }
+
+        .cam {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform-origin: 50% 46%;
+          will-change: transform;
+        }
+
+        .device {
+          width: 1180px;
+          border-radius: 20px;
+          background: #ffffff;
+          border: 1.5px solid rgba(79, 70, 229, 0.2);
+          box-shadow: 0 24px 70px rgba(17, 24, 39, 0.1);
+          overflow: hidden;
+        }
+        .device-chrome {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 16px 22px;
+          border-bottom: 1px solid rgba(79, 70, 229, 0.12);
+        }
+        .dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #e5e7eb;
+        }
+        .addr {
+          margin-left: 18px;
+          padding: 7px 18px;
+          border-radius: 100px;
+          background: #f3f4f6;
+          color: #6b6b6b;
+          font-size: 17px;
+        }
+
+        .body-area {
+          position: relative;
+          padding: 30px 26px 40px 26px;
+          min-height: 460px;
+        }
+
+        .dropzone {
+          padding: 46px;
+          border: 2px dashed #e5e7eb;
+          border-radius: 14px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 14px;
+        }
+        .dz-icon {
+          width: 46px;
+          height: 46px;
+          color: #9ca3af;
+        }
+        .dz-title {
+          font-size: 24px;
+          color: #111827;
+        }
+
+        .file-token {
+          position: absolute;
+          left: 50%;
+          top: 90px;
+          width: 64px;
+          height: 64px;
+          margin-left: -32px;
+          border-radius: 12px;
+          background: #4f46e5;
+          display: grid;
+          place-items: center;
+          color: #fff;
+          font-size: 26px;
+          font-weight: 700;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+
+        .file-chip {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin: 0 auto;
+          width: fit-content;
+          padding: 14px 22px;
+          border-radius: 12px;
+          background: rgba(79, 70, 229, 0.06);
+          border: 1.5px solid rgba(79, 70, 229, 0.18);
+          opacity: 0;
+          transform: scale(0.85);
+          will-change: transform, opacity;
+        }
+        .file-chip .swatch {
+          width: 30px;
+          height: 30px;
+          border-radius: 6px;
+          background: #4f46e5;
+        }
+        .file-chip .name {
+          font-size: 20px;
+          color: #111827;
+          font-weight: 500;
+        }
+
+        .actions {
+          display: flex;
+          justify-content: center;
+          gap: 14px;
+          margin-top: 34px;
+        }
+        .action {
+          position: relative;
+          padding: 16px 36px;
+          border-radius: 100px;
+          background: rgba(79, 70, 229, 0.06);
+          border: 1.5px solid rgba(79, 70, 229, 0.2);
+          font-size: 22px;
+          font-weight: 500;
+          color: #4f46e5;
+          white-space: nowrap;
+          opacity: 0;
+          transform: translateY(14px) scale(0.9);
+          will-change: transform, opacity;
+        }
+        .action.pressed {
+          background: #4f46e5;
+          color: #ffffff;
+        }
+        .check {
+          position: absolute;
+          right: -14px;
+          top: -14px;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: #059669;
+          display: grid;
+          place-items: center;
+          opacity: 0;
+          transform: scale(0.6);
+          will-change: transform, opacity;
+        }
+        .check svg {
+          width: 16px;
+          height: 16px;
+          stroke: #fff;
+          stroke-width: 3;
+          fill: none;
+        }
+
+        .cursor {
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          pointer-events: none;
+          will-change: transform;
+          filter: drop-shadow(0 3px 6px rgba(17, 24, 39, 0.25));
+        }
+        .ripple {
+          position: absolute;
+          width: 60px;
+          height: 60px;
+          margin-left: -15px;
+          margin-top: -15px;
+          border-radius: 50%;
+          border: 2px solid #4f46e5;
+          opacity: 0;
+          transform: scale(0.4);
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="04-feature-workflow" data-width="1920" data-height="1080">
+        <div id="ground" class="ground clip" data-start="0" data-duration="9.856" data-track-index="0"></div>
+        <div id="ambient-wrap" class="clip" data-start="0" data-duration="9.856" data-track-index="1">
+          <div class="blob blob-a" id="blob-a"></div>
+          <div class="blob blob-b" id="blob-b"></div>
+        </div>
+
+        <div class="cam clip" id="cam" data-layout-allow-overflow data-start="0" data-duration="9.856" data-track-index="2">
+          <div class="device" id="device">
+            <div class="device-chrome">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="addr">raw-shift.vercel.app</div>
+            </div>
+            <div class="body-area">
+              <div class="file-token" id="file-token">P</div>
+              <div class="dropzone" id="dropzone">
+                <svg class="dz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <div class="dz-title">Drop images here or click to browse</div>
+              </div>
+              <div class="file-chip" id="file-chip">
+                <div class="swatch"></div>
+                <div class="name">photo.png</div>
+              </div>
+              <div class="actions" id="actions">
+                <div class="action" id="act-convert">
+                  Convert
+                  <div class="check" id="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+                <div class="action" id="act-compress">Compress</div>
+                <div class="action" id="act-split">Split</div>
+                <div class="action" id="act-merge">Merge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <svg class="cursor clip" id="cursor" data-start="0" data-duration="9.856" data-track-index="3" viewBox="0 0 24 24" fill="#4f46e5">
+          <path d="M4 2 L4 20 L9 15.5 L12.5 22 L15 20.8 L11.6 14.3 L18 14.3 Z" />
+        </svg>
+        <div class="ripple clip" id="ripple" data-start="0" data-duration="9.856" data-track-index="4"></div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Scene 1 (0.0-2.4s): device present; cursor enters and drags a file token into the dropzone.
+        tl.set("#device", { opacity: 0, scale: 0.96 });
+        tl.to("#device", { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.0);
+        tl.fromTo("#cursor", { x: 1450, y: 250, opacity: 0 }, { x: 1000, y: 400, opacity: 1, duration: 0.5, ease: "power2.out" }, 0.3);
+        tl.fromTo("#file-token", { opacity: 0, scale: 0.6, x: 900, y: 60 }, { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.4, ease: "power2.out" }, 0.7);
+        tl.to("#cursor", { x: 960, y: 470, duration: 0.9, ease: "power2.inOut" }, 1.15);
+        tl.to("#file-token", { x: -40, y: 240, opacity: 0, duration: 0.9, ease: "power2.inOut" }, 1.15);
+        tl.to("#dropzone", { borderColor: "#4f46e5", duration: 0.3, ease: "power1.out" }, 1.7);
+
+        // Scene 2 (2.4-4.6s): dropzone swaps to a file chip; camera push-in toward the action row.
+        tl.to("#dropzone", { opacity: 0, scale: 0.94, duration: 0.35, ease: "power2.in" }, 2.4);
+        tl.fromTo("#file-chip", { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 2.65);
+        tl.to("#cam", { scale: 1.05, duration: 2.2, ease: "power1.inOut" }, 2.4);
+
+        // Scene 3 (4.6-8.0s): four action chips stagger in, one per named word, cursor sweeps across.
+        const acts = ["#act-convert", "#act-compress", "#act-split", "#act-merge"];
+        acts.forEach((sel, i) => {
+          tl.fromTo(sel, { opacity: 0, y: 14, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }, 4.6 + i * 0.5);
+        });
+        tl.to("#cursor", { x: 760, y: 700, duration: 1.6, ease: "power1.inOut" }, 5.2);
+
+        // Scene 4 (8.0-9.856s): cursor lands a click on Convert — ripple, spring, checkmark.
+        tl.to("#cursor", { x: 699, y: 700, duration: 0.5, ease: "power2.out" }, 8.0);
+        tl.to("#cursor", { scale: 0.85, duration: 0.1, ease: "power1.out" }, 8.45);
+        tl.to("#cursor", { scale: 1, duration: 0.2, ease: "power2.out" }, 8.55);
+        tl.fromTo("#ripple", { x: 699, y: 700, opacity: 0, scale: 0.4 }, { opacity: 0.6, scale: 0.7, duration: 0.12, ease: "power1.out" }, 8.45);
+        tl.to("#ripple", { opacity: 0, scale: 1.6, duration: 0.38, ease: "power2.out" }, 8.57);
+        tl.to("#act-convert", { backgroundColor: "#4f46e5", color: "#ffffff", scale: 1.06, duration: 0.25, ease: "power2.out" }, 8.45);
+        tl.to("#act-convert", { scale: 1, duration: 0.25, ease: "power3.out" }, 8.7);
+        tl.fromTo("#check", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 8.6);
+
+        window.__timelines["04-feature-workflow"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

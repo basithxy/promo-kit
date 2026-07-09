@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "__Inter_f367f3";
+          font-weight: 100 900;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Interf367f3-Regular.woff2") format("woff2");
+        }
+
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "__Inter_f367f3", sans-serif;
+        }
+
+        .ground {
+          position: absolute;
+          inset: 0;
+          background: #0b0b12;
+        }
+        .flip {
+          position: absolute;
+          inset: 0;
+          background: #4f46e5;
+          opacity: 0;
+          will-change: opacity;
+        }
+
+        .blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(100px);
+          will-change: transform;
+        }
+        .blob-a {
+          width: 820px;
+          height: 820px;
+          left: -260px;
+          top: -220px;
+          background: radial-gradient(circle, rgba(79, 70, 229, 0.4) 0%, rgba(79, 70, 229, 0) 70%);
+        }
+        .blob-b {
+          width: 760px;
+          height: 760px;
+          right: -240px;
+          bottom: -260px;
+          background: radial-gradient(circle, rgba(129, 140, 248, 0.32) 0%, rgba(129, 140, 248, 0) 70%);
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+        }
+        .phrase {
+          position: absolute;
+          font-size: 108px;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          color: #f5f5f8;
+          text-align: center;
+          opacity: 0;
+          transform: scale(0.7);
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="06-benefits-montage" data-width="1920" data-height="1080">
+        <div id="ground" class="ground clip" data-start="0" data-duration="10.005" data-track-index="0"></div>
+        <div class="flip clip" id="flip" data-start="0" data-duration="10.005" data-track-index="1"></div>
+        <div id="ambient-wrap" class="clip" data-start="0" data-duration="10.005" data-track-index="2">
+          <div class="blob blob-a" id="blob-a"></div>
+          <div class="blob blob-b" id="blob-b"></div>
+        </div>
+
+        <div id="stage" class="stage clip" data-start="0" data-duration="10.005" data-track-index="3">
+          <div class="phrase" id="p1">Blazing fast.</div>
+          <div class="phrase" id="p2">Always private.</div>
+          <div class="phrase" id="p3">No uploads, ever.</div>
+          <div class="phrase" id="p4">No file limits.</div>
+          <div class="phrase" id="p5">No sign-up required.</div>
+          <div class="phrase" id="p6">Completely free.</div>
+          <div class="phrase" id="p7">Just drop your file, and go.</div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        const BEAT = 1.43;
+        const phrases = ["#p1", "#p2", "#p3", "#p4", "#p5", "#p6", "#p7"];
+
+        phrases.forEach((sel, i) => {
+          const start = i * BEAT;
+          // Pop in on a smooth long-tail settle.
+          tl.fromTo(sel, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.32, ease: "power3.out" }, start);
+          // Clear before the next lands (except the final phrase, which settles and holds).
+          if (i < phrases.length - 1) {
+            tl.to(sel, { opacity: 0, scale: 1.08, duration: 0.22, ease: "power2.in" }, start + BEAT - 0.24);
+          }
+        });
+
+        // Background flips on beats 2 and 6 for emphasis.
+        tl.to("#flip", { opacity: 0.7, duration: 0.12, ease: "power1.out" }, BEAT * 1);
+        tl.to("#flip", { opacity: 0, duration: 0.5, ease: "power1.out" }, BEAT * 1 + 0.12);
+        tl.to("#flip", { opacity: 0.7, duration: 0.12, ease: "power1.out" }, BEAT * 5);
+        tl.to("#flip", { opacity: 0, duration: 0.5, ease: "power1.out" }, BEAT * 5 + 0.12);
+
+        // Ambient drift, deterministic, runs the whole frame.
+        const drift = { p: 0 };
+        tl.to(
+          drift,
+          {
+            p: Math.PI * 2,
+            duration: 10.005,
+            ease: "none",
+            onUpdate: () => {
+              const a = document.getElementById("blob-a");
+              const b = document.getElementById("blob-b");
+              a.style.transform = `translate(${Math.sin(drift.p) * 30}px, ${Math.cos(drift.p * 0.8) * 20}px)`;
+              b.style.transform = `translate(${Math.sin(drift.p + Math.PI) * 26}px, ${Math.cos(drift.p * 0.7 + 1) * 18}px)`;
+            },
+          },
+          0,
+        );
+
+        window.__timelines["06-benefits-montage"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

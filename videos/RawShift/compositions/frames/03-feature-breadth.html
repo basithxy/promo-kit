@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "__Inter_f367f3";
+          font-weight: 100 900;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Interf367f3-Regular.woff2") format("woff2");
+        }
+
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "__Inter_f367f3", sans-serif;
+        }
+
+        .ground {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(110px);
+          will-change: transform;
+        }
+        .blob-a {
+          width: 820px;
+          height: 820px;
+          left: -300px;
+          top: -260px;
+          background: radial-gradient(circle, rgba(79, 70, 229, 0.07) 0%, rgba(79, 70, 229, 0) 70%);
+        }
+        .blob-b {
+          width: 760px;
+          height: 760px;
+          right: -260px;
+          bottom: -260px;
+          background: radial-gradient(circle, rgba(129, 140, 248, 0.06) 0%, rgba(129, 140, 248, 0) 70%);
+        }
+
+        .cam {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform-origin: 50% 42%;
+          will-change: transform;
+        }
+
+        .device {
+          width: 1180px;
+          border-radius: 20px;
+          background: #ffffff;
+          border: 1.5px solid rgba(79, 70, 229, 0.2);
+          box-shadow: 0 24px 70px rgba(17, 24, 39, 0.1);
+          overflow: hidden;
+        }
+        .device-chrome {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 16px 22px;
+          border-bottom: 1px solid rgba(79, 70, 229, 0.12);
+        }
+        .dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #e5e7eb;
+        }
+        .addr {
+          margin-left: 18px;
+          padding: 7px 18px;
+          border-radius: 100px;
+          background: #f3f4f6;
+          color: #6b6b6b;
+          font-size: 17px;
+        }
+
+        .tabbar-wrap {
+          padding: 26px 26px 0 26px;
+        }
+        .tabbar {
+          position: relative;
+          display: flex;
+          gap: 8px;
+          padding: 8px;
+          border-radius: 14px;
+          background: #f3f4f6;
+        }
+        .tab {
+          padding: 14px 30px;
+          border-radius: 10px;
+          font-size: 22px;
+          font-weight: 500;
+          color: #6b6b6b;
+          background: transparent;
+          opacity: 0;
+          transform: scale(0.85);
+          will-change: transform, opacity;
+        }
+        .tab.active {
+          background: #ffffff;
+          color: #111827;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        .tab-ring {
+          position: absolute;
+          inset: 8px;
+          width: 132px;
+          height: calc(100% - 16px);
+          border-radius: 10px;
+          border: 2px solid rgba(79, 70, 229, 0.55);
+          opacity: 0;
+        }
+
+        .accent-line {
+          margin: 0 26px;
+          height: 3px;
+          border-radius: 2px;
+          background: #4f46e5;
+          transform: scaleX(0);
+          transform-origin: 0% 50%;
+          will-change: transform;
+        }
+        .glow-sweep {
+          position: relative;
+          height: 0;
+        }
+        .sweep {
+          position: absolute;
+          top: -70px;
+          left: -200px;
+          width: 200px;
+          height: 60px;
+          background: linear-gradient(90deg, rgba(79, 70, 229, 0) 0%, rgba(79, 70, 229, 0.25) 50%, rgba(79, 70, 229, 0) 100%);
+          filter: blur(12px);
+          will-change: transform;
+        }
+
+        .dropzone {
+          margin: 26px;
+          padding: 46px;
+          border: 2px dashed #e5e7eb;
+          border-radius: 14px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 14px;
+          opacity: 0;
+          transform: translateY(14px);
+          will-change: transform, opacity;
+        }
+        .dz-icon {
+          width: 46px;
+          height: 46px;
+          color: #9ca3af;
+        }
+        .dz-title {
+          font-size: 24px;
+          color: #111827;
+        }
+        .dz-sub {
+          font-size: 18px;
+          color: #6b6b6b;
+        }
+      </style>
+
+      <div id="root" data-composition-id="03-feature-breadth" data-width="1920" data-height="1080">
+        <div id="ground" class="ground clip" data-start="0" data-duration="9.963" data-track-index="0"></div>
+        <div id="ambient-wrap" class="clip" data-start="0" data-duration="9.963" data-track-index="1">
+          <div class="blob blob-a" id="blob-a"></div>
+          <div class="blob blob-b" id="blob-b"></div>
+        </div>
+
+        <div class="cam clip" id="cam" data-layout-allow-overflow data-start="0" data-duration="9.963" data-track-index="2">
+          <div class="device" id="device">
+            <div class="device-chrome">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="addr">raw-shift.vercel.app</div>
+            </div>
+            <div class="tabbar-wrap">
+              <div class="tabbar" id="tabbar">
+                <div class="tab-ring" id="tab-ring"></div>
+                <div class="tab active" id="tab-images">Images</div>
+                <div class="tab" id="tab-video">Video</div>
+                <div class="tab" id="tab-audio">Audio</div>
+                <div class="tab" id="tab-pdf">PDF</div>
+                <div class="tab" id="tab-docs">Docs</div>
+              </div>
+            </div>
+            <div class="glow-sweep"><div class="sweep" id="sweep"></div></div>
+            <div class="accent-line" id="accent-line"></div>
+            <div class="dropzone" id="dropzone">
+              <svg class="dz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <div class="dz-title">Drop images here or click to browse</div>
+              <div class="dz-sub">PNG, JPG, WebP, GIF, BMP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Scene 1 (0.0-1.0s): device frame scales+fades into center.
+        tl.fromTo("#device", { opacity: 0, scale: 0.92, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.1);
+
+        // Scene 2 (1.0-4.3s): tabs pop into the bar in the site's real order, one per named word.
+        const tabTimes = { "#tab-images": 1.0, "#tab-video": 1.9, "#tab-audio": 2.6, "#tab-pdf": 3.3, "#tab-docs": 4.0 };
+        Object.entries(tabTimes).forEach(([sel, t]) => {
+          tl.fromTo(sel, { opacity: 0, y: 10, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.36, ease: "power3.out" }, t);
+        });
+
+        // Scene 3 (4.3-7.0s): camera push-in + accent-line draw + traveling glow sweep.
+        tl.to("#cam", { scale: 1.045, duration: 2.7, ease: "power1.inOut" }, 4.3);
+        tl.fromTo("#accent-line", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.out" }, 4.6);
+        tl.fromTo(
+          "#sweep",
+          { x: 0 },
+          { x: 1500, duration: 1.1, ease: "power1.inOut" },
+          5.2,
+        );
+
+        // Scene 4 (7.0-9.963s): active-tab ring highlight + dropzone reveal, settle and hold.
+        tl.fromTo("#tab-ring", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 7.0);
+        tl.fromTo("#dropzone", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.3);
+
+        // Subtle jitter on the device only, low amplitude, from 8.6s to the end.
+        const jitter = { p: 0 };
+        tl.to(
+          jitter,
+          {
+            p: Math.PI * 2,
+            duration: 1.363,
+            ease: "none",
+            onUpdate: () => {
+              const el = document.getElementById("device");
+              const s = 1 + Math.sin(jitter.p) * 0.004;
+              el.style.transform = `scale(${s})`;
+            },
+          },
+          8.6,
+        );
+
+        window.__timelines["03-feature-breadth"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

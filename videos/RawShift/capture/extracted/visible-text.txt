@@ -1,0 +1,18 @@
+[span] Raw
+[span] Shift
+[span] No uploads. No cloud.
+[h1] Just
+[span] RawShift
+[p] A toolkit to convert, compress, split, and merge.
+[p] Runs entirely inside your browser.
+[span] Blazing fast
+[span] Always private
+[button] Images
+[button] Video
+[button] Audio
+[button] PDF
+[button] Docs
+[p] Drop images here or click to browse
+[p] PNG, JPG, WebP, GIF, BMP - select multiple files
+[p] Built with
+[a] basithxy

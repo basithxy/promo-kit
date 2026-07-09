@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "__Inter_f367f3";
+          font-weight: 100 900;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Interf367f3-Regular.woff2") format("woff2");
+        }
+
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "__Inter_f367f3", sans-serif;
+        }
+
+        .ground {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(110px);
+          will-change: transform;
+        }
+        .blob-a {
+          width: 900px;
+          height: 900px;
+          left: -260px;
+          top: -240px;
+          background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(79, 70, 229, 0) 70%);
+        }
+        .blob-b {
+          width: 820px;
+          height: 820px;
+          right: -260px;
+          bottom: -260px;
+          background: radial-gradient(circle, rgba(129, 140, 248, 0.07) 0%, rgba(129, 140, 248, 0) 70%);
+        }
+
+        .rings {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          will-change: transform;
+        }
+        .ring {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          border: 1.5px solid rgba(129, 140, 248, 0.28);
+        }
+        .ring-1 { width: 560px; height: 560px; }
+        .ring-2 { width: 760px; height: 760px; border-color: rgba(129, 140, 248, 0.2); }
+        .ring-3 { width: 960px; height: 960px; border-color: rgba(129, 140, 248, 0.14); }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .anchor {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .wordmark {
+          position: absolute;
+          font-size: 150px;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          line-height: 1;
+          white-space: nowrap;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        .wm-raw { color: #111827; }
+        .wm-shift {
+          background: linear-gradient(120deg, #4f46e5 0%, #818cf8 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        .cta {
+          position: absolute;
+          padding: 26px 56px;
+          border-radius: 100px;
+          background: #4f46e5;
+          color: #ffffff;
+          font-size: 40px;
+          font-weight: 600;
+          white-space: nowrap;
+          transform-origin: 50% 50%;
+          opacity: 0;
+          transform: scale(0.7);
+          will-change: transform, opacity;
+        }
+
+        .url {
+          position: absolute;
+          top: 130px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 28px;
+          color: #6b6b6b;
+          white-space: nowrap;
+        }
+
+        .cursor {
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          will-change: transform, opacity;
+          filter: drop-shadow(0 3px 6px rgba(17, 24, 39, 0.25));
+        }
+        .glow {
+          position: absolute;
+          width: 320px;
+          height: 320px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(79, 70, 229, 0.3) 0%, rgba(79, 70, 229, 0) 70%);
+          opacity: 0;
+          will-change: opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="07-cta" data-width="1920" data-height="1080" data-duration="6.293">
+        <div id="ground" class="ground clip" data-start="0" data-duration="6.293" data-track-index="0"></div>
+
+        <div id="ambient-wrap" class="clip" data-start="0" data-duration="6.293" data-track-index="1">
+          <div class="blob blob-a" id="blob-a"></div>
+          <div class="blob blob-b" id="blob-b"></div>
+        </div>
+
+        <div class="rings clip" id="rings" data-layout-allow-overflow data-start="0" data-duration="6.293" data-track-index="2">
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="ring ring-3"></div>
+        </div>
+
+        <div id="stage" class="stage clip" data-start="0" data-duration="6.293" data-track-index="3">
+          <div class="anchor">
+            <div class="glow" id="glow"></div>
+            <div class="wordmark" id="wordmark">
+              <span class="wm-raw">Raw</span><span class="wm-shift">Shift</span>
+            </div>
+            <div class="cta" id="cta">Try it free</div>
+            <div class="url" id="url"></div>
+          </div>
+        </div>
+
+        <svg class="cursor clip" id="cursor" data-start="0" data-duration="6.293" data-track-index="4" viewBox="0 0 24 24" fill="#4f46e5">
+          <path d="M4 2 L4 20 L9 15.5 L12.5 22 L15 20.8 L11.6 14.3 L18 14.3 Z" />
+        </svg>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Ambient blob drift + closing concentric rings — deterministic sine, runs the whole frame.
+        tl.fromTo("#rings", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 0.1);
+        tl.to("#rings", { scale: 0.72, rotation: 24, duration: 4.6, ease: "power1.inOut" }, 1.6);
+        const drift = { p: 0 };
+        tl.to(
+          drift,
+          {
+            p: Math.PI * 2,
+            duration: 6.293,
+            ease: "none",
+            onUpdate: () => {
+              const a = document.getElementById("blob-a");
+              const b = document.getElementById("blob-b");
+              a.style.transform = `translate(${Math.sin(drift.p) * 20}px, ${Math.cos(drift.p * 0.8) * 14}px)`;
+              b.style.transform = `translate(${Math.sin(drift.p + Math.PI) * 18}px, ${Math.cos(drift.p * 0.7 + 1) * 12}px)`;
+            },
+          },
+          0,
+        );
+
+        // Scene 1 (0.0-1.6s): wordmark holds dead-center, alive but resting (faint rotational breath).
+        tl.fromTo("#wordmark", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+        const breath = { bp: 0 };
+        tl.to(
+          breath,
+          {
+            bp: Math.PI * 2,
+            duration: 0.85,
+            ease: "none",
+            onUpdate: () => {
+              const el = document.getElementById("wordmark");
+              el.style.transform = `rotate(${Math.sin(breath.bp) * 0.6}deg)`;
+            },
+          },
+          0.75,
+        );
+
+        // Scene 2 (1.6-3.2s): the morph — wordmark condenses into the CTA pill at the same center.
+        tl.to("#wordmark", { scale: 0.35, opacity: 0, duration: 0.4, ease: "power2.in" }, 1.6);
+        tl.fromTo("#cta", { scale: 0.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.5)" }, 1.85);
+
+        // Scene 3 (3.2-4.6s): cursor arrives from off-stage on a decelerating path, human-aimed.
+        tl.fromTo("#cursor", { x: 1620, y: 120, opacity: 0 }, { x: 1010, y: 565, opacity: 1, duration: 1.3, ease: "power2.out" }, 3.2);
+
+        // Scene 4 (4.6-6.293s): click — cursor + CTA compress together, release glow, URL types in.
+        tl.to("#cursor", { scale: 0.85, duration: 0.1, ease: "power1.out" }, 4.55);
+        tl.to("#cta", { scale: 0.93, duration: 0.1, ease: "power1.out" }, 4.55);
+        tl.to("#cursor", { scale: 1, duration: 0.2, ease: "power2.out" }, 4.65);
+        tl.to("#cta", { scale: 1, duration: 0.25, ease: "power3.out" }, 4.65);
+        tl.to("#glow", { opacity: 1, duration: 0.35, ease: "power1.out" }, 4.6);
+        tl.to("#glow", { opacity: 0, duration: 0.9, ease: "power1.out" }, 4.95);
+
+        const url = "raw-shift.vercel.app";
+        const urlLen = { v: 0 };
+        const urlEl = document.getElementById("url");
+        tl.to(
+          urlLen,
+          {
+            v: url.length,
+            duration: 0.7,
+            ease: "power1.inOut",
+            onUpdate: () => {
+              urlEl.textContent = url.substring(0, Math.floor(urlLen.v));
+            },
+          },
+          4.9,
+        );
+
+        window.__timelines["07-cta"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
