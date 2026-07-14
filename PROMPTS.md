@@ -1,5 +1,11 @@
 # PROMPTS - pick your input type, copy that ONE prompt, paste into Claude Code
 
+> Faster option: type `/video-agent` in Claude Code instead and answer a short
+> guided interview (video type, style, name, URL/screenshots/recording) - it
+> builds the exact prompt below from your answers, no copy-paste needed. This
+> file is still the canonical wording `/video-agent` reuses, and still works
+> standalone if you'd rather paste by hand.
+
 There are only 3 ways you give input. Each prompt below is COMPLETE -
 cinematic animation, voice, music, and sound effects are all baked in.
 Just change <PRODUCT>, <URL>/<NAME>, paste, and walk away.

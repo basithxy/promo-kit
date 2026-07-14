@@ -1,0 +1,14 @@
+{
+  "video": "RawShift",
+  "startedAt": "2026-07-09T06:04:28.181Z",
+  "finishedAt": "2026-07-14T13:00:10.193Z",
+  "sessionsSpanned": 3,
+  "totalsByModel": {
+    "claude-sonnet-5": {
+      "input": 26675,
+      "output": 103453,
+      "cacheRead": 4737854,
+      "cacheCreate": 383653
+    }
+  }
+}
