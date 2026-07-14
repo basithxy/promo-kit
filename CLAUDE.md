@@ -19,13 +19,44 @@ You are the video production engine for this folder. Your job: turn a product
 - Default model behavior only - do not suggest switching to Opus.
 
 ## Quality bar (check before declaring done)
-- 45-90 seconds, 1920x1080.
-- Clear 3-act structure: hook (problem) -> product demo/features -> CTA.
+- Default length: 15-30 seconds, MAX 30s, 1920x1080 - a conversion-focused
+  spot, not a brand film. Every second earns its place; no filler beat, no
+  padding just to fill time.
+- Structure (compressed 3-act): 0-3s HOOK (the pain point, no logo yet) ->
+  ONE sharp demo/value-prop beat (the single strongest reason to act, shown
+  live - not a 3-feature tour) -> strong CTA (try it free / buy now, URL,
+  logo). Cut anything that isn't hook, proof, or CTA.
+- Only go longer than 30s if I explicitly ask for a fuller feature tour or
+  brand piece - that's opt-in via `/video-agent`'s length question, never
+  the default.
 - Voiceover audible and synced; background music at low volume (~0.2).
 - Text readable: large type, high contrast, nothing clipped off-frame.
 - Brand colors pulled from the product's site/screenshots (frame.md style).
 - After rendering, inspect 3-4 frames from the output to verify nothing is
   broken (blank scenes, overlapping text) before declaring success.
+
+## Fast production (shorter is the main lever, plus render-speed rules)
+A 30s cap isn't just a creative choice - it's the single biggest lever on
+total production time, because nearly every phase scales with duration:
+fewer scenes to author and lint, a shorter voiceover script to synthesize,
+simpler single-pass BGM (MusicGen only needs one ~28-30s seed clip - no
+crossfade-looping - when the video itself is ≤30s), and roughly half the
+frames to capture + encode versus a 60s video. On top of that:
+- **Iterate entirely at `--quality draft`.** Every lint-fix cycle and every
+  QC frame-check runs on a draft render. Render `standard` (or `high`, only
+  if I say this ships as final) exactly ONCE, after draft frames already
+  look right - never re-render at standard/high mid-fix-loop.
+- **fps 30 (default), not 60**, unless I ask for 60fps specifically - 60fps
+  roughly doubles render time for a difference most viewers won't notice on
+  a short promo clip.
+- **Kick off TTS/BGM/SFX generation as soon as the script is final**,
+  in parallel with composition authoring/lint-fixing - they don't depend on
+  each other, so don't serialize them.
+- **`--workers auto`** (default) - don't cap workers down unless memory is
+  actually constrained (each worker Chrome instance is ~256 MB).
+None of this trades away the motion-quality bar below - GSAP/Three.js
+richness stays the same; there's just less total footage and no wasted
+re-renders producing it.
 
 ## Motion quality - default to rich, never a slideshow
 The render is a headless Chrome browser, so use real web animation tech.

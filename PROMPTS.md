@@ -28,8 +28,10 @@ Scrape the URL for the name, tagline, key features, screenshots, and brand
 colors/fonts. Recreate the key UI as animated mockups (do not just paste
 screenshots).
 
-GOAL: a 45-60s video that looks like a top-tier SaaS launch (Apple /
-Linear / Vercel quality). NOT a slideshow.
+GOAL: a punchy, ≤30s conversion spot (not a brand film) that looks like a
+top-tier SaaS launch (Apple / Linear / Vercel quality). No filler beat - every
+second earns its place. (Want the fuller 45-90s feature tour instead? Say so
+explicitly - this tight cut is the default.)
 
 MOTION (free browser tech, use heavily):
 - GSAP for all motion: spring/elastic easing, timelines, staggered reveals.
@@ -39,25 +41,29 @@ MOTION (free browser tech, use heavily):
 - UI as clean animated HTML/CSS mockups (device frame, moving cursor,
   elements appearing). Nothing static longer than ~1.5s.
 
-STRUCTURE (strict):
+STRUCTURE (strict, compressed 3-act, ≤30s total):
 - 0-3s: bold HOOK - the pain point in big kinetic type, no logo yet.
-- 3-8s: cinematic product-name reveal + one-line promise.
-- 8-40s: 3 features, each = animated UI demo beat + a 4-6 word caption.
-- 40-55s: fast benefit montage cut to the music.
-- last 5s: strong CTA + URL + logo lockup.
+- 3-6s: cinematic product-name reveal + one-line promise.
+- 6-24s: ONE sharp demo beat - the single strongest feature/value-prop,
+  shown live. Not a 3-feature tour - pick the one thing that sells it.
+- 24-30s: strong CTA + URL + logo lockup - "Try it free" / "Buy now."
 
 VOICE: warm, confident, mid-energy narrator. Unhurried, lets lines breathe,
-neutral US accent. Energy arc: calm on the hook, lifts through the
-features, warm and inviting on the CTA.
+neutral US accent. Energy arc: calm on the hook, lifts through the demo,
+warm and inviting on the CTA. Script budget: ~70-75 words total for 30s at a
+natural pace - don't cram more in, cut copy instead.
 
 AUDIO: upbeat modern background music at ~0.15 volume, ducked under the
-voice. Tasteful SFX (low in mix): soft whoosh on each transition, a gentle
-click when the cursor taps a UI element, a light pop when a feature card
+voice. Tasteful SFX (low in mix, full 21-sound library available - see
+CLAUDE.md's cue-mapping table): soft whoosh on each transition, a gentle
+click when the cursor taps a UI element, a light pop when an element
 appears, a soft chime on the final CTA/logo.
 
-QUALITY PASS: after rendering, inspect 5 frames. If any scene looks flat or
-slideshow-like, improve it and re-render. When done, tell me: output path,
-duration, render time, and the single weakest scene.
+QUALITY PASS: iterate at `--quality draft`; only render `standard`/`high`
+once, after draft frames look right. Inspect 3-4 frames from that final
+render. If any scene looks flat or slideshow-like, fix and re-render once
+more. When done, tell me: output path, duration, render time, and the
+single weakest scene.
 ```
 
 
@@ -77,8 +83,10 @@ INPUT: a screen recording at ./videos/<NAME>/input/recording.mp4.
 Use it as the real product footage. Extract keyframes at the moments the
 UI changes, zoom/pan into the action area, and cut cleanly around clicks.
 
-GOAL: a 45-75s video that looks like a top-tier SaaS launch (Apple /
-Linear / Vercel quality). NOT a raw screen capture.
+GOAL: a punchy, ≤30s conversion spot (not a raw screen capture, not a brand
+film) that looks like a top-tier SaaS launch (Apple / Linear / Vercel
+quality). Every second earns its place. (Want the fuller 45-75s walkthrough
+instead? Say so explicitly - this tight cut is the default.)
 
 MOTION (free browser tech, use heavily):
 - GSAP for all overlay motion: spring easing, captions, highlights.
@@ -87,23 +95,27 @@ MOTION (free browser tech, use heavily):
 - Three.js/WebGL for intro/outro depth; slow-moving particle or gradient
   background on title cards - never flat/static.
 
-STRUCTURE (strict):
+STRUCTURE (strict, compressed 3-act, ≤30s total):
 - 0-3s: bold HOOK - the pain point in big kinetic type, no logo yet.
-- 3-8s: cinematic product-name reveal + one-line promise.
-- 8-55s: walk the recorded flow as 2-4 feature/step beats, each with a
-  4-6 word caption; zoom to the action for each.
-- last 5s: strong CTA + URL + logo lockup.
+- 3-6s: cinematic product-name reveal + one-line promise.
+- 6-24s: walk the ONE strongest moment from the recording - zoom to the
+  action, highlight the cursor. Not a multi-step tour - the single clearest
+  proof this works.
+- 24-30s: strong CTA + URL + logo lockup.
 
 VOICE: warm, confident, mid-energy narrator. Unhurried, neutral US accent.
-Calm on the hook, lifts through the steps, warm on the CTA.
+Calm on the hook, lifts through the demo, warm on the CTA. Script budget:
+~70-75 words total for 30s - cut copy rather than cramming more in.
 
 AUDIO: upbeat background music at ~0.15 volume, ducked under the voice.
-Tasteful SFX (low in mix): soft whoosh on transitions, a gentle click each
-time the cursor taps in the footage, a soft chime on the final CTA.
+Tasteful SFX (low in mix, full 21-sound library available - see CLAUDE.md's
+cue-mapping table): soft whoosh on transitions, a gentle click each time the
+cursor taps in the footage, a soft chime on the final CTA.
 
-QUALITY PASS: after rendering, inspect 5 frames. Fix any flat or broken
-scene and re-render. When done, tell me: output path, duration, render
-time, and the single weakest scene.
+QUALITY PASS: iterate at `--quality draft`; only render `standard`/`high`
+once, after draft frames look right. Inspect 3-4 frames from that final
+render. Fix any flat or broken scene and re-render once more. When done,
+tell me: output path, duration, render time, and the single weakest scene.
 ```
 
 
@@ -124,8 +136,10 @@ Do NOT show them as flat static slides. Place each inside a clean device/
 browser mockup, and add motion: slow zoom/pan (Ken Burns), parallax, and
 animated captions/callouts pointing to key parts of each image.
 
-GOAL: a 45-60s video that looks like a top-tier SaaS launch (Apple /
-Linear / Vercel quality). NOT a slideshow.
+GOAL: a punchy, ≤30s conversion spot (not a slideshow, not a brand film)
+that looks like a top-tier SaaS launch (Apple / Linear / Vercel quality).
+Every second earns its place. (Want the fuller 45-60s feature tour instead?
+Say so explicitly - this tight cut is the default.)
 
 MOTION (free browser tech, use heavily):
 - GSAP for all motion: spring easing, staggered reveals, caption timing.
@@ -133,23 +147,43 @@ MOTION (free browser tech, use heavily):
 - A slow-moving particle or gradient-mesh background - never flat/static.
 - Each image on screen animated (zoom/pan/tilt); nothing static > 1.5s.
 
-STRUCTURE (strict):
+STRUCTURE (strict, compressed 3-act, ≤30s total):
 - 0-3s: bold HOOK - the pain point in big kinetic type, no logo yet.
-- 3-8s: cinematic product-name reveal + one-line promise.
-- 8-40s: 3 features, each = one animated screenshot beat + 4-6 word caption.
-- 40-55s: fast benefit montage cut to the music.
-- last 5s: strong CTA + URL + logo lockup.
+- 3-6s: cinematic product-name reveal + one-line promise.
+- 6-24s: ONE animated screenshot beat - the single strongest shot, with a
+  callout on the key detail. Not a 3-shot tour - pick the one that sells it.
+- 24-30s: strong CTA + URL + logo lockup.
 
 VOICE: warm, confident, mid-energy narrator. Unhurried, neutral US accent.
-Calm on the hook, lifts through the features, warm on the CTA.
+Calm on the hook, lifts through the demo, warm on the CTA. Script budget:
+~70-75 words total for 30s - cut copy rather than cramming more in.
 
 AUDIO: upbeat background music at ~0.15 volume, ducked under the voice.
-Tasteful SFX (low in mix): soft whoosh on each transition, a light pop when
-a callout/card appears, a soft chime on the final CTA/logo.
+Tasteful SFX (low in mix, full 21-sound library available - see CLAUDE.md's
+cue-mapping table): soft whoosh on each transition, a light pop when a
+callout/card appears, a soft chime on the final CTA/logo.
 
-QUALITY PASS: after rendering, inspect 5 frames. Fix any flat or broken
-scene and re-render. When done, tell me: output path, duration, render
-time, and the single weakest scene.
+QUALITY PASS: iterate at `--quality draft`; only render `standard`/`high`
+once, after draft frames look right. Inspect 3-4 frames from that final
+render. Fix any flat or broken scene and re-render once more. When done,
+tell me: output path, duration, render time, and the single weakest scene.
+```
+
+
+===================================================================
+## OPTIONAL: fuller 45-90s tour (instead of the default ≤30s cut)
+===================================================================
+Only use this if you explicitly want a longer feature-tour/brand piece -
+otherwise the ≤30s STRUCTURE in each prompt above is the default. Swap in
+this STRUCTURE (keep everything else - MOTION/VOICE/AUDIO/QUALITY PASS - the
+same, adjusting the script-length budget upward accordingly):
+```
+STRUCTURE (strict, 45-90s total):
+- 0-3s: bold HOOK - the pain point in big kinetic type, no logo yet.
+- 3-8s: cinematic product-name reveal + one-line promise.
+- 8-40s: 3 features/steps, each = animated demo beat + a 4-6 word caption.
+- 40-55s: fast benefit montage cut to the music.
+- last 5s: strong CTA + URL + logo lockup.
 ```
 
 

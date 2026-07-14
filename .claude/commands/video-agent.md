@@ -42,6 +42,15 @@ cinematic -> marketing/promo Kokoro voices with a calm->energetic->warm speed
 arc; UGC -> casual/social voices with more line-to-line speed variance. Don't
 default to the same voice as the last video generated in this project.
 
+## 2b. Length
+AskUserQuestion, single-select:
+- **Short & punchy (≤30s, default)** - conversion-focused: hook -> one sharp
+  demo/value-prop beat -> CTA. No feature tour, no montage. This is the
+  default in CLAUDE.md/PROMPTS.md - pick this unless there's a reason not to.
+- **Fuller tour (45-90s)** - hook -> reveal -> 3 features -> montage -> CTA.
+  Use PROMPTS.md's "OPTIONAL: fuller 45-90s tour" appendix structure instead
+  of the default ≤30s STRUCTURE when this is picked.
+
 ## 3. Name
 Plain text question: "Product/company name?" Use `$ARGUMENTS` instead of
 asking if a name was already passed to the command. This becomes the folder

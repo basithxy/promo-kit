@@ -29,7 +29,9 @@ The scripts do the same thing; only the installer (winget vs brew) differs.
 2. Type `/video-agent` and answer the short guided interview (video type,
    style, name, and a URL / screenshots / a screen recording) - no need to
    open PROMPTS.md or hand-edit a prompt. See "Guided intake" below.
-3. Walk away 20-45 min -> `./videos/<name>/output.mp4`
+3. Walk away ~15-30 min -> `./videos/<name>/output.mp4` (default is now a
+   tight <=30s conversion cut - see Quality bar in CLAUDE.md; a fuller 45-90s
+   tour takes longer and is an explicit opt-in in the interview)
 
 PROMPTS.md still works if you'd rather copy/paste a prompt by hand - `/video-agent`
 builds the exact same brief from your answers, it's just faster.
@@ -97,29 +99,42 @@ render is slow or failing.
 ### Workflow
 
 ```
-you paste a prompt from PROMPTS.md
+/video-agent - guided interview (type, style, length, name, input source)
         |
         v
-Claude Code reads ./CLAUDE.md (hard rules + quality bar)
+Claude Code reads ./CLAUDE.md (hard rules + quality bar: <=30s default)
         |
         v
 /hyperframes (router skill) picks a workflow
    product-launch-video | website-to-video | slideshow | ...
         |
         v
-scaffold ./videos/<name>/  (index.html, compositions/, frame.md, meta.json, package.json)
+scaffold ./videos/<name>/ + meta.json + progress.json (phase: research)
         |
         v
-npm run dev      -> live preview, hot reload (background process)
-npm run check    -> hyperframes lint + validate + inspect
-npm run render   -> bundled Chrome captures frames -> ffmpeg encodes MP4
+[subagent] research - scrape URL/screenshots, extract brand/copy -> frame.md
+        |                                  (kept in main thread: needs
+        v                                   iterative judgment)
+   author the composition per frame.md/STORYBOARD.md  <---------------------+
+        |                                                                   |
+        v                                                                   |
+[subagent] lint/fix loop - npm run check, fix, repeat until clean ----------+
+        |         (TTS/BGM/SFX generation runs in parallel with the two
+        |          steps above, not queued behind them)
+        v
+[subagent] render + QC - render --quality draft while iterating, ONE
+           standard/high render at the end, inspect 3-4 frames
         |
         v
-Claude inspects 3-4 frames of the output for broken/blank/overlapping content
-        |
-        v
-./videos/<name>/output.mp4  (+ duration, render time, weakest-scene self-critique)
+./videos/<name>/output.mp4  (+ duration, render time, weakest-scene
+   self-critique, token usage from log-usage.mjs)
 ```
+
+Each `[subagent]` step gets its own fresh context window and reports back a
+short summary only - the full scraped page, verbose lint output, and raw
+frames never bloat the main conversation. `progress.json` is updated after
+each phase, so an interrupted run resumes at the right step instead of
+restarting (see "Resuming a stopped run" below).
 
 If lint/preview/render fails, Claude reads the error, fixes the composition, and
 retries (up to 3 attempts before asking you).
@@ -165,6 +180,18 @@ promo-kit/
 `skills-lock.json` records where each skill came from (`heygen-com/hyperframes` on
 GitHub) and a hash of its contents, so `npx hyperframes skills update` can detect
 drift and refresh these trees.
+
+This project also has two hand-written, project-local additions that are
+**not** part of the vendored/auto-synced skill trees above (so `skills update`
+never touches them):
+
+```
+promo-kit/
+  .claude/commands/video-agent.md   the /video-agent guided-intake slash command
+  assets/bgm-library/<mood>/        bundled license-clear BGM tracks (Pixabay
+                                     Content License, same as the bundled SFX) -
+                                     see its README.md to populate
+```
 
 > This section is a snapshot of the current layout, not hand-maintained prose -
 > see the "keep docs in sync" rule in `CLAUDE.md`.
