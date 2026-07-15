@@ -1,0 +1,605 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata for the source file only; the runtime discards everything
+         outside <template> — styles/scripts live inside it below. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+
+        /* Root: styled by #root, never a class — see hyperframes-core Pitfall 3. */
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: 'Mulish', sans-serif;
+        }
+
+        /* Full-bleed backdrop lives on a dedicated class="clip" layer, never on #root
+           itself (root fill can be dropped by the compositor — hyperframes-core). */
+        .dp-bg {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 60% 50% at 50% 40%, rgba(102, 56, 217, 0.08), rgba(102, 56, 217, 0) 70%),
+            #FFFFFF;
+        }
+
+        .dp-camera {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        /* ---- The morphing floating window (card-morph-anchor container) ---- */
+        .dp-window {
+          position: absolute;
+          left: 50%;
+          top: 46%;
+          transform: translate(-50%, -50%) perspective(1400px) rotateY(-6deg) rotateX(2deg);
+          transform-style: preserve-3d;
+          width: 620px;
+          height: 720px;
+          border-radius: 28px;
+          overflow: hidden;
+          background: #FFFFFF;
+          box-shadow: 34px 46px 90px rgba(102, 56, 217, 0.16), 0 18px 40px rgba(0, 0, 0, 0.10);
+          will-change: width, height, border-radius;
+        }
+
+        .dp-content-old,
+        .dp-content-new {
+          position: absolute;
+          inset: 0;
+          background: #FFFFFF;
+        }
+
+        .dp-content-old {
+          opacity: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 18px;
+          padding: 64px;
+        }
+        .dp-old-line {
+          height: 15px;
+          border-radius: 8px;
+          background: rgba(0, 0, 0, 0.08);
+        }
+        .dp-old-eyebrow {
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #6638D9;
+          margin-bottom: 6px;
+        }
+
+        .dp-content-new {
+          opacity: 0;
+          display: flex;
+          flex-direction: column;
+        }
+
+        /* -- window chrome -- */
+        .dp-chrome {
+          height: 56px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          padding: 0 22px;
+          gap: 22px;
+          border-bottom: 1px solid rgba(102, 56, 217, 0.12);
+        }
+        .dp-traffic { display: flex; align-items: center; gap: 8px; }
+        .dp-dot { width: 10px; height: 10px; border-radius: 50%; background: #9A9A9A; }
+        .dp-dot:nth-child(1) { opacity: 0.85; }
+        .dp-dot:nth-child(2) { opacity: 0.6; }
+        .dp-dot:nth-child(3) { opacity: 0.4; }
+        .dp-tabs { display: flex; align-items: center; gap: 8px; }
+        .dp-tab {
+          padding: 7px 16px;
+          border-radius: 100px;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+        }
+
+        /* -- the scrolling screen stack (3d-page-scroll mechanic) -- */
+        .dp-viewport {
+          flex: 1;
+          position: relative;
+          overflow: hidden;
+        }
+        .dp-stack {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          will-change: transform;
+        }
+        .dp-screen {
+          width: 100%;
+          height: 564px;
+          flex-shrink: 0;
+          position: relative;
+        }
+
+        /* -- screen 1: video / voice / look -- */
+        .dp-screen-video {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 36px;
+        }
+        .dp-avatar-wrap {
+          position: relative;
+          width: 170px;
+          height: 170px;
+        }
+        .dp-avatar {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .dp-avatar-a { background: radial-gradient(circle at 35% 28%, #8a63e8, #6638D9); }
+        .dp-avatar-b { background: #FFFFFF; border: 4px solid #6638D9; box-sizing: border-box; }
+        .dp-sil-head {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          margin-top: 34px;
+        }
+        .dp-sil-body {
+          width: 118px;
+          height: 90px;
+          border-radius: 60px 60px 0 0;
+          margin-top: 14px;
+        }
+        .dp-avatar-a .dp-sil-head, .dp-avatar-a .dp-sil-body { background: #FFFFFF; opacity: 0.95; }
+        .dp-avatar-b .dp-sil-head, .dp-avatar-b .dp-sil-body { background: #6638D9; }
+
+        .dp-eyebrow {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #6638D9;
+          display: inline-block;
+          will-change: transform, text-shadow;
+        }
+        .dp-voice-label { margin-top: 18px; }
+        .dp-look-label { margin-top: 22px; opacity: 0; }
+
+        .dp-wave {
+          margin-top: 14px;
+          display: flex;
+          align-items: flex-end;
+          gap: 6px;
+          height: 48px;
+        }
+        .dp-bar {
+          width: 6px;
+          border-radius: 3px;
+          background: #6638D9;
+          transform-origin: 50% 100%;
+          will-change: transform;
+        }
+
+        /* -- screen 2: content calendar -- */
+        .dp-screen-calendar {
+          padding: 40px 44px;
+          display: flex;
+          flex-direction: column;
+          gap: 22px;
+        }
+        .dp-cal-eyebrow {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #6638D9;
+          opacity: 0;
+        }
+        .dp-cal-row {
+          display: flex;
+          gap: 10px;
+        }
+        .dp-day-slot {
+          flex: 1;
+          min-width: 0;
+          height: 170px;
+          border-radius: 14px;
+          background: rgba(102, 56, 217, 0.04);
+          border: 1.5px solid rgba(102, 56, 217, 0.2);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 12px;
+          gap: 12px;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+        .dp-day-label {
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #6B6B6B;
+        }
+        .dp-chip {
+          width: 56px;
+          height: 56px;
+          border-radius: 14px;
+          background: #6638D9;
+          display: grid;
+          place-items: center;
+          opacity: 0;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        .dp-glyph-play { width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 15px solid #fff; margin-left: 3px; }
+        .dp-glyph-ring { width: 20px; height: 20px; border-radius: 50%; border: 3px solid #fff; box-sizing: border-box; }
+        .dp-glyph-star { width: 20px; height: 20px; background: #fff; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+        .dp-glyph-bubble { width: 22px; height: 16px; border-radius: 5px; background: #fff; }
+        .dp-glyph-bars { display: flex; align-items: flex-end; gap: 3px; width: 22px; height: 18px; }
+        .dp-glyph-bars span { width: 4px; background: #fff; border-radius: 2px; display: block; }
+        .dp-glyph-bars span:nth-child(1) { height: 8px; }
+        .dp-glyph-bars span:nth-child(2) { height: 16px; }
+        .dp-glyph-bars span:nth-child(3) { height: 12px; }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="04-demo-publish"
+        data-width="1920"
+        data-height="1080"
+        data-duration="4.667"
+      >
+        <div class="dp-bg clip" id="dp-bg" data-start="0" data-duration="4.267" data-track-index="0"></div>
+
+        <div class="dp-camera clip" id="dp-camera" data-start="0" data-duration="4.267" data-track-index="1">
+          <div class="dp-window" id="dp-window">
+            <!-- OLD content: the incoming "script panel" placeholder the window morphs from -->
+            <div class="dp-content-old" id="dp-content-old">
+              <div class="dp-old-eyebrow">Script</div>
+              <div class="dp-old-line" style="width: 78%;"></div>
+              <div class="dp-old-line" style="width: 88%;"></div>
+              <div class="dp-old-line" style="width: 64%;"></div>
+              <div class="dp-old-line" style="width: 82%;"></div>
+              <div class="dp-old-line" style="width: 56%;"></div>
+            </div>
+
+            <!-- NEW content: the floating macOS-style editor window -->
+            <div class="dp-content-new" id="dp-content-new">
+              <div class="dp-chrome">
+                <div class="dp-traffic">
+                  <div class="dp-dot"></div>
+                  <div class="dp-dot"></div>
+                  <div class="dp-dot"></div>
+                </div>
+                <div class="dp-tabs">
+                  <div class="dp-tab" id="dp-tab-video" style="background: rgba(102,56,217,0.1); color: #6638D9;">Video</div>
+                  <div class="dp-tab" id="dp-tab-calendar" style="background: transparent; color: #6B6B6B;">Schedule</div>
+                </div>
+              </div>
+
+              <div class="dp-viewport" id="dp-screen-viewport">
+                <div class="dp-stack" id="dp-screen-stack" data-layout-allow-overflow>
+                  <div class="dp-screen dp-screen-video">
+                    <div class="dp-avatar-wrap" id="dp-avatar-wrap">
+                      <div class="dp-avatar dp-avatar-a" id="dp-avatar-a">
+                        <div class="dp-sil-head"></div>
+                        <div class="dp-sil-body"></div>
+                      </div>
+                      <div class="dp-avatar dp-avatar-b" id="dp-avatar-b">
+                        <div class="dp-sil-head"></div>
+                        <div class="dp-sil-body"></div>
+                      </div>
+                    </div>
+
+                    <div class="dp-eyebrow dp-voice-label" id="dp-voice-label">Your Voice</div>
+
+                    <div class="dp-wave" id="dp-wave">
+                      <div class="dp-bar" id="dp-wave-0" style="height: 16px;"></div>
+                      <div class="dp-bar" id="dp-wave-1" style="height: 26px;"></div>
+                      <div class="dp-bar" id="dp-wave-2" style="height: 20px;"></div>
+                      <div class="dp-bar" id="dp-wave-3" style="height: 34px;"></div>
+                      <div class="dp-bar" id="dp-wave-4" style="height: 24px;"></div>
+                      <div class="dp-bar" id="dp-wave-5" style="height: 30px;"></div>
+                      <div class="dp-bar" id="dp-wave-6" style="height: 18px;"></div>
+                      <div class="dp-bar" id="dp-wave-7" style="height: 28px;"></div>
+                      <div class="dp-bar" id="dp-wave-8" style="height: 22px;"></div>
+                    </div>
+
+                    <div class="dp-eyebrow dp-look-label" id="dp-look-label">Your Look</div>
+                  </div>
+
+                  <div class="dp-screen dp-screen-calendar">
+                    <div class="dp-cal-eyebrow" id="dp-cal-eyebrow">Scheduled This Week</div>
+                    <div class="dp-cal-row" id="dp-cal-row">
+                      <div class="dp-day-slot" id="dp-day-0">
+                        <div class="dp-day-label">Mon</div>
+                        <div class="dp-chip" id="dp-cal-card-0"><div class="dp-glyph-play"></div></div>
+                      </div>
+                      <div class="dp-day-slot" id="dp-day-1">
+                        <div class="dp-day-label">Tue</div>
+                        <div class="dp-chip" id="dp-cal-card-1"><div class="dp-glyph-ring"></div></div>
+                      </div>
+                      <div class="dp-day-slot" id="dp-day-2">
+                        <div class="dp-day-label">Wed</div>
+                        <div class="dp-chip" id="dp-cal-card-2">
+                          <div class="dp-glyph-bars"><span></span><span></span><span></span></div>
+                        </div>
+                      </div>
+                      <div class="dp-day-slot" id="dp-day-3">
+                        <div class="dp-day-label">Thu</div>
+                        <div class="dp-chip" id="dp-cal-card-3"><div class="dp-glyph-star"></div></div>
+                      </div>
+                      <div class="dp-day-slot" id="dp-day-4">
+                        <div class="dp-day-label">Fri</div>
+                        <div class="dp-chip" id="dp-cal-card-4"><div class="dp-glyph-bubble"></div></div>
+                      </div>
+                      <div class="dp-day-slot" id="dp-day-5">
+                        <div class="dp-day-label">Sat</div>
+                        <div class="dp-chip" id="dp-cal-card-5"><div class="dp-glyph-play"></div></div>
+                      </div>
+                      <div class="dp-day-slot" id="dp-day-6">
+                        <div class="dp-day-label">Sun</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+
+        const TOTAL_DURATION = 4.267;
+        const tl = gsap.timeline({ paused: true });
+
+        // ---------------------------------------------------------------
+        // Scene 1 (0.0-1.0s) — card-morph-anchor: script panel -> window
+        // ---------------------------------------------------------------
+        const MORPH_START = 0.05;
+        const MORPH_DUR = 0.65;
+        const OLD_FADE_FRAC = 0.35;
+        const NEW_FADE_FRAC = 0.45;
+
+        tl.to(
+          '#dp-window',
+          { width: 1100, height: 620, borderRadius: 18, duration: MORPH_DUR, ease: 'power2.inOut' },
+          MORPH_START,
+        );
+        tl.to(
+          '#dp-content-old',
+          { opacity: 0, duration: MORPH_DUR * OLD_FADE_FRAC, ease: 'power1.in' },
+          MORPH_START,
+        );
+        tl.to(
+          '#dp-content-new',
+          { opacity: 1, duration: MORPH_DUR * NEW_FADE_FRAC, ease: 'power1.out' },
+          MORPH_START + MORPH_DUR * (1 - NEW_FADE_FRAC),
+        );
+
+        // ---------------------------------------------------------------
+        // Waveform — deterministic per-bar sine pulse (sine-wave-loop style)
+        // ---------------------------------------------------------------
+        const WAVE_START = 0.8;
+        const WAVE_END = 2.4;
+        const WAVE_CYCLES = 3;
+        const bars = [];
+        for (let i = 0; i < 9; i++) bars.push(document.getElementById('dp-wave-' + i));
+
+        const wavePhase = { p: 0 };
+        tl.to(
+          wavePhase,
+          {
+            p: Math.PI * 2 * WAVE_CYCLES,
+            duration: WAVE_END - WAVE_START,
+            ease: 'none',
+            onUpdate: () => {
+              bars.forEach((el, i) => {
+                const s = 1 + Math.sin(wavePhase.p + i * 0.8) * 0.35;
+                el.style.transform = `scaleY(${s})`;
+              });
+            },
+          },
+          WAVE_START,
+        );
+
+        // ---------------------------------------------------------------
+        // "Your voice" label glow — asr-keyword-glow envelope (single word)
+        // ---------------------------------------------------------------
+        const VOICE_START = 1.0;
+        const VOICE_END = 1.55;
+        const ATTACK_DUR = 0.2;
+        const RELEASE = 0.35;
+        const REST_LEVEL = 0.2;
+        const MAX_BLUR = 16;
+        const MAX_SCALE_BOOST = 0.06;
+        const voiceLabel = document.getElementById('dp-voice-label');
+
+        function envelope(time, start, end) {
+          const releaseEnd = end + RELEASE;
+          if (time < start) return 0;
+          if (time < end) return Math.min((time - start) / ATTACK_DUR, 1);
+          if (time < releaseEnd) {
+            const decay = (time - end) / RELEASE;
+            return 1 - decay * (1 - REST_LEVEL);
+          }
+          return REST_LEVEL;
+        }
+
+        const glowDriver = { t: 0 };
+        tl.to(
+          glowDriver,
+          {
+            t: TOTAL_DURATION,
+            duration: TOTAL_DURATION,
+            ease: 'none',
+            onUpdate: () => {
+              const env = envelope(glowDriver.t, VOICE_START, VOICE_END);
+              const blur = MAX_BLUR * env;
+              const scale = 1 + MAX_SCALE_BOOST * env;
+              voiceLabel.style.textShadow = `0 0 ${blur}px rgba(102, 56, 217, ${0.25 + env * 0.55})`;
+              voiceLabel.style.transform = `scale(${scale})`;
+            },
+          },
+          0,
+        );
+
+        // "Your look" label — quick reveal right after the voice glow decays
+        tl.fromTo(
+          '#dp-look-label',
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' },
+          1.55,
+        );
+
+        // ---------------------------------------------------------------
+        // Avatar style swap — scale-swap-transition
+        // ---------------------------------------------------------------
+        const SWAP_TRIGGER = 1.75;
+        const SWAP_EXIT_DUR = 0.35;
+        const SWAP_ENTER_DUR = 0.45;
+        const SWAP_OVERLAP = 0.15;
+        const SWAP_EXIT_SCALE = 0.7;
+        const SWAP_BOUNCE = 1.6;
+
+        tl.to(
+          '#dp-avatar-a',
+          { scale: SWAP_EXIT_SCALE, opacity: 0, duration: SWAP_EXIT_DUR, ease: 'power2.in' },
+          SWAP_TRIGGER,
+        );
+        tl.fromTo(
+          '#dp-avatar-b',
+          { scale: SWAP_EXIT_SCALE, opacity: 0 },
+          { scale: 1, opacity: 1, duration: SWAP_ENTER_DUR, ease: `back.out(${SWAP_BOUNCE})` },
+          SWAP_TRIGGER + SWAP_EXIT_DUR - SWAP_OVERLAP,
+        );
+
+        // ---------------------------------------------------------------
+        // Tab crossfade — active indicator moves from Video -> Schedule
+        // ---------------------------------------------------------------
+        const TAB_AT = 2.4;
+        const TAB_DUR = 0.4;
+        tl.to('#dp-tab-video', { backgroundColor: 'rgba(102,56,217,0)', color: '#9A9A9A', duration: TAB_DUR, ease: 'power2.inOut' }, TAB_AT);
+        tl.to('#dp-tab-calendar', { backgroundColor: 'rgba(102,56,217,0.1)', color: '#6638D9', duration: TAB_DUR, ease: 'power2.inOut' }, TAB_AT);
+
+        // ---------------------------------------------------------------
+        // Scene 3 (2.4-4.267s) — screen scroll (3d-page-scroll mechanic)
+        // ---------------------------------------------------------------
+        const SCROLL_AT = 2.4;
+        const SCROLL_DUR = 0.6;
+        const SCROLL_DISTANCE = 564;
+        tl.to('#dp-screen-stack', { y: -SCROLL_DISTANCE, duration: SCROLL_DUR, ease: 'power3.out' }, SCROLL_AT);
+
+        // Calendar frame reveal (eyebrow + the 7 empty day-slots)
+        const CAL_FRAME_AT = 3.0;
+        tl.fromTo(
+          '#dp-cal-eyebrow',
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' },
+          CAL_FRAME_AT,
+        );
+        tl.fromTo(
+          '.dp-day-slot',
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' },
+          CAL_FRAME_AT,
+        );
+
+        // Platform-glyph chips — spring-pop-entrance, staggered cascade
+        const GROUP_ENTRY_AT = 3.05;
+        const STAGGER = 0.08;
+        const POP_DUR = 0.5;
+        for (let i = 0; i < 6; i++) {
+          tl.fromTo(
+            '#dp-cal-card-' + i,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: POP_DUR, ease: 'power3.out' },
+            GROUP_ENTRY_AT + i * STAGGER,
+          );
+        }
+
+        // ---------------------------------------------------------------
+        // Camera — multi-phase-camera (push-in -> zoom-out arc + drift)
+        // ---------------------------------------------------------------
+        const camera = document.getElementById('dp-camera');
+        const phase = { scale: 1.0 };
+
+        tl.to(phase, { scale: 1.06, duration: 1.85, ease: 'power2.out' }, 0.15);
+        tl.to(phase, { scale: 0.97, duration: 1.0, ease: 'power3.out' }, 2.4);
+
+        const DRIFT_CYCLES = 2;
+        const DRIFT_AMP_X = 4;
+        const DRIFT_AMP_Y = 2;
+        const DRIFT_FREQ_RATIO = 1.3;
+        const drift = { p: 0 };
+
+        tl.to(
+          drift,
+          {
+            p: Math.PI * 2 * DRIFT_CYCLES,
+            duration: TOTAL_DURATION,
+            ease: 'none',
+            onUpdate: () => {
+              const dx = Math.sin(drift.p) * DRIFT_AMP_X;
+              const dy = Math.sin(drift.p * DRIFT_FREQ_RATIO) * DRIFT_AMP_Y;
+              camera.style.transform = `scale(${phase.scale}) translate(${dx}px, ${dy}px)`;
+            },
+          },
+          0,
+        );
+
+        // ---------------------------------------------------------------
+        // Final hold — subtle jitter on the completed calendar (sine-wave-loop)
+        // ---------------------------------------------------------------
+        const IDLE_START = 4.0;
+        const IDLE_DUR = TOTAL_DURATION - IDLE_START;
+        const IDLE_CYCLES = 0.5;
+        const IDLE_SCALE_AMP = 0.006;
+        const IDLE_Y_AMP = 1.2;
+        const calRow = document.getElementById('dp-cal-row');
+        const idlePhase = { p: 0 };
+
+        tl.to(
+          idlePhase,
+          {
+            p: Math.PI * 2 * IDLE_CYCLES,
+            duration: IDLE_DUR,
+            ease: 'none',
+            onUpdate: () => {
+              const s = 1 + Math.sin(idlePhase.p) * IDLE_SCALE_AMP;
+              const y = Math.sin(idlePhase.p) * IDLE_Y_AMP;
+              calRow.style.transform = `translateY(${y}px) scale(${s})`;
+            },
+          },
+          IDLE_START,
+        );
+
+        window.__timelines['04-demo-publish'] = tl;
+      </script>
+    </template>
+  </body>
+</html>

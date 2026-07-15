@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata for the source file only; the runtime discards everything
+         outside <template> — styles/scripts live inside it below. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+
+        /* Root: styled by #root, never a class — see hyperframes-core Pitfall 3. */
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: 'Mulish', sans-serif;
+        }
+
+        /* Full-bleed ground lives on a dedicated class="clip" layer, never on #root
+           itself (root fill can be dropped by the compositor — hyperframes-core). */
+        .hook-bg {
+          position: absolute;
+          inset: 0;
+          background: #FFFFFF;
+        }
+
+        .hook-stage {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 9cqw;
+        }
+
+        .hook-type {
+          display: block;
+          max-width: 82cqw;
+          margin: 0 auto;
+          text-align: center;
+          font-family: 'Mulish', sans-serif;
+          font-weight: 800;
+          color: #000000;
+          letter-spacing: -0.01em;
+          line-height: 1.15;
+          font-size: 5.6cqw;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="01-hook"
+        data-width="1920"
+        data-height="1080"
+        data-duration="4.453"
+      >
+        <div
+          class="hook-bg clip"
+          id="hook-bg"
+          data-start="0"
+          data-duration="4.053"
+          data-track-index="0"
+        ></div>
+
+        <div
+          class="hook-stage clip"
+          id="hook-stage"
+          data-start="0"
+          data-duration="4.053"
+          data-track-index="1"
+        >
+          <div class="hook-type" id="hook-type">Coming up with video ideas</div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+
+        const TOTAL_DURATION = 4.053;
+
+        // Sub-shape A (fixed-line token swap) — three hard-cut whole-line states.
+        // Beat 3 escalates in size (weight escalation) vs beats 1 & 2.
+        const SEQUENCE = [
+          { t: 0.0, text: 'Coming up with video ideas', fontSize: '5.6cqw' },
+          { t: 1.3, text: '...and actually making them', fontSize: '5.6cqw' },
+          { t: 2.6, text: 'takes forever', fontSize: '7.4cqw' },
+        ];
+
+        function stateAt(time) {
+          for (let i = SEQUENCE.length - 1; i >= 0; i--) {
+            if (time >= SEQUENCE[i].t) return SEQUENCE[i];
+          }
+          return SEQUENCE[0];
+        }
+
+        const textEl = document.getElementById('hook-type');
+        const tl = gsap.timeline({ paused: true });
+
+        // Discrete state driver — reverse-searches SEQUENCE each frame and applies
+        // the current text + size instantly (hard cut, no interpolation).
+        const driver = { t: 0 };
+        tl.to(
+          driver,
+          {
+            t: TOTAL_DURATION,
+            duration: TOTAL_DURATION,
+            ease: 'none',
+            onUpdate: () => {
+              const s = stateAt(driver.t);
+              if (textEl.textContent !== s.text) textEl.textContent = s.text;
+              if (textEl.style.fontSize !== s.fontSize) textEl.style.fontSize = s.fontSize;
+            },
+          },
+          0,
+        );
+
+        // Beat 3 "takes forever" lands already hard-cut in (via the driver above),
+        // then grows smoothly into its resting size — a spring-pop-entrance-style
+        // settle, power3.out, no overshoot (per motion doctrine).
+        const SETTLE_AT = 2.6;
+        const SETTLE_DUR = 0.5;
+        tl.fromTo(
+          textEl,
+          { scale: 0.86 },
+          { scale: 1, duration: SETTLE_DUR, ease: 'power3.out' },
+          SETTLE_AT,
+        );
+
+        // Subtle jitter through the remaining hold (sine-wave-loop, low end of its
+        // amplitude range) so the final ~0.9s hold isn't dead-static longer than
+        // the ~1.5s motion-quality ceiling. sin(0) = 0 at JITTER_START, so there is
+        // no jump from the settle's resting state into the jitter.
+        const JITTER_START = SETTLE_AT + SETTLE_DUR + 0.05; // 3.15
+        const JITTER_DUR = TOTAL_DURATION - JITTER_START; // ~0.903s
+        const JITTER_CYCLES = 0.7;
+        const SCALE_AMP = 0.008;
+        const Y_AMP_PX = 2;
+        const phase = { p: 0 };
+        tl.to(
+          phase,
+          {
+            p: Math.PI * 2 * JITTER_CYCLES,
+            duration: JITTER_DUR,
+            ease: 'none',
+            onUpdate: () => {
+              const jitterScale = 1 + Math.sin(phase.p) * SCALE_AMP;
+              const jitterY = Math.sin(phase.p) * Y_AMP_PX;
+              textEl.style.transform = `translateY(${jitterY}px) scale(${jitterScale})`;
+            },
+          },
+          JITTER_START,
+        );
+
+        window.__timelines['01-hook'] = tl;
+      </script>
+    </template>
+  </body>
+</html>

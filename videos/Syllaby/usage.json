@@ -1,0 +1,14 @@
+{
+  "video": "Syllaby",
+  "startedAt": "2026-07-14T00:00:00.000Z",
+  "finishedAt": "2026-07-15T00:12:39.254Z",
+  "sessionsSpanned": 3,
+  "totalsByModel": {
+    "claude-sonnet-5": {
+      "input": 59412,
+      "output": 269123,
+      "cacheRead": 24505911,
+      "cacheCreate": 1074126
+    }
+  }
+}

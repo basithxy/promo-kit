@@ -1,0 +1,15 @@
+· tts: kokoro · voice af_sky · 5 line(s)
+  voice 01: assets/voice/01.wav (4.053s, 0 words)
+  voice 02: assets/voice/02.wav (3.712s, 0 words)
+  voice 03: assets/voice/03.wav (4.651s, 0 words)
+  voice 04: assets/voice/04.wav (4.267s, 0 words)
+  voice 05: assets/voice/05.wav (4.053s, 0 words)
+· bgm: disabled
+✓ audio engine → D:\New folder\promo-kit\videos\Syllaby\audio_engine_meta.json
+  heygen: no  ·  ran: tts,bgm
+  voices: 5  ·  bgm: none  ·  sfx: 0
+  total voice duration: 20.736s
+
+anomalies (non-fatal):
+  - bgm: retrieve requires a HeyGen credential — skipped (no generate fallback for an explicit retrieve)
+✓ audio generate: 5 voice + no bgm → D:\New folder\promo-kit\videos\Syllaby\audio_meta.json

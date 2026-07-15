@@ -1,0 +1,214 @@
+{
+  "typography": [
+    {
+      "role": "heading",
+      "fontFamily": "Mulish",
+      "fontSize": "52px",
+      "fontWeight": "700",
+      "lineHeight": "52px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Syllaby Features"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Mulish",
+      "fontSize": "48px",
+      "fontWeight": "700",
+      "lineHeight": "48px",
+      "letterSpacing": "normal",
+      "color": "#000000",
+      "sampleText": "250,000+ videos created in Syllaby"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Mulish",
+      "fontSize": "40px",
+      "fontWeight": "700",
+      "lineHeight": "40px",
+      "letterSpacing": "normal",
+      "color": "#000000",
+      "sampleText": "The only AI video tool with built-in ideation, publishing, a"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Mulish",
+      "fontSize": "36px",
+      "fontWeight": "700",
+      "lineHeight": "45.18px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Character consistency"
+    },
+    {
+      "role": "link",
+      "fontFamily": "-apple-system",
+      "fontSize": "18px",
+      "fontWeight": "500",
+      "lineHeight": "27px",
+      "letterSpacing": "normal",
+      "color": "#000000",
+      "sampleText": "Skip to content"
+    },
+    {
+      "role": "body",
+      "fontFamily": "Mulish",
+      "fontSize": "14px",
+      "fontWeight": "700",
+      "lineHeight": "21px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Create ON-THE-GO — Syllaby Mobile is now live."
+    }
+  ],
+  "spacing": {
+    "observed": [
+      2,
+      8,
+      20
+    ],
+    "baseUnit": 4
+  },
+  "radius": [],
+  "shadows": [],
+  "buttons": [
+    {
+      "label": "button",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#1890FF",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(24, 144, 255)",
+      "boxShadow": "none",
+      "fontSize": "18px",
+      "fontWeight": "500",
+      "height": "40px"
+    },
+    {
+      "label": "Login\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#000000",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "64px"
+    },
+    {
+      "label": "Login",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#222533",
+      "padding": "14px 20px",
+      "borderRadius": "6px",
+      "border": "1px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "44px"
+    },
+    {
+      "label": "Login",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#222533",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(34, 37, 51)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "14px"
+    },
+    {
+      "label": "Start Free Trial",
+      "background": "#6638D9",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "14px 20px",
+      "borderRadius": "6px",
+      "border": "2px solid rgb(102, 56, 217)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "46px"
+    },
+    {
+      "label": "Start Free Trial",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "14px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#000000",
+      "padding": "10px 0px 20px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "94px"
+    },
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "linear-gradient(rgba(73, 37, 179, 0.28) 37%, rgb(73, 37, 179) 100%)",
+      "backdropFilter": "",
+      "color": "#000000",
+      "padding": "0px 10px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "870.594px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "#FFFFFF",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#000000",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "0px none rgb(0, 0, 0)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "135px"
+  },
+  "chips": [],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "linear-gradient(0deg, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 100%)",
+      "area": 23652
+    }
+  ],
+  "glass": []
+}

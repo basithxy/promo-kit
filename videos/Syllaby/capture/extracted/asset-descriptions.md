@@ -1,0 +1,167 @@
+# Asset Descriptions
+
+⚠️  GEMINI_API_KEY not set — descriptions below are catalog-derived (alt text, headings, section context, filename) instead of Vision-generated. To get richer Vision descriptions on the next capture, set GEMINI_API_KEY (or GOOGLE_API_KEY) and re-run.
+
+The `logo-<hash>.svg` filename prefix is a structural hint (DOM said this SVG was inside a `<header>`, home-link `<a>`, or had an aria-label matching the page brand). To pick the actual brand logo without Vision, open the `logo-*` candidates in a previewer or rasterize them with `sharp` before referencing — composing a fake logo ships off-brand in the final video.
+
+- gif1.mp4 — [video] The only AI video tool with built-in ideation, publishing, and scheduling., ~134×240
+- gif7.mp4 — [video] The only AI video tool with built-in ideation, publishing, and scheduling., ~134×240
+- gif6.mp4 — [video] The only AI video tool with built-in ideation, publishing, and scheduling., ~134×238
+- gif2.mp4 — [video] The only AI video tool with built-in ideation, publishing, and scheduling., ~134×240
+- gif4.mp4 — [video] The only AI video tool with built-in ideation, publishing, and scheduling., ~134×240
+- gif3.mp4 — [video] The only AI video tool with built-in ideation, publishing, and scheduling., ~134×240
+- gif5.mp4 — [video] The only AI video tool with built-in ideation, publishing, and scheduling., ~134×240
+- avatar-10.png — 103KB, avatar 10
+- avatar-4-1.png — 115KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- avatar-9.png — 159KB, avatar 9
+- b74cs3kl0e7fu9bhg5otjk8n9u-sy600.jpg — 32KB, "Smiling man in black V-neck shirt, with "GRIND" and "EXECUTION" signs, illustrat", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- bach-400x400.jpg — 23KB, bach 400x400
+- business-insider-logo.png — 102KB, "Syllaby logo", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- channels4-profile.jpg — 47KB, channels4 profile
+- chuck-hester.png — 35KB, chuck hester
+- design.png — 253KB, design
+- diverse-character-portraits.png — 293KB, diverse character portraits
+- ellipse-15.png — 16KB, ellipse 15
+- ellipse-1975.png — 25KB, ellipse 1975
+- ellipse-1990.png — 27KB, ellipse 1990
+- favicon.svg — 2KB, favicon
+- forbes-logo.png — 36KB, "Syllaby logo", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- frame-823425646-1-1.png — 32KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- frame-823425646-2.png — 31KB, frame 823425646 2
+- frame-823425646-3.png — 29KB, frame 823425646 3
+- frame-823425646-4.png — 36KB, frame 823425646 4
+- frame-823425646.png — 98KB, frame 823425646
+- frame-823425651-1.png — 139KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- frame-823425651.png — 116KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- frame-823425652-1.png — 17KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- frame-823425652-2.png — 261KB, frame 823425652 2
+- frame-823425652.png — 214KB, frame 823425652
+- frame-823425653.png — 199KB, frame 823425653
+- frame-9544-4-300x205.png — 65KB, frame 9544 4 300x205
+- frame-9544-4-768x526.png — 304KB, frame 9544 4 768x526
+- frame-9544-4.png — 92KB, frame 9544 4
+- group-2-300x230.png — 25KB, group 2 300x230
+- image-1-1.png — 26KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-1.png — 29KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-103.png — 2800KB, image 103
+- image-2.png — 27KB, section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-3.png — 28KB, section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-4.png — 29KB, section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-5-1.png — 29KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-5.png — 26KB, section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-6.png — 28KB, section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-7.png — 28KB, section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- image-iv159ftnstiehk6loaeq7k6cfyob0i.png — 1709KB, image iv159ftnstiehk6loaeq7k6cfyob0i
+- image-mdcpldxhelg3ig8ebuyan6tq7l1yyk.png — 1321KB, image mdcpldxhelg3ig8ebuyan6tq7l1yyk
+- image-mwuznkirgq0lgxe6ys3zie5s7yobns.png — 1417KB, image mwuznkirgq0lgxe6ys3zie5s7yobns
+- image-sl8elxfeekp7ttxsxjmyvpx0gefcay.png — 1611KB, image sl8elxfeekp7ttxsxjmyvpx0gefcay
+- image-txg7cbbadflajsmrz7zu7qb0ggjwmy.png — 1441KB, image txg7cbbadflajsmrz7zu7qb0ggjwmy
+- image-yjqp9xjadut8qaxzcva2xr4cjoxycs-1.jpg — 172KB, image yjqp9xjadut8qaxzcva2xr4cjoxycs 1
+- image.png — 37KB, section: "The only AI video tool with built-in  ideation, publishing, "
+- img-1-1-1-300x205.png — 33KB, "Poseidon emerging sea", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- img-1-1-1-768x526.png — 133KB, "Poseidon emerging sea", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- jacqueline-crider.png — 43KB, jacqueline crider
+- james-douglas.png — 288KB, james douglas
+- logo-322165f4.svg — 3KB, logo 322165f4
+- logo-504be012.svg — 6KB, logo 504be012
+- logo-5b109c30.svg — 4KB, logo 5b109c30
+- logo-5fb43feb.svg — 2KB, logo 5fb43feb
+- logo-a3802f4e.svg — 2KB, logo a3802f4e
+- logo-c0ca6c22.svg — 9KB, logo c0ca6c22
+- logo-da1b9b75.svg — 2KB, logo da1b9b75
+- logo-e774a56a.svg — 0KB, logo e774a56a
+- logo-f6a2092a.svg — 7KB, logo f6a2092a
+- marketwatch-logo.png — 10KB, "Syllaby logo", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- matt-goose-gossett.png — 310KB, matt goose gossett
+- matthew-kershaw.png — 34KB, matthew kershaw
+- maxresdefault-1-1024x576.jpg — 42KB, "Young woman in a black shirt promoting Syllaby’s video creation and AI avatar to", section: "Video Creation", above fold
+- maxresdefault-1-768x432.jpg — 30KB, "Young woman in a black shirt promoting Syllaby’s video creation and AI avatar to", section: "Video Creation", above fold
+- maxresdefault-2-1024x576.jpg — 46KB, "Young man in casual outfit promoting Syllaby’s social media video creation tips ", section: "Video Creation", above fold
+- maxresdefault-2-768x432.jpg — 32KB, "Young man in casual outfit promoting Syllaby’s social media video creation tips ", section: "Video Creation", above fold
+- maxresdefault-2.jpg — 65KB, "Young man in casual outfit promoting Syllaby’s social media video creation tips ", section: "Video Creation", above fold
+- maxresdefault-3-1024x576.jpg — 40KB, "Man with red hair in a blazer displaying video editing tips, featuring 'HOW TO E", section: "Video Creation", above fold
+- maxresdefault-3-768x432.jpg — 29KB, "Man with red hair in a blazer displaying video editing tips, featuring 'HOW TO E", section: "Video Creation", above fold
+- maxresdefault-3.jpg — 58KB, "Man with red hair in a blazer displaying video editing tips, featuring 'HOW TO E", section: "Video Creation", above fold
+- maxresdefault-4-1024x576.jpg — 86KB, "Content calendar interface for Syllaby, featuring scheduled posts and organized ", section: "Video Creation", above fold
+- maxresdefault-4-300x169.jpg — 15KB, "Content calendar interface for Syllaby, featuring scheduled posts and organized ", section: "Video Creation", above fold
+- maxresdefault-4-768x432.jpg — 61KB, "Content calendar interface for Syllaby, featuring scheduled posts and organized ", section: "Video Creation", above fold
+- maxresdefault-4.jpg — 145KB, "Content calendar interface for Syllaby, featuring scheduled posts and organized ", section: "Video Creation", above fold
+- maxresdefault-5-1024x576.jpg — 62KB, "Laptop interface displaying Syllaby's video editing tool with editing options an", section: "Video Creation", above fold
+- maxresdefault-5-300x169.jpg — 11KB, "Laptop interface displaying Syllaby's video editing tool with editing options an", section: "Video Creation", above fold
+- maxresdefault-5-768x432.jpg — 44KB, "Laptop interface displaying Syllaby's video editing tool with editing options an", section: "Video Creation", above fold
+- maxresdefault-5.jpg — 109KB, "Laptop interface displaying Syllaby's video editing tool with editing options an", section: "Video Creation", above fold
+- maxresdefault.jpg — 51KB, section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- md-tangeer-mehedi.png — 18KB, md tangeer mehedi
+- nic-skovgaard.png — 19KB, nic skovgaard
+- og-image.jpg — 14KB, og image
+- poseidon-emerging-sea.png — 180KB, poseidon emerging sea
+- screenshot-2024-09-15-174857-1.png — 65KB, "Syllaby video platform", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- search-volume-data.png — 39KB, search volume data
+- search-volume-trends.png — 25KB, search volume trends
+- svg-10706866.svg — 33KB, svg 10706866
+- svg-18e07bc1.svg — 2KB, svg 18e07bc1
+- svg-28051e8a.svg — 38KB, svg 28051e8a
+- svg-2cf8a532.svg — 34KB, svg 2cf8a532
+- svg-2dc0c712.svg — 20KB, svg 2dc0c712
+- svg-39c3c38d.svg — 4KB, svg 39c3c38d
+- svg-39f2365f.svg — 35KB, svg 39f2365f
+- svg-3e37683f.svg — 0KB, svg 3e37683f
+- svg-4a00a9c6.svg — 70KB, svg 4a00a9c6
+- svg-6924b1a2.svg — 18KB, svg 6924b1a2
+- svg-6c6539e4.svg — 14KB, svg 6c6539e4
+- svg-77d42dca.svg — 15KB, svg 77d42dca
+- svg-aea4134f.svg — 28KB, svg aea4134f
+- svg-bedd12c9.svg — 20KB, svg bedd12c9
+- svg-dbec4937.svg — 1KB, svg dbec4937
+- svg-e8c538eb.svg — 62KB, svg e8c538eb
+- syllaby-video-platform.png — 44KB, syllaby video platform
+- tim-sackrider.png — 302KB, tim sackrider
+- tonya-gossage.png — 355KB, tonya gossage
+- trend-analysis-chart.png — 51KB, trend analysis chart
+- video-creation.jpg — 60KB, video creation
+- yahoo-news-logo.png — 138KB, "Syllaby logo", section: "The only AI video tool with built-in  ideation, publishing, ", above fold
+- svgs/logo-01c3938f.svg — logo 01c3938f
+- svgs/logo-14bd8b0d.svg — logo 14bd8b0d
+- svgs/logo-190b2881.svg — logo 190b2881
+- svgs/logo-1b13bd0a.svg — logo 1b13bd0a
+- svgs/logo-1faac8e0.svg — logo 1faac8e0
+- svgs/logo-21dc2302.svg — logo 21dc2302
+- svgs/logo-3afa3e94.svg — logo 3afa3e94
+- svgs/logo-41c03dd8.svg — logo 41c03dd8
+- svgs/logo-434a1dad.svg — logo 434a1dad
+- svgs/logo-543b39a4.svg — logo 543b39a4
+- svgs/logo-5d354d84.svg — logo 5d354d84
+- svgs/logo-6f9c463a.svg — logo 6f9c463a
+- svgs/logo-7bd72cd0.svg — logo 7bd72cd0
+- svgs/logo-94896847.svg — logo 94896847
+- svgs/logo-99abe00f.svg — logo 99abe00f
+- svgs/logo-aa3634e0.svg — logo aa3634e0
+- svgs/logo-b2cc42bd.svg — logo b2cc42bd
+- svgs/logo-b65f6c15.svg — logo b65f6c15
+- svgs/logo-bd32fb15.svg — logo bd32fb15
+- svgs/logo-c720da4c.svg — logo c720da4c
+- svgs/logo-d0d01285.svg — logo d0d01285
+- svgs/logo-dc39e796.svg — logo dc39e796
+- svgs/logo-de9bcdcd.svg — logo de9bcdcd
+- svgs/logo-ebbd14ec-2.svg — logo ebbd14ec 2
+- svgs/logo-ebbd14ec.svg — logo ebbd14ec
+- svgs/logo-ee678276.svg — logo ee678276
+- svgs/logo-f00faf1c.svg — logo f00faf1c
+- svgs/logo-f1556549.svg — logo f1556549
+- svgs/logo-f446b080.svg — logo f446b080
+- svgs/logo-fe9c0a9b.svg — logo fe9c0a9b
+- fonts/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsS9-SfGZQ_.ttf — font file
+- fonts/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSd-OfGZQ_.ttf — font file
+- fonts/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSG-OfGZQ_.ttf — font file
+- fonts/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSKeOfGZQ_.ttf — font file
+- fonts/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSqeOfGZQ_.ttf — font file
+- fonts/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSzuSfGZQ_.ttf — font file
+- fonts/eicons.ttf — font file
+- fonts/eicons.woff — font file
+- fonts/eicons.woff2 — font file
+- fonts/elementskit.woff — font file
+- fonts/fa-solid-900.ttf — font file
+- fonts/fa-solid-900.woff — font file
+- fonts/fa-solid-900.woff2 — font file
+- fonts/slick.ttf — font file
+- fonts/slick.woff — font file

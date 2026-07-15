@@ -1,0 +1,455 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata for the source file only; the runtime discards everything
+         outside <template> — styles/scripts live inside it below. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+
+        /* Root: styled by #root, never a class — see hyperframes-core Pitfall 3. */
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: 'Mulish', sans-serif;
+        }
+
+        /* Full-bleed ground lives on a dedicated class="clip" layer, never on #root
+           itself (root fill can be dropped by the compositor — hyperframes-core). */
+        .cta5-bg {
+          position: absolute;
+          inset: 0;
+          background: #FFFFFF;
+        }
+
+        /* Slow-drifting gradient-mesh field, low opacity, behind all content.
+           CSS radial-gradients driven by GSAP-updated custom properties
+           (deterministic sine drift, no WebGL) instead of a Three.js canvas. */
+        .cta5-canvas-layer {
+          position: absolute;
+          inset: 0;
+          --bx1: 30%;
+          --by1: 34%;
+          --bx2: 70%;
+          --by2: 62%;
+          --bx3: 50%;
+          --by3: 22%;
+          background-image:
+            radial-gradient(circle at var(--bx1) var(--by1), rgba(102, 56, 217, 0.16), transparent 42%),
+            radial-gradient(circle at var(--bx2) var(--by2), rgba(102, 56, 217, 0.14), transparent 38%),
+            radial-gradient(circle at var(--bx3) var(--by3), rgba(102, 56, 217, 0.12), transparent 34%);
+        }
+
+        /* --- Scene 1: dispersing formation carried over from Frame 4 --- */
+        .cta5-disperse {
+          position: absolute;
+          inset: 0;
+        }
+        .cta5-disperse-wrap {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+        .cta5-card {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 134px;
+          height: 92px;
+          display: grid;
+          place-items: center;
+          background: rgba(102, 56, 217, 0.04);
+          border: 1.5px solid rgba(102, 56, 217, 0.2);
+          border-radius: 14px;
+          will-change: transform, opacity;
+        }
+        .cta5-card-glyph {
+          width: 24px;
+          height: 24px;
+          border-radius: 6px;
+          background: #6638D9;
+        }
+
+        /* --- Scenes 1-3: the CTA lockup --- */
+        .cta5-lockup {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .cta5-lockup-inner {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          will-change: transform;
+        }
+
+        .cta5-badge {
+          display: inline-flex;
+          align-items: center;
+          padding: 14px 28px;
+          margin-bottom: 18px;
+          background: rgba(102, 56, 217, 0.08);
+          border: 1.5px solid rgba(102, 56, 217, 0.2);
+          border-radius: 100px;
+          color: #6638D9;
+          font-family: 'Mulish', sans-serif;
+          font-weight: 700;
+          font-size: 1.45cqw;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        .cta5-button-wrap {
+          position: relative;
+          display: block;
+          width: 420px;
+          height: 108px;
+          margin-bottom: 40px;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        .cta5-button-halo {
+          position: absolute;
+          inset: -16px;
+          border-radius: 100px;
+          background: radial-gradient(closest-side, rgba(102, 56, 217, 0.55), rgba(102, 56, 217, 0));
+          filter: blur(6px);
+          z-index: 0;
+          opacity: 0.25;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        .cta5-button {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          display: grid;
+          place-items: center;
+          background: #6638D9;
+          border-radius: 100px;
+          color: #FFFFFF;
+          font-family: 'Mulish', sans-serif;
+          font-weight: 600;
+          font-size: 1.9cqw;
+        }
+        .cta5-button-svg {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+          filter: drop-shadow(0 0 10px rgba(102, 56, 217, 0.6));
+        }
+        .cta5-button-svg rect {
+          fill: none;
+          stroke: #6638D9;
+          stroke-width: 4;
+          stroke-linecap: round;
+        }
+
+        .cta5-wordmark-row {
+          display: inline-flex;
+          align-items: baseline;
+          margin-bottom: 14px;
+        }
+        .cta5-letter {
+          display: inline-block;
+          font-family: 'Mulish', sans-serif;
+          font-weight: 800;
+          font-size: 6.2cqw;
+          letter-spacing: -0.02em;
+          color: #000000;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        .cta5-url {
+          font-family: 'Mulish', sans-serif;
+          font-weight: 600;
+          font-size: 1.6cqw;
+          letter-spacing: 0.01em;
+          color: #6B6B6B;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="05-cta"
+        data-width="1920"
+        data-height="1080"
+        data-duration="4.053"
+      >
+        <div
+          class="cta5-bg clip"
+          id="cta5-bg"
+          data-start="0"
+          data-duration="4.053"
+          data-track-index="0"
+        ></div>
+
+        <div
+          class="cta5-canvas-layer clip"
+          id="cta5-canvas-layer"
+          data-start="0"
+          data-duration="4.053"
+          data-track-index="1"
+        ></div>
+
+        <div
+          class="cta5-disperse clip"
+          id="cta5-disperse"
+          data-start="0"
+          data-duration="1.1"
+          data-track-index="2"
+        >
+          <div class="cta5-disperse-wrap" id="cta5-disperse-wrap">
+            <div class="cta5-card" id="cta5-card-0" data-arr-x="-500" data-arr-y="-220" data-tgt-x="-760" data-tgt-y="-540">
+              <div class="cta5-card-glyph"></div>
+            </div>
+            <div class="cta5-card" id="cta5-card-1" data-arr-x="0" data-arr-y="-220" data-tgt-x="0" data-tgt-y="-760">
+              <div class="cta5-card-glyph"></div>
+            </div>
+            <div class="cta5-card" id="cta5-card-2" data-arr-x="500" data-arr-y="-220" data-tgt-x="760" data-tgt-y="-540">
+              <div class="cta5-card-glyph"></div>
+            </div>
+            <div class="cta5-card" id="cta5-card-3" data-arr-x="-500" data-arr-y="220" data-tgt-x="-760" data-tgt-y="540">
+              <div class="cta5-card-glyph"></div>
+            </div>
+            <div class="cta5-card" id="cta5-card-4" data-arr-x="0" data-arr-y="220" data-tgt-x="0" data-tgt-y="760">
+              <div class="cta5-card-glyph"></div>
+            </div>
+            <div class="cta5-card" id="cta5-card-5" data-arr-x="500" data-arr-y="220" data-tgt-x="760" data-tgt-y="540">
+              <div class="cta5-card-glyph"></div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="cta5-lockup clip"
+          id="cta5-lockup"
+          data-start="0"
+          data-duration="4.053"
+          data-track-index="3"
+        >
+          <div class="cta5-lockup-inner" id="cta5-lockup-inner">
+            <div class="cta5-badge" id="cta5-badge">7-Day Free Trial</div>
+
+            <div class="cta5-button-wrap" id="cta5-button-wrap">
+              <div class="cta5-button-halo" id="cta5-button-halo"></div>
+              <div class="cta5-button" id="cta5-button">Start Free Trial</div>
+              <svg class="cta5-button-svg" id="cta5-button-svg" viewBox="0 0 420 108" xmlns="http://www.w3.org/2000/svg">
+                <rect id="cta5-button-rect" x="4" y="4" width="412" height="100" rx="50" />
+              </svg>
+            </div>
+
+            <div class="cta5-wordmark-row" id="cta5-wordmark-row">
+              <span class="cta5-letter">S</span><span class="cta5-letter">y</span><span class="cta5-letter">l</span><span class="cta5-letter">l</span><span class="cta5-letter">a</span><span class="cta5-letter">b</span><span class="cta5-letter">y</span>
+            </div>
+
+            <div class="cta5-url" id="cta5-url">syllaby.io</div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+
+        const TOTAL_DURATION = 4.053;
+        const tl = gsap.timeline({ paused: true });
+
+        // ---------------------------------------------------------------
+        // Scene 1 (0.0-1.1s): the prior frame's formation clears the stage
+        // (center-outward-expansion mechanics reused OUTWARD: arranged
+        // position -> off-screen edge target, per logo-assemble-lockup's
+        // Brand_Outro dispersal note), while the CTA pill rises + its
+        // border draws on as a glowing stroke.
+        // ---------------------------------------------------------------
+        const CARD_DUR = 0.75;
+        const CARD_STAGGER = 0.05;
+        const cards = gsap.utils.toArray('.cta5-card');
+        cards.forEach((el, i) => {
+          const arrX = Number(el.dataset.arrX);
+          const arrY = Number(el.dataset.arrY);
+          const tgtX = Number(el.dataset.tgtX);
+          const tgtY = Number(el.dataset.tgtY);
+          tl.fromTo(
+            el,
+            { xPercent: -50, yPercent: -50, x: arrX, y: arrY, scale: 1, opacity: 1 },
+            {
+              x: tgtX,
+              y: tgtY,
+              scale: 0.9,
+              opacity: 0,
+              duration: CARD_DUR,
+              ease: 'power3.out',
+            },
+            i * CARD_STAGGER,
+          );
+        });
+
+        // CTA pill rises/scales into center. This is the one sanctioned
+        // bounce exception for Frame 5 (Video direction: "Frame 5's button
+        // rise") — every other entrance in this frame settles on power3.
+        const BUTTON_ENTRY_AT = 0.05;
+        const BUTTON_POP_DUR = 0.45;
+        tl.fromTo(
+          '#cta5-button-wrap',
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: BUTTON_POP_DUR, ease: 'back.out(1.4)' },
+          BUTTON_ENTRY_AT,
+        );
+
+        // Button border draws on as a glowing outline stroke (svg-path-draw).
+        // Perimeter precomputed analytically (rect x=4 y=4 w=412 h=100 rx=50 -
+        // a stadium shape: two straight edges of (w-2*rx) + one full circle of
+        // radius rx, since h-2*rx=0) rather than calling the native
+        // getTotalLength(), which throws "Illegal invocation" when called on
+        // an SVG geometry element before HyperFrames has connected this
+        // template's content into the live, laid-out document.
+        const buttonRect = document.getElementById('cta5-button-rect');
+        const RECT_PERIMETER = 2 * (412 - 2 * 50) + 2 * Math.PI * 50;
+        buttonRect.style.strokeDasharray = `${RECT_PERIMETER}`;
+        buttonRect.style.strokeDashoffset = `${RECT_PERIMETER}`;
+        const DRAW_START = 0.15;
+        const DRAW_DUR = 0.45;
+        tl.to(
+          buttonRect,
+          { strokeDashoffset: 0, duration: DRAW_DUR, ease: 'power2.out' },
+          DRAW_START,
+        );
+
+        // ---------------------------------------------------------------
+        // Scene 2 (1.1-2.3s): the "7-day free trial" badge springs in
+        // above the button (smooth power3 settle, no bounce), then the
+        // button's fill pulses once with a soft glow underlining the offer.
+        // ---------------------------------------------------------------
+        const BADGE_START = 1.1;
+        const BADGE_DUR = 0.5;
+        tl.fromTo(
+          '#cta5-badge',
+          { scale: 0, opacity: 0, y: 16 },
+          { scale: 1, opacity: 1, y: 0, duration: BADGE_DUR, ease: 'power3.out' },
+          BADGE_START,
+        );
+
+        // Single finite up-down glow pulse on the halo behind the button
+        // (repeat:1 + yoyo:true is a finite two-cycle, not an infinite loop).
+        const PULSE_START = 1.5;
+        const PULSE_DUR = 0.3;
+        tl.fromTo(
+          '#cta5-button-halo',
+          { opacity: 0.25, scale: 0.94 },
+          {
+            opacity: 0.85,
+            scale: 1.06,
+            duration: PULSE_DUR,
+            ease: 'power1.out',
+            yoyo: true,
+            repeat: 1,
+          },
+          PULSE_START,
+        );
+
+        // ---------------------------------------------------------------
+        // Scene 3 (2.3-4.053s): the "Syllaby" wordmark builds in
+        // letter-by-letter beneath the button, the URL settles beneath it,
+        // then the whole lockup holds — subtle jitter only, dead-static
+        // final read (Frame 5 is the closing held frame; final scene may
+        // settle rather than exit).
+        // ---------------------------------------------------------------
+        const WORD_START = 2.3;
+        const LETTER_STAGGER = 0.06;
+        const LETTER_POP_DUR = 0.4;
+        const letters = gsap.utils.toArray('.cta5-letter');
+        letters.forEach((el, i) => {
+          tl.fromTo(
+            el,
+            { opacity: 0, scale: 0.4, y: 12 },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              duration: LETTER_POP_DUR,
+              ease: 'power3.out',
+            },
+            WORD_START + i * LETTER_STAGGER,
+          );
+        });
+
+        const URL_START = 3.15;
+        const URL_DUR = 0.4;
+        tl.fromTo(
+          '#cta5-url',
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: URL_DUR, ease: 'power3.out' },
+          URL_START,
+        );
+
+        // Dead-static held read with only barely-perceptible jitter
+        // (sine-wave-loop, low end of its amplitude range).
+        const JITTER_START = 3.6;
+        const JITTER_DUR = TOTAL_DURATION - JITTER_START;
+        const JITTER_CYCLES = 0.3;
+        const SCALE_AMP = 0.006;
+        const Y_AMP_PX = 1.5;
+        const lockupInner = document.getElementById('cta5-lockup-inner');
+        const phase = { p: 0 };
+        tl.to(
+          phase,
+          {
+            p: Math.PI * 2 * JITTER_CYCLES,
+            duration: JITTER_DUR,
+            ease: 'none',
+            onUpdate: () => {
+              const jitterScale = 1 + Math.sin(phase.p) * SCALE_AMP;
+              const jitterY = Math.sin(phase.p) * Y_AMP_PX;
+              lockupInner.style.transform = `translateY(${jitterY}px) scale(${jitterScale})`;
+            },
+          },
+          JITTER_START,
+        );
+
+        // Slow-drifting gradient-mesh field (CSS custom-property drift,
+        // deterministic sine paths, no Math.random/Date.now) — folded into
+        // the same paused timeline rather than a separate WebGL canvas.
+        const meshLayer = document.getElementById('cta5-canvas-layer');
+        const meshPhase = { t: 0 };
+        tl.to(
+          meshPhase,
+          {
+            t: TOTAL_DURATION,
+            duration: TOTAL_DURATION,
+            ease: 'none',
+            onUpdate: () => {
+              const e = meshPhase.t;
+              meshLayer.style.setProperty('--bx1', `${30 + Math.sin(e * 0.5) * 6}%`);
+              meshLayer.style.setProperty('--by1', `${34 + Math.cos(e * 0.4) * 5}%`);
+              meshLayer.style.setProperty('--bx2', `${70 + Math.cos(e * 0.35) * 5}%`);
+              meshLayer.style.setProperty('--by2', `${62 + Math.sin(e * 0.45) * 6}%`);
+              meshLayer.style.setProperty('--bx3', `${50 + Math.sin(e * 0.3 + 2) * 7}%`);
+              meshLayer.style.setProperty('--by3', `${22 + Math.cos(e * 0.32 + 1) * 4}%`);
+            },
+          },
+          0,
+        );
+
+        window.__timelines['05-cta'] = tl;
+      </script>
+    </template>
+  </body>
+</html>
