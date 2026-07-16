@@ -77,6 +77,42 @@ composition, and drives a real (headless) Chrome browser to capture it
 frame-by-frame. ffmpeg then encodes those frames into `output.mp4`. No image or
 video-generation model is involved - it's a browser rendering a web page.
 
+### Architecture at a glance
+
+One long-lived orchestrator (your Claude Code session) runs almost every
+phase itself; it only spins up short-lived sub-agents twice - to build scenes
+in parallel, and for one combined lint/render/QC pass at the end.
+
+```mermaid
+graph TB
+  U["You (VS Code / terminal)"] -->|"/video-agent or a plain request"| CC
+
+  subgraph MAIN["Main Claude Code session - the only long-lived agent"]
+    CC["Orchestrator<br/>reads CLAUDE.md hard rules"]
+    HF["/hyperframes router<br/>picks a workflow skill"]
+    WF["Workflow skill<br/>product-launch-video / faceless-explainer / ..."]
+    CC --> HF --> WF
+  end
+
+  WF -.reads on demand.-> SK["hyperframes-core / -animation / -creative<br/>media-use"]
+
+  WF ==dispatch N in parallel==> FW["frame-worker sub-agent<br/>(one per scene)"]
+  WF ==dispatch 1==> FIN["finalize-worker sub-agent<br/>(lint -> validate -> inspect -> render)"]
+
+  FW -->|"compositions/frames/NN-*.html"| DISK[("videos/&lt;name&gt;/")]
+  FIN -->|"renders/video.mp4"| DISK
+
+  WF -->|"drives"| CLI["hyperframes CLI"]
+  CLI -->|"headless Chrome, frame-by-frame"| CHROME["bundled Chrome"]
+  CLI -->|"ffmpeg libx264"| MP4["output.mp4"]
+```
+
+Confirmed against real runs: `videos/RawShift` dispatched 7 frame-workers in
+parallel + 1 finalize-worker; `videos/Syllaby` dispatched 5 + 1 (one
+frame-worker per `## Frame` block in that project's `STORYBOARD.md`). See
+"Resuming a stopped run" below for how `progress.json` lets any of this
+survive a killed session.
+
 ### GPU - not required
 
 Everything renders on CPU by default:
@@ -112,29 +148,43 @@ Claude Code reads ./CLAUDE.md (hard rules + quality bar: <=30s default)
 scaffold ./videos/<name>/ + meta.json + progress.json (phase: research)
         |
         v
-[subagent] research - scrape URL/screenshots, extract brand/copy -> frame.md
-        |                                  (kept in main thread: needs
-        v                                   iterative judgment)
-   author the composition per frame.md/STORYBOARD.md  <---------------------+
-        |                                                                   |
-        v                                                                   |
-[subagent] lint/fix loop - npm run check, fix, repeat until clean ----------+
-        |         (TTS/BGM/SFX generation runs in parallel with the two
-        |          steps above, not queued behind them)
+research - capture URL/screenshots, extract brand/copy -> frame.md      \
+        |                                                                 |
+        v                                                                 |
+storyboard - STORYBOARD.md + SCRIPT.md; audio.mjs (TTS/BGM/SFX)          |  all run
+        |     kicked off in the background, not queued behind it          }  in the
+        v                                                                 |  main
+   author the shot-sequence design per frame.md/STORYBOARD.md            |  session -
+        |                                                                 |  not
+        v                                                                /   delegated
+[subagent] frame-worker x N - one dispatched IN PARALLEL per storyboard
+   scene/frame; each writes its own compositions/frames/NN-*.html only
+        |
         v
-[subagent] render + QC - render --quality draft while iterating, ONE
-           standard/high render at the end, inspect 3-4 frames
+assemble-index.mjs + captions.mjs -> index.html
+        |
+        v
+[subagent] finalize-worker x 1 - one combined pass: inject transitions,
+   lint -> validate -> inspect (fixes findings itself, bounded retries),
+   glance at a snapshot contact sheet, THEN render --quality standard once
         |
         v
 ./videos/<name>/output.mp4  (+ duration, render time, weakest-scene
    self-critique, token usage from log-usage.mjs)
 ```
 
-Each `[subagent]` step gets its own fresh context window and reports back a
-short summary only - the full scraped page, verbose lint output, and raw
-frames never bloat the main conversation. `progress.json` is updated after
-each phase, so an interrupted run resumes at the right step instead of
-restarting (see "Resuming a stopped run" below).
+Confirmed against real runs: `videos/RawShift` dispatched 7 frame-workers in
+parallel (one per scene) + 1 finalize-worker; `videos/Syllaby` dispatched 5 +
+1 - see each project's `STORYBOARD.md` (`## Frame` blocks) against its
+`compositions/frames/` output. Everything upstream of the frame-worker
+fan-out (capture, storyboard, script, visual design) runs in the main
+orchestrator session itself, not as a delegated sub-agent - only the per-scene
+build and the final lint/render/QC pass are dispatched as their own
+sub-agents, each with a fresh context window and a short summary reported
+back. This keeps the full scraped page, verbose lint output, and raw frames
+out of the main conversation without pretending every phase is delegated.
+`progress.json` is updated after each phase, so an interrupted run resumes at
+the right step instead of restarting (see "Resuming a stopped run" below).
 
 If lint/preview/render fails, Claude reads the error, fixes the composition, and
 retries (up to 3 attempts before asking you).
