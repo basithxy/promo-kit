@@ -150,7 +150,7 @@ if (only.has("tts") && lines.length) {
       text,
       voiceId,
       lang,
-      speed,
+      speed: Number(line.speed) || speed,
       wavAbs: abs,
       hyperframesDir,
     });

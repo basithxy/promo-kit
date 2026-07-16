@@ -309,7 +309,7 @@ Step 3 only TAGS the candidate id and writes the shaped VO. Step 4 (visual desig
 2. Use only filenames listed there; write as `assets/<basename>`.
 3. One line, candidates separated by semicolons, a short description after `—`.
 4. Prefer `[video]` assets when motion proves the product better than a still.
-5. Use content assets (UI, screenshots, product photos, charts, demos). Skip tiny icons, favicons, badges, decorative chrome, repeated logo variants — unless the beat needs them.
+5. Use content assets (UI, screenshots, product photos, charts, demos). Skip tiny icons, favicons, badges, decorative chrome, and any *scraped page* logo sprites/favicons — those are low-res and off-brand. **Exception:** the resolved `assets/logo.svg` (or `.png`) from Step 1's media-use logo resolution is the real brand mark — always set it as the (or an) `asset_candidate` on any CTA / logo-lockup / end-card beat. Never leave a logo-lockup beat to fall back on plain typeset product-name text when a resolved logo file exists.
 6. Pure-typography beats may use an empty asset list. Do not use nested lists.
 
 Example:

@@ -63,7 +63,7 @@ The lightweight tags:
 - **`blueprint:`** — the id you instantiated (with `(Reproduce)` / `(Adapt)`), or `compose`. One id per frame.
 - **`focal:`** — which existing candidate is the hero of this beat.
 - **`roles:`** — each candidate's role: `cutout` (foreground subject, lay text around it) · `background` (full-bleed, dim 30–50%) · `supporting` (secondary). You **consume** the candidates story chose — never add, swap, or drop one (coverage is story's call; if a frame truly has the wrong candidates, flag it back, don't reach into `capture/`).
-- **`sfx:`** — name the sound the beat wants (an impact for a slam, a whoosh for a push, a riser into a reveal). The audio script's `fetch-sfx` pass retrieves it and the assembler mounts it at the root — you only **name** it, never embed an `<audio>` element.
+- **`sfx:`** — name the sound the beat wants. Use `CLAUDE.md`'s "SFX cue mapping" table (on-screen event → cue, the full 19-sound library — `typing`, `key-press`, `click`/`click-soft`, `pop`, `notification`, `whoosh`/`whoosh-short`/`whoosh-cinematic`, `impact-bass-1`/`impact-bass-2`, `riser`, `sparkle`, `ping`, `chime`, `error`/`glitch-1`/`glitch-2`/`glitch-3`) to pick the cue that matches what's actually happening on screen, not a default whoosh/click/pop reflex. Skip a cue rather than force one where nothing on screen warrants it. The audio script's `fetch-sfx` pass retrieves it and the assembler mounts it at the root — you only **name** it, never embed an `<audio>` element.
 
 **Layout is stated INLINE in each Scene line** — name the template, density, depth, and hierarchy as part of "where it sits" (`Centered, ~50% of frame`, `asymmetric 60/40, 3 depth layers`), drawing on the **Layout** vocabulary below; never write px / scale / shadow recipes (the worker writes those).
 
@@ -86,6 +86,7 @@ The whole video shares one look and one motion grammar. Write a **`## Video dire
 - **palette system** — from `frame.md`: which roles map to which hues. Never invent.
 - **motion grammar + reveal model** — long-tail eases (`power3` default, smooth over bouncy) + the **VO-paced reveal** model every frame follows (reveal each piece on its spoken cue; never front-load) + what may stay alive during a hold (subtle jitter at most; no lazy breathing) (→ `motion-language.md`).
 - **rhythm / held-frame allocation** — name the **held / breather frames** (often before a climax) so the video varies its energy: most frames reveal to the VO, a few hold still (a held read beats bad motion; the anti-monotony discipline; → `motion-language.md`).
+- **color grade** — resolve one grade via `media-use` matching `frame.md`'s mood (`node ../media-use/scripts/resolve.mjs --type grade --intent "<mood from frame.md>" --project .`) and paste the returned `data-color-grading` JSON verbatim here. Every frame worker applies this same block to its `focal` image/video clip (never per-frame invented grades — one look across the whole video). Skip only if the preset's palette is already fully graded in its source assets (rare) — note that explicitly rather than silently omitting it.
 - **negative list** — what never appears: off-brand textures / effects the pack forbids, **plus both motion failure modes** — slideshow (front-load then freeze) and screensaver (everything floating independently) (→ `motion-language.md`).
 
 Do **not** repeat these per frame — restating video-level rules in every frame is exactly the bloat this layer prevents.
@@ -114,7 +115,7 @@ The bottom ~17% of the canvas is reserved for the caption pill. Plan every frame
 
 ## Before you finish — checklist
 
-- **`## Video direction`** written once at the top (palette · motion grammar + shot model + idle budget · stillness allocation · negative list incl. both failure modes); per-frame entries are deltas, not restatements.
+- **`## Video direction`** written once at the top (palette · motion grammar + shot model + idle budget · stillness allocation · color grade · negative list incl. both failure modes); per-frame entries are deltas, not restatements.
 - Every frame is a **time-coded shot sequence** with real second windows across its `duration` — not a tag bag.
 - **No frame front-loads** — at t=0 only what the VO is saying enters; each further piece reveals on its spoken cue, across the back ~50%. Window count follows the VO, not a fixed number.
 - Every frame names an **`blueprint:`** id (Reproduce / Adapt) or `compose`; an Adapt states keep/change and **keeps the signature move**; nothing collapses to a single front-loaded dump — reveals stay paced to the VO.

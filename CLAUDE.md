@@ -169,7 +169,7 @@ defaulting to the same voice out of habit:
 - **UGC style**: vary `--speed` more aggressively line-to-line (`0.95-1.15`) -
   slightly uneven pacing reads as more human than a perfectly even delivery.
 
-**SFX cue mapping - use the full 21-sound library, not just whoosh/click/pop.**
+**SFX cue mapping - use the full 19-sound library, not just whoosh/click/pop.**
 Every scene should name the SFX cue matching what's actually happening on
 screen (see `media-use/audio/references/sfx.md` + the bundled
 `assets/sfx/manifest.json`), not just the handful PROMPTS.md mentions by name:

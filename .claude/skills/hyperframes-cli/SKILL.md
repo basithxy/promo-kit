@@ -31,6 +31,7 @@ For motion-heavy work, prefer snapshot-driven iteration and a `*.motion.json` si
 Cross-cutting rules that hold for every command:
 
 - **`--json` is available on every command except `render`, `preview`, and `play` server modes.** Use it for any agent / CI invocation of the supported commands; output includes a `_meta` envelope (cli version, latest available, update advice). `render` reports status via stdout + exit code only — verify success with the post-render check below. `preview --selection --json` and `preview --context --json` are the preview exceptions: they do not start a server, they query the user's running Studio session and exit.
+- **Don't let a full `--json` payload sit in the conversation.** `lint`/`validate`/`inspect --json` output can run to hundreds of lines on a real project. Redirect it to a file (`... --json > .hyperframes/lint.json`) and read back only what the next decision needs — a pass/fail count, the specific rule codes, the file:line of each finding — not the whole payload. This matters most inside a fix-retry loop (see `references/lint-validate-inspect.md`), where re-pasting the full JSON every iteration is exactly what balloons a long-running session's token usage (`CLAUDE.md`'s "Session & token budget" section, when a project has one).
 - **`doctor --json` always exits 0**, even when the environment is broken. Gate on the payload's `ok` field: `npx hyperframes doctor --json | jq -e '.ok' > /dev/null`. This insulates pipelines from CLI release churn.
 - **Non-TTY mode is auto-detected.** When `stdout` is not a TTY (CI, agents, piped output) the CLI auto-switches to non-interactive; `init` then **requires `--example`**. Pass `--non-interactive` to force this mode even on a TTY.
 - **CI gating on render**: `--strict` fails on lint errors, `--strict-all` fails on warnings too, `--strict-variables` fails on undeclared `--variables` keys.
@@ -56,7 +57,7 @@ Cross-cutting rules that hold for every command:
 
 - **Tailwind projects** (`init --tailwind`) → use `hyperframes-core` (Tailwind reference) before editing classes or theme tokens.
 - **Registry blocks/components** (`hyperframes add`, `hyperframes catalog`) → use `hyperframes-registry` for install paths, sub-composition wiring, and snippet merging.
-- **Asset preprocessing** (`tts`, `transcribe`, `remove-background`) → use `hyperframes-media` for voice selection, Whisper model rules, captions, and TTS-to-captions chain.
+- **Asset preprocessing** (`tts`, `transcribe`, `remove-background`) → use `media-use` for voice selection, Whisper model rules, captions, and TTS-to-captions chain.
 - **Parametrized renders** (`--variables`) → declared via `data-composition-variables` on `<html>`; see `hyperframes-core` for the full schema.
 
 ## Lambda (Cloud Rendering)

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // audio.mjs — product-launch audio ADAPTER. The TTS / BGM / SFX implementation
 // no longer lives here: it is the shared engine at
-// ../../hyperframes-media/scripts/audio.mjs. This file only (a) maps the
+// ../../media-use/audio/scripts/audio.mjs. This file only (a) maps the
 // product-launch model (SCRIPT.md frames + STORYBOARD.md music/sfx) into the
 // engine's neutral audio_request.json, (b) converts the engine's id-keyed
 // audio_meta back into the frame-keyed shape captions.mjs / assemble-index.mjs
@@ -21,13 +21,15 @@
 //   node audio.mjs fetch-sfx --storyboard ./STORYBOARD.md --hyperframes .
 
 import { spawnSync } from "node:child_process";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseStoryboard } from "./lib/storyboard.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const DEFAULT_ENGINE = join(HERE, "..", "..", "hyperframes-media", "scripts", "audio.mjs");
+// hyperframes-media was retired and consolidated into media-use/audio — see
+// media-use/SKILL.md's "Scattered/duplicated audio engine" row.
+const DEFAULT_ENGINE = join(HERE, "..", "..", "media-use", "audio", "scripts", "audio.mjs");
 
 const flag = (argv, name, def) => {
   const i = argv.indexOf(`--${name}`);
@@ -63,6 +65,36 @@ function parseScript(md) {
 // Path of the engine's neutral meta — a stable sidecar so `--only` merges
 // (generate then fetch-sfx) accumulate, while audio_meta.json holds the PL shape.
 const neutralPath = (plOutPath) => join(dirname(plOutPath), "audio_engine_meta.json");
+
+// ── BGM library (assets/bgm-library/) — checked before HeyGen/MusicGen ────────
+// Mirrors the mood buckets in media-use/audio/scripts/lib/bgm.mjs's
+// inferBgmPrompt() so a brief classifies the same way here as it would there.
+function bgmLibraryMood(text) {
+  const s = (text || "").toLowerCase();
+  if (/\b(crypto|nft|web3|defi|token|blockchain)\b/.test(s)) return "atmospheric-electronic";
+  if (/\b(finance|fintech|bank|payment|invest|wealth)\b/.test(s)) return "calm-cinematic";
+  if (/\b(creative|agency|design|studio|art|brand)\b/.test(s)) return "playful";
+  return "uplifting-corporate"; // default: SaaS / tech / platform
+}
+
+// repo root is two levels up from videos/<project> (the `--hyperframes` dir).
+function findBgmLibraryTrack(hyperframesDir, mood) {
+  const libDir = join(hyperframesDir, "..", "..", "assets", "bgm-library");
+  const manifestPath = join(libDir, "manifest.json");
+  if (!existsSync(manifestPath)) return null;
+  let manifest;
+  try {
+    manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+  } catch {
+    return null;
+  }
+  const entries = manifest[mood];
+  if (!Array.isArray(entries) || !entries.length) return null;
+  const entry = entries[0];
+  const abs = join(libDir, mood, entry.file);
+  if (!existsSync(abs)) return null;
+  return { path: `assets/bgm-library/${mood}/${entry.file}`, abs, duration_s: entry.duration_s ?? null };
+}
 
 // Run the shared engine. Returns nothing; dies on a non-zero exit.
 function runEngine({ request, hyperframesDir, neutral, only, extra = [] }, die) {
@@ -130,29 +162,64 @@ function runGenerate(argv) {
   const manifest = parseStoryboard(readFileSync(storyboardPath, "utf8"));
   const g = manifest.globals;
 
-  const lines = existsSync(scriptPath)
-    ? parseScript(readFileSync(scriptPath, "utf8")).map((l) => ({
-        id: pad2(l.frame),
-        text: l.text,
-      }))
-    : [];
+  // Per-line speed arc (CLAUDE.md "Voice & music"): calm hook -> energetic
+  // features -> warm CTA. First line 0.9, last line 0.95, middle lines ramp
+  // 1.0 -> 1.1. A single-line script stays flat at the base --speed.
+  const rawLines = existsSync(scriptPath) ? parseScript(readFileSync(scriptPath, "utf8")) : [];
+  const n = rawLines.length;
+  const lines = rawLines.map((l, i) => {
+    let sp = speed;
+    if (n > 1) {
+      if (i === 0) sp = 0.9;
+      else if (i === n - 1) sp = 0.95;
+      else {
+        const mid = n - 2;
+        const t = mid <= 1 ? 0.5 : (i - 1) / (mid - 1);
+        sp = 1.0 + 0.1 * t;
+      }
+    }
+    return { id: pad2(l.frame), text: l.text, speed: Number(sp.toFixed(2)) };
+  });
   if (!lines.length) console.error("· no SCRIPT.md — silent film (BGM only)");
 
-  // BGM mood: storyboard `music:` → message → arc → default. `mode: retrieve` is
-  // strict here (no wait-bgm step downstream).
+  // BGM mood: storyboard `music:` → message → arc → default. Check the local
+  // bgm-library first (CLAUDE.md's license-safety order) before HeyGen retrieval
+  // — `mode: retrieve` is strict here (no wait-bgm step downstream) when we do
+  // fall through to it.
   const query = (g.extra && g.extra.music) || g.message || g.arc || "calm cinematic underscore";
-  const request = {
-    provider: "auto",
-    speed,
-    lines,
-    bgm: { mode: "retrieve", query, blob: g.message || "", arc: g.arc || "" },
-  };
+  const mood = bgmLibraryMood(query);
+  const libTrack = findBgmLibraryTrack(hyperframesDir, mood);
+
+  let localBgm = null;
+  let request;
+  if (libTrack) {
+    const destRel = `assets/bgm/track${extname(libTrack.abs) || ".mp3"}`;
+    const destAbs = join(hyperframesDir, destRel);
+    mkdirSync(dirname(destAbs), { recursive: true });
+    copyFileSync(libTrack.abs, destAbs);
+    localBgm = {
+      path: destRel,
+      volume: lines.length ? 0.8 : 0.9,
+      query: `${mood} (assets/bgm-library)`,
+      duration_s: libTrack.duration_s,
+    };
+    console.error(`· bgm: local library track (${mood}) → ${destRel}`);
+    request = { provider: "auto", speed, lines, bgm: { mode: "none" } };
+  } else {
+    request = {
+      provider: "auto",
+      speed,
+      lines,
+      bgm: { mode: "retrieve", query, blob: g.message || "", arc: g.arc || "" },
+    };
+  }
   if (userVoice) request.voice = userVoice;
 
   const neutral = neutralPath(outPath);
   runEngine({ request, hyperframesDir, neutral, only: "tts,bgm" }, die);
 
   const meta = toProductLaunchMeta(JSON.parse(readFileSync(neutral, "utf8")));
+  if (localBgm) meta.bgm = localBgm;
   writeFileSync(outPath, JSON.stringify(meta, null, 2));
   console.log(
     `✓ audio generate: ${meta.voices.length} voice + ${meta.bgm ? "1 bgm" : "no bgm"} → ${outPath}`,
