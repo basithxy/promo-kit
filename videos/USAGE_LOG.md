@@ -1,6 +1,6 @@
 # PromoKit token usage log
 
-| Video | Finished | Model(s) | Input tokens | Output tokens | Cache read tokens | Sessions spanned |
-|---|---|---|---|---|---|---|
-| RawShift | 2026-07-14T13:00:10.193Z | claude-sonnet-5 | 26675 | 103453 | 4737854 | 3 |
-| Syllaby | 2026-07-15T00:12:39.254Z | claude-sonnet-5 | 59412 | 269123 | 24505911 | 3 |
+| Video | Finished | Model(s) | Input tokens | Output tokens | Cache read tokens | Sessions spanned | Active time | Elapsed (calendar) | Render time |
+|---|---|---|---|---|---|---|---|---|---|
+| RawShift | 2026-07-14T13:00:10.193Z | claude-sonnet-5 | 26675 | 103453 | 4737854 | 3 | 1h 20m | 5d 6h 55m | not measured |
+| Syllaby | 2026-07-15T05:40:00.000Z | claude-sonnet-5 | 59573 | 274072 | 27828630 | 3 | 12h 15m | 1d 5h 40m | not measured |

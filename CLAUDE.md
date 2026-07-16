@@ -17,6 +17,61 @@ You are the video production engine for this folder. Your job: turn a product
   unless you are truly blocked after 3 distinct fix attempts.
 - Never install or configure anything that requires an Anthropic API key.
 - Default model behavior only - do not suggest switching to Opus.
+- **Don't let the laptop sleep mid-job.** Wrap every long-running command you
+  run directly (`npx hyperframes capture`, `npx hyperframes render`, and any
+  render/lint step you run inline rather than via a dispatched worker) with
+  `scripts/keep-awake.ps1` (Windows) / `scripts/keep-awake.sh` (Mac/Linux) -
+  it holds system+display sleep off only for that command's duration (no
+  power-plan change, nothing held between videos) and writes the command's
+  real wall-clock seconds to the `-LogPath`/`--log` file you give it:
+  ```bash
+  # Windows
+  powershell -ExecutionPolicy Bypass -File scripts/keep-awake.ps1 -LogPath videos/<name>/renders/render_time.json -- npx hyperframes render --quality standard --output renders/video.mp4
+  # Mac/Linux
+  scripts/keep-awake.sh --log videos/<name>/renders/render_time.json -- npx hyperframes render --quality standard --output renders/video.mp4
+  ```
+  When dispatching a `frame-worker` or `finalize-worker` sub-agent (product-launch-video
+  Step 5/6 and the equivalent steps in other workflows), append one extra line
+  to its `## Dispatch context` telling it to wrap its own render/capture call
+  the same way, pointing `-LogPath`/`--log` at `renders/render_time.json` -
+  those role files are vendored (don't hand-edit them), so this is delivered
+  at dispatch time instead. Log at `videos/<name>/renders/render_time.json`
+  (render) and `videos/<name>/capture_time.json` (capture) specifically -
+  `log-usage.mjs` looks for those exact paths.
+- **Fewer lint-fix retry rounds = the real speed/token lever** (proven: one
+  video's Step 6 took 5 minutes clean, another's took 6+ hours re-fixing the
+  same frame three times) - never trade this for weaker output, just get it
+  right on the first pass. Every time you dispatch a `frame-worker`
+  sub-agent, append this to its `## Dispatch context` verbatim (its own role
+  file is vendored - this is how project-specific lessons reach it without
+  hand-editing that file):
+  ```
+  ## Known render-environment pitfalls (read before writing)
+  - Three.js / any ESM library: do NOT use `<script type="module">` + `import`
+    (the pattern `hyperframes-animation/adapters/three.md`'s own example
+    shows) - the runtime clones your `<template>` into the live DOM, and a
+    cloned/injected `<script type="module">` does not execute, silently
+    breaking the import. Load Three.js (and any other library) via a classic
+    UMD `<script src="...">` tag instead and reference the global (e.g. `THREE`).
+  - Never call a layout/DOM-connection-dependent API (`getTotalLength()`,
+    `getBoundingClientRect()`, etc.) at top-level script-eval time - your
+    `<script>` runs before the template is connected to the live document.
+    Call these only inside the timeline-build function (after mount), or
+    precompute the value as a constant.
+  - Prefer a CSS/GSAP equivalent over a Three.js/WebGL effect unless real 3D
+    (product rotation, depth) is the actual point - WebGL in this headless
+    capture environment has a known crash history on gradient-mesh /
+    particle-style effects that CSS handles just as well, just as richly.
+  - Before finishing, check text/background contrast meets WCAG AA (4.5:1
+    body text, 3:1 large text) on every element - this is a real render
+    failure mode that isn't in the standard self-check list.
+  ```
+  This came from a real incident: `hyperframes-animation/adapters/three.md`
+  itself recommends `<script type="module"> import * as THREE ...`, which is
+  broken specifically by HyperFrames' own template-transport contract - not a
+  one-off mistake, a doc/framework mismatch. Worth reporting upstream via
+  `npx hyperframes feedback --rating 3 --comment "..." --file-issue` next
+  time it's hit (consent-gated, publishes the project - ask me first).
 
 ## Quality bar (check before declaring done)
 - Default length: 15-30 seconds, MAX 30s, 1920x1080 - a conversion-focused
@@ -126,20 +181,31 @@ Phases: `research` -> `storyboard` -> `compose` -> `lint` -> `render` -> `qc` ->
   (new terminal, new `claude` session after a shutdown) - the checkpoint is on
   disk, not in chat history.
 
-## Usage logging (tokens + model spent per video)
+## Usage logging (tokens + time spent per video)
 `meta.json`'s `createdAt` marks a video's start time (or set `runStartedAt`
 instead if you want to reset the usage window, e.g. re-scoping to just a
-re-render). After finishing a video (phase `done` in `progress.json`), run:
+re-render). As the **last thing** you do once `progress.json` reaches phase
+`done` - write that `done` phase to `progress.json` first, then run:
 ```bash
 node scripts/log-usage.mjs <product-name>
 ```
 This scans this machine's local Claude Code transcripts for turns belonging to
-this project since that timestamp, sums input/output/cache tokens by model
-across every session the video touched (so it's still accurate after a
-resume), and writes:
-- `./videos/<product-name>/usage.json` - full per-model breakdown for that video.
+this project, sums input/output/cache tokens by model, and computes two
+different durations - both bounded to `progress.json`'s `done` timestamp, not
+to whenever the script happens to run, so it's safe to re-run later without
+sweeping in unrelated future work:
+- **Active time** - summed per-session span of actual transcript activity.
+  This is the "how long did this video take" number - quote this one.
+- **Elapsed (calendar)** - video start to finish on the calendar; can span
+  idle days across a resumed run (a laptop shutdown, a multi-day gap) and is
+  context, not the headline number.
+It also picks up `renders/render_time.json` / `capture_time.json` if the
+render/capture step was wrapped with `scripts/keep-awake.*` (see Hard rules)
+and folds that command's real wall-clock time in as "Render time". Writes:
+- `./videos/<product-name>/usage.json` - full breakdown for that video.
 - `./videos/USAGE_LOG.md` - one appended row per video, viewable anytime.
-Include the resulting token totals + model(s) used in the end-of-run printout.
+Include the resulting token totals, model(s), and **active time** in the
+end-of-run printout.
 
 ## Voice & music (avoid sounding AI-generated / same-voice-every-time)
 Default is fully local and free: Kokoro-82M for voice (Apache-2.0, 54 voices,
@@ -219,10 +285,13 @@ follow this order:
 
 ## At the end of every run, print:
 1. Path to output.mp4
-2. Video duration + render time
+2. Video duration (the MP4's own length) + render time (from
+   `render_time.json` if the render step was wrapped per Hard rules, else
+   "not measured")
 3. One-line self-critique: weakest scene and how you'd improve it next run
-4. Token usage: total input/output tokens and model(s) used (from
-   `node scripts/log-usage.mjs <product-name>`, see Usage logging below)
+4. Token usage + production time: total input/output tokens, model(s), and
+   **active time** (from `node scripts/log-usage.mjs <product-name>`, see
+   Usage logging below)
 
 ## Keep README in sync (auto-update rule)
 README.md has a "How the agent system works" section (GPU requirements, the

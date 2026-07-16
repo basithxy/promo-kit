@@ -63,10 +63,12 @@ promo-kit/
   setup.ps1      one-time installer + API-key remover
   CLAUDE.md      mission rules Claude Code auto-reads every session
   PROMPTS.md     copy-paste prompts (promo / tutorial / deck)
-  scripts/log-usage.mjs  per-video token usage logger (see Token usage log below)
+  scripts/log-usage.mjs      per-video token + time usage logger (see Token usage log below)
+  scripts/keep-awake.ps1     sleep-prevention wrapper for long render/capture jobs, Windows
+  scripts/keep-awake.sh      same, Mac/Linux (see Keeping a render/capture job alive below)
   .claude/skills/  HyperFrames skills (created by setup)
   videos/        one subfolder per video (created as you go)
-  videos/USAGE_LOG.md    running log of token usage per video
+  videos/USAGE_LOG.md    running log of token usage + production time per video
 ```
 
 ## How the agent system works
@@ -112,6 +114,16 @@ parallel + 1 finalize-worker; `videos/Syllaby` dispatched 5 + 1 (one
 frame-worker per `## Frame` block in that project's `STORYBOARD.md`). See
 "Resuming a stopped run" below for how `progress.json` lets any of this
 survive a killed session.
+
+Since `frame-worker`/`finalize-worker` role files are vendored (not meant to
+be hand-edited), two more things ride along in the `## Dispatch context`
+CLAUDE.md tells the orchestrator to append at dispatch time, not in those
+files themselves: a **known-pitfalls briefing** for `frame-worker` (the fix
+for a real incident where a vendored reference doc's own Three.js example
+broke under HyperFrames' template-cloning contract - see "fewer lint-fix
+retries" in CLAUDE.md), and a **keep-awake wrap instruction** for whichever
+of them runs the actual `render`/`capture` call (see "Keeping a render/capture
+job alive" below).
 
 ### GPU - not required
 
@@ -159,6 +171,8 @@ storyboard - STORYBOARD.md + SCRIPT.md; audio.mjs (TTS/BGM/SFX)          |  all 
         v                                                                /   delegated
 [subagent] frame-worker x N - one dispatched IN PARALLEL per storyboard
    scene/frame; each writes its own compositions/frames/NN-*.html only
+   (+ a known-pitfalls briefing appended to its dispatch context - fewer
+   first-pass mistakes = fewer retries downstream)
         |
         v
 assemble-index.mjs + captions.mjs -> index.html
@@ -167,6 +181,7 @@ assemble-index.mjs + captions.mjs -> index.html
 [subagent] finalize-worker x 1 - one combined pass: inject transitions,
    lint -> validate -> inspect (fixes findings itself, bounded retries),
    glance at a snapshot contact sheet, THEN render --quality standard once
+   (render call wrapped with keep-awake so laptop sleep can't kill it)
         |
         v
 ./videos/<name>/output.mp4  (+ duration, render time, weakest-scene
@@ -206,11 +221,37 @@ starting over.
 
 ### Token usage log
 
-Every finished video gets its Claude Code token usage logged automatically:
-`./videos/<name>/usage.json` (full breakdown by model) and one row appended to
-`./videos/USAGE_LOG.md` (input/output/cache tokens, model(s), sessions
-spanned). This comes from `scripts/log-usage.mjs`, which reads the local
-Claude Code transcripts for this project - nothing is sent anywhere.
+Every finished video gets its Claude Code token usage and production time
+logged automatically: `./videos/<name>/usage.json` (full breakdown by model)
+and one row appended to `./videos/USAGE_LOG.md` (input/output/cache tokens,
+model(s), sessions spanned, active time, calendar-elapsed time, render time).
+This comes from `scripts/log-usage.mjs`, which reads the local Claude Code
+transcripts for this project - nothing is sent anywhere. It reports two
+different durations because they answer different questions:
+- **Active time** - actual working time, summed across every session the
+  video touched. This is the "how long does one video take" number.
+- **Elapsed (calendar)** - start to finish on the calendar; can span idle
+  days if a run was resumed later, so it's context, not the headline number.
+
+Both are bounded to the video's `done` checkpoint, so re-running the script
+later (or on a much longer project history) never sweeps in unrelated work
+that happened after the video finished.
+
+### Keeping a render/capture job alive
+
+`npx hyperframes capture` / `render` can run for minutes on a heavy
+composition; if the laptop sleeps mid-job the process gets killed. Wrap the
+command with `scripts/keep-awake.ps1` (Windows) or `scripts/keep-awake.sh`
+(Mac/Linux) - it holds system+display sleep off **only** for that command's
+duration (no power-plan changes, nothing held once it exits) and, given a log
+path, records the command's real wall-clock time for `log-usage.mjs` to pick
+up as "Render time":
+```bash
+# Windows
+powershell -ExecutionPolicy Bypass -File scripts/keep-awake.ps1 -LogPath videos/<name>/renders/render_time.json -- npx hyperframes render --quality standard --output renders/video.mp4
+# Mac/Linux
+scripts/keep-awake.sh --log videos/<name>/renders/render_time.json -- npx hyperframes render --quality standard --output renders/video.mp4
+```
 
 ### Agent skills directory structure
 

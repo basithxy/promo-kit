@@ -1,14 +1,23 @@
 {
   "video": "Syllaby",
   "startedAt": "2026-07-14T00:00:00.000Z",
-  "finishedAt": "2026-07-15T00:12:39.254Z",
+  "finishedAt": "2026-07-15T05:40:00.000Z",
+  "finishedAtSource": "progress.json lastUpdated (phase: done)",
   "sessionsSpanned": 3,
+  "activeSeconds": 44145,
+  "activeTime": "12h 15m",
+  "elapsedSeconds": 106800,
+  "elapsedTime": "1d 5h 40m",
+  "renderSeconds": null,
+  "renderTime": null,
+  "captureSeconds": null,
+  "captureTime": null,
   "totalsByModel": {
     "claude-sonnet-5": {
-      "input": 59412,
-      "output": 269123,
-      "cacheRead": 24505911,
-      "cacheCreate": 1074126
+      "input": 59573,
+      "output": 274072,
+      "cacheRead": 27828630,
+      "cacheCreate": 1079426
     }
   }
 }

@@ -2,7 +2,16 @@
   "video": "RawShift",
   "startedAt": "2026-07-09T06:04:28.181Z",
   "finishedAt": "2026-07-14T13:00:10.193Z",
+  "finishedAtSource": "progress.json lastUpdated (phase: done)",
   "sessionsSpanned": 3,
+  "activeSeconds": 4838,
+  "activeTime": "1h 20m",
+  "elapsedSeconds": 456942,
+  "elapsedTime": "5d 6h 55m",
+  "renderSeconds": null,
+  "renderTime": null,
+  "captureSeconds": null,
+  "captureTime": null,
   "totalsByModel": {
     "claude-sonnet-5": {
       "input": 26675,
