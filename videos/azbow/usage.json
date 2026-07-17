@@ -1,0 +1,23 @@
+{
+  "video": "azbow",
+  "startedAt": "2026-07-17T16:54:17.723Z",
+  "finishedAt": "2026-07-17T17:52:00.000Z",
+  "finishedAtSource": "progress.json lastUpdated (phase: done)",
+  "sessionsSpanned": 1,
+  "activeSeconds": 59,
+  "activeTime": "59s",
+  "elapsedSeconds": 3462,
+  "elapsedTime": "57m 42s",
+  "renderSeconds": null,
+  "renderTime": null,
+  "captureSeconds": null,
+  "captureTime": null,
+  "totalsByModel": {
+    "claude-sonnet-5": {
+      "input": 24,
+      "output": 4496,
+      "cacheRead": 1134186,
+      "cacheCreate": 15507
+    }
+  }
+}

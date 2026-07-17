@@ -1,0 +1,183 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Poppins",
+      "fontSize": "38.5px",
+      "fontWeight": "700",
+      "lineHeight": "44px",
+      "letterSpacing": "-1.925px",
+      "color": "#212529",
+      "sampleText": "Results Based Software, Mobile, & Online Solutions"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Poppins",
+      "fontSize": "28px",
+      "fontWeight": "700",
+      "lineHeight": "42px",
+      "letterSpacing": "-1.4px",
+      "color": "#171940",
+      "sampleText": "Our Services"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Poppins",
+      "fontSize": "25.2px",
+      "fontWeight": "600",
+      "lineHeight": "32.76px",
+      "letterSpacing": "-1.26px",
+      "color": "#212529",
+      "sampleText": "Evolve, adapt, and flourish with digital solutions by Azbow!"
+    },
+    {
+      "role": "heading-4",
+      "fontFamily": "Poppins",
+      "fontSize": "19.6px",
+      "fontWeight": "600",
+      "lineHeight": "27px",
+      "letterSpacing": "-0.98px",
+      "color": "#212529",
+      "sampleText": "Software Development"
+    },
+    {
+      "role": "body",
+      "fontFamily": "Poppins",
+      "fontSize": "19.2px",
+      "fontWeight": "300",
+      "lineHeight": "28.8px",
+      "letterSpacing": "-0.96px",
+      "color": "#777777",
+      "sampleText": "Create your own platform to work seamlessly with your busine"
+    },
+    {
+      "role": "label",
+      "fontFamily": "Open Sans",
+      "fontSize": "16.8px",
+      "fontWeight": "100",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Clients"
+    },
+    {
+      "role": "link",
+      "fontFamily": "Poppins",
+      "fontSize": "12.8px",
+      "fontWeight": "400",
+      "lineHeight": "28px",
+      "letterSpacing": "normal",
+      "color": "#333333",
+      "sampleText": ""
+    }
+  ],
+  "spacing": {
+    "observed": [
+      1,
+      6,
+      8,
+      10,
+      14,
+      15,
+      16,
+      17,
+      20,
+      22,
+      24,
+      32,
+      48,
+      50
+    ],
+    "baseUnit": 8
+  },
+  "radius": [
+    "4px",
+    "10px",
+    "100%"
+  ],
+  "shadows": [
+    {
+      "value": "rgba(0, 0, 0, 0.1) 0px 0px 32px -7px",
+      "count": 12
+    }
+  ],
+  "buttons": [
+    {
+      "label": "+94 771 066 770",
+      "background": "#4046B3",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "8.528px 24px",
+      "borderRadius": "0px",
+      "border": "",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": "47.0312px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#000000",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "8684.38px"
+    },
+    {
+      "label": "card",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#777777",
+      "padding": "0px",
+      "borderRadius": "10px",
+      "border": "0px none rgb(119, 119, 119)",
+      "boxShadow": "rgba(0, 0, 0, 0.1) 0px 0px 32px -7px",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "height": "377px"
+    },
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#777777",
+      "padding": "48px 32px 32px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(119, 119, 119)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "height": "377px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "transparent",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#000000",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "0px none rgb(0, 0, 0)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "8684.38px"
+  },
+  "chips": [],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [],
+  "glass": []
+}

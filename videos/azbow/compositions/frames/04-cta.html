@@ -1,0 +1,382 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata for the source file only; the runtime clones ONLY <template> contents -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 600;
+          font-style: normal;
+          src: url("assets/fonts/pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf") format("truetype");
+        }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: transparent;
+          font-family: "Poppins", sans-serif;
+          --f04cta-bg: #ffffff;
+          --f04cta-primary: #171940;
+        }
+
+        /* ---------- full-bleed ground (class="clip", never on #root) ---------- */
+        .f04cta-ground {
+          position: absolute;
+          inset: 0;
+          background: var(--f04cta-bg);
+        }
+        .f04cta-rings {
+          position: absolute;
+          left: 960px;
+          top: 460px;
+          width: 0;
+          height: 0;
+        }
+        .f04cta-ring {
+          position: absolute;
+          left: 0;
+          top: 0;
+          border-radius: 50%;
+          border: 1.5px solid rgba(23, 25, 64, 0.09);
+          transform: translate(-50%, -50%);
+        }
+        .f04cta-ring-1 {
+          width: 640px;
+          height: 640px;
+          border-color: rgba(23, 25, 64, 0.1);
+        }
+        .f04cta-ring-2 {
+          width: 900px;
+          height: 900px;
+          border-color: rgba(23, 25, 64, 0.07);
+        }
+        .f04cta-ring-3 {
+          width: 1160px;
+          height: 1160px;
+          border-color: rgba(23, 25, 64, 0.045);
+        }
+
+        /* ---------- content layer ---------- */
+        #f04cta-content {
+          position: absolute;
+          inset: 0;
+        }
+
+        .f04cta-swap-wrap {
+          position: absolute;
+          left: 960px;
+          top: 200px;
+          width: 700px;
+          height: 520px;
+          margin-left: -350px;
+          z-index: 2;
+        }
+        .f04cta-swap-layer {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        /* hero mark (Scene 1) */
+        #f04cta-hero-mark {
+          opacity: 0;
+        }
+        #f04cta-hero-img {
+          max-width: 480px;
+          max-height: 480px;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          display: block;
+        }
+
+        /* CTA pill cluster (Scene 2+) */
+        #f04cta-cta-pill {
+          opacity: 0;
+        }
+        .f04cta-cta-glow {
+          position: absolute;
+          inset: -130px;
+          border-radius: 50%;
+          background: radial-gradient(
+            closest-side,
+            rgba(23, 25, 64, 0.55),
+            rgba(23, 25, 64, 0) 70%
+          );
+          opacity: 0;
+          transform: scale(0.85);
+          transform-origin: 50% 50%;
+          z-index: 1;
+          pointer-events: none;
+          will-change: transform, opacity;
+        }
+        .f04cta-ripple {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 280px;
+          height: 280px;
+          margin-left: -140px;
+          margin-top: -140px;
+          border-radius: 50%;
+          border: 2px solid var(--f04cta-primary);
+          opacity: 0;
+          transform: scale(0);
+          transform-origin: 50% 50%;
+          z-index: 2;
+          pointer-events: none;
+          will-change: transform, opacity;
+        }
+        #f04cta-cta-pill-inner {
+          position: relative;
+          z-index: 3;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 34px 80px;
+          background: var(--f04cta-primary);
+          color: var(--f04cta-bg);
+          border-radius: 100px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          font-size: 46px;
+          letter-spacing: 0.01em;
+          white-space: nowrap;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        /* URL sign-off */
+        #f04cta-url-line {
+          position: absolute;
+          left: 50%;
+          top: 756px;
+          width: 500px;
+          margin-left: -250px;
+          text-align: center;
+          z-index: 5;
+          opacity: 0;
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          font-size: 40px;
+          letter-spacing: 0.01em;
+          color: var(--f04cta-primary);
+          will-change: transform, opacity;
+        }
+
+        /* Cursor */
+        #f04cta-cursor {
+          position: absolute;
+          left: 2020px;
+          top: 860px;
+          width: 68px;
+          height: 68px;
+          opacity: 0;
+          pointer-events: none;
+          z-index: 10;
+          transform-origin: 0 0;
+          filter: drop-shadow(0 6px 10px rgba(23, 25, 64, 0.35));
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="04-cta" data-width="1920" data-height="1080" data-duration="4.821">
+        <div
+          id="f04cta-ground"
+          class="f04cta-ground clip"
+          data-start="0"
+          data-duration="4.821"
+          data-track-index="0"
+        >
+          <div class="f04cta-rings">
+            <div class="f04cta-ring f04cta-ring-3" data-layout-allow-overflow></div>
+            <div class="f04cta-ring f04cta-ring-2"></div>
+            <div class="f04cta-ring f04cta-ring-1"></div>
+          </div>
+        </div>
+
+        <div id="f04cta-content">
+          <div class="f04cta-swap-wrap" id="f04cta-swap-wrap">
+            <div class="f04cta-swap-layer" id="f04cta-hero-mark">
+              <img id="f04cta-hero-img" src="assets/azbow.png" alt="Azbow" />
+            </div>
+            <div class="f04cta-swap-layer" id="f04cta-cta-pill">
+              <div class="f04cta-cta-glow" id="f04cta-cta-glow"></div>
+              <div class="f04cta-ripple" id="f04cta-ripple"></div>
+              <div id="f04cta-cta-pill-inner">Let's build it</div>
+            </div>
+          </div>
+
+          <div id="f04cta-url-line">azbow.com</div>
+
+          <svg id="f04cta-cursor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M3 2 L21 12 L12 13 L7 22 Z"
+              fill="#171940"
+              stroke="#ffffff"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          var tl = gsap.timeline({ paused: true });
+
+          var heroMark = document.getElementById("f04cta-hero-mark");
+          var ctaPill = document.getElementById("f04cta-cta-pill");
+          var ctaPillInner = document.getElementById("f04cta-cta-pill-inner");
+          var ctaGlow = document.getElementById("f04cta-cta-glow");
+          var ripple = document.getElementById("f04cta-ripple");
+          var cursor = document.getElementById("f04cta-cursor");
+          var urlLine = document.getElementById("f04cta-url-line");
+
+          // Cursor travel: CSS-resting position (off-canvas, above the caption keep-out
+          // line the whole way) -> a few px off the CTA pill's geometric center.
+          var CURSOR_START_X = 2020,
+            CURSOR_START_Y = 860;
+          var CURSOR_TARGET_X = 982,
+            CURSOR_TARGET_Y = 448; // pill center (960,460) + small human-aim offset
+          var CURSOR_DX = CURSOR_TARGET_X - CURSOR_START_X;
+          var CURSOR_DY = CURSOR_TARGET_Y - CURSOR_START_Y;
+
+          // ---------------------------------------------------------------
+          // Scene 1 (0.0-1.1s) — presence. Hero wordmark holds dead-center,
+          // alive but resting; only a faint rotational breath, camera static.
+          // ---------------------------------------------------------------
+          tl.fromTo(
+            heroMark,
+            { opacity: 0, scale: 0.96 },
+            { opacity: 1, scale: 1, duration: 0.28, ease: "power3.out" },
+            0,
+          );
+          // faint rotational breath — three small GSAP segments, not a raw
+          // Math.sin write, so the transform stays GSAP-owned end to end.
+          tl.to(heroMark, { rotation: 0.6, duration: 0.26, ease: "sine.inOut" }, 0.28);
+          tl.to(heroMark, { rotation: -0.6, duration: 0.26, ease: "sine.inOut" }, 0.54);
+          tl.to(heroMark, { rotation: 0, duration: 0.25, ease: "sine.inOut" }, 0.8);
+
+          // ---------------------------------------------------------------
+          // Scene 2 (1.1-1.9s) — the morph (signature move). Hero condenses
+          // at the same screen center into a smaller, brighter CTA pill.
+          // Long-tail power3 throughout (project bans back.out/elastic.out).
+          // ---------------------------------------------------------------
+          var TRIGGER = 1.05,
+            EXIT_DUR = 0.35,
+            ENTER_DUR = 0.55,
+            OVERLAP = 0.15;
+          tl.to(
+            heroMark,
+            { scale: 0.7, opacity: 0, duration: EXIT_DUR, ease: "power2.in" },
+            TRIGGER,
+          );
+          tl.fromTo(
+            ctaPill,
+            { scale: 0.72, opacity: 0 },
+            { scale: 1, opacity: 1, duration: ENTER_DUR, ease: "power3.out" },
+            TRIGGER + EXIT_DUR - OVERLAP,
+          );
+
+          // Idle presence while the cursor travels/dwells — tiny y wobble on
+          // the OUTER pill cluster only (never the inner press target), so
+          // the later GSAP scale tween on #f04cta-cta-pill-inner starts clean.
+          tl.to(ctaPill, { y: -3, duration: 0.68, ease: "sine.inOut" }, 1.8);
+          tl.to(ctaPill, { y: 3, duration: 0.68, ease: "sine.inOut" }, 2.48);
+          tl.to(ctaPill, { y: 0, duration: 0.69, ease: "sine.inOut" }, 3.16);
+
+          // ---------------------------------------------------------------
+          // Scene 3 (1.9-2.7s) — approach. Cursor arrives from off-stage on
+          // a decelerating path, landing a few px off-center (human aim).
+          // ---------------------------------------------------------------
+          tl.set(cursor, { opacity: 1 }, 1.9);
+          tl.fromTo(
+            cursor,
+            { x: 0, y: 0 },
+            {
+              x: CURSOR_DX,
+              y: CURSOR_DY,
+              duration: 0.75,
+              ease: "power2.out",
+              immediateRender: false,
+            },
+            1.9,
+          );
+
+          // ---------------------------------------------------------------
+          // Scene 4 (2.7-4.821s) — press. Cursor + CTA compress together in
+          // lockstep, release with a soft glow bloom + ripple; the URL
+          // resolves beneath the pill. Holds on the clicked state — the
+          // video's second deliberate held beat, dead static to the end.
+          // ---------------------------------------------------------------
+          var PRESS_DOWN_AT = 3.85,
+            PRESS_DOWN_DUR = 0.15,
+            RELEASE_AT = 4.0,
+            RELEASE_DUR = 0.42;
+
+          tl.to(
+            [ctaPillInner, cursor],
+            { scale: 0.9, duration: PRESS_DOWN_DUR, ease: "power1.in" },
+            PRESS_DOWN_AT,
+          );
+          tl.to(
+            [ctaPillInner, cursor],
+            { scale: 1, duration: RELEASE_DUR, ease: "power3.out" },
+            RELEASE_AT,
+          );
+
+          tl.fromTo(
+            ctaGlow,
+            { opacity: 0, scale: 0.85 },
+            {
+              opacity: 0.32,
+              scale: 1,
+              duration: RELEASE_DUR,
+              ease: "power2.out",
+              immediateRender: false,
+            },
+            RELEASE_AT,
+          );
+          tl.fromTo(
+            ripple,
+            { scale: 0, opacity: 0.5 },
+            {
+              scale: 1,
+              opacity: 0,
+              duration: 0.6,
+              ease: "power2.out",
+              immediateRender: false,
+            },
+            RELEASE_AT,
+          );
+
+          tl.fromTo(
+            urlLine,
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false },
+            4.05,
+          );
+
+          // Timeline naturally ends ~4.6s; the host slot holds the final
+          // (settled) frame for the remaining window per the sub-composition
+          // contract — no extra tweens needed for the closing hold.
+
+          window.__timelines["04-cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

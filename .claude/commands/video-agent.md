@@ -52,9 +52,10 @@ AskUserQuestion, single-select:
   of the default ≤30s STRUCTURE when this is picked.
 
 ## 3. Name
-Plain text question: "Product/company name?" Use `$ARGUMENTS` instead of
-asking if a name was already passed to the command. This becomes the folder
-`./videos/<name>/`.
+Plain text question: "Product/company name?" Do NOT use AskUserQuestion for
+this - it requires discrete options and a name is free text, so just ask
+normally in chat. Use `$ARGUMENTS` instead of asking if a name was already
+passed to the command. This becomes the folder `./videos/<name>/`.
 
 ## 4. Input source
 AskUserQuestion, single-select:
@@ -64,7 +65,8 @@ AskUserQuestion, single-select:
 - **URL + a screen recording** - both
 
 Then, depending on the answer:
-- **URL involved** -> ask for it as plain text.
+- **URL involved** -> ask for it as plain text, not via AskUserQuestion (a
+  URL is free text, not a discrete choice).
 - **Screenshots/photos or screen recording involved** -> create
   `./videos/<name>/input/` now and tell the user that exact path. They can
   (a) drop the file(s) there in their file explorer, (b) paste an image

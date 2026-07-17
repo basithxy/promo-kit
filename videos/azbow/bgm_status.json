@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-07-17T17:22:32.532Z",
+  "enabled": true,
+  "provider": "musicgen",
+  "mode": "detached-seed-trim",
+  "path": "assets/bgm/track.wav",
+  "log": "D:\\New folder\\promo-kit\\videos\\azbow\\assets\\bgm\\bgm-1784308091949.log",
+  "pid": 484,
+  "target_duration_s": 26.091,
+  "seed_duration_s": 28,
+  "loop_count": 1,
+  "timeout_ms": 120000,
+  "status": "ready",
+  "ready": true,
+  "waited_ms": 0,
+  "size_bytes": 1669868,
+  "message": "BGM ready at assets/bgm/track.wav."
+}

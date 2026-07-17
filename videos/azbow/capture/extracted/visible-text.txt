@@ -1,0 +1,83 @@
+[a] contact@azbow.com
+[a] +94 771 066 770
+[span] 165/5, Park Road, Colombo 5, Sri Lanka
+[a] +94 771 066 770
+[a] Services
+[a] Software Development
+[a] Mobile App Development
+[a] Digital Marketing
+[a] Web Application Development
+[a] Digital Advertising
+[a] Design Work
+[a] Case Studies
+[a] Contact Us
+[h1] Results Based Software, Mobile, & Online Solutions
+[p] With over 10 years of industry experience, we bring you custom digital solutions to take your business to the next level!
+[h4] Software Development
+[p] Custom tailor-made software solutions designed & created to the highest international standards with security, functionality, and user-experience in mind.
+[h4] Digital Marketing
+[p] Digital advertising & Social Media management by Azbow brings you the best medium to reach your customer base at the best cost for result rates.
+[h4] iOS & Android Apps
+[p] Bring your brand & your idea to the world of mobile apps. We offer top-of-the-line UI/UX & functionality for an unmatched experience.
+[h2] Evolve, adapt, and flourish with digital solutions by Azbow!
+[p] Create your own platform to work seamlessly with your business model, and advertise on the biggest digital mediums for rapid, sustainable results.
+[p] Our services include everything from static websites to complex systems spanning the entire globe, working together with digital advertising for reach, brand strength, product consideration, & results.
+[h2] Providing Cutting-Edge Digital Solutions.
+[p] Since inception, Azbow has successfully navigated changing technologies, trends, & mediums to become an industry leader while catering to a wide-clientele ranging from small mom-and-pop businesses to big corporate brands.
+[h4] Software, Mobile Applications, & Web Development
+[p] Deploying the latest technologies & cutting-edge industry standards to create high-end products that can be integrated seamlessly into the larger digital eco-system.
+[h4] Design, Creative Work, and Social Media Management
+[p] Beautifully streamlined designs on everything from software UI to printable marketing material as well as maintaining continuous digital social media presence for our clients.
+[h2] Our Services
+[h4] Software Development
+[p] Custom tailor-made software solutions designed & created to the highest international standards with security, functionality, and user-experience in mind.
+[h4] Data Analysis
+[p] Data analysis from websites, Google, apps, social media, & other sources to refine ad results, understand demographics, & increase effectiveness.
+[h4] SEO Services
+[p] Search engine optimization & related services for an omnichannel approach to digital marketing.
+[h4] iOS & Android Apps
+[p] Bring your brand & your idea to the world of mobile apps. We offer top-of-the-line UI/UX & functionality for an unmatched experience.
+[h4] Digital Advertising
+[p] The best cost for results advertising on Google, YouTube, Facebook, Instagram, & custom solutions for an unmatched ROI.
+[h4] Digital Inventory
+[p] Get your inventory online digitally with the best user experience to easily reach your target market.
+[h4] Digital Marketing
+[p] Digital advertising & Social Media management by Azbow brings you the best medium to reach your customer base at the best cost for result rates.
+[h4] Payment Gateway Integration
+[p] Integrate the top payment gateways seamlessly & securely to make your incoming payments easy & accessible.
+[h4] Ad Revenue Generation
+[p] Generate revenue by integrating ad platforms into your software, website, & mobile apps.
+[h2] We Maintain a Global Presence
+[p] Adapting to worldwide trends lightening fast
+[p] Our locations in Sri Lanka & Singapore enable us to serve you better & faster
+[strong] 100+
+[label] Clients
+[strong] 1000+
+[label] Projects
+[strong] 20+
+[label] Team Members
+[h2] Tried & Tested Omnichannel Digital Solutions
+[p] Better stability, support, revenue, & presence on all your platforms & campaigns.
+[span] Improved ROI
+[span] 95%
+[span] Improved Digital Presence
+[span] 99%
+[span] Improved Reach
+[span] 99%
+[h2] Award Winning UI  |  UX & Architecture
+[p] Our software, web & mobile apps are designed from the ground up to be functional & good looking with intuitive ease-of-use
+[h2] Our Clients
+[p] We take pride in providing results based digital solutions to a wide-clientele, ranging from small mom-and-pop businesses to some of the biggest international corporate brands.
+[h4] ABOUT US
+[p] We bring you the best in software development, digital marketing, app development, & other related digital services perfected over 10 years of industry experience.
+[h4] OUR SERVICES
+[a] Software Development
+[a] Digital Marketing
+[a] Mobile App Development
+[a] SEO Services
+[a] Digital Advertising
+[h4] CONTACT US
+[li] Address: 165/5, Park Road, Colombo 5, Sri Lanka
+[a] +94 771 066 770
+[a] contact@azbow.com
+[p] Azbow (Pvt) Ltd. © Copyright 2026. All Rights Reserved.

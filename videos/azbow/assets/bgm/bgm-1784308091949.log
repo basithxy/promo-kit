@@ -1,0 +1,6 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 2047), got 2048. This may result in unexpected behavior.
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 2047), got 2048. This may result in unexpected behavior.
+Loading weights:   0%|          | 0/611 [00:00<?, ?it/s]Loading weights:  48%|####8     | 295/611 [00:00<00:00, 2943.65it/s]Loading weights:  97%|#########6| 590/611 [00:00<00:00, 2899.66it/s]Loading weights: 100%|##########| 611/611 [00:00<00:00, 2989.60it/s]
+[musicgen] seed dur=26.09s tokens=1305
+[musicgen] wrote D:\New folder\promo-kit\videos\azbow\assets\bgm\track.wav samples=834912 sr=32000

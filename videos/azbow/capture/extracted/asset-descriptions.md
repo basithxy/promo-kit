@@ -1,0 +1,67 @@
+# Asset Descriptions
+
+⚠️  GEMINI_API_KEY not set — descriptions below are catalog-derived (alt text, headings, section context, filename) instead of Vision-generated. To get richer Vision descriptions on the next capture, set GEMINI_API_KEY (or GOOGLE_API_KEY) and re-run.
+
+The `logo-<hash>.svg` filename prefix is a structural hint (DOM said this SVG was inside a `<header>`, home-link `<a>`, or had an aria-label matching the page brand). To pick the actual brand logo without Vision, open the `logo-*` candidates in a previewer or rasterize them with `sharp` before referencing — composing a fake logo ships off-brand in the final video.
+
+- award-winning-uiux-architecture.png — 369KB, award winning uiux architecture
+- azbow.png — 30KB, azbow
+- demo-seo-2.png — 43KB, section: "Our Clients"
+- favicon.png — 5KB, favicon
+- image-21.png — 12KB, section: "Our Clients"
+- image-22.png — 16KB, section: "Our Clients"
+- image-23.png — 37KB, section: "Our Clients"
+- image-24.png — 32KB, section: "Our Clients"
+- image-25.png — 28KB, section: "Our Clients"
+- image-26.png — 10KB, section: "Our Clients"
+- image-27.png — 18KB, section: "Our Clients"
+- image-28.png — 12KB, section: "Our Clients"
+- image-29.png — 41KB, section: "Our Clients"
+- image-30.png — 11KB, section: "Our Clients"
+- image-31.png — 12KB, section: "Our Clients"
+- image-32.png — 32KB, section: "Our Clients"
+- image-33.png — 10KB, section: "Our Clients"
+- image-34.png — 14KB, section: "Our Clients"
+- image-35.png — 21KB, section: "Our Clients"
+- image-36.png — 40KB, section: "Our Clients"
+- image-37.png — 18KB, section: "Our Clients"
+- image-38.png — 22KB, section: "Our Clients"
+- image-39.png — 16KB, section: "Our Clients"
+- image-40.png — 18KB, section: "Our Clients"
+- image-41.png — 16KB, section: "Our Clients"
+- image-42.png — 14KB, section: "Our Clients"
+- image-43.png — 19KB, section: "Our Clients"
+- image-44.png — 23KB, section: "Our Clients"
+- image-45.png — 35KB, section: "Our Clients"
+- image1.jpg — 165KB, image1
+- image10.jpg — 182KB, image10
+- image2.jpg — 277KB, image2
+- image3.jpg — 541KB, image3
+- image4.jpg — 246KB, image4
+- image5.jpg — 286KB, image5
+- image6.jpg — 109KB, image6
+- image7.jpg — 167KB, image7
+- image8.jpg — 175KB, image8
+- image9.jpg — 220KB, image9
+- mobile-mock-mosam.png — 220KB, section: "Award Winning UI  |  UX & Architecture"
+- net2go.png — 254KB, section: "Award Winning UI  |  UX & Architecture"
+- our-blog-section.png — 18KB, our blog section
+- our-clients.png — 32KB, our clients
+- porto.png — 27KB, porto
+- providing-cutting-edge-digital-solutions.png — 46KB, providing cutting edge digital solutions
+- singapore.png — 18KB, section: "We Maintain a Global Presence"
+- software-development.png — 12KB, software development
+- we-maintain-a-global-presence.png — 27KB, we maintain a global presence
+- whatsapp.png — 11KB, above fold, whatsapp
+- svgs/svg-395dbfb1.svg — svg 395dbfb1
+- svgs/svg-55256ba9.svg — svg 55256ba9
+- svgs/svg-66056c9a.svg — svg 66056c9a
+- svgs/svg-6774f573.svg — svg 6774f573
+- svgs/svg-9211bd0d.svg — svg 9211bd0d
+- svgs/svg-e4c32cfb.svg — svg e4c32cfb
+- svgs/svg-eaeaab55.svg — svg eaeaab55
+- fonts/pxiByp8kv8JHgFVrLCz7Z1xlEA.ttf — font file
+- fonts/pxiByp8kv8JHgFVrLDz8Z1xlEA.ttf — font file
+- fonts/pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf — font file
+- fonts/pxiByp8kv8JHgFVrLGT9Z1xlEA.ttf — font file
+- fonts/pxiEyp8kv8JHgFVrJJfedw.ttf — font file

@@ -1,0 +1,689 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          src: url("assets/fonts/pxiByp8kv8JHgFVrLGT9Z1xlEA.ttf") format("truetype");
+          font-weight: 500;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Poppins";
+          src: url("assets/fonts/pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf") format("truetype");
+          font-weight: 600;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Poppins";
+          src: url("assets/fonts/pxiEyp8kv8JHgFVrJJfedw.ttf") format("truetype");
+          font-weight: 700;
+          font-style: normal;
+        }
+
+        /* Root — styled by #root only (never a class on the data-composition-id element) */
+        #root {
+          --bg: #ffffff;
+          --primary: #171940;
+          --text: #777777;
+          --text-muted: #4046b3;
+          --accent-light: rgba(23, 25, 64, 0.08);
+          --accent-medium: rgba(23, 25, 64, 0.15);
+          --border-c: rgba(23, 25, 64, 0.2);
+          --card-bg: rgba(23, 25, 64, 0.04);
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: var(--bg);
+          font-family: "Poppins", sans-serif;
+        }
+
+        /* Full-bleed ground — lives on its own class="clip" layer, never on #root itself */
+        .proof3-bg {
+          position: absolute;
+          inset: 0;
+          background: var(--bg);
+        }
+
+        /* ---------- shared stage ---------- */
+        .proof3-stage {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 896px; /* caption keep-out: content stays above y=896 on 1920x1080 */
+        }
+
+        /* ---------- stats phase (Scenes 1-3) ---------- */
+        #proof3-stats-stage {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .proof3-card {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 22px;
+          opacity: 0;
+        }
+        .proof3-card-number {
+          font-family: "Poppins", sans-serif;
+          font-weight: 700;
+          color: var(--primary);
+          font-variant-numeric: tabular-nums;
+          letter-spacing: -3px;
+          line-height: 1;
+          display: inline-block;
+          text-align: center;
+        }
+        .proof3-card-label {
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          color: var(--primary);
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          font-size: 32px;
+          text-align: center;
+        }
+        #proof3-counter-wrap {
+          min-width: 420px;
+          display: flex;
+          justify-content: center;
+        }
+        #proof3-counter {
+          font-size: 220px;
+          transform-origin: center center;
+        }
+        #proof3-num2-wrap {
+          min-width: 560px;
+          display: flex;
+          justify-content: center;
+        }
+        #proof3-num2 {
+          font-size: 172px;
+        }
+        #proof3-num3-wrap {
+          min-width: 760px;
+          display: flex;
+          justify-content: center;
+        }
+        #proof3-num3 {
+          font-size: 132px;
+        }
+
+        #proof3-dot-ring {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+        .proof3-dot {
+          position: absolute;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: var(--primary);
+          opacity: 0;
+        }
+
+        /* progress strip — the system's one deliberate square-corner exception */
+        #proof3-progress-fill {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 3px;
+          width: 100%;
+          background: var(--primary);
+          border-radius: 0;
+          transform-origin: left center;
+        }
+
+        /* ---------- title-card phase (Scene 4) ---------- */
+        /* wrap spans the FULL 1920x1080 canvas (the backdrop is atmospheric,
+           not "content" — it may bleed into the caption band); only the
+           accent-line + eyebrow inside .proof3-stage respect the keep-out */
+        #proof3-titlecard-wrap {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+        }
+        #proof3-titlecard-bg-layer {
+          position: absolute;
+          inset: 0;
+        }
+        #proof3-titlecard-bg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 30%;
+          filter: blur(3px);
+        }
+        #proof3-titlecard-scrim {
+          position: absolute;
+          inset: 0;
+          background: rgba(255, 255, 255, 0.68);
+        }
+        #proof3-titlecard-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+        }
+        #proof3-accent-line {
+          width: 60px;
+          height: 4px;
+          background: var(--primary);
+          border-radius: 2px;
+          transform-origin: center;
+        }
+        #proof3-eyebrow {
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          color: var(--primary);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-size: 34px;
+          text-align: center;
+          max-width: 1500px;
+          opacity: 0;
+        }
+
+        /* ---------- device-tour phase (Scenes 5-6) ---------- */
+        #proof3-device-stage {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 130px;
+          padding-left: 170px;
+          padding-right: 170px;
+          opacity: 0;
+        }
+        .proof3-device-slot {
+          position: relative;
+          width: 460px;
+          height: 820px;
+          flex: 0 0 auto;
+        }
+        #proof3-device-shape {
+          position: absolute;
+          inset: -40px;
+          border-radius: 60px;
+          background: var(--accent-light);
+          opacity: 0;
+          transform-origin: center;
+        }
+        #proof3-device-outer {
+          position: absolute;
+          inset: 0;
+          width: 380px;
+          height: 760px;
+          margin: auto;
+          opacity: 0;
+        }
+        #proof3-device-jitter {
+          position: absolute;
+          inset: 0;
+        }
+        #proof3-device-card {
+          position: absolute;
+          inset: 0;
+          border-radius: 28px;
+          overflow: hidden;
+          background: var(--card-bg);
+        }
+        .proof3-screen {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+        }
+        #proof3-screen-porto-wrap {
+          position: absolute;
+          inset: 0;
+          background: var(--card-bg);
+          border: 1.5px solid var(--border-c);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+        }
+        #proof3-screen-porto {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+
+        .proof3-headline-wrap {
+          position: relative;
+          width: 640px;
+          height: 300px;
+          flex: 0 0 auto;
+        }
+        .proof3-headline {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          font-family: "Poppins", sans-serif;
+          font-weight: 700;
+          color: var(--text);
+          letter-spacing: -0.02em;
+          font-size: 96px;
+          opacity: 0;
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="03-proof"
+        data-width="1920"
+        data-height="1080"
+        data-duration="13.215"
+      >
+        <!-- full-bleed ground: its own class="clip" layer, never painted on #root -->
+        <div
+          id="proof3-bg"
+          class="clip proof3-bg"
+          data-start="0"
+          data-duration="13.215"
+          data-track-index="0"
+        ></div>
+
+        <!-- ===== Scenes 1-3: three-stat count-up lead-in ===== -->
+        <div id="proof3-stats-stage" class="proof3-stage" style="z-index: 1">
+          <div id="proof3-progress-fill"></div>
+
+          <div id="proof3-card1" class="proof3-card">
+            <div id="proof3-counter-wrap">
+              <span id="proof3-counter" class="proof3-card-number">0</span>
+            </div>
+            <div id="proof3-label1" class="proof3-card-label" style="opacity: 0">Years</div>
+          </div>
+
+          <div id="proof3-card2" class="proof3-card" style="opacity: 0">
+            <div id="proof3-dot-ring"></div>
+            <div id="proof3-num2-wrap">
+              <span id="proof3-num2" class="proof3-card-number">100+</span>
+            </div>
+            <div id="proof3-label2" class="proof3-card-label" style="opacity: 0">Clients</div>
+          </div>
+
+          <div id="proof3-card3" class="proof3-card" style="opacity: 0">
+            <div id="proof3-num3-wrap">
+              <span id="proof3-num3" class="proof3-card-number">1,000+</span>
+            </div>
+            <div id="proof3-label3" class="proof3-card-label">Projects</div>
+          </div>
+        </div>
+
+        <!-- ===== Scene 4: title-card dissolve ===== -->
+        <div id="proof3-titlecard-wrap" style="z-index: 2">
+          <div id="proof3-titlecard-bg-layer">
+            <img
+              id="proof3-titlecard-bg"
+              src="assets/award-winning-uiux-architecture.png"
+              alt=""
+            />
+            <div id="proof3-titlecard-scrim"></div>
+          </div>
+          <div id="proof3-titlecard-content" class="proof3-stage">
+            <div id="proof3-accent-line"></div>
+            <div id="proof3-eyebrow">Award-Winning UI/UX &amp; Architecture</div>
+          </div>
+        </div>
+
+        <!-- ===== Scenes 5-6: device-surface tour (static camera) ===== -->
+        <div id="proof3-device-stage" class="proof3-stage" style="z-index: 3">
+          <div class="proof3-device-slot">
+            <div id="proof3-device-shape"></div>
+            <div id="proof3-device-outer">
+              <div id="proof3-device-jitter">
+                <div id="proof3-device-card">
+                  <img
+                    id="proof3-screen-mosam"
+                    class="proof3-screen"
+                    src="assets/mobile-mock-mosam.png"
+                    alt="Mosam app"
+                    style="opacity: 1"
+                  />
+                  <img
+                    id="proof3-screen-net2go"
+                    class="proof3-screen"
+                    src="assets/net2go.png"
+                    alt="Net2Go platform"
+                  />
+                  <div id="proof3-screen-porto-wrap">
+                    <img id="proof3-screen-porto" src="assets/porto.png" alt="Porto portfolio" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="proof3-headline-wrap">
+            <div id="proof3-headline-mosam" class="proof3-headline">Mosam</div>
+            <div id="proof3-headline-net2go" class="proof3-headline">Net2Go</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // ---- deterministic dot-ring for Scene 2 (fixed angles, no Math.random) ----
+        (function buildDotRing() {
+          const ring = document.getElementById("proof3-dot-ring");
+          const centerX = 960;
+          const centerY = 448;
+          const radiusX = 320;
+          const radiusY = 175;
+          const count = 12;
+          for (let i = 0; i < count; i++) {
+            const angle = (i / count) * Math.PI * 2;
+            const dot = document.createElement("div");
+            dot.className = "proof3-dot";
+            const left = centerX + Math.cos(angle) * radiusX - 4.5;
+            const top = centerY + Math.sin(angle) * radiusY - 4.5;
+            dot.style.left = left + "px";
+            dot.style.top = top + "px";
+            ring.appendChild(dot);
+          }
+        })();
+
+        // =========================================================
+        // Scene 1 (0.0-1.4s) — "Ten years" — counting-dynamic-scale
+        // =========================================================
+        const counterEl = document.getElementById("proof3-counter");
+        const COUNT_END_SIZE = 220;
+        const COUNT_START_SCALE = 110 / COUNT_END_SIZE;
+        const counterState = { value: 0 };
+
+        tl.fromTo(
+          "#proof3-card1",
+          { autoAlpha: 0, scale: 0.92 },
+          { autoAlpha: 1, scale: 1, duration: 0.28, ease: "power3.out" },
+          0,
+        );
+
+        tl.to(
+          counterState,
+          {
+            value: 10,
+            duration: 1.1,
+            ease: "power3.out",
+            onUpdate: () => {
+              counterEl.textContent = Math.round(counterState.value).toLocaleString();
+            },
+          },
+          0.15,
+        );
+        tl.fromTo(
+          counterEl,
+          { scale: COUNT_START_SCALE },
+          { scale: 1, duration: 1.1, ease: "power3.out" },
+          0.15,
+        );
+
+        tl.fromTo(
+          "#proof3-label1",
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" },
+          0.35,
+        );
+
+        // progress strip: 0 -> 33%
+        tl.fromTo(
+          "#proof3-progress-fill",
+          { scaleX: 0 },
+          { scaleX: 0.33, duration: 1.1, ease: "power2.out" },
+          0.15,
+        );
+
+        // =========================================================
+        // Scene 2 (1.4-2.8s) — "A hundred-plus clients" — scale-swap
+        // =========================================================
+        const SWAP1_TRIGGER = 1.4;
+        const SWAP1_EXIT_DUR = 0.32;
+        const SWAP1_OVERLAP = 0.15;
+        const SWAP1_ENTER_START = SWAP1_TRIGGER + SWAP1_EXIT_DUR - SWAP1_OVERLAP;
+
+        tl.to(
+          "#proof3-card1",
+          { scale: 0.72, autoAlpha: 0, duration: SWAP1_EXIT_DUR, ease: "power2.in" },
+          SWAP1_TRIGGER,
+        );
+        tl.fromTo(
+          "#proof3-card2",
+          { scale: 0.72, autoAlpha: 0 },
+          { scale: 1, autoAlpha: 1, duration: 0.55, ease: "power3.out" },
+          SWAP1_ENTER_START,
+        );
+        tl.fromTo(
+          "#proof3-label2",
+          { autoAlpha: 0, y: 10 },
+          { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" },
+          1.95,
+        );
+        tl.to(
+          ".proof3-dot",
+          { autoAlpha: 0.2, duration: 0.6, ease: "power2.out", stagger: 0.03 },
+          1.75,
+        );
+
+        // progress strip: 33% -> 66%
+        tl.to("#proof3-progress-fill", { scaleX: 0.66, duration: 0.6, ease: "power2.out" }, 1.4);
+
+        // clear the dot ring together with card 2's exit (see Scene 3 below)
+
+        // =========================================================
+        // Scene 3 (2.8-4.6s) — "A thousand projects shipped" —
+        // zoom-through cut (cut-catalog, full-frame/card blur = 18px)
+        // =========================================================
+        const ZT_TRIGGER = 2.8;
+        const ZT_EXIT_DUR = 0.2;
+        const ZT_CUT = ZT_TRIGGER + ZT_EXIT_DUR; // 3.0
+
+        // Phase 1 — exit (card 2 pushes toward viewer)
+        tl.to(
+          "#proof3-card2",
+          { scale: 1.2, filter: "blur(18px)", duration: ZT_EXIT_DUR, ease: "power3.in" },
+          ZT_TRIGGER,
+        );
+        tl.to("#proof3-card2", { opacity: 0.15, duration: ZT_EXIT_DUR, ease: "none" }, ZT_TRIGGER);
+        tl.to(".proof3-dot", { autoAlpha: 0, duration: ZT_EXIT_DUR, ease: "none" }, ZT_TRIGGER);
+
+        // Phase 2 — hard cut at peak blur/velocity
+        tl.set("#proof3-card2", { autoAlpha: 0 }, ZT_CUT);
+        tl.set(
+          "#proof3-card3",
+          { autoAlpha: 1, opacity: 0.15, scale: 0.75, filter: "blur(18px)" },
+          ZT_CUT,
+        );
+
+        // Phase 3 — entry (card 3 continues forward into focal plane)
+        tl.to(
+          "#proof3-card3",
+          {
+            scale: 1,
+            filter: "blur(0px)",
+            opacity: 1,
+            duration: 0.5,
+            ease: "expo.out",
+          },
+          ZT_CUT,
+        );
+
+        // progress strip: 66% -> 100%
+        tl.to("#proof3-progress-fill", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 2.8);
+
+        // =========================================================
+        // Scene 3 -> 4 handoff (4.6s) — stat card clears, title card
+        // dissolves in ("Award-winning UI and UX")
+        // =========================================================
+        tl.to(
+          "#proof3-card3",
+          { scale: 0.7, autoAlpha: 0, duration: 0.35, ease: "power2.in" },
+          4.6,
+        );
+        tl.to(
+          "#proof3-progress-fill",
+          { autoAlpha: 0, duration: 0.3, ease: "none" },
+          4.6,
+        );
+
+        // =========================================================
+        // Scene 4 (4.6-6.7s) — title-card dissolve
+        // =========================================================
+        tl.fromTo(
+          "#proof3-titlecard-wrap",
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.6, ease: "power2.out" },
+          4.75,
+        );
+        tl.fromTo(
+          "#proof3-accent-line",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.45, ease: "power3.out" },
+          5.15,
+        );
+        tl.fromTo(
+          "#proof3-eyebrow",
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          5.25,
+        );
+
+        // =========================================================
+        // Scene 4 -> 5 handoff (6.55s) — title card dissolves out,
+        // device-tour surface establishes ("real apps like Mosam...")
+        // =========================================================
+        tl.to(
+          "#proof3-titlecard-wrap",
+          { autoAlpha: 0, duration: 0.35, ease: "power2.in" },
+          6.55,
+        );
+        tl.fromTo(
+          "#proof3-device-stage",
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.3, ease: "power2.out" },
+          6.7,
+        );
+        tl.fromTo(
+          "#proof3-device-shape",
+          { scale: 0.85, autoAlpha: 0 },
+          { scale: 1, autoAlpha: 0.55, duration: 0.6, ease: "power3.out" },
+          6.75,
+        );
+        tl.fromTo(
+          "#proof3-device-outer",
+          { x: -900, autoAlpha: 0 },
+          { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" },
+          6.8,
+        );
+        tl.fromTo(
+          "#proof3-headline-mosam",
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" },
+          7.55,
+        );
+
+        // =========================================================
+        // Scene 5 (6.7-10.2s) — tap-compress: Mosam -> Net2Go
+        // (VO names "Net2Go" ~8.8s)
+        // =========================================================
+        const TAP1 = 8.8;
+        tl.to("#proof3-device-card", { scale: 0.97, duration: 0.12, ease: "power1.in" }, TAP1);
+        tl.to(
+          "#proof3-device-card",
+          { scale: 1, duration: 0.28, ease: "power3.out" },
+          TAP1 + 0.12,
+        );
+
+        tl.fromTo(
+          "#proof3-screen-mosam",
+          { opacity: 1, x: 0 },
+          { opacity: 0, x: -30, duration: 0.3, ease: "power2.in" },
+          8.85,
+        );
+        tl.fromTo(
+          "#proof3-screen-net2go",
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" },
+          8.98,
+        );
+        tl.fromTo(
+          "#proof3-headline-mosam",
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -14, duration: 0.25, ease: "power2.in" },
+          8.85,
+        );
+        tl.fromTo(
+          "#proof3-headline-net2go",
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" },
+          9.05,
+        );
+
+        // =========================================================
+        // Scene 6 (10.2-12.715s) — silent swap to Porto, then HOLD
+        // (deliberate held beat — settle + subtle jitter only)
+        // =========================================================
+        tl.fromTo(
+          "#proof3-screen-net2go",
+          { opacity: 1, x: 0 },
+          { opacity: 0, x: -30, duration: 0.3, ease: "power2.in" },
+          10.2,
+        );
+        tl.fromTo(
+          "#proof3-screen-porto-wrap",
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" },
+          10.33,
+        );
+        tl.fromTo(
+          "#proof3-headline-net2go",
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -14, duration: 0.25, ease: "power2.in" },
+          10.2,
+        );
+
+        // subtle jitter on the settled device — LOW amplitude, isolated hero,
+        // short window (< 2s), so upper end of the "isolated/short" allowance
+        const jitterEl = document.getElementById("proof3-device-jitter");
+        const jitterPhase = { p: 0 };
+        tl.to(
+          jitterPhase,
+          {
+            p: Math.PI * 2 * 1,
+            duration: 1.9,
+            ease: "none",
+            onUpdate: () => {
+              const y = Math.sin(jitterPhase.p) * 3;
+              const scale = 1 + Math.sin(jitterPhase.p) * 0.012;
+              jitterEl.style.transform = `translateY(${y}px) scale(${scale})`;
+            },
+          },
+          10.8,
+        );
+
+        window.__timelines["03-proof"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
