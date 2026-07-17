@@ -1,0 +1,649 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>03 - Demo: add your details</title>
+  </head>
+  <body>
+    <template>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <style>
+        @font-face {
+          font-family: "Nohemi";
+          font-weight: 700;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Nohemi-Bold.otf") format("opentype");
+        }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "Nohemi", sans-serif;
+        }
+
+        /* ---- full-bleed ground (own clip, never painted on #root) ---- */
+        .bg-clip {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(
+            circle at 76% 22%,
+            rgba(5, 101, 245, 0.1),
+            rgba(5, 101, 245, 0.03) 42%,
+            #ffffff 68%
+          );
+        }
+
+        /* ---- scene clip / camera wrapper ---- */
+        .scene-clip {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        .world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        /* ---- decorative depth layer (behind, right third) ---- */
+        .depth-orb {
+          position: absolute;
+          left: 1440px;
+          top: 60px;
+          width: 520px;
+          height: 520px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(5, 101, 245, 0.16), rgba(5, 101, 245, 0) 70%);
+          filter: blur(6px);
+          opacity: 0;
+          z-index: 1;
+        }
+
+        /* ---- app window card ---- */
+        .app-window {
+          position: absolute;
+          left: 390px;
+          top: 140px;
+          width: 1080px;
+          height: 650px;
+          background: #ffffff;
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          border-radius: 20px;
+          box-shadow: none;
+          opacity: 0;
+          z-index: 2;
+        }
+
+        .eyebrow {
+          position: absolute;
+          left: 450px;
+          top: 186px;
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 17px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #0565f5;
+          opacity: 0;
+          z-index: 3;
+        }
+
+        .tag-pill {
+          position: absolute;
+          left: 1252px;
+          top: 178px;
+          width: 168px;
+          height: 38px;
+          border-radius: 100px;
+          background: rgba(5, 101, 245, 0.08);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          color: #0455c9;
+          opacity: 0;
+          z-index: 3;
+        }
+
+        .field-label {
+          position: absolute;
+          left: 450px;
+          top: 250px;
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+          color: #141414;
+          opacity: 0;
+          z-index: 3;
+        }
+
+        .field-box {
+          position: absolute;
+          left: 450px;
+          top: 282px;
+          width: 760px;
+          height: 76px;
+          border-radius: 14px;
+          background: rgba(5, 101, 245, 0.04);
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          display: flex;
+          align-items: center;
+          padding-left: 30px;
+          opacity: 0;
+          z-index: 3;
+        }
+        .addr-text {
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 30px;
+          color: #141414;
+          white-space: pre;
+        }
+        .addr-caret {
+          display: inline-block;
+          width: 4px;
+          height: 34px;
+          margin-left: 6px;
+          background: #9a9a9a;
+          vertical-align: -6px;
+        }
+
+        .thumb {
+          position: absolute;
+          left: 1252px;
+          top: 282px;
+          width: 150px;
+          height: 150px;
+          border-radius: 16px;
+          background: rgba(5, 101, 245, 0.06);
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          z-index: 3;
+        }
+
+        .style-label {
+          position: absolute;
+          left: 450px;
+          top: 472px;
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+          color: #141414;
+          opacity: 0;
+          z-index: 3;
+        }
+
+        .swatch {
+          position: absolute;
+          top: 515px;
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          opacity: 0;
+          z-index: 3;
+        }
+        #swatch-cobalt {
+          left: 450px;
+          background: #0565f5;
+          border-color: #0565f5;
+        }
+        #swatch-ink {
+          left: 580px;
+          background: #141414;
+        }
+        #swatch-paper {
+          left: 710px;
+          background: #ffffff;
+          border: 2px solid rgba(5, 101, 245, 0.35);
+        }
+        #swatch-slate {
+          left: 840px;
+          background: #6b6b6b;
+        }
+
+        .swatch-ring {
+          position: absolute;
+          left: 495px;
+          top: 560px;
+          width: 118px;
+          height: 118px;
+          margin-left: -59px;
+          margin-top: -59px;
+          border-radius: 50%;
+          border: 3px solid #0565f5;
+          opacity: 0;
+          z-index: 4;
+          pointer-events: none;
+        }
+
+        .preview-chip {
+          position: absolute;
+          left: 450px;
+          top: 632px;
+          width: 168px;
+          height: 44px;
+          border-radius: 100px;
+          border: 1.5px solid rgba(5, 101, 245, 0.35);
+          background: rgba(5, 101, 245, 0);
+          opacity: 0;
+          z-index: 3;
+        }
+
+        /* ---- custom cursor ---- */
+        .cursor {
+          position: absolute;
+          left: 260px;
+          top: 800px;
+          width: 40px;
+          height: 40px;
+          z-index: 10;
+          pointer-events: none;
+        }
+
+        /* ---- click ripple ---- */
+        .ripple {
+          position: absolute;
+          left: 495px;
+          top: 560px;
+          width: 140px;
+          height: 140px;
+          margin-left: -70px;
+          margin-top: -70px;
+          border-radius: 50%;
+          border: 2px solid #0565f5;
+          opacity: 0;
+          z-index: 6;
+          pointer-events: none;
+        }
+      </style>
+
+      <div id="root" data-composition-id="03-demo-input" data-width="1920" data-height="1080">
+        <div
+          class="bg-clip clip"
+          data-start="0"
+          data-duration="2.859"
+          data-track-index="0"
+        ></div>
+
+        <div class="scene-clip clip" data-start="0" data-duration="2.859" data-track-index="1">
+          <div class="world" id="world">
+            <div class="depth-orb" id="depth-orb"></div>
+
+            <div class="app-window" id="app-window"></div>
+            <div class="eyebrow" id="eyebrow">PROPERTY DETAILS</div>
+            <div class="tag-pill" id="tag-pill">New Listing</div>
+
+            <div class="field-label" id="field-label">Property Address</div>
+            <div class="field-box" id="field-box">
+              <span class="addr-text" id="addr-text"></span
+              ><span class="addr-caret" id="addr-caret"></span>
+            </div>
+
+            <div class="thumb" id="thumb">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 11.5L12 4L20 11.5"
+                  stroke="#0565F5"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.85"
+                />
+                <path
+                  d="M6 10.5V19.5C6 19.7761 6.22386 20 6.5 20H17.5C17.7761 20 18 19.7761 18 19.5V10.5"
+                  stroke="#0565F5"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.85"
+                />
+                <rect x="10" y="14" width="4" height="6" rx="0.5" fill="#0565F5" opacity="0.55" />
+              </svg>
+            </div>
+
+            <div class="style-label" id="style-label">Brand Style</div>
+            <div class="swatch" id="swatch-cobalt"></div>
+            <div class="swatch" id="swatch-ink"></div>
+            <div class="swatch" id="swatch-paper"></div>
+            <div class="swatch" id="swatch-slate"></div>
+            <div class="swatch-ring" id="swatch-ring"></div>
+
+            <div class="preview-chip" id="preview-chip"></div>
+
+            <div class="cursor" id="cursor">
+              <svg width="40" height="40" viewBox="0 0 24 24">
+                <path
+                  d="M5 3L19 12L12 13L9 20L5 3Z"
+                  fill="#0565F5"
+                  stroke="#FFFFFF"
+                  stroke-width="1.4"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <div class="ripple" id="ripple-1"></div>
+            <div class="ripple" id="ripple-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          var tl = gsap.timeline({ paused: true });
+
+          var SCENE_DURATION = 2.859;
+
+          var world = document.getElementById("world");
+          var cam = { scale: 1, x: 0, y: 0 };
+          function applyCamera() {
+            world.style.transform =
+              "translate(" + cam.x + "px, " + cam.y + "px) scale(" + cam.scale + ")";
+          }
+          applyCamera();
+
+          /* ---------------------------------------------------------------
+           * Scene 1 (0.0-1.4s) — window establishes, cursor enters + types
+           * ------------------------------------------------------------- */
+
+          tl.fromTo(
+            "#app-window",
+            { opacity: 0, scale: 0.94 },
+            { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" },
+            0.0,
+          );
+          tl.fromTo(
+            "#depth-orb",
+            { opacity: 0 },
+            { opacity: 1, duration: 0.5, ease: "power2.out" },
+            0.0,
+          );
+          tl.fromTo(
+            "#eyebrow",
+            { opacity: 0, y: -10 },
+            { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" },
+            0.08,
+          );
+          tl.fromTo(
+            "#tag-pill",
+            { opacity: 0, y: -10 },
+            { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" },
+            0.12,
+          );
+          tl.fromTo(
+            "#field-label",
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.26, ease: "power3.out" },
+            0.16,
+          );
+          tl.fromTo(
+            "#field-box",
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" },
+            0.2,
+          );
+          tl.fromTo(
+            "#thumb",
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" },
+            0.22,
+          );
+          tl.fromTo(
+            "#style-label",
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.26, ease: "power3.out" },
+            0.26,
+          );
+          tl.fromTo(
+            ["#swatch-cobalt", "#swatch-ink", "#swatch-paper", "#swatch-slate"],
+            { opacity: 0, y: 12, scale: 0.85 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power3.out", stagger: 0.05 },
+            0.3,
+          );
+          tl.fromTo(
+            "#preview-chip",
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.26, ease: "power3.out" },
+            0.36,
+          );
+
+          // Cursor enters and settles just left of the address field
+          var CURSOR_BASE_LEFT = 260,
+            CURSOR_BASE_TOP = 800;
+          var TARGET1_X = 470,
+            TARGET1_Y = 315; // world coords near the address field
+          tl.fromTo(
+            "#cursor",
+            { opacity: 0, x: 0, y: 60 },
+            {
+              opacity: 1,
+              x: TARGET1_X - CURSOR_BASE_LEFT,
+              y: TARGET1_Y - CURSOR_BASE_TOP,
+              duration: 0.32,
+              ease: "power3.out",
+            },
+            0.35,
+          );
+
+          // Field focus highlight as the cursor arrives — a real tween on
+          // an allow-listed property (backgroundColor), not a one-shot
+          // class toggle, so it stays seekable both ways.
+          tl.to(
+            "#field-box",
+            { backgroundColor: "rgba(5,101,245,0.1)", duration: 0.14, ease: "power2.out" },
+            0.66,
+          );
+
+          // Typed address — smooth character slice (discrete-text-sequence,
+          // smooth-slice variation: continuous typewriter, no edits)
+          var ADDR_TEXT = "24 Maple Valley Heights";
+          var TYPE_START = 0.72,
+            TYPE_DUR = 0.5;
+          var addrTextEl = document.getElementById("addr-text");
+          var typeLen = { v: 0 };
+          tl.to(
+            typeLen,
+            {
+              v: ADDR_TEXT.length,
+              duration: TYPE_DUR,
+              ease: "power1.inOut",
+              onUpdate: function () {
+                addrTextEl.textContent = ADDR_TEXT.substring(0, Math.floor(typeLen.v));
+              },
+            },
+            TYPE_START,
+          );
+
+          // Context-sensitive caret: dim/idle before typing starts, cobalt
+          // once the address segment begins — plus deterministic sin blink,
+          // suppressed while actively typing. Everything is driven from this
+          // single 0->SCENE_DURATION driver (no cross-tween time reads).
+          var caretEl = document.getElementById("addr-caret");
+          var TYPING_GRACE = 0.22;
+          var BLINK_CYCLES = Math.round(SCENE_DURATION / 0.65);
+          var caretDriver = { t: 0 };
+          var blink = { p: 0 };
+          var lastCaretTextLen = 0;
+          var lastAddrChangeT = 0;
+          tl.to(
+            caretDriver,
+            {
+              t: SCENE_DURATION,
+              duration: SCENE_DURATION,
+              ease: "none",
+              onUpdate: function () {
+                var now = caretDriver.t;
+                var curLen = addrTextEl.textContent.length;
+                if (curLen !== lastCaretTextLen) {
+                  lastCaretTextLen = curLen;
+                  lastAddrChangeT = now;
+                }
+                caretEl.style.background = now >= TYPE_START ? "#0565F5" : "#9A9A9A";
+                var isTyping = now >= TYPE_START && now - lastAddrChangeT < TYPING_GRACE;
+                caretEl.style.opacity = isTyping ? "1" : Math.sin(blink.p) > 0 ? "1" : "0";
+              },
+            },
+            0,
+          );
+          tl.to(
+            blink,
+            {
+              p: Math.PI * 2 * BLINK_CYCLES,
+              duration: SCENE_DURATION,
+              ease: "none",
+            },
+            0,
+          );
+
+          /* ---------------------------------------------------------------
+           * Scene 2 (1.4-2.859s) — camera pushes to the swatch row, cursor
+           * clicks the cobalt swatch, it selects with a cobalt ring + the
+           * preview chip fills live.
+           * ------------------------------------------------------------- */
+
+          var ZOOM_START = 1.4,
+            ZOOM_DUR = 0.55;
+          var TARGET_SCALE = 1.18;
+          var offsetX = -260,
+            offsetY = 50; // swatch-row centroid vs. viewport center, world px
+          var camTarget = {
+            scale: TARGET_SCALE,
+            x: -offsetX * TARGET_SCALE,
+            y: -offsetY * TARGET_SCALE,
+          };
+          tl.to(
+            cam,
+            {
+              scale: camTarget.scale,
+              x: camTarget.x,
+              y: camTarget.y,
+              duration: ZOOM_DUR,
+              ease: "power3.inOut",
+              onUpdate: applyCamera,
+            },
+            ZOOM_START,
+          );
+
+          // Cursor travels down to the cobalt swatch
+          var TARGET2_X = 495,
+            TARGET2_Y = 560;
+          tl.to(
+            "#cursor",
+            {
+              x: TARGET2_X - CURSOR_BASE_LEFT,
+              y: TARGET2_Y - CURSOR_BASE_TOP,
+              duration: 0.5,
+              ease: "power2.inOut",
+            },
+            ZOOM_START,
+          );
+
+          var CLICK_AT = 1.95;
+          var PRESS_DUR = 0.08;
+
+          tl.to(
+            "#cursor",
+            { scale: 0.85, duration: PRESS_DUR, ease: "power2.in", yoyo: true, repeat: 1 },
+            CLICK_AT,
+          );
+          tl.to(
+            "#swatch-cobalt",
+            { scale: 1.08, duration: 0.3, ease: "power3.out" },
+            CLICK_AT,
+          );
+          tl.to(
+            ["#swatch-ink", "#swatch-paper", "#swatch-slate"],
+            { opacity: 0.55, duration: 0.3, ease: "power3.out" },
+            CLICK_AT,
+          );
+
+          // Ripple burst from the click point
+          var RIPPLE_AT = CLICK_AT,
+            RIPPLE_DUR = 0.55;
+          tl.fromTo(
+            ["#ripple-1", "#ripple-2"],
+            { opacity: 1, scale: 0 },
+            {
+              opacity: 0,
+              scale: 3.2,
+              duration: RIPPLE_DUR,
+              ease: "power2.out",
+              stagger: 0.08,
+            },
+            RIPPLE_AT,
+          );
+
+          // Preview chip fills to match the selected style
+          tl.to(
+            "#preview-chip",
+            {
+              backgroundColor: "rgba(5,101,245,1)",
+              duration: 0.3,
+              ease: "power3.out",
+            },
+            CLICK_AT + 0.05,
+          );
+
+          // Selection ring — adapted asr-keyword-glow envelope (attack /
+          // sustain / decay / rest) applied to the touched swatch instead
+          // of a word: attacks on click, sustains briefly, decays to a high
+          // rest level so the "selected" state visibly holds to the end.
+          var GLOW_START = CLICK_AT,
+            GLOW_SUSTAIN_END = CLICK_AT + 0.2,
+            GLOW_RELEASE = 0.35,
+            GLOW_REST_LEVEL = 0.7,
+            GLOW_ATTACK_DUR = 0.15;
+          var ringEl = document.getElementById("swatch-ring");
+          function glowEnvelope(t) {
+            var releaseEnd = GLOW_SUSTAIN_END + GLOW_RELEASE;
+            if (t < GLOW_START) return 0;
+            if (t < GLOW_SUSTAIN_END) {
+              return Math.min((t - GLOW_START) / GLOW_ATTACK_DUR, 1);
+            }
+            if (t < releaseEnd) {
+              var decay = (t - GLOW_SUSTAIN_END) / GLOW_RELEASE;
+              return 1 - decay * (1 - GLOW_REST_LEVEL);
+            }
+            return GLOW_REST_LEVEL;
+          }
+          var glowDriver = { t: 0 };
+          tl.to(
+            glowDriver,
+            {
+              t: SCENE_DURATION,
+              duration: SCENE_DURATION,
+              ease: "none",
+              onUpdate: function () {
+                var env = glowEnvelope(glowDriver.t);
+                var blurPx = 4 + 18 * env;
+                var scale = 1 + 0.06 * env;
+                ringEl.style.opacity = String(env);
+                ringEl.style.boxShadow = "0 0 " + blurPx + "px rgba(5,101,245," + (0.35 + 0.4 * env) + ")";
+                ringEl.style.transform = "scale(" + scale + ")";
+              },
+            },
+            0,
+          );
+
+          window.__timelines["03-demo-input"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

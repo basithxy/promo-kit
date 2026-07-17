@@ -1,0 +1,361 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Nohemi",
+      "fontSize": "64px",
+      "fontWeight": "400",
+      "lineHeight": "72px",
+      "letterSpacing": "normal",
+      "color": "#141F39",
+      "sampleText": "Where Properties Become Brands"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Nohemi",
+      "fontSize": "48px",
+      "fontWeight": "700",
+      "lineHeight": "48px",
+      "letterSpacing": "normal",
+      "color": "#09090B",
+      "sampleText": "Choose the Right Plan for Your Property Marketing"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Nohemi",
+      "fontSize": "36px",
+      "fontWeight": "700",
+      "lineHeight": "44px",
+      "letterSpacing": "normal",
+      "color": "#111827",
+      "sampleText": "Effortless Property Marketing, Designed for You."
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "__Inter_f367f3",
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "lineHeight": "28px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Created Efficiently"
+    },
+    {
+      "role": "body",
+      "fontFamily": "__Inter_f367f3",
+      "fontSize": "20px",
+      "fontWeight": "400",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "#4B5563",
+      "sampleText": "Create marketing documents in no time at all"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "__Inter_f367f3",
+      "fontSize": "18px",
+      "fontWeight": "700",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "transparent",
+      "sampleText": "Who Benefits from PropDesigner Pro"
+    },
+    {
+      "role": "label",
+      "fontFamily": "sans-serif",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "0.1px",
+      "color": "#141414",
+      "sampleText": "Necessary"
+    },
+    {
+      "role": "link",
+      "fontFamily": "sans-serif",
+      "fontSize": "15px",
+      "fontWeight": "600",
+      "lineHeight": "24px",
+      "letterSpacing": "0.1px",
+      "color": "#0564F3",
+      "sampleText": "Consent"
+    },
+    {
+      "role": "heading-4",
+      "fontFamily": "__Inter_f367f3",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "#000000",
+      "sampleText": "Quick Access"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      6,
+      8,
+      15,
+      16,
+      17,
+      23,
+      32
+    ],
+    "baseUnit": 8
+  },
+  "radius": [
+    "3.75px",
+    "6px",
+    "8px"
+  ],
+  "shadows": [
+    {
+      "value": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+      "count": 4
+    },
+    {
+      "value": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+      "count": 3
+    },
+    {
+      "value": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px",
+      "count": 1
+    }
+  ],
+  "buttons": [
+    {
+      "label": "Deny",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#141414",
+      "padding": "15px",
+      "borderRadius": "3.75px",
+      "border": "2px solid rgb(15, 177, 254)",
+      "boxShadow": "none",
+      "fontSize": "15px",
+      "fontWeight": "600",
+      "height": "58px"
+    },
+    {
+      "label": "Allow all",
+      "background": "#0FB1FE",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "15px",
+      "borderRadius": "3.75px",
+      "border": "2px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "15px",
+      "fontWeight": "600",
+      "height": "58px"
+    },
+    {
+      "label": "Login",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0565F5",
+      "padding": "0px 32px",
+      "borderRadius": "6px",
+      "border": "1px solid rgb(5, 101, 245)",
+      "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": "40px"
+    },
+    {
+      "label": "Create New Account",
+      "background": "#0565F5",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FAFAFA",
+      "padding": "0px 32px",
+      "borderRadius": "6px",
+      "border": "0px solid rgb(228, 228, 231)",
+      "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "40px"
+    },
+    {
+      "label": "English",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#09090B",
+      "padding": "4px 8px",
+      "borderRadius": "8px",
+      "border": "0px solid rgb(228, 228, 231)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "32px"
+    },
+    {
+      "label": "Try Now For Free",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0565F5",
+      "padding": "8px 16px",
+      "borderRadius": "6px",
+      "border": "2px solid rgb(5, 101, 245)",
+      "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": "56px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#141414",
+      "padding": "0px",
+      "borderRadius": "8px",
+      "border": "0px solid rgb(228, 228, 231)",
+      "boxShadow": "rgba(0, 0, 0, 0.3) 0px 32px 68px 0px",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "height": "498.125px"
+    },
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#141414",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px solid rgb(228, 228, 231)",
+      "boxShadow": "none",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "height": "262.75px"
+    },
+    {
+      "label": "card",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#09090B",
+      "padding": "24px",
+      "borderRadius": "12px",
+      "border": "1px solid rgb(229, 231, 235)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "743.984px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "#EBF1FA",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#09090B",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "0px solid rgb(228, 228, 231)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "64px"
+  },
+  "chips": [
+    {
+      "label": "About PropDesigner Pro",
+      "background": "#0564F3",
+      "color": "#2563EB",
+      "padding": "4px 16px",
+      "borderRadius": "9999px",
+      "border": "0px solid rgb(228, 228, 231)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "700",
+      "height": "32px"
+    },
+    {
+      "label": "Why Choose",
+      "background": "#FFFFFF",
+      "color": "#FFFFFF",
+      "padding": "4px 16px",
+      "borderRadius": "9999px",
+      "border": "0px solid rgb(228, 228, 231)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "700",
+      "height": "28px"
+    },
+    {
+      "label": "Payment Plan",
+      "background": "#DBEAFE",
+      "color": "#2563EB",
+      "padding": "4px 16px",
+      "borderRadius": "9999px",
+      "border": "0px solid rgb(228, 228, 231)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "28px"
+    }
+  ],
+  "statCells": [],
+  "tabs": [
+    {
+      "label": "Consent",
+      "background": "transparent",
+      "color": "#0564F3",
+      "padding": "15px",
+      "borderRadius": "0px",
+      "border": "",
+      "boxShadow": "none",
+      "fontSize": "15px",
+      "fontWeight": "600",
+      "height": "60px"
+    },
+    {
+      "label": "Details",
+      "background": "transparent",
+      "color": "#141414",
+      "padding": "15px",
+      "borderRadius": "0px",
+      "border": "",
+      "boxShadow": "none",
+      "fontSize": "15px",
+      "fontWeight": "600",
+      "height": "60px"
+    }
+  ],
+  "backgrounds": [
+    {
+      "value": "linear-gradient(to right bottom, rgb(255, 255, 255), rgb(239, 246, 255), rgb(219, 234, 254))",
+      "area": 3492480
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgb(20, 101, 215), rgb(104, 50, 241), rgb(51, 97, 238))",
+      "area": 1282560
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgb(42, 70, 212), rgb(104, 50, 241))",
+      "area": 360000
+    },
+    {
+      "value": "linear-gradient(to top, rgb(219, 58, 219), rgba(0, 0, 0, 0))",
+      "area": 345600
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgb(219, 58, 219), rgb(51, 97, 238))",
+      "area": 250000
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgb(42, 70, 212), rgb(219, 58, 219))",
+      "area": 248160
+    }
+  ],
+  "glass": []
+}

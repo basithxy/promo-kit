@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Nohemi";
+          font-weight: 700;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Nohemi-Bold.otf") format("opentype");
+        }
+
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: "Nohemi", sans-serif;
+        }
+
+        .bg-plate {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        /* ---- Scene 1: "Introducing" ---- */
+        .scene1 {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+        }
+        .intro-wrap {
+          position: relative;
+          display: inline-block;
+          padding: 28px 44px;
+        }
+        .intro-text {
+          position: relative;
+          z-index: 1;
+          display: block;
+          font-size: 8cqw;
+          font-weight: 700;
+          color: #141414;
+          letter-spacing: -0.02em;
+          white-space: nowrap;
+        }
+        .box-top,
+        .box-right,
+        .box-bottom,
+        .box-left {
+          position: absolute;
+          background: #0565f5;
+          z-index: 0;
+        }
+        .box-top {
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          transform-origin: left center;
+          transform: scaleX(0);
+        }
+        .box-right {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: 4px;
+          transform-origin: top center;
+          transform: scaleY(0);
+        }
+        .box-bottom {
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          transform-origin: right center;
+          transform: scaleX(0);
+        }
+        .box-left {
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 4px;
+          transform-origin: bottom center;
+          transform: scaleY(0);
+        }
+
+        /* ---- Scene 2/3: wordmark + accent-line + logo lockup ---- */
+        .scene2 {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+        }
+        .lockup {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .logo-mark {
+          width: 40cqw;
+          height: auto;
+          display: block;
+          margin-bottom: 28px;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+        .accent-line {
+          width: 60px;
+          height: 4px;
+          border-radius: 2px;
+          background: #0565f5;
+          margin-bottom: 24px;
+          transform-origin: left center;
+        }
+        .wordmark {
+          font-size: 6.2cqw;
+          font-weight: 700;
+          color: #141414;
+          letter-spacing: -0.02em;
+          white-space: nowrap;
+        }
+      </style>
+
+      <div id="root" data-composition-id="02-product-intro" data-width="1920" data-height="1080">
+        <div class="bg-plate clip" id="bgPlate" data-start="0" data-duration="5.611" data-track-index="0"></div>
+
+        <div class="scene1 clip" id="s1" data-start="0" data-duration="1.9" data-track-index="1">
+          <div class="intro-wrap">
+            <span class="intro-text">Introducing</span>
+            <span class="box-top" id="boxTop"></span>
+            <span class="box-right" id="boxRight"></span>
+            <span class="box-bottom" id="boxBottom"></span>
+            <span class="box-left" id="boxLeft"></span>
+          </div>
+        </div>
+
+        <div class="scene2 clip" id="s2" data-start="1.9" data-duration="3.711" data-track-index="1">
+          <div class="lockup">
+            <img
+              class="logo-mark"
+              id="logoMark"
+              src="assets/logo.png"
+              alt=""
+              data-color-grading='{"preset":"deep-contrast","intensity":1}'
+            />
+            <div class="accent-line" id="accentLine"></div>
+            <div class="wordmark" id="wordmark">PropDesigner Pro</div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Scene 1 — selection-box draws clockwise around "Introducing"
+        // (text itself hard-cuts in via clip visibility at t=0, no tween needed)
+        tl.fromTo("#boxTop", { scaleX: 0 }, { scaleX: 1, duration: 0.15, ease: "power2.out" }, 0.32);
+        tl.fromTo("#boxRight", { scaleY: 0 }, { scaleY: 1, duration: 0.15, ease: "power2.out" }, 0.44);
+        tl.fromTo("#boxBottom", { scaleX: 0 }, { scaleX: 1, duration: 0.15, ease: "power2.out" }, 0.56);
+        tl.fromTo("#boxLeft", { scaleY: 0 }, { scaleY: 1, duration: 0.15, ease: "power2.out" }, 0.68);
+
+        // Scene 2 — hard cut to "PropDesigner Pro" (wordmark visible instantly via
+        // clip visibility at t=1.9, no tween); cobalt accent-line draws in above it.
+        tl.fromTo(
+          "#accentLine",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.45, ease: "power3.out" },
+          1.95,
+        );
+
+        // Scene 3 — brand mark spring-pops in above the wordmark, then holds static.
+        tl.fromTo(
+          "#logoMark",
+          { scale: 0, opacity: 0, y: 16 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+          3.7,
+        );
+
+        window.__timelines["02-product-intro"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

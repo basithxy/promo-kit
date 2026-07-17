@@ -208,10 +208,28 @@ Include the resulting token totals, model(s), and **active time** in the
 end-of-run printout.
 
 ## Voice & music (avoid sounding AI-generated / same-voice-every-time)
-Default is fully local and free: Kokoro-82M for voice (Apache-2.0, 54 voices,
-offline, no key - see the `media-use` skill), local MusicGen/Lyria for music.
-Keep it this way by default - only switch to HeyGen/ElevenLabs (needs signing
-in to an account) if I explicitly ask for that step up in quality.
+Fully local and free, no exceptions: Kokoro-82M for voice (Apache-2.0, 54
+voices, offline, no key - see the `media-use` skill), local MusicGen/Lyria
+for music. HeyGen and ElevenLabs are never used for voice or music - not
+automatically, not as an opt-in fallback, not even if I mention wanting
+"higher quality." Do not initiate a sign-in flow, do not check for a
+credential, do not ask about it at all. If I ever want that step up in the
+future I'll ask for it by name and we can revisit this rule then - until I
+do, treat HeyGen/ElevenLabs as if they don't exist.
+
+**Override for the vendored `media-use` skill's audio engine (`audio/references/bgm.md`,
+`audio/references/tts.md`).** Those files each contain a "Preflight" instruction
+telling you to run `npx hyperframes auth status`, recommend HeyGen sign-in, and
+STOP for my choice before generating BGM/TTS - both point at a "Preflight"
+section in `SKILL.md` that doesn't actually exist there, and that STOP is
+exactly what caused a real run to interrupt and ask for a HeyGen login. This
+CLAUDE.md overrides that instruction outright: never run that Preflight, never
+run `npx hyperframes auth status` for BGM/TTS purposes, never stop to ask about
+HeyGen sign-in. Skip straight to the local path (Kokoro / MusicGen / Lyria) as
+if the choice were already made - because it has been, right here. Don't
+hand-edit those vendored files to remove it (an upgrade would silently restore
+it); this override is the durable fix. Worth reporting upstream sometime via
+`npx hyperframes feedback --file-issue` (consent-gated - ask me first).
 
 Within that local setup, actually use the range Kokoro gives instead of
 defaulting to the same voice out of habit:
@@ -268,15 +286,33 @@ follow this order:
    `media-use/audio/references/bgm.md`'s mood table). Same license as the
    bundled SFX - always commercial-safe. Check `manifest.json` for the mood
    your brief maps to; if it has entries, copy the matching file in as the
-   BGM track instead of calling HeyGen or MusicGen. If that mood's array is
-   empty (nothing populated yet), fall through to step 2/3 and mention to me
-   that `assets/bgm-library/README.md` explains how to add tracks.
-2. **HeyGen retrieval** - only if I'm already signed in; their catalog is
-   licensed for this use.
-3. **MusicGen local generation** - last resort only. Its output is
-   non-commercial-licensed - fine for drafts/internal review, but flag it to
-   me explicitly before a final commercial deliverable ships with a
-   MusicGen-generated track.
+   BGM track instead of calling MusicGen. If that mood's array is empty
+   (all 4 currently are - nothing populated yet), fall through straight to
+   step 2 and mention to me that `assets/bgm-library/README.md` explains how
+   to add tracks - populating this library is the actual fix for repeated
+   MusicGen fallbacks, not a one-time nice-to-have.
+2. **MusicGen local generation** - the only fallback whenever step 1 has
+   no track for the mood. Fully local, no account, no login, no interruption.
+   Its output is non-commercial-licensed - fine for drafts/internal review,
+   but flag it to me explicitly before a final commercial deliverable ships
+   with a MusicGen-generated track. Never crossfade-loop or otherwise stall
+   on this step - one ~28-30s seed clip and move on (see Fast production
+   above).
+
+HeyGen is never used for music, period - not as an automatic step, not as an
+opt-in fallback, not even if a session happens to already be authenticated.
+Do not check for a HeyGen session, do not call any HeyGen retrieval step, and
+never pause a run for a HeyGen (or any other) login prompt for BGM. Music is
+100% local: `assets/bgm-library` first, MusicGen otherwise.
+
+Note on the Pixabay REST API (`pixabay.com/api/docs/`, including any account/
+API key registered against it): it only exposes two endpoints - Search
+Images and Search Videos. There is no audio/music endpoint in this API on
+any account tier, so it cannot fetch or download BGM tracks no matter what
+key is used - this isn't a config gap, it's outside what the API does. Don't
+attempt to wire it into the music pipeline. The only way to use Pixabay for
+audio here is the manual one-time download into `assets/bgm-library/`
+described in step 1 (same Content License the bundled SFX already use).
 
 ## Inputs I may give you
 - A URL -> scrape it for copy, branding, screenshots.

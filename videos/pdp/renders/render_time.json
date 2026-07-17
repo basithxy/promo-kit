@@ -1,0 +1,6 @@
+{
+    "command":  "npx --yes hyperframes@0.7.60 render --quality standard --output renders/video.mp4",
+    "seconds":  73.4,
+    "exitCode":  0,
+    "finishedAt":  "2026-07-16T19:18:55.5628067Z"
+}

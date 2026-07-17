@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Nohemi";
+          font-weight: 700;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Nohemi-Bold.otf") format("opentype");
+        }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          background: transparent;
+          font-family: "Nohemi", sans-serif;
+        }
+
+        .bg-field {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 1.4cqw;
+        }
+
+        /* ---- atmosphere: faint concentric closing rings (frame.md's
+           closing treatment) - decorative, static, no timeline motion,
+           kept short enough that even the widest ring stays inside the
+           83% keep-out band (max reach 540 + 340 = 880px < 896px). ---- */
+        .rings {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .ring {
+          position: absolute;
+          border-radius: 50%;
+          border: 1.5px solid rgba(5, 101, 245, 0.06);
+        }
+        #ring-1 {
+          width: 380px;
+          height: 380px;
+        }
+        #ring-2 {
+          width: 520px;
+          height: 520px;
+          border-color: rgba(5, 101, 245, 0.05);
+        }
+        #ring-3 {
+          width: 680px;
+          height: 680px;
+          border-color: rgba(5, 101, 245, 0.035);
+        }
+
+        .center-wrap {
+          position: relative;
+          width: 46cqw;
+          height: 15cqw;
+          z-index: 1;
+        }
+
+        .glow-wrap {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          z-index: 0;
+        }
+        #glow {
+          width: 50cqw;
+          height: 26cqw;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            rgba(3, 54, 148, 0.55) 0%,
+            rgba(5, 101, 245, 0.28) 42%,
+            rgba(5, 101, 245, 0) 72%
+          );
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+
+        .morph-slot {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+        }
+        /* incoming (CTA) sits above outgoing (logo) so the shrink-fade
+           tail never bleeds through the pop-in - see scale-swap-transition */
+        #cta-slot {
+          z-index: 3;
+        }
+
+        #logo {
+          display: block;
+          width: 26cqw;
+          height: auto;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+
+        #cta-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2cqw 4.5cqw;
+          background: #0565f5;
+          color: #ffffff;
+          border: none;
+          border-radius: 100px;
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 2.6cqw;
+          letter-spacing: 0;
+          white-space: nowrap;
+          box-shadow: none;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+
+        .url-wrap {
+          z-index: 1;
+        }
+        #url-text {
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 1.15cqw;
+          letter-spacing: 0.02em;
+          color: #6b6b6b;
+          text-align: center;
+          opacity: 0;
+        }
+
+        /* ---- cursor: absolute, positioned in stage-pixel coordinates via
+           GSAP x/y translate from a top:0;left:0 anchor. transform-origin
+           0 0 keeps the arrow TIP as the stable point during scale. ---- */
+        #cursor {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 62px;
+          height: 62px;
+          opacity: 0;
+          pointer-events: none;
+          transform-origin: 0 0;
+          z-index: 5;
+          filter: drop-shadow(0 3px 8px rgba(20, 20, 20, 0.28));
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="06-cta" data-width="1920" data-height="1080">
+        <div class="clip bg-field" id="bg" data-start="0" data-duration="4.224" data-track-index="0"></div>
+
+        <div class="clip stage" id="stage" data-start="0" data-duration="4.224" data-track-index="1">
+          <div class="rings" aria-hidden="true">
+            <span class="ring" id="ring-1"></span>
+            <span class="ring" id="ring-2"></span>
+            <span class="ring" id="ring-3"></span>
+          </div>
+
+          <div class="center-wrap" id="center-wrap">
+            <div class="glow-wrap">
+              <div id="glow"></div>
+            </div>
+            <div class="morph-slot" id="logo-slot">
+              <img
+                id="logo"
+                src="assets/logo.png"
+                alt="PropDesigner Pro"
+                data-color-grading='{"preset":"deep-contrast","intensity":1}'
+              />
+            </div>
+            <div class="morph-slot" id="cta-slot">
+              <button id="cta-btn"><span id="cta-label">Try Now For Free</span></button>
+            </div>
+          </div>
+
+          <div class="url-wrap">
+            <div id="url-text">propdesigner-pro.com</div>
+          </div>
+
+          <svg id="cursor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M3 2 L21 12 L12 13 L7 22 Z"
+              fill="#6b6b6b"
+              stroke="#ffffff"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          var tl = gsap.timeline({ paused: true });
+
+          var logo = "#logo";
+          var ctaBtn = "#cta-btn";
+          var cursor = "#cursor";
+          var glow = "#glow";
+          var urlText = "#url-text";
+
+          // Cursor starts off-stage (upper right), fully transparent, in
+          // stage-pixel coordinates (cursor is anchored top:0;left:0 over
+          // the 1920x1080 stage, so x/y translate = absolute position).
+          gsap.set(cursor, { x: 1700, y: 140, opacity: 0 });
+
+          // ---- Scene 1 (0.0-1.0s): logo lockup holds dead-center, alive
+          // but resting - fast settle (hero visible well before 0.5s) then
+          // a faint rotational-only idle breath (sine-wave-loop, low amp).
+          tl.fromTo(
+            logo,
+            { opacity: 0, scale: 0.94 },
+            { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" },
+            0,
+          );
+
+          var idlePhase = { p: 0 };
+          tl.to(
+            idlePhase,
+            {
+              p: Math.PI * 2 * 0.22,
+              duration: 0.65,
+              ease: "none",
+              onUpdate: function () {
+                gsap.set(logo, { rotation: Math.sin(idlePhase.p) * 0.6 });
+              },
+            },
+            0.35,
+          );
+
+          // ---- Scene 2 (1.0-1.7s): scale-swap-transition - the logo
+          // condenses at the same screen center into the smaller, brighter
+          // cobalt CTA pill. Outgoing shrink-fades (power2.in) while the
+          // incoming pops up with overshoot (back.out), sharing one
+          // transform-origin (both centered via the flex .morph-slot, no
+          // CSS transform on either element itself).
+          var SWAP_TRIGGER = 1.0;
+          var EXIT_DUR = 0.3;
+          var OVERLAP = 0.15;
+          var ENTER_DUR = 0.45;
+
+          tl.to(
+            logo,
+            { scale: 0.7, opacity: 0, duration: EXIT_DUR, ease: "power2.in" },
+            SWAP_TRIGGER,
+          );
+          tl.fromTo(
+            ctaBtn,
+            { scale: 0.7, opacity: 0 },
+            { scale: 1, opacity: 1, duration: ENTER_DUR, ease: "back.out(1.6)" },
+            SWAP_TRIGGER + EXIT_DUR - OVERLAP,
+          );
+
+          // ---- Scene 3 (1.7-2.5s): a text-muted cursor arrives from
+          // off-stage on a decelerating path (power2.out), hard-cut opacity
+          // in at the start of the approach, landing a few px off the
+          // button's geometric center so the aim reads human.
+          var CURSOR_APPROACH_START = 1.7;
+          var CURSOR_APPROACH_DUR = 0.7;
+          var LANDING_X = 974; // button center (~960) + 14px human offset
+          var LANDING_Y = 522; // button center (~512) + 10px human offset
+
+          tl.set(cursor, { opacity: 1 }, CURSOR_APPROACH_START);
+          tl.to(
+            cursor,
+            { x: LANDING_X, y: LANDING_Y, duration: CURSOR_APPROACH_DUR, ease: "power2.out" },
+            CURSOR_APPROACH_START,
+          );
+
+          // ---- Scene 4 (2.5-4.224s): physics-press-reaction - cursor and
+          // CTA compress together in lockstep, then release with an
+          // ambient-glow-bloom behind the button; the URL fades in on the
+          // same beat. Holds on the clicked state to the end - this frame
+          // is the video's real exit (final frame, deliberate held beat).
+          var PRESS_DOWN_AT = 2.5;
+          var PRESS_DOWN_DUR = 0.15;
+          var PRESS_INTENSITY = 0.09;
+          var RELEASE_AT = PRESS_DOWN_AT + PRESS_DOWN_DUR; // 2.65
+          var RELEASE_DUR = 0.55;
+
+          tl.to(
+            [ctaBtn, cursor],
+            { scale: 1 - PRESS_INTENSITY, duration: PRESS_DOWN_DUR, ease: "power1.in" },
+            PRESS_DOWN_AT,
+          );
+          tl.to(
+            [ctaBtn, cursor],
+            { scale: 1, duration: RELEASE_DUR, ease: "back.out(1.7)" },
+            RELEASE_AT,
+          );
+
+          // Ambient glow bloom - un-triggered presence bloom landing on the
+          // button's release settle (bloom-and-hold variant: the remaining
+          // window is under 1.1s, too short for a meaningful breathe cycle).
+          tl.fromTo(
+            glow,
+            { opacity: 0, scale: 0.85 },
+            { opacity: 0.28, scale: 1, duration: RELEASE_DUR, ease: "power2.out" },
+            RELEASE_AT,
+          );
+
+          // URL lands on the same beat, settling with the button + glow.
+          tl.fromTo(
+            urlText,
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
+            RELEASE_AT + 0.1,
+          );
+
+          // Holds static from ~3.2s to 4.224s - the video's real exit, no
+          // further motion (final frame's deliberate settle).
+
+          window.__timelines["06-cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

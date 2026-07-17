@@ -1,0 +1,190 @@
+[a] Details
+[a] [#IABV2SETTINGS#]
+[a] About
+[div] This website uses cookies
+[div] We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+[div] [#GPC_BANNER_ICON#]
+[div] [#GPC_TOAST_TEXT#]
+[span] Consent Selection
+[strong] Necessary
+[strong] Preferences
+[strong] Statistics
+[strong] Marketing
+[a] Show details
+[div] Details
+[span] Necessary
+[div] Necessary cookies help make a website usable by enabling basic functions like page navigation and access to secure areas of the website. The website cannot function properly without these cookies.
+[a] Cookiebot
+[a] Learn more about this provider
+[strong] CookieConsent
+[span] Stores the user's cookie consent state for the current domain
+[b] Maximum Storage Duration
+[span] : 1 year
+[b] Type
+[span] : HTTP Cookie
+[a] propdesigner-pro.com
+[strong] __Host-next-auth.csrf-token
+[span] Ensures visitor browsing-security by preventing cross-site request forgery. This cookie is essential for the security of the website and visitor.
+[b] Maximum Storage Duration
+[span] : Session
+[b] Type
+[span] : HTTP Cookie
+[strong] __Secure-next-auth.callback-url
+[span] Used in order to detect spam and improve the website's security.
+[b] Maximum Storage Duration
+[span] : Session
+[b] Type
+[span] : HTTP Cookie
+[strong] nextauth.message
+[span] Preserves users states across page requests.
+[b] Maximum Storage Duration
+[span] : Persistent
+[b] Type
+[span] : HTML Local Storage
+[span] Preferences
+[div] Preference cookies enable a website to remember information that changes the way the website behaves or looks, like your preferred language or the region that you are in.
+[p] We do not use cookies of this type.
+[span] Statistics
+[div] Statistic cookies help website owners to understand how visitors interact with websites by collecting and reporting information anonymously.
+[p] We do not use cookies of this type.
+[span] Marketing
+[div] Marketing cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.
+[div] sibautomation.com
+[div] propdesigner-pro.com
+[strong] sib_cuid [x2]
+[span] Collects information on the user's website navigation and preferences - This is used to target potential newsletter based upon this information.
+[b] Maximum Storage Duration
+[span] : 6 months
+[b] Type
+[span] : HTTP Cookie
+[button] Unclassified
+[div] Unclassified cookies are cookies that we are in the process of classifying, together with the providers of individual cookies.
+[a] propdesigner-pro.com
+[strong] isAuthenticated
+[span] Pending
+[b] Maximum Storage Duration
+[span] : Persistent
+[b] Type
+[span] : HTML Local Storage
+[a] Cross-domain consent
+[span] [#BULK_CONSENT_DOMAINS_COUNT#]
+[div] [#BULK_CONSENT_TITLE#]
+[span] List of domains your consent applies to:
+[div] Cookie declaration last updated on 7/14/26 by
+[a] Cookiebot
+[div] [#IABV2_TITLE#]
+[div] [#IABV2_BODY_INTRO#]
+[div] [#IABV2_BODY_LEGITIMATE_INTEREST_INTRO#]
+[div] [#IABV2_BODY_PREFERENCE_INTRO#]
+[button] [#IABV2_LABEL_PURPOSES#]
+[div] [#IABV2_BODY_PURPOSES_INTRO#]
+[button] [#IABV2_LABEL_FEATURES#]
+[div] [#IABV2_BODY_FEATURES_INTRO#]
+[button] [#IABV2_LABEL_PARTNERS#]
+[div] [#IABV2_BODY_PARTNERS_INTRO#]
+[div] About
+[div] Cookies are small text files that can be used by websites to make a user's experience more efficient.
+[div] The law states that we can store cookies on your device if they are strictly necessary for the operation of this site. For all other types of cookies we need your permission.
+[div] This site uses different types of cookies. Some cookies are placed by third party services that appear on our pages.
+[div] You can at any time change or withdraw your consent from the Cookie Declaration on our website.
+[div] Learn more about who we are, how you can contact us and how we process personal data in our Privacy Policy.
+[div] Please state your consent ID and date when you contact us regarding your consent.
+[strong] Do not sell or share my personal information
+[button] Deny
+[button] Allow selection
+[button] Allow all
+[button] Login
+[button] Create New Account
+[p] English
+[h1] Where Properties Become Brands
+[p] Create marketing documents in no time at all
+[button] Try Now For Free
+[a] Book a Consultation
+[span] About PropDesigner Pro
+[h2] Effortless Property Marketing, Designed for You.
+[p] Creating high-quality marketing materials for real estate can be time-consuming and expensive. PropDesigner Pro simplifies this process by using AI-powered technology and smart automation to generate professional brochures, exposés, and fact sheets in just a few clicks. Whether you’re an estate agent, property developer, or sales organization, our tool ensures efficient, creative, and customized document creation—saving you time while maintaining a strong brand identity.
+[span] Why Choose
+[h2] Smart, Fast & Professional Property Marketing
+[h3] Created Efficiently
+[p] Thanks to artificial intelligence paired with PropDesigner Pro’s special algorithm, you can create professional project brochures, exposés and fact sheets for your properties quickly and cost-effectively with just a few clicks.
+[h3] Creatively Designed
+[p] You define target groups, select the right colour scheme and our tool generates professionally laid-out marketing documents in which you can adapt the content as you wish.
+[h3] Customize Individually
+[p] PropDesigner Pro gives you creatively designed layout templates that you can customize individually. If you have a template for your exposés, brochures or fact sheets that you would like to use with our tool: No problem! For a one-off fee, we will create this template in PropDesigner Pro.
+[h3] Quickly Available
+[p] Speed is of the essence in sales. In our cloud-based Docu Box, you have access to all marketing documents, organised by properties, at any time and from anywhere. You can also store all other important documents there, such as land registry maps, construction specifications, declarations of division, etc.
+[span] Payment Plan
+[h2] Choose the Right Plan for Your
+[span] Property Marketing
+[p] Start for Free
+[p] Free
+[p] Access essential features with limited usage—perfect for trying out the tool.
+[p] 3 downloads per month
+[p] Up to 10 users
+[p] 1 GB storage
+[p] Create up-to 3 brands
+[p] Multi-language support (English, German)
+[p] Cloud-based document management
+[p] Rights management at user level
+[p] Marketing document generator
+[button] Get Start For Free
+[p] Customized for You
+[p] On Request
+[p] Get a tailored solution with unlimited access and advanced features.
+[p] Downloads on request
+[p] Users on request
+[p] Storage on request
+[p] No of brands on request
+[p] Multi-language support on request
+[p] Cloud-based document management
+[p] Rights management at user level
+[p] Marketing document generator
+[button] Contact Us
+[span] Use Cases
+[h2] Who Benefits from PropDesigner Pro?
+[p] PropDesigner Pro simplifies real estate marketing by offering professionally designed marketing documents at your fingertips. Whether you’re an estate agent, property developer, or sales organization, our tool ensures efficiency, consistency, and brand identity across all materials. Say goodbye to time-consuming manual designs and hello to a seamless, cost-effective solution.
+[summary] Who Benefits from PropDesigner Pro
+[p] Estate agents rarely have access to their own marketing department to design graphically sophisticated exposés. So they’re left to DIY or pass it to an assistant. PropDesigner Pro creates a separate branded brochure, exposé and fact sheet for each property in minutes—maximising impact, minimising effort.
+[summary] Why Property Developers Use Our Tool
+[p] Project brochures are often commissioned from agencies—expensive and time-consuming. PropDesigner Pro lets an assistant generate a polished, on-brand brochure in a few clicks. Everything is stored in the cloud, so marketing materials are instantly available to internal or external distributors.
+[summary] Why Sales Organisations Use Our Tool
+[p] Sales teams often rely on generic property documents. With PropDesigner Pro, you can spin up individual brochures, exposés and fact sheets—complete with your contact details and multi-language support—on demand, from anywhere.
+[h3] Who Benefits from PropDesigner Pro
+[p] Estate agents rarely have access to their own marketing department to design graphically sophisticated exposés. So they’re left to DIY or pass it to an assistant. PropDesigner Pro creates a separate branded brochure, exposé and fact sheet for each property in minutes—maximising impact, minimising effort.
+[h3] Why Property Developers Use Our Tool
+[p] Project brochures are often commissioned from agencies—expensive and time-consuming. PropDesigner Pro lets an assistant generate a polished, on-brand brochure in a few clicks. Everything is stored in the cloud, so marketing materials are instantly available to internal or external distributors.
+[h3] Why Sales Organisations Use Our Tool
+[p] Sales teams often rely on generic property documents. With PropDesigner Pro, you can spin up individual brochures, exposés and fact sheets—complete with your contact details and multi-language support—on demand, from anywhere.
+[span] Book an Appointment
+[h2] Discover How PropDesigner Pro Can Work For You.
+[p] Consultation Appointment: Free Of Charge & Non-Binding.
+[p] We will be happy to show you the tool in a video call and answer all your questions.
+[a] Book a Consultation Appointment
+[span] Frequently Asked Questions
+[h2] Answers to Your Queries
+[p] We’ve compiled a list of frequently asked questions to help you get the most out of PropDesigner Pro. If you don’t find the answer you’re looking for, feel free to contact us!
+[span] What is PropDesigner Pro?
+[span] PropDesigner Pro is a powerful design tool built specifically for real estate professionals. It helps you create stunning exposés, brochures, and fact sheets in minutes—no design skills needed. Keep your marketing on-brand and consistent, all from one platform.
+[span] Who is PropDesigner Pro for?
+[span] Is there a free plan available?
+[span] Can I upgrade later?
+[span] Does it support multiple languages?
+[span] Is PropDesigner Pro cloud-based?
+[div] Contact Us
+[h2] Get in Touch with Us
+[option] Salutation
+[option] Mr.
+[option] Ms.
+[button] Send Message →
+[p] Helping you create professional marketing documents effortlessly.
+[p] Follow Us
+[h4] Quick Access
+[a] Book a Consultation
+[a] Legal Notice
+[a] Data Protection and Privacy
+[a] Terms & Conditions
+[h4] Contact Info
+[span] Berlin, Germany
+[a] info@propdesigner-pro.com
+[p] Follow Us
+[div] © Copyright 2025 – PropDesigner Pro

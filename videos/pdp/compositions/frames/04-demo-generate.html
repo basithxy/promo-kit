@@ -1,0 +1,734 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Nohemi";
+          font-weight: 700;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Nohemi-Bold.otf") format("opentype");
+        }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Nohemi", sans-serif;
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+          overflow: hidden;
+        }
+
+        .stage::before {
+          content: "";
+          position: absolute;
+          top: -10%;
+          right: -8%;
+          width: 60%;
+          height: 70%;
+          background: radial-gradient(circle, rgba(5, 101, 245, 0.07) 0%, rgba(5, 101, 245, 0) 70%);
+          pointer-events: none;
+        }
+
+        .stage::after {
+          content: "";
+          position: absolute;
+          bottom: -12%;
+          left: -6%;
+          width: 46%;
+          height: 55%;
+          background: radial-gradient(circle, rgba(5, 101, 245, 0.05) 0%, rgba(5, 101, 245, 0) 70%);
+          pointer-events: none;
+        }
+
+        .camera {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        /* ---------- App window shell ---------- */
+        .app-window {
+          position: absolute;
+          left: 260px;
+          top: 190px;
+          width: 1400px;
+          height: 660px;
+          background: #ffffff;
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          border-radius: 20px;
+        }
+
+        .win-chrome {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 56px;
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          padding: 0 28px;
+          border-bottom: 1.5px solid rgba(5, 101, 245, 0.14);
+          box-sizing: border-box;
+        }
+
+        .win-dots {
+          display: flex;
+          gap: 8px;
+        }
+
+        .win-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: rgba(20, 20, 20, 0.12);
+        }
+
+        .win-title {
+          font-size: 16px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #6b6b6b;
+        }
+
+        .win-body {
+          position: absolute;
+          left: 48px;
+          top: 96px;
+          width: 1304px;
+          height: 524px;
+        }
+
+        /* ---------- Scene A: form state ---------- */
+        .state-form {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          display: flex;
+          gap: 52px;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        .panel-form {
+          flex: 0 0 808px;
+          display: flex;
+          flex-direction: column;
+          gap: 26px;
+        }
+
+        .field-label {
+          display: block;
+          font-size: 15px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #0565f5;
+          margin-bottom: 10px;
+        }
+
+        .field-value {
+          height: 60px;
+          border-radius: 12px;
+          background: rgba(5, 101, 245, 0.04);
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          display: flex;
+          align-items: center;
+          padding: 0 22px;
+          font-size: 24px;
+          font-weight: 700;
+          color: #141414;
+          box-sizing: border-box;
+        }
+
+        .field-row {
+          display: flex;
+          gap: 28px;
+          align-items: flex-start;
+        }
+
+        .field-photo-thumb {
+          width: 168px;
+          height: 96px;
+          border-radius: 12px;
+          background: linear-gradient(135deg, rgba(5, 101, 245, 0.16), rgba(5, 101, 245, 0.04));
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          display: grid;
+          place-items: center;
+        }
+
+        .field-photo-thumb svg {
+          width: 36px;
+          height: 36px;
+        }
+
+        .swatch-block {
+          flex: 1;
+        }
+
+        .swatch-row {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+        }
+
+        .swatch {
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          box-sizing: border-box;
+        }
+
+        .swatch-ring {
+          width: 66px;
+          height: 66px;
+          border-radius: 50%;
+          border: 3px solid #0565f5;
+          display: grid;
+          place-items: center;
+        }
+
+        .swatch-ring .swatch {
+          width: 52px;
+          height: 52px;
+        }
+
+        .form-footer {
+          margin-top: auto;
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .btn-generate {
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+          padding: 20px 44px;
+          border-radius: 100px;
+          background: #0565f5;
+          color: #ffffff;
+          font-size: 24px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+          transform-origin: 50% 50%;
+          box-shadow: 0 0 0 0 rgba(5, 101, 245, 0);
+          will-change: transform, box-shadow;
+        }
+
+        .btn-generate svg {
+          width: 22px;
+          height: 22px;
+        }
+
+        .panel-preview {
+          flex: 0 0 444px;
+          border-radius: 14px;
+          background: rgba(5, 101, 245, 0.04);
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          padding: 28px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .preview-eyebrow {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #0565f5;
+        }
+
+        .preview-doc {
+          flex: 1;
+          background: #ffffff;
+          border-radius: 10px;
+          border: 1.5px solid rgba(5, 101, 245, 0.16);
+          padding: 18px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .preview-doc-header {
+          height: 10px;
+          width: 60%;
+          border-radius: 6px;
+          background: #0565f5;
+        }
+
+        .preview-doc-photo {
+          height: 96px;
+          border-radius: 8px;
+          background: linear-gradient(135deg, rgba(5, 101, 245, 0.18), rgba(5, 101, 245, 0.06));
+        }
+
+        .preview-doc-line {
+          height: 8px;
+          border-radius: 4px;
+          background: rgba(107, 107, 107, 0.22);
+        }
+
+        .preview-doc-line.short {
+          width: 55%;
+        }
+
+        /* ---------- Scene B: document-type tab state ---------- */
+        .state-generate {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          opacity: 0;
+          transform: scale(0.85);
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        .tab-row {
+          display: flex;
+          justify-content: center;
+          gap: 24px;
+          width: 1188px;
+          margin: 0 auto;
+        }
+
+        .tab {
+          flex: 1;
+          height: 84px;
+          border-radius: 14px;
+          background: rgba(5, 101, 245, 0.04);
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          display: grid;
+          place-items: center;
+          font-size: 24px;
+          font-weight: 700;
+          color: #141414;
+        }
+
+        .progress-track {
+          width: 1188px;
+          height: 10px;
+          margin: 34px auto 0;
+          border-radius: 6px;
+          background: rgba(5, 101, 245, 0.08);
+          overflow: hidden;
+        }
+
+        .progress-fill {
+          width: 100%;
+          height: 100%;
+          border-radius: 6px;
+          background: #0565f5;
+          transform: scaleX(0);
+          transform-origin: left center;
+        }
+
+        .assembly-wrap {
+          position: relative;
+          width: 1188px;
+          height: 300px;
+          margin: 34px auto 0;
+        }
+
+        .assembly-item {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 12px;
+          background: rgba(5, 101, 245, 0.04);
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          box-sizing: border-box;
+          will-change: transform, opacity;
+        }
+
+        .a-header {
+          width: 1188px;
+          height: 64px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding: 0 24px;
+        }
+
+        .a-header .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #0565f5;
+        }
+
+        .a-header .addr {
+          font-size: 22px;
+          font-weight: 700;
+          color: #141414;
+        }
+
+        .a-photo {
+          width: 140px;
+          height: 140px;
+          background: linear-gradient(135deg, rgba(5, 101, 245, 0.18), rgba(5, 101, 245, 0.05));
+          display: grid;
+          place-items: center;
+        }
+
+        .a-photo svg {
+          width: 40px;
+          height: 40px;
+        }
+
+        .a-col {
+          width: 330px;
+          height: 140px;
+          padding: 18px 20px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .a-col .eyebrow {
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #0565f5;
+          margin-bottom: 2px;
+        }
+
+        .a-col .ln {
+          height: 7px;
+          border-radius: 4px;
+          background: rgba(107, 107, 107, 0.22);
+          width: 100%;
+        }
+
+        .a-col .ln.s {
+          width: 62%;
+        }
+
+        /* ---------- Cursor ---------- */
+        .cursor {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 56px;
+          height: 56px;
+          pointer-events: none;
+          transform-origin: 0 0;
+          z-index: 50;
+        }
+      </style>
+
+      <div id="root" data-composition-id="04-demo-generate" data-width="1920" data-height="1080" data-duration="4.66">
+        <div class="stage clip" id="stage" data-start="0" data-duration="4.16" data-track-index="0">
+          <div class="camera" id="camera">
+            <div class="app-window" id="app-window">
+              <div class="win-chrome">
+                <div class="win-dots">
+                  <div class="win-dot"></div>
+                  <div class="win-dot"></div>
+                  <div class="win-dot"></div>
+                </div>
+                <div class="win-title">PropDesigner Pro &mdash; Factsheet Generator</div>
+              </div>
+
+              <div class="win-body">
+                <!-- Scene A: continuation of Frame 3's form state -->
+                <div class="state-form" id="state-form">
+                  <div class="panel-form">
+                    <div>
+                      <span class="field-label">Property Address</span>
+                      <div class="field-value">142 Maple Valley Heights</div>
+                    </div>
+
+                    <div class="field-row">
+                      <div>
+                        <span class="field-label">Cover Photo</span>
+                        <div class="field-photo-thumb">
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8.5C3 7.67 3.67 7 4.5 7H7L8.2 5.2C8.5 4.75 9 4.5 9.5 4.5H14.5C15 4.5 15.5 4.75 15.8 5.2L17 7H19.5C20.33 7 21 7.67 21 8.5V18C21 18.83 20.33 19.5 19.5 19.5H4.5C3.67 19.5 3 18.83 3 18V8.5Z" stroke="#0565F5" stroke-width="1.6"/>
+                            <circle cx="12" cy="13" r="3.4" stroke="#0565F5" stroke-width="1.6"/>
+                          </svg>
+                        </div>
+                      </div>
+
+                      <div class="swatch-block">
+                        <span class="field-label">Brand Style</span>
+                        <div class="swatch-row">
+                          <div class="swatch-ring">
+                            <div class="swatch" style="background:#0565F5"></div>
+                          </div>
+                          <div class="swatch" style="background:#141414"></div>
+                          <div class="swatch" style="background:#6B6B6B"></div>
+                          <div class="swatch" style="background:#9A9A9A"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-footer">
+                      <div class="btn-generate" id="btn-generate">
+                        <span>Generate</span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel-preview">
+                    <span class="preview-eyebrow">Live Preview</span>
+                    <div class="preview-doc">
+                      <div class="preview-doc-header"></div>
+                      <div class="preview-doc-photo"></div>
+                      <div class="preview-doc-line"></div>
+                      <div class="preview-doc-line"></div>
+                      <div class="preview-doc-line short"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Scene B: document type + generation state -->
+                <div class="state-generate" id="state-generate">
+                  <div class="tab-row">
+                    <div class="tab" id="tab-0">Brochure</div>
+                    <div class="tab" id="tab-1">Exposé</div>
+                    <div class="tab" id="tab-2">Fact Sheet</div>
+                  </div>
+
+                  <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill"></div>
+                  </div>
+
+                  <div class="assembly-wrap" id="assembly-wrap">
+                    <div class="assembly-item a-header" data-target-x="0" data-target-y="-118">
+                      <div class="dot"></div>
+                      <div class="addr">142 Maple Valley Heights</div>
+                    </div>
+                    <div class="assembly-item a-photo" data-target-x="-524" data-target-y="62">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 8.5C3 7.67 3.67 7 4.5 7H7L8.2 5.2C8.5 4.75 9 4.5 9.5 4.5H14.5C15 4.5 15.5 4.75 15.8 5.2L17 7H19.5C20.33 7 21 7.67 21 8.5V18C21 18.83 20.33 19.5 19.5 19.5H4.5C3.67 19.5 3 18.83 3 18V8.5Z" stroke="#0565F5" stroke-width="1.6"/>
+                        <circle cx="12" cy="13" r="3.4" stroke="#0565F5" stroke-width="1.6"/>
+                      </svg>
+                    </div>
+                    <div class="assembly-item a-col" data-target-x="-269" data-target-y="62">
+                      <span class="eyebrow">Key Facts</span>
+                      <div class="ln"></div>
+                      <div class="ln"></div>
+                      <div class="ln s"></div>
+                    </div>
+                    <div class="assembly-item a-col" data-target-x="81" data-target-y="62">
+                      <span class="eyebrow">Amenities</span>
+                      <div class="ln"></div>
+                      <div class="ln"></div>
+                      <div class="ln s"></div>
+                    </div>
+                    <div class="assembly-item a-col" data-target-x="431" data-target-y="62">
+                      <span class="eyebrow">Distances</span>
+                      <div class="ln"></div>
+                      <div class="ln"></div>
+                      <div class="ln s"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <svg class="cursor" id="cursor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 2 L21 12 L12 13 L7 22 Z" fill="#0565F5" stroke="#ffffff" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          var tl = gsap.timeline({ paused: true });
+
+          var TOTAL = 4.16;
+
+          // ---------- Coordinates (composition space, camera wrapper is inset:0) ----------
+          // Generate button center, measured from the app-window (260,190) + win-body (48,96)
+          // offset + form-footer flex end position. Precomputed to avoid layout reads at
+          // script-eval time (getBoundingClientRect is unsafe before mount).
+          var BTN_CENTER = { x: 996, y: 776 };
+          // Selected swatch ring center (continuation point from Frame 3's last click):
+          // panel-form left 308 + thumb 168 + gap 28 = swatch-block left 504; first swatch
+          // (the ring) center = 504 + 33 (half of 66px ring). Row top 400 + label block 28
+          // + half ring 33 = 461.
+          var SWATCH_CENTER = { x: 537, y: 461 };
+
+          // ================= Scene 1 (0.0 - 1.0s): press "Generate" =================
+          gsap.set("#cursor", { x: SWATCH_CENTER.x, y: SWATCH_CENTER.y, opacity: 1 });
+
+          var APPROACH_START = 0.05;
+          var APPROACH_DUR = 0.55; // arrives at 0.60
+          var PRESS_DOWN_AT = APPROACH_START + APPROACH_DUR; // 0.60
+          var PRESS_DOWN_DUR = 0.15;
+          var RELEASE_AT = PRESS_DOWN_AT + PRESS_DOWN_DUR; // 0.75
+          var RELEASE_DUR = 0.25; // settles at 1.00
+
+          tl.to(
+            "#cursor",
+            { x: BTN_CENTER.x, y: BTN_CENTER.y, duration: APPROACH_DUR, ease: "power2.inOut" },
+            APPROACH_START
+          );
+
+          tl.to(
+            ["#btn-generate", "#cursor"],
+            { scale: 0.9, duration: PRESS_DOWN_DUR, ease: "power1.in" },
+            PRESS_DOWN_AT
+          );
+
+          tl.to(
+            ["#btn-generate", "#cursor"],
+            { scale: 1, duration: RELEASE_DUR, ease: "back.out(1.8)" },
+            RELEASE_AT
+          );
+
+          tl.to(
+            "#btn-generate",
+            { boxShadow: "0 0 0 14px rgba(5,101,245,0.16)", duration: PRESS_DOWN_DUR, ease: "power1.in" },
+            PRESS_DOWN_AT
+          );
+          tl.to(
+            "#btn-generate",
+            { boxShadow: "0 0 0 0 rgba(5,101,245,0)", duration: RELEASE_DUR + 0.2, ease: "power2.out" },
+            RELEASE_AT
+          );
+
+          // ================= Seam A -> B (t = 1.0s): scale-swap-transition =================
+          var TRIGGER = 1.0;
+          var EXIT_DUR = 0.35;
+          var EXIT_SCALE = 0.85;
+          var OVERLAP = 0.15;
+          var ENTER_DUR = 0.55;
+
+          tl.to(
+            "#state-form",
+            { scale: EXIT_SCALE, opacity: 0, duration: EXIT_DUR, ease: "power2.in" },
+            TRIGGER
+          );
+          tl.to("#cursor", { opacity: 0, duration: 0.3, ease: "power2.out" }, TRIGGER);
+
+          tl.to(
+            "#state-generate",
+            { scale: 1, opacity: 1, duration: ENTER_DUR, ease: "back.out(1.6)" },
+            TRIGGER + EXIT_DUR - OVERLAP // = 1.20
+          );
+
+          // ================= Scene 2 (1.0 - 2.8s): tab stepping =================
+          // Discrete-threshold state stepping (discrete-text-sequence mechanism, applied to
+          // a background-color/active state instead of text) synced to "brochure, exposé, or
+          // fact sheet" landing left to right, one at a time.
+          var TAB_SEQUENCE = [
+            { t: 1.9, active: 0 },
+            { t: 2.2, active: 1 },
+            { t: 2.5, active: 2 }
+          ];
+          var tabEls = [
+            document.getElementById("tab-0"),
+            document.getElementById("tab-1"),
+            document.getElementById("tab-2")
+          ];
+
+          function activeTabAt(time) {
+            var a = -1;
+            for (var i = 0; i < TAB_SEQUENCE.length; i++) {
+              if (time >= TAB_SEQUENCE[i].t) a = TAB_SEQUENCE[i].active;
+            }
+            return a;
+          }
+
+          function applyTabState(time) {
+            var active = activeTabAt(time);
+            for (var i = 0; i < tabEls.length; i++) {
+              if (i === active) {
+                tabEls[i].style.background = "#0565F5";
+                tabEls[i].style.borderColor = "#0565F5";
+                tabEls[i].style.color = "#ffffff";
+              } else {
+                tabEls[i].style.background = "rgba(5, 101, 245, 0.04)";
+                tabEls[i].style.borderColor = "rgba(5, 101, 245, 0.2)";
+                tabEls[i].style.color = "#141414";
+              }
+            }
+          }
+
+          var tabDriver = { t: 0 };
+          tl.to(
+            tabDriver,
+            {
+              t: TOTAL,
+              duration: TOTAL,
+              ease: "none",
+              onUpdate: function () {
+                applyTabState(tabDriver.t);
+              }
+            },
+            0
+          );
+
+          // ================= Scene 3 (2.8 - 4.16s): progress fill + document assembly =================
+          tl.to("#progress-fill", { scaleX: 1, duration: 1.0, ease: "power2.out" }, 2.8);
+
+          var items = document.querySelectorAll(".assembly-item");
+          var EXPAND_DUR = 0.7;
+          var STAGGER = 0.08;
+          var ENTRY_AT = 2.9;
+
+          items.forEach(function (el, i) {
+            var targetX = Number(el.dataset.targetX);
+            var targetY = Number(el.dataset.targetY);
+            tl.fromTo(
+              el,
+              { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.6, opacity: 0 },
+              {
+                x: targetX,
+                y: targetY,
+                scale: 1,
+                opacity: 1,
+                duration: EXPAND_DUR,
+                ease: "power3.out"
+              },
+              ENTRY_AT + i * STAGGER
+            );
+          });
+
+          // Subtle continuous push-in across the FULL duration (not isolated to the back half).
+          var cam = { scale: 1 };
+          tl.to(
+            cam,
+            {
+              scale: 1.035,
+              duration: TOTAL,
+              ease: "none",
+              onUpdate: function () {
+                document.getElementById("camera").style.transform = "scale(" + cam.scale + ")";
+              }
+            },
+            0
+          );
+
+          window.__timelines["04-demo-generate"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Nohemi";
+          font-weight: 700;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/Nohemi-Bold.otf") format("opentype");
+        }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          background: transparent;
+          font-family: "Nohemi", sans-serif;
+        }
+
+        .bg-field {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+
+        /* Soft cobalt accent shape resolving behind the document stack */
+        .accent-shape {
+          position: absolute;
+          left: 710px;
+          top: 90px;
+          width: 760px;
+          height: 760px;
+          border-radius: 44%;
+          background: rgba(5, 101, 245, 0.08);
+          filter: blur(50px);
+          transform-origin: 50% 50%;
+          will-change: transform;
+          z-index: 0;
+        }
+
+        /* Universal soft device-style mat: white card, tinted cobalt border,
+           no shadow (per frame.md: tinted cards never carry a box-shadow). */
+        .doc-card {
+          position: absolute;
+          box-sizing: border-box;
+          background: #ffffff;
+          border: 1.5px solid rgba(5, 101, 245, 0.2);
+          border-radius: 16px;
+          padding: 10px;
+          overflow: hidden;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        .doc-img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+
+        /* Supporting example — glimpsed at the edge, behind/left of the hero */
+        .doc-card.supporting {
+          left: 650px;
+          top: 205px;
+          width: 380px;
+          height: 409px;
+          z-index: 1;
+        }
+
+        /* Hero — the finished document, foreground, centered-right */
+        .doc-card.hero {
+          left: 980px;
+          top: 125px;
+          width: 420px;
+          height: 690px;
+          z-index: 3;
+        }
+
+        /* Solid cobalt chip — the system's one solid element, pill chrome */
+        .chip {
+          position: absolute;
+          left: 1285px;
+          top: 100px;
+          z-index: 4;
+          display: inline-flex;
+          align-items: center;
+          padding: 14px 26px;
+          background: #0565f5;
+          color: #ffffff;
+          border-radius: 100px;
+          font-family: "Nohemi", sans-serif;
+          font-weight: 700;
+          font-size: 22px;
+          letter-spacing: -0.01em;
+          white-space: nowrap;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+      </style>
+
+      <div id="root" data-composition-id="05-demo-result" data-width="1920" data-height="1080">
+        <div class="clip bg-field" id="bg" data-start="0" data-duration="4.096" data-track-index="0"></div>
+        <div class="clip stage" id="stage" data-start="0" data-duration="4.096" data-track-index="1">
+          <div class="accent-shape" id="accentShape"></div>
+
+          <div class="doc-card supporting" id="supportingCard">
+            <img class="doc-img" id="supportingImg" src="assets/willow-west-preview.jpg" alt="" />
+          </div>
+
+          <div class="doc-card hero" id="heroCard">
+            <img
+              class="doc-img"
+              id="heroImg"
+              src="assets/maple-valley-heights-preview.jpg"
+              data-color-grading='{"preset":"deep-contrast","intensity":1}'
+              alt=""
+            />
+          </div>
+
+          <div class="chip" id="chip">Ready in 3 min</div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          var tl = gsap.timeline({ paused: true });
+
+          // ---- Scene 1 (0.0–1.4s): document slides in, accent resolves, second
+          // example peeks in behind/left. VO: "A polished, on-brand document —" ----
+
+          // Accent shape scales up behind the stack (spring-pop-entrance, smooth
+          // long-tail — never bouncy, per this video's motion grammar).
+          tl.fromTo(
+            "#accentShape",
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" },
+            0.0,
+          );
+
+          // Supporting example (willow-west) settles in behind/left, receded
+          // (asymmetric 70/30 — this is the 30, glimpsed at the edge).
+          tl.fromTo(
+            "#supportingCard",
+            { scale: 0.92, opacity: 0 },
+            { scale: 1, opacity: 0.85, duration: 0.6, ease: "power3.out" },
+            0.08,
+          );
+
+          // Hero document (maple-valley) SLIDES IN from the right edge and
+          // settles — the finished-document payoff, visible well before 0.5s.
+          tl.fromTo(
+            "#heroCard",
+            { x: 260, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+            0.0,
+          );
+
+          // ---- Scene 2 (1.4–2.7s): "Ready in 3 min" chip pops at the document's
+          // corner. VO: "ready in minutes," ----
+          tl.fromTo(
+            "#chip",
+            { scale: 0, opacity: 0, y: 10 },
+            { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+            1.4,
+          );
+
+          // ---- Scene 3 (2.7–4.096s): everything settles. VO lands "not days."
+          // No further motion beyond subtle jitter on the chip; static hold to
+          // the end (no exit — Frame 5 is not the final frame). ----
+          var chip = document.getElementById("chip");
+          var phase = { p: 0 };
+          var IDLE_START = 2.7;
+          var IDLE_DUR = 4.096 - IDLE_START;
+          tl.to(
+            phase,
+            {
+              p: Math.PI * 2 * 0.8,
+              duration: IDLE_DUR,
+              ease: "none",
+              onUpdate: function () {
+                var s = 1 + Math.sin(phase.p) * 0.012;
+                var y = Math.sin(phase.p) * 2.5;
+                chip.style.transform = "translateY(" + y + "px) scale(" + s + ")";
+              },
+            },
+            IDLE_START,
+          );
+
+          window.__timelines["05-demo-result"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

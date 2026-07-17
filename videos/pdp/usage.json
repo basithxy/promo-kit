@@ -1,0 +1,23 @@
+{
+  "video": "pdp",
+  "startedAt": "2026-07-16T17:52:51.234Z",
+  "finishedAt": "2026-07-17T00:20:00.000Z",
+  "finishedAtSource": "progress.json lastUpdated (phase: done)",
+  "sessionsSpanned": 2,
+  "activeSeconds": 7127,
+  "activeTime": "1h 58m",
+  "elapsedSeconds": 23229,
+  "elapsedTime": "6h 27m",
+  "renderSeconds": 73.4,
+  "renderTime": "1m 13s",
+  "captureSeconds": null,
+  "captureTime": null,
+  "totalsByModel": {
+    "claude-sonnet-5": {
+      "input": 112,
+      "output": 19648,
+      "cacheRead": 9130613,
+      "cacheCreate": 178155
+    }
+  }
+}
