@@ -7,3 +7,5 @@
 | pdp | 2026-07-17T00:20:00.000Z | claude-sonnet-5 | 88 | 14835 | 4941606 | 2 | 1h 22m | 6h 27m | not measured |
 | pdp | 2026-07-17T00:20:00.000Z | claude-sonnet-5 | 112 | 19648 | 9130613 | 2 | 1h 58m | 6h 27m | 1m 13s |
 | azbow | 2026-07-17T17:52:00.000Z | claude-sonnet-5 | 24 | 4496 | 1134186 | 1 | 59s | 57m 42s | not measured |
+| PostSnag | 2026-07-18T09:48:00.000Z | claude-sonnet-5 | 32 | 8180 | 1577543 | 1 | 25m 2s | 1h 43m | not measured |
+| PostSnag | 2026-07-18T09:48:00.000Z | claude-sonnet-5 | 34 | 8619 | 2057924 | 1 | 1h 43m | 1h 43m | 2m 35s |

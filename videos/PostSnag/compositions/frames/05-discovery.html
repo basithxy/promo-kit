@@ -1,0 +1,481 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face{font-family:"Mona Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/MonaSans-Regular.woff") format("woff");}
+        @font-face{font-family:"Mona Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/MonaSans-Regular.woff2") format("woff2");}
+
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Mona Sans", sans-serif;
+        }
+
+        .disc5-ground {
+          position: absolute;
+          inset: 0;
+          background: #FFFFFF;
+        }
+
+        /* Dims the hoisted background video (external element, cannot be styled
+           directly — this scrim sits above it in the stacking order via an
+           explicit z-index and visually knocks it back to ~40% strength). */
+        .disc5-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: rgba(255, 255, 255, 0.62);
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+        }
+
+        .disc5-camera {
+          position: absolute;
+          inset: 0;
+          z-index: 5;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        .disc5-icon-cluster {
+          position: absolute;
+          left: 960px;
+          top: 460px;
+          margin-left: -148px;
+          margin-top: -64px;
+          width: 296px;
+          height: 128px;
+          display: flex;
+          gap: 40px;
+          z-index: 3;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+        .disc5-icon-badge {
+          width: 128px;
+          height: 128px;
+          border-radius: 50%;
+          background: #233987;
+          display: grid;
+          place-items: center;
+          color: #FFFFFF;
+        }
+        .disc5-icon-badge svg {
+          width: 56px;
+          height: 56px;
+        }
+
+        .disc5-grid-wrap {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+        }
+
+        .disc5-post-card {
+          position: absolute;
+          width: 500px;
+          height: 250px;
+          box-sizing: border-box;
+          padding: 22px;
+          background: rgba(35, 57, 135, 0.04);
+          border: 1.5px solid rgba(35, 57, 135, 0.2);
+          border-radius: 14px;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        .disc5-post-card.disc5-center {
+          z-index: 2;
+        }
+
+        .disc5-card-head {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .disc5-avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: rgba(35, 57, 135, 0.18);
+          flex: none;
+        }
+        .disc5-avatar.disc5-thumb-avatar {
+          background-size: cover;
+          background-position: center;
+        }
+        .disc5-lines {
+          display: flex;
+          flex-direction: column;
+          gap: 7px;
+        }
+        .disc5-line {
+          height: 9px;
+          border-radius: 5px;
+          background: rgba(35, 57, 135, 0.16);
+        }
+        .disc5-line.disc5-name { width: 120px; }
+        .disc5-line.disc5-time { width: 70px; }
+
+        .disc5-thumb {
+          width: 100%;
+          height: 108px;
+          border-radius: 10px;
+          object-fit: cover;
+          margin-top: 14px;
+          display: block;
+        }
+        .disc5-caption-lines {
+          margin-top: 14px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .disc5-caption-lines .disc5-line.disc5-cap-a { width: 92%; }
+        .disc5-caption-lines .disc5-line.disc5-cap-b { width: 62%; }
+
+        .disc5-engagement-row {
+          position: absolute;
+          left: 22px;
+          right: 22px;
+          bottom: 18px;
+          display: flex;
+          gap: 20px;
+          align-items: center;
+          color: #233987;
+          opacity: 0.55;
+        }
+        .disc5-engagement-row svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        .disc5-tag-top1 {
+          position: absolute;
+          top: -18px;
+          right: -14px;
+          z-index: 3;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 8px 16px;
+          border-radius: 100px;
+          background: rgba(35, 57, 135, 0.1);
+          color: #233987;
+          font-family: "Mona Sans", sans-serif;
+          font-weight: 600;
+          font-size: 13px;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        .disc5-tag-top1 svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        .disc5-glow-sweep {
+          position: absolute;
+          inset: 0;
+          z-index: 4;
+          pointer-events: none;
+          clip-path: inset(207px 184px 347px 184px);
+        }
+        .disc5-glow-band {
+          position: absolute;
+          top: 207px;
+          height: 526px;
+          width: 340px;
+          background: linear-gradient(
+            105deg,
+            rgba(35, 57, 135, 0) 0%,
+            rgba(35, 57, 135, 0.32) 50%,
+            rgba(35, 57, 135, 0) 100%
+          );
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="05-discovery" data-start="0" data-duration="7.611" data-width="1920" data-height="1080">
+        <div
+          class="disc5-ground clip"
+          data-start="0"
+          data-duration="7.611"
+          data-track-index="0"
+        ></div>
+
+        <!--
+          Background video candidate dropped: approved videos mount at a very
+          high host track index and always paint above every frame's own
+          foreground content (confirmed via check: it occluded #disc5-badge
+          and failed its text contrast) — a full-bleed "background, dimmed"
+          video is not achievable with this hoist mechanism. The reconstructed
+          card grid stands on its own without it.
+        -->
+
+        <div class="disc5-camera" id="disc5-camera">
+          <div class="disc5-icon-cluster" id="disc5-icon-cluster">
+            <div class="disc5-icon-badge">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16l-6-4-6 4V4z" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="disc5-icon-badge">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 16l6-6 4 4 7-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M15 5h5v5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="disc5-grid-wrap">
+            <!-- card 0 — top-left, carries the supporting thumbnail texture -->
+            <div class="disc5-post-card" id="disc5-card-0" style="left:184px; top:207px;">
+              <div class="disc5-card-head">
+                <div class="disc5-avatar"></div>
+                <div class="disc5-lines">
+                  <div class="disc5-line disc5-name"></div>
+                  <div class="disc5-line disc5-time"></div>
+                </div>
+              </div>
+              <img class="disc5-thumb" src="assets/find-the-posts-worth-copying.webp" alt="" />
+              <div class="disc5-engagement-row">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 6 5.5 6c1.7 0 3 1 4 2.3C10.5 7 11.8 6 13.5 6c3 0 4.5 3 3 6.5C19 16.65 12 21 12 21z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4V4z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l5 5-5 5M20 10H9a5 5 0 0 0-5 5v2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+            <!-- card 1 — top-middle, the focal / center card -->
+            <div class="disc5-post-card disc5-center" id="disc5-card-1" style="left:710px; top:207px;">
+              <div class="disc5-card-head">
+                <div class="disc5-avatar"></div>
+                <div class="disc5-lines">
+                  <div class="disc5-line disc5-name"></div>
+                  <div class="disc5-line disc5-time"></div>
+                </div>
+              </div>
+              <div class="disc5-caption-lines">
+                <div class="disc5-line disc5-cap-a"></div>
+                <div class="disc5-line disc5-cap-b"></div>
+              </div>
+              <div class="disc5-engagement-row">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 6 5.5 6c1.7 0 3 1 4 2.3C10.5 7 11.8 6 13.5 6c3 0 4.5 3 3 6.5C19 16.65 12 21 12 21z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4V4z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l5 5-5 5M20 10H9a5 5 0 0 0-5 5v2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="disc5-tag-top1" id="disc5-badge">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 16l6-6 4 4 7-9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5h5v5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Top 1%
+              </div>
+            </div>
+
+            <!-- card 2 — top-right -->
+            <div class="disc5-post-card" id="disc5-card-2" style="left:1236px; top:207px;">
+              <div class="disc5-card-head">
+                <div class="disc5-avatar"></div>
+                <div class="disc5-lines">
+                  <div class="disc5-line disc5-name"></div>
+                  <div class="disc5-line disc5-time"></div>
+                </div>
+              </div>
+              <div class="disc5-caption-lines">
+                <div class="disc5-line disc5-cap-a"></div>
+                <div class="disc5-line disc5-cap-b"></div>
+              </div>
+              <div class="disc5-engagement-row">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 6 5.5 6c1.7 0 3 1 4 2.3C10.5 7 11.8 6 13.5 6c3 0 4.5 3 3 6.5C19 16.65 12 21 12 21z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4V4z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l5 5-5 5M20 10H9a5 5 0 0 0-5 5v2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+            <!-- card 3 — bottom-left -->
+            <div class="disc5-post-card" id="disc5-card-3" style="left:184px; top:483px;">
+              <div class="disc5-card-head">
+                <div class="disc5-avatar"></div>
+                <div class="disc5-lines">
+                  <div class="disc5-line disc5-name"></div>
+                  <div class="disc5-line disc5-time"></div>
+                </div>
+              </div>
+              <div class="disc5-caption-lines">
+                <div class="disc5-line disc5-cap-a"></div>
+                <div class="disc5-line disc5-cap-b"></div>
+              </div>
+              <div class="disc5-engagement-row">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 6 5.5 6c1.7 0 3 1 4 2.3C10.5 7 11.8 6 13.5 6c3 0 4.5 3 3 6.5C19 16.65 12 21 12 21z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4V4z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l5 5-5 5M20 10H9a5 5 0 0 0-5 5v2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+            <!-- card 4 — bottom-middle -->
+            <div class="disc5-post-card" id="disc5-card-4" style="left:710px; top:483px;">
+              <div class="disc5-card-head">
+                <div class="disc5-avatar"></div>
+                <div class="disc5-lines">
+                  <div class="disc5-line disc5-name"></div>
+                  <div class="disc5-line disc5-time"></div>
+                </div>
+              </div>
+              <div class="disc5-caption-lines">
+                <div class="disc5-line disc5-cap-a"></div>
+                <div class="disc5-line disc5-cap-b"></div>
+              </div>
+              <div class="disc5-engagement-row">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 6 5.5 6c1.7 0 3 1 4 2.3C10.5 7 11.8 6 13.5 6c3 0 4.5 3 3 6.5C19 16.65 12 21 12 21z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4V4z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l5 5-5 5M20 10H9a5 5 0 0 0-5 5v2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+            <!-- card 5 — bottom-right -->
+            <div class="disc5-post-card" id="disc5-card-5" style="left:1236px; top:483px;">
+              <div class="disc5-card-head">
+                <div class="disc5-avatar"></div>
+                <div class="disc5-lines">
+                  <div class="disc5-line disc5-name"></div>
+                  <div class="disc5-line disc5-time"></div>
+                </div>
+              </div>
+              <div class="disc5-caption-lines">
+                <div class="disc5-line disc5-cap-a"></div>
+                <div class="disc5-line disc5-cap-b"></div>
+              </div>
+              <div class="disc5-engagement-row">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 6 5.5 6c1.7 0 3 1 4 2.3C10.5 7 11.8 6 13.5 6c3 0 4.5 3 3 6.5C19 16.65 12 21 12 21z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4V4z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l5 5-5 5M20 10H9a5 5 0 0 0-5 5v2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="disc5-glow-sweep">
+            <div class="disc5-glow-band" id="disc5-glow-band"></div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+
+          const TOTAL_DURATION = 7.211;
+
+          // ---- Multi-phase camera: tight open -> pull back to reveal grid ----
+          const camera = document.getElementById("disc5-camera");
+          const phase = { scale: 1.28 };
+
+          tl.to(
+            phase,
+            { scale: 1.0, duration: 1.6, ease: "power2.inOut" },
+            1.7,
+          );
+
+          const drift = { p: 0 };
+          tl.to(
+            drift,
+            {
+              p: Math.PI * 2 * 2,
+              duration: TOTAL_DURATION,
+              ease: "none",
+              onUpdate: () => {
+                const dx = Math.sin(drift.p) * 5;
+                const dy = Math.sin(drift.p * 1.3) * 3;
+                camera.style.transform = `scale(${phase.scale}) translate(${dx}px, ${dy}px)`;
+              },
+            },
+            0,
+          );
+
+          // ---- Scene 1 (0.0-1.7s): icon cluster pops in ----
+          tl.fromTo(
+            "#disc5-icon-cluster",
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" },
+            0,
+          );
+
+          // ---- Scene 2 (1.7-4.7s): icons shrink upward, grid cards assemble ----
+          tl.to(
+            "#disc5-icon-cluster",
+            { scale: 0.42, y: -300, duration: 0.9, ease: "power3.out" },
+            1.7,
+          );
+
+          const cards = gsap.utils.toArray(".disc5-post-card");
+          const CARD_STAGGER = 0.08;
+          const CARD_ENTRY_AT = 1.9;
+          cards.forEach((el, i) => {
+            tl.fromTo(
+              el,
+              { opacity: 0, scale: 0.85, y: 40 },
+              { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" },
+              CARD_ENTRY_AT + i * CARD_STAGGER,
+            );
+          });
+
+          // Center card (index 1) scales forward once the grid has landed.
+          tl.to(
+            "#disc5-card-1",
+            { scale: 1.05, duration: 0.35, ease: "power3.out" },
+            2.5,
+          );
+
+          // "Top 1%" badge spring-pops after the center card lands forward.
+          tl.fromTo(
+            "#disc5-badge",
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" },
+            2.85,
+          );
+
+          // ---- Scene 3 (4.7-7.211s): gentle parallax float + one glow sweep ----
+          const floatPhase = { p: 0 };
+          const N = cards.length;
+          const ampScale = 1 / Math.sqrt(N); // concurrent-elements amplitude discipline
+          tl.to(
+            floatPhase,
+            {
+              p: Math.PI * 2,
+              duration: TOTAL_DURATION - 4.7,
+              ease: "none",
+              onUpdate: () => {
+                cards.forEach((el, i) => {
+                  const offset = (i * Math.PI) / 6;
+                  const bob = Math.sin(floatPhase.p + offset) * 3 * ampScale;
+                  gsap.set(el, { y: bob });
+                });
+              },
+            },
+            4.7,
+          );
+
+          // Single-pass glow sweep across the assembled grid row.
+          tl.fromTo(
+            "#disc5-glow-band",
+            { x: -400, opacity: 0 },
+            { x: 1960, opacity: 0.28, duration: 0.8, ease: "none" },
+            4.9,
+          );
+          tl.to(
+            "#disc5-glow-band",
+            { opacity: 0, duration: 0.4, ease: "power1.in" },
+            5.7,
+          );
+
+          window.__timelines["05-discovery"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

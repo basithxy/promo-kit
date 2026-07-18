@@ -1,0 +1,23 @@
+{
+  "video": "PostSnag",
+  "startedAt": "2026-07-18T08:04:11.855Z",
+  "finishedAt": "2026-07-18T09:48:00.000Z",
+  "finishedAtSource": "progress.json lastUpdated (phase: done)",
+  "sessionsSpanned": 1,
+  "activeSeconds": 6211,
+  "activeTime": "1h 43m",
+  "elapsedSeconds": 6228,
+  "elapsedTime": "1h 43m",
+  "renderSeconds": 154.6,
+  "renderTime": "2m 35s",
+  "captureSeconds": null,
+  "captureTime": null,
+  "totalsByModel": {
+    "claude-sonnet-5": {
+      "input": 34,
+      "output": 8619,
+      "cacheRead": 2057924,
+      "cacheCreate": 27917
+    }
+  }
+}

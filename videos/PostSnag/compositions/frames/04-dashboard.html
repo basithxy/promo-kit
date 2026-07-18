@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata only for the source file; the HyperFrames runtime clones
+         ONLY <template> contents, so nothing here reaches the render. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Mona Sans";
+          font-weight: 400;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/MonaSans-Regular.woff") format("woff");
+        }
+        @font-face {
+          font-family: "Mona Sans";
+          font-weight: 400;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/MonaSans-Regular.woff2") format("woff2");
+        }
+
+        /* Root — style via #root only (never a class; see hyperframes-core Pitfall 3) */
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Mona Sans", sans-serif;
+          --primary: #233987;
+          --text: #0a0a0a;
+          --text-muted: #0a1535;
+          --text-light: #9a9a9a;
+          --accent-light: rgba(35, 57, 135, 0.08);
+          --accent-medium: rgba(35, 57, 135, 0.15);
+          --border: rgba(35, 57, 135, 0.2);
+          --card-bg: rgba(35, 57, 135, 0.04);
+        }
+
+        /* Full-bleed ground lives on a dedicated clip child, never on #root itself
+           (hyperframes-core: root background can render black in the compositor). */
+        .d04-bg {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        /* Ambient background glow behind the window — un-triggered bloom + bounded
+           breathe (ambient-glow-bloom). Purely decorative; deliberately NOT part of
+           the window's geometry so it can move freely without ever touching the
+           approved video's fixed host-level rect (see composition notes below). */
+        .d04-glow {
+          position: absolute;
+          left: 480px;
+          top: -20px;
+          width: 900px;
+          height: 900px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            rgba(35, 57, 135, 0.55) 0%,
+            rgba(35, 57, 135, 0.18) 45%,
+            rgba(35, 57, 135, 0) 72%
+          );
+          opacity: 0;
+          pointer-events: none;
+          will-change: transform, opacity;
+        }
+
+        .d04-eyebrow {
+          position: absolute;
+          left: 130px;
+          top: 92px;
+          font-size: 22px;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--primary);
+          will-change: transform, opacity;
+        }
+
+        /* ---------- Floating browser window (hero surface) ---------- */
+        /* STATIC geometry, never scaled/translated by GSAP: the approved real clip
+           is hoisted to the host root as its OWN absolutely-positioned element with
+           a fixed x/y/width/height and cannot be re-parented under a moving camera
+           wrapper. Any push/pan on this box would desync it from the live video
+           underneath, so this surface only fades in (opacity) and then holds rock
+           steady for the whole frame; the "camera" feel is carried instead by the
+           background glow's bloom/breathe and by the tag-row / bar-ranking reveals. */
+        .d04-window {
+          position: absolute;
+          left: 130px;
+          top: 150px;
+          width: 1120px;
+          height: 624px;
+          display: flex;
+          flex-direction: column;
+          background: #ffffff;
+          border-radius: 14px 14px 0 0;
+          box-shadow: inset 0 0 0 1.5px var(--border);
+          overflow: hidden;
+          will-change: opacity;
+        }
+
+        .d04-chrome1 {
+          flex: 0 0 46px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 0 18px;
+          background: #fbfbfd;
+          box-shadow: inset 0 -1px 0 var(--accent-light);
+        }
+        .d04-dot {
+          width: 11px;
+          height: 11px;
+          border-radius: 50%;
+        }
+        .d04-dot-red {
+          background: #e0645b;
+        }
+        .d04-dot-yellow {
+          background: #e0b34b;
+        }
+        .d04-dot-green {
+          background: #5cb582;
+        }
+        .d04-url-pill {
+          margin-left: 14px;
+          padding: 5px 16px;
+          border-radius: 100px;
+          background: var(--accent-light);
+          color: var(--text-muted);
+          font-size: 13px;
+          font-weight: 500;
+        }
+
+        .d04-chrome2 {
+          flex: 0 0 58px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0 18px;
+          background: #ffffff;
+          box-shadow: inset 0 -1px 0 var(--accent-light);
+        }
+        .d04-tag {
+          padding: 8px 18px;
+          border-radius: 100px;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--primary);
+          background: var(--accent-light);
+          white-space: nowrap;
+          will-change: transform, opacity;
+        }
+        .d04-tag-active {
+          background: var(--primary);
+          color: #ffffff;
+        }
+
+        .d04-screen {
+          flex: 1 1 auto;
+          background: var(--card-bg);
+        }
+
+        /* ---------- Bar-ranking overlay panel (beside the window) ---------- */
+        .d04-panel {
+          position: absolute;
+          left: 1290px;
+          top: 300px;
+          width: 560px;
+          padding: 28px;
+          box-sizing: border-box;
+          background: var(--card-bg);
+          border: 1.5px solid var(--border);
+          border-radius: 14px;
+          display: flex;
+          flex-direction: column;
+          gap: 26px;
+          will-change: transform, opacity;
+        }
+        .d04-panel-eyebrow {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--primary);
+          will-change: transform, opacity;
+        }
+        .d04-row {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          will-change: transform, opacity;
+        }
+        .d04-row-glow {
+          position: absolute;
+          left: -20px;
+          top: -20px;
+          right: -20px;
+          bottom: -20px;
+          border-radius: 16px;
+          background: radial-gradient(
+            ellipse at left,
+            rgba(35, 57, 135, 0.35) 0%,
+            rgba(35, 57, 135, 0) 70%
+          );
+          opacity: 0;
+          pointer-events: none;
+          will-change: opacity, transform;
+        }
+        .d04-row-label {
+          position: relative;
+          flex: 0 0 148px;
+          font-size: 20px;
+          font-weight: 500;
+          color: var(--text-muted);
+        }
+        .d04-track {
+          position: relative;
+          flex: 1 1 auto;
+          height: 12px;
+          border-radius: 6px;
+          background: var(--accent-light);
+          overflow: hidden;
+        }
+        .d04-fill {
+          width: 100%;
+          height: 100%;
+          background: var(--primary);
+          border-radius: 6px;
+          transform: scaleX(0);
+          transform-origin: left center;
+        }
+      </style>
+
+      <div id="root" data-composition-id="04-dashboard" data-start="0" data-duration="9.929" data-width="1920" data-height="1080">
+        <!-- Approved real clip — hero window surface. assemble-index.mjs hoists this
+             to the host root and translates data-start/duration to the global
+             timeline; the x/y/width/height below are the exact absolute canvas
+             pixels of the window's screen pane (flex:1 area under the two chrome
+             bars) so the real footage lands precisely inside the mockup. -->
+        <!-- approved frame video hoisted by assemble-index -->
+
+        <section class="clip" data-start="0" data-duration="9.929" data-track-index="0">
+          <div class="d04-bg"></div>
+          <div class="d04-glow" id="d04-glow"></div>
+
+          <div class="d04-eyebrow" id="d04-eyebrow">One Dashboard</div>
+
+          <div class="d04-window" id="d04-window">
+            <div class="d04-chrome1">
+              <span class="d04-dot d04-dot-red"></span>
+              <span class="d04-dot d04-dot-yellow"></span>
+              <span class="d04-dot d04-dot-green"></span>
+              <div class="d04-url-pill">postsnag.app/dashboard</div>
+            </div>
+            <div class="d04-chrome2" id="d04-tagrow">
+              <div class="d04-tag d04-tag-active" id="d04-tag-1">All Groups</div>
+              <div class="d04-tag" id="d04-tag-2">Marketing Hub</div>
+              <div class="d04-tag" id="d04-tag-3">SaaS Founders</div>
+              <div class="d04-tag" id="d04-tag-4">Agencies</div>
+            </div>
+            <div class="d04-screen"></div>
+          </div>
+
+          <div class="d04-panel" id="d04-panel">
+            <div class="d04-panel-eyebrow" id="d04-panel-eyebrow">Ranked By</div>
+            <div class="d04-row" id="d04-row-1">
+              <div class="d04-row-glow" id="d04-row-glow"></div>
+              <div class="d04-row-label">Likes</div>
+              <div class="d04-track"><div class="d04-fill" id="d04-fill-1"></div></div>
+            </div>
+            <div class="d04-row" id="d04-row-2">
+              <div class="d04-row-label">Comments</div>
+              <div class="d04-track"><div class="d04-fill" id="d04-fill-2"></div></div>
+            </div>
+            <div class="d04-row" id="d04-row-3">
+              <div class="d04-row-label">Shares</div>
+              <div class="d04-track"><div class="d04-fill" id="d04-fill-3"></div></div>
+            </div>
+            <div class="d04-row" id="d04-row-4">
+              <div class="d04-row-label">Video Plays</div>
+              <div class="d04-track"><div class="d04-fill" id="d04-fill-4"></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        const DUR = 9.429;
+
+        // ---------- Scene 1 (0.0-2.2s) — window dissolves in; real clip appears
+        // right as the chrome settles (t=0.4, matched to the video's data-start so
+        // there is never a frame where the clip shows without its frame around it). ----------
+        tl.fromTo(
+          "#d04-window",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: "power2.out" },
+          0.05,
+        );
+        tl.fromTo(
+          "#d04-eyebrow",
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
+          0.05,
+        );
+
+        // Ambient background glow — un-triggered bloom behind the window, then a
+        // single bounded finite breathe for the rest of the frame (ambient-glow-bloom).
+        // This — not any transform on the window itself — is what carries the
+        // "camera" feel, since the window's geometry must stay pixel-locked to the
+        // real video hoisted at the host root.
+        const glow = document.getElementById("d04-glow");
+        const GLOW_PEAK = 0.22;
+        tl.fromTo(
+          glow,
+          { opacity: 0, scale: 0.85 },
+          { opacity: GLOW_PEAK, scale: 1, duration: 0.9, ease: "power2.out" },
+          0.1,
+        );
+        const glowPhase = { p: 0 };
+        tl.to(
+          glowPhase,
+          {
+            p: Math.PI * 2 * 3,
+            duration: DUR - 1.0,
+            ease: "none",
+            onUpdate: () => {
+              const s = Math.sin(glowPhase.p);
+              glow.style.opacity = String(GLOW_PEAK + s * 0.03);
+              glow.style.transform = `scale(${1 + s * 0.02})`;
+            },
+          },
+          1.0,
+        );
+
+        // ---------- Scene 2 (2.2-5.4s) — Facebook-group filter chips stagger-pop
+        // along the window's second chrome band as the VO says "bookmark it,
+        // organize by group." (spring-pop-entrance, project house-style power3.out —
+        // no back.out overshoot per this brand's restraint.) ----------
+        const tagStagger = 0.07;
+        ["#d04-tag-1", "#d04-tag-2", "#d04-tag-3", "#d04-tag-4"].forEach((sel, i) => {
+          tl.fromTo(
+            sel,
+            { opacity: 0, y: 10, scale: 0.9 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "power3.out" },
+            2.25 + i * tagStagger,
+          );
+        });
+
+        // ---------- Scene 3 (5.4-8.3s) — bar-ranking overlay springs up beside the
+        // window; each bar fills left-to-right on its named metric as the VO speaks
+        // it (stat-bars-and-fills), landing in descending rank order. ----------
+        tl.fromTo(
+          "#d04-panel",
+          { opacity: 0, y: 24, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" },
+          5.4,
+        );
+        tl.fromTo(
+          "#d04-panel-eyebrow",
+          { opacity: 0, y: 8 },
+          { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" },
+          5.55,
+        );
+
+        const ROWS = [
+          { row: "#d04-row-1", fill: "#d04-fill-1", rowAt: 5.5, fillAt: 5.55, pct: 0.92 },
+          { row: "#d04-row-2", fill: "#d04-fill-2", rowAt: 6.05, fillAt: 6.1, pct: 0.74 },
+          { row: "#d04-row-3", fill: "#d04-fill-3", rowAt: 6.6, fillAt: 6.65, pct: 0.58 },
+          { row: "#d04-row-4", fill: "#d04-fill-4", rowAt: 7.15, fillAt: 7.2, pct: 0.4 },
+        ];
+        ROWS.forEach((r) => {
+          tl.fromTo(
+            r.row,
+            { opacity: 0, x: -14 },
+            { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" },
+            r.rowAt,
+          );
+          tl.to(r.fill, { scaleX: r.pct, duration: 0.9, ease: "power2.out" }, r.fillAt);
+        });
+
+        // ---------- Scene 4 (8.3-9.429s) — top-ranked bar (Likes) gets a soft
+        // cobalt glow bloom as the VO lands on "surface the winners instantly";
+        // composition settles and holds (bloom-and-hold — scene is under 3s so no
+        // idle breathe phase is needed). ----------
+        tl.fromTo(
+          "#d04-row-glow",
+          { opacity: 0, scale: 0.85 },
+          { opacity: 0.3, scale: 1, duration: 0.5, ease: "power2.out" },
+          8.4,
+        );
+
+        window.__timelines["04-dashboard"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

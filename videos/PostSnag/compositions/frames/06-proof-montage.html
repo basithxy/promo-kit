@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata for the source file only; the runtime discards everything outside <template> -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Mona Sans";
+          font-weight: 400;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/MonaSans-Regular.woff") format("woff");
+        }
+        @font-face {
+          font-family: "Mona Sans";
+          font-weight: 400;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/MonaSans-Regular.woff2") format("woff2");
+        }
+
+        /* Root: style by #root, never a class (see hyperframes-core Pitfall 3). */
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "Mona Sans", sans-serif;
+        }
+
+        /* Full-bleed ground lives on a dedicated clip layer, never on #root itself. */
+        .pm6-bg {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .pm6-stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 42px;
+          padding: 0 154px;
+          box-sizing: border-box;
+        }
+
+        .pm6-headline {
+          font-family: "Mona Sans", sans-serif;
+          font-weight: 600;
+          font-size: 50px;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          color: #0a0a0a;
+          text-align: center;
+          max-width: 1420px;
+          will-change: transform, filter, opacity;
+        }
+
+        .pm6-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 22px;
+          border-radius: 100px;
+          background: rgba(35, 57, 135, 0.08);
+          border: 1.5px solid rgba(35, 57, 135, 0.2);
+          will-change: transform, opacity;
+        }
+
+        .pm6-tag-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #233987;
+          flex: none;
+        }
+
+        .pm6-tag-label {
+          font-family: "Mona Sans", sans-serif;
+          font-weight: 500;
+          font-size: 15px;
+          letter-spacing: 0.01em;
+          color: #233987;
+          white-space: nowrap;
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="06-proof-montage" data-start="0" data-duration="9.524"
+        data-width="1920"
+        data-height="1080"
+      >
+        <div class="clip pm6-bg" data-start="0" data-duration="9.524" data-track-index="0"></div>
+
+        <div class="clip pm6-stage" data-start="0" data-duration="9.524" data-track-index="1">
+          <div class="pm6-headline" id="pm6-headline">A competitor&rsquo;s whole year, pulled in two minutes.</div>
+          <div class="pm6-tag" id="pm6-tag">
+            <span class="pm6-tag-dot"></span>
+            <span class="pm6-tag-label">Real PostSnag user</span>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Shared beat array — the signature move (Adapt note): hard-cut whole-line swap
+        // on a shared beat array with a settle-and-hold finale. 3 legible beats, not 8-12.
+        const DURATION = 9.024;
+        const BEATS = [0.0, 3.0, 6.0];
+        const LINES = [
+          "A competitor’s whole year, pulled in two minutes.",
+          "No proxies, no fake accounts — just your own session.",
+          "Export straight into Claude or ChatGPT.",
+        ];
+
+        const headlineEl = document.getElementById("pm6-headline");
+        const tagEl = document.getElementById("pm6-tag");
+
+        // Reverse-search the beat array (discrete-text-sequence mechanic): the headline's
+        // displayed string is an instant hard cut at each BEATS[i], never a smooth transition.
+        function lineAt(t) {
+          for (let i = BEATS.length - 1; i >= 0; i--) {
+            if (t >= BEATS[i]) return LINES[i];
+          }
+          return LINES[0];
+        }
+
+        const driver = { t: 0 };
+        tl.to(
+          driver,
+          {
+            t: DURATION,
+            duration: DURATION,
+            ease: "none",
+            onUpdate: () => {
+              const next = lineAt(driver.t);
+              if (headlineEl.textContent !== next) headlineEl.textContent = next;
+            },
+          },
+          0,
+        );
+
+        // Per-beat punch: kinetic-beat-slam-style scale+blur snap on every hard cut
+        // (beat 1 flashes in per the storyboard; beats 2/3 reuse the same treatment).
+        BEATS.forEach((t) => {
+          tl.fromTo(
+            headlineEl,
+            { scale: 1.07, opacity: 0, filter: "blur(10px)" },
+            { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power4.out" },
+            t,
+          );
+        });
+
+        // Tag pill: fades in just after each cut lands, fades out just ahead of the next cut
+        // (a micro cross-fade on a repeating chrome element, not a frame-level exit).
+        BEATS.forEach((t, i) => {
+          tl.fromTo(
+            tagEl,
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
+            t + 0.5,
+          );
+          const nextBeat = BEATS[i + 1];
+          if (nextBeat !== undefined) {
+            tl.to(tagEl, { opacity: 0, y: -8, duration: 0.2, ease: "power2.in" }, nextBeat - 0.2);
+          }
+        });
+
+        // Final beat settles and holds — no scale-out. Only sanctioned aliveness after
+        // settle is low-amplitude subtle jitter (sine-wave-loop, LOW end of its range).
+        const IDLE_START = BEATS[2] + 0.55; // after the final punch (0.45s) + small buffer
+        const IDLE_DUR = DURATION - IDLE_START;
+        const CYCLES = 1.2;
+        const phase = { p: 0 };
+        tl.to(
+          phase,
+          {
+            p: Math.PI * 2 * CYCLES,
+            duration: IDLE_DUR,
+            ease: "none",
+            onUpdate: () => {
+              // sin(0) = 0 at IDLE_START, so this starts exactly at the punch's resting
+              // scale(1)/translateY(0) — no visible jump between entrance and idle.
+              const s = 1 + Math.sin(phase.p) * 0.01;
+              const y = Math.sin(phase.p) * 2.4;
+              headlineEl.style.transform = `translateY(${y}px) scale(${s})`;
+            },
+          },
+          IDLE_START,
+        );
+
+        window.__timelines["06-proof-montage"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

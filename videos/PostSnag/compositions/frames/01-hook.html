@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata only for this source file; the HyperFrames runtime clones
+         ONLY <template> contents at render time — everything here is discarded. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Mona Sans";
+          font-weight: 400;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/MonaSans-Regular.woff") format("woff");
+        }
+        @font-face {
+          font-family: "Mona Sans";
+          font-weight: 400;
+          font-style: normal;
+          font-display: block;
+          src: url("assets/fonts/MonaSans-Regular.woff2") format("woff2");
+        }
+
+        /* Root: styled by #root only (never a class — see hyperframes-core Pitfall 3) */
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          container-type: size;
+          font-family: "Mona Sans", sans-serif;
+        }
+
+        /* Full-bleed ground — a dedicated clip layer, never painted on #root itself */
+        .hook-ground {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .hook-stage {
+          position: absolute;
+          inset: 0;
+        }
+
+        .hook-beat {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .hook-line {
+          margin: 0;
+          font-weight: 700;
+          font-size: 5.2cqw;
+          line-height: 1.14;
+          letter-spacing: -0.02em;
+          color: #0a0a0a;
+          white-space: nowrap;
+        }
+
+        .hook-word {
+          display: inline-block;
+        }
+
+        .hook-word-wrap {
+          position: relative;
+          display: inline-block;
+        }
+
+        .hook-underline {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -0.09em;
+          height: 0.06em;
+          min-height: 4px;
+          background: #233987;
+          border-radius: 4px;
+          transform: scaleX(0);
+          transform-origin: left center;
+        }
+      </style>
+
+      <div id="root" data-composition-id="01-hook" data-start="0" data-duration="5.157" data-width="1920" data-height="1080">
+        <div
+          class="hook-ground clip"
+          data-start="0"
+          data-duration="5.157"
+          data-track-index="0"
+        ></div>
+
+        <div class="hook-stage clip" data-start="0" data-duration="5.157" data-track-index="1">
+          <!-- Beat 1 (0.0-2.2s): "Still screenshotting / every viral post?" — per-word staggered reveal -->
+          <div id="hook-beat1" class="hook-beat">
+            <p class="hook-line">
+              <span class="hook-word" id="hook-w1">Still</span>
+              <span class="hook-word-wrap" id="hook-w2-wrap">
+                <span class="hook-word" id="hook-w2">screenshotting</span>
+                <span class="hook-underline" id="hook-underline"></span>
+              </span>
+            </p>
+            <p class="hook-line">
+              <span class="hook-word" id="hook-w3">every</span>
+              <span class="hook-word" id="hook-w4">viral</span>
+              <span class="hook-word" id="hook-w5">post?</span>
+            </p>
+          </div>
+
+          <!-- Beat 2 (2.2-4.757s): hard-cut swap, clean scale-in on power3, no overshoot -->
+          <div id="hook-beat2" class="hook-beat" style="opacity: 0;">
+            <p class="hook-line">Still guessing</p>
+            <p class="hook-line">what actually works?</p>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+
+        const tl = gsap.timeline({ paused: true });
+
+        // ---- Beat 1: per-word staggered reveal (0.0-2.2s) ----
+        // Cascading fromTo entrances, each word settling on a smooth power3 long-tail
+        // (no bounce/overshoot per this brand's motion grammar). Hero ("Still") lands
+        // well before t=0.5s.
+        tl.fromTo(
+          "#hook-w1",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
+          0.0,
+        );
+        tl.fromTo(
+          "#hook-w2-wrap",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
+          0.25,
+        );
+        // Cobalt underline draws left-to-right under "screenshotting" as it lands
+        tl.fromTo(
+          "#hook-underline",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.4, ease: "power2.out" },
+          0.75,
+        );
+        tl.fromTo(
+          "#hook-w3",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" },
+          1.0,
+        );
+        tl.fromTo(
+          "#hook-w4",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" },
+          1.25,
+        );
+        tl.fromTo(
+          "#hook-w5",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" },
+          1.5,
+        );
+        // Held read of the full first beat: 1.85 -> 2.2
+
+        // ---- Hard cut to beat 2 at t=2.2 (discrete-text-sequence: whole-line state swap) ----
+        // Beat 1 vanishes instantly (no fade) exactly as beat 2 begins its entrance.
+        tl.set("#hook-beat1", { autoAlpha: 0 }, 2.2);
+        tl.fromTo(
+          "#hook-beat2",
+          { opacity: 0, scale: 0.85 },
+          { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" },
+          2.2,
+        );
+
+        // ---- Resolve and hold to end (2.8 -> 4.757): subtle jitter only, camera static ----
+        const beat2 = document.getElementById("hook-beat2");
+        const JITTER_START = 2.8;
+        const JITTER_DUR = 4.757 - JITTER_START;
+        const SCALE_AMP = 0.012;
+        const Y_AMP_PX = 2;
+        const phase = { p: 0 };
+        tl.to(
+          phase,
+          {
+            p: Math.PI * 2 * 1,
+            duration: JITTER_DUR,
+            ease: "none",
+            onUpdate: () => {
+              const s = 1 + Math.sin(phase.p) * SCALE_AMP;
+              const y = Math.sin(phase.p) * Y_AMP_PX;
+              beat2.style.transform = `translateY(${y}px) scale(${s})`;
+            },
+          },
+          JITTER_START,
+        );
+
+        window.__timelines["01-hook"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

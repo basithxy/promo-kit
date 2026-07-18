@@ -1,0 +1,52 @@
+[
+  {
+    "file": "assets/lottie/animation-0.json",
+    "preview": "assets/lottie/previews/animation-0-preview.png",
+    "name": "animation-0.json",
+    "width": 390,
+    "height": 364,
+    "duration": 4,
+    "frameRate": 60,
+    "layers": 66
+  },
+  {
+    "file": "assets/lottie/animation-1.json",
+    "preview": "assets/lottie/previews/animation-1-preview.png",
+    "name": "animation-1.json",
+    "width": 390,
+    "height": 364,
+    "duration": 4,
+    "frameRate": 60,
+    "layers": 14
+  },
+  {
+    "file": "assets/lottie/animation-2.json",
+    "preview": "assets/lottie/previews/animation-2-preview.png",
+    "name": "animation-2.json",
+    "width": 390,
+    "height": 364,
+    "duration": 4,
+    "frameRate": 60,
+    "layers": 38
+  },
+  {
+    "file": "assets/lottie/animation-3.json",
+    "preview": "assets/lottie/previews/animation-3-preview.png",
+    "name": "animation-3.json",
+    "width": 390,
+    "height": 364,
+    "duration": 4,
+    "frameRate": 60,
+    "layers": 100
+  },
+  {
+    "file": "assets/lottie/animation-4.json",
+    "preview": "assets/lottie/previews/animation-4-preview.png",
+    "name": "animation-4.json",
+    "width": 272,
+    "height": 272,
+    "duration": 6,
+    "frameRate": 60,
+    "layers": 27
+  }
+]

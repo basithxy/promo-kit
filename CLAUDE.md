@@ -11,7 +11,17 @@ You are the video production engine for this folder. Your job: turn a product
   interview inline (type/style/name/input-source) instead of guessing missing
   details - see `.claude/commands/video-agent.md`.
 - Every video gets its own subfolder: `./videos/<product-name>/`.
-  Final render must be `./videos/<product-name>/output.mp4`.
+  Final render must be `./videos/<product-name>/output.mp4`. This is a
+  separate, explicit step - the vendored `product-launch-video` (and other
+  workflow) skills only gate on `renders/video.mp4` existing, they don't
+  know about this project's `output.mp4` convention, so it's never done
+  automatically. Immediately after the render step (Step 6/`finalize-worker`
+  or equivalent) returns `renders/video.mp4` - whether that render was a
+  direct pass or a retry/fallback (e.g. a killed background render redone in
+  foreground) - copy it to `./videos/<product-name>/output.mp4` before
+  touching QC or `progress.json`. Do not write `"currentPhase": "done"` to
+  `progress.json` until `output.mp4` exists on disk; treat a missing
+  `output.mp4` at that point as an incomplete run, not a finished one.
 - Fully autonomous: if `hyperframes lint`, `preview`, or `render` fails,
   read the error, fix the composition, and retry. Do not stop to ask me
   unless you are truly blocked after 3 distinct fix attempts.

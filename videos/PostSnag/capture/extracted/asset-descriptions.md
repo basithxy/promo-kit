@@ -1,0 +1,71 @@
+# Asset Descriptions
+
+⚠️  GEMINI_API_KEY not set — descriptions below are catalog-derived (alt text, headings, section context, filename) instead of Vision-generated. To get richer Vision descriptions on the next capture, set GEMINI_API_KEY (or GOOGLE_API_KEY) and re-run.
+
+The `logo-<hash>.svg` filename prefix is a structural hint (DOM said this SVG was inside a `<header>`, home-link `<a>`, or had an aria-label matching the page brand). To pick the actual brand logo without Vision, open the `logo-*` candidates in a previewer or rasterize them with `sharp` before referencing — composing a fake logo ships off-brand in the final video.
+
+- Find_20the_20Best_20Posts_20on_20Any_20Facebook_20Profile.mp4 — [video] PostSnag lets you sort, capture, organize, and analyze winning Facebook posts from any profile or group in 1 click., ~1920×1080
+- postsnag-how-it-works-step-3.mp4 — [video] Sort and find the posts that perform best., ~894×776
+- Postsnag_20Dashboard_20Demo.mp4 — [video] Send posts and profiles from any Facebook page or group straight to your dashboard — then bookmark, sort, rank, and analyze everything in on, ~3840×2160
+- every-data-point-captured-for-you.webp — 88KB, every data point captured for you
+- favicon.ico — 4KB, favicon
+- find-the-posts-worth-copying.webp — 809KB, find the posts worth copying
+- logo-cf8f6ce7.svg — 11KB, logo cf8f6ce7
+- og-image.png — 176KB, og image
+- postsnag-how-it-works-step-3.webp — 82KB, section: "Find the Posts Worth Copying"
+- stop-guessing-start-saving.webp — 125KB, stop guessing start saving
+- svg-d0cfb44a.svg — 1KB, svg d0cfb44a
+- welcome-tutorial-thumb.png — 187KB, welcome tutorial thumb
+- svgs/svg-01b6feb5-2.svg — svg 01b6feb5 2
+- svgs/svg-01b6feb5.svg — svg 01b6feb5
+- svgs/svg-08cc43e8.svg — svg 08cc43e8
+- svgs/svg-1501bede.svg — svg 1501bede
+- svgs/svg-1e0f15e9-2.svg — svg 1e0f15e9 2
+- svgs/svg-1e0f15e9.svg — svg 1e0f15e9
+- svgs/svg-2dd346cf-2.svg — svg 2dd346cf 2
+- svgs/svg-2dd346cf.svg — svg 2dd346cf
+- svgs/svg-3035ef43.svg — svg 3035ef43
+- svgs/svg-3efb3e83.svg — svg 3efb3e83
+- svgs/svg-45f3702a.svg — svg 45f3702a
+- svgs/svg-4e20eb74.svg — svg 4e20eb74
+- svgs/svg-73ec4df3-2.svg — svg 73ec4df3 2
+- svgs/svg-73ec4df3.svg — svg 73ec4df3
+- svgs/svg-86e35de4.svg — svg 86e35de4
+- svgs/svg-9aaa5e9a.svg — svg 9aaa5e9a
+- svgs/svg-9aeb1ade.svg — svg 9aeb1ade
+- svgs/svg-a8719811-2.svg — svg a8719811 2
+- svgs/svg-a8719811.svg — svg a8719811
+- svgs/svg-aaaeddf2.svg — svg aaaeddf2
+- svgs/svg-afb644a5-2.svg — svg afb644a5 2
+- svgs/svg-afb644a5.svg — svg afb644a5
+- svgs/svg-beb00abd.svg — svg beb00abd
+- svgs/svg-bfd65e56.svg — svg bfd65e56
+- svgs/svg-c8872ca8.svg — svg c8872ca8
+- svgs/svg-d41ab9aa-2.svg — svg d41ab9aa 2
+- svgs/svg-d41ab9aa.svg — svg d41ab9aa
+- svgs/svg-d814ba61-2.svg — svg d814ba61 2
+- svgs/svg-d814ba61.svg — svg d814ba61
+- svgs/svg-ef94279a.svg — svg ef94279a
+- fonts/4fa387ec64143e14-s.0wkzw~je483f-.woff2 — font file
+- fonts/53b9e256198e5412-s.0-wfv7uh4i7h9.woff2 — font file
+- fonts/5ce348bf30bf5439-s.0zgw-jeven.3w.woff2 — font file
+- fonts/6306c77e7c8268e4-s.0rhz0arwfsn~5.woff2 — font file
+- fonts/7178b3e590c64307-s.0nx0ww8fni_q3.woff2 — font file
+- fonts/797e433ab948586e-s.p.08e28id.o-okb.woff2 — font file
+- fonts/7d817b4c03b0c5f1-s.0l76wvqk9d84w.woff2 — font file
+- fonts/8a480f0b521d4e75-s.0jzbimsg8vl84.woff2 — font file
+- fonts/bbc41e54d2fcbd21-s.0k4k9394f2q-k.woff2 — font file
+- fonts/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2 — font file
+- fonts/fef07dbb0973bf53-s.12tyk43_3sh9u.woff2 — font file
+- fonts/mona-sans-latin-400-normal.0wlf~k6iaqdtc.woff — font file
+- fonts/mona-sans-latin-400-normal.12gans1ehqhr7.woff2 — font file
+- fonts/mona-sans-latin-ext-400-normal.0tfgddabv25_x.woff2 — font file
+- fonts/mona-sans-latin-ext-400-normal.0x8dz5pqzvzwh.woff — font file
+- fonts/mona-sans-latin-ext-500-normal.08c9z1i~qqr.f.woff — font file
+- fonts/mona-sans-latin-ext-500-normal.174wd5ilr1_75.woff2 — font file
+- fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2 — font file
+- fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2 — font file
+- fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 — font file
+- fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2 — font file
+- fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2 — font file
+- fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2 — font file

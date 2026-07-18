@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-07-18T08:40:57.289Z",
+  "enabled": true,
+  "provider": "musicgen",
+  "mode": "detached-seed-loop",
+  "path": "assets/bgm/track.wav",
+  "log": "D:\\New folder\\promo-kit\\videos\\PostSnag\\assets\\bgm\\bgm-1784363751799.log",
+  "pid": 584,
+  "target_duration_s": 49.258,
+  "seed_duration_s": 28,
+  "loop_count": 2,
+  "timeout_ms": 300000,
+  "status": "ready",
+  "ready": true,
+  "waited_ms": 205391,
+  "size_bytes": 3152556,
+  "message": "BGM ready at assets/bgm/track.wav."
+}

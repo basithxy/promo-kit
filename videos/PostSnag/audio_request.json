@@ -1,0 +1,54 @@
+{
+  "lines": [
+    {
+      "id": "01",
+      "sfx": [
+        "whoosh-short"
+      ]
+    },
+    {
+      "id": "02",
+      "sfx": [
+        "pop"
+      ]
+    },
+    {
+      "id": "03",
+      "sfx": [
+        "whoosh-short",
+        "pop"
+      ]
+    },
+    {
+      "id": "04",
+      "sfx": [
+        "click",
+        "ping"
+      ]
+    },
+    {
+      "id": "05",
+      "sfx": [
+        "whoosh",
+        "ping"
+      ]
+    },
+    {
+      "id": "06",
+      "sfx": [
+        "whoosh-short",
+        "chime"
+      ]
+    },
+    {
+      "id": "07",
+      "sfx": [
+        "click",
+        "chime"
+      ]
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  }
+}

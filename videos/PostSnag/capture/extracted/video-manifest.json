@@ -1,0 +1,44 @@
+[
+  {
+    "index": 0,
+    "url": "https://pub-7f53325db2c3489dab8e0f7c6213b20c.r2.dev/Find%20the%20Best%20Posts%20on%20Any%20Facebook%20Profile.mp4",
+    "filename": "Find%20the%20Best%20Posts%20on%20Any%20Facebook%20Profile.mp4",
+    "width": 670,
+    "height": 377,
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "heading": "Stop Guessing What To Post On Facebook",
+    "caption": "PostSnag lets you sort, capture, organize, and analyze winning Facebook posts from any profile or group in 1 click.",
+    "ariaLabel": "PostSnag capturing a Facebook profile",
+    "preview": "assets/videos/previews/video-0-preview.png",
+    "localPath": "assets/videos/Find_20the_20Best_20Posts_20on_20Any_20Facebook_20Profile.mp4"
+  },
+  {
+    "index": 1,
+    "url": "https://postsnag.com/landing/postsnag-how-it-works-step-3.mp4",
+    "filename": "postsnag-how-it-works-step-3.mp4",
+    "width": 332,
+    "height": 282,
+    "sourceWidth": 894,
+    "sourceHeight": 776,
+    "heading": "Export to Dashboard",
+    "caption": "Sort and find the posts that perform best.",
+    "ariaLabel": "Export to Dashboard",
+    "preview": "assets/videos/previews/video-1-preview.png",
+    "localPath": "assets/videos/postsnag-how-it-works-step-3.mp4"
+  },
+  {
+    "index": 2,
+    "url": "https://pub-7f53325db2c3489dab8e0f7c6213b20c.r2.dev/Postsnag%20Dashboard%20Demo.mp4",
+    "filename": "Postsnag%20Dashboard%20Demo.mp4",
+    "width": 1110,
+    "height": 624,
+    "sourceWidth": 3840,
+    "sourceHeight": 2160,
+    "heading": "One dashboard for everything you capture on Facebook.",
+    "caption": "Send posts and profiles from any Facebook page or group straight to your dashboard — then bookmark, sort, rank, and analyze everything in one place.",
+    "ariaLabel": "The PostSnag dashboard in action",
+    "preview": "assets/videos/previews/video-2-preview.png",
+    "localPath": "assets/videos/Postsnag_20Dashboard_20Demo.mp4"
+  }
+]

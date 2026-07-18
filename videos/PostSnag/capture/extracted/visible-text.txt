@@ -1,0 +1,257 @@
+[a] Features
+[a] How it works
+[a] Affiliate
+[a] Sign in
+[a] Add to Chrome
+[a] Home
+[a] Features
+[a] How it works
+[a] Pricing
+[a] Affiliate
+[span] 30%
+[a] FAQ
+[a] Sign in
+[a] Add to Chrome
+[h1] Stop Guessing What
+[h1] Post On Facebook
+[p] PostSnag lets you sort, capture, organize, and analyze winning Facebook posts from any profile or group in 1 click.
+[a] Add PostSnag to Chrome
+[p] Free to install. Start collecting posts in under 60 seconds.
+[span] Works everywhere on Facebook
+[h2] Capture Posts From Any
+[h2] Facebook Profile, Page, Or Group
+[p] Whether you're studying a creator, competitor, brand page, or niche group, PostSnag brings their posts together so you can quickly see what got the most engagement.
+[h3] Personal profiles
+[p] Study creators, competitors, and people in your market. See which posts pulled the most engagement without endless scrolling.
+[span] Learn more
+[h3] Business pages
+[p] Track brand pages, local businesses, and competitors to see what offers, topics, and post styles their audience responds to most.
+[span] Learn more
+[h3] Creator accounts
+[p] Follow high-volume creators and quickly find their best-performing posts, hooks, stories, and formats from recent content.
+[span] Learn more
+[h3] Facebook Groups
+[p] Search groups you can access to find the posts, questions, and conversations getting the most comments, reactions, and shares.
+[span] Learn more
+[span] Features
+[h2] Built To Track Facebook
+[h2] Content
+[h2] Without The Work
+[p] PostSnag helps you capture posts, send profiles to your dashboard, and keep the Facebook content you care about in one place.
+[span] Auto-capture
+[h3] Captures Every Post As You Scroll
+[p] Scroll any Facebook profile, page, or group like normal. PostSnag captures the posts as they appear, so you don't have to save them one by one.
+[span] Save to dashboard
+[h3] Send Any Profile To Your Dashboard
+[p] Find a creator, competitor, page, or group you want to watch? Push it to your dashboard and keep track of their posts from one place.
+[span] Organized profiles
+[h3] Shows you what's going viral across all profiles
+[p] See what posts are going viral and which ones are a flop. The Discovery feed pulls outliers from every profile you've tracked, giving you a live window into exactly what Facebook is rewarding right now.
+[span] AI-ready
+[h3] Exports your data straight
+into your favourite AI tools
+[p] Download any profile's post data as JSON, Markdown, or Excel, formatted so you can paste it directly into Claude, ChatGPT, or Gemini and get a content strategy without any cleanup work.
+[span] Quick save
+[h3] Saves the profiles and posts you want to revisit
+[p] Bookmark individual posts or entire profiles from anywhere in the dashboard, and they'll always be just one click away whenever you need to reference them.
+[p] Free Chrome extension · Sixty seconds to set up
+[a] Try PostSnag Now
+[span] How it works
+[h2] Find the Posts Worth Copying
+[p] Install the extension, scroll any profile, and send the posts to your dashboard.
+[h3] Install PostSnag
+[p] Add the Chrome extension.
+[h3] Scroll any Profile
+[p] PostSnag captures posts as you scroll.
+[h3] Export to Dashboard
+[p] Sort and find the posts that perform best.
+[span] The Dashboard
+[h2] One dashboard for everything
+[h2] you capture on Facebook.
+[p] Send posts and profiles from any Facebook page or group straight to your dashboard — then bookmark, sort, rank, and analyze everything in one place.
+[h3] Bookmark & save
+[p] Save individual posts or entire profiles and jump straight back to them in one click.
+[h3] Organize by Facebook Group
+[p] Sort the profiles you capture by the Facebook groups they came from, so nothing gets lost.
+[h3] Rank by what performs
+[p] Order posts by likes, comments, shares, or video plays to surface the winners instantly.
+[h3] Built-in analytics
+[p] See post-type breakdowns and engagement composition for any profile at a glance.
+[h3] Discovery feed
+[p] Catch viral outliers across every profile you track, refreshed constantly as new posts land.
+[h3] Export anywhere
+[p] Download as JSON, Markdown, or Excel — ready to paste into Claude, ChatGPT, or Gemini.
+[span] Loved by creators
+[h2] What happens when you stop
+[h2] guessing and start tracking.
+[p] Pulled a competitor's entire 2025 timeline in two minutes. Spotted three formats we weren't running. Built a content plan in an afternoon.
+[div] Amara Okafor
+[div] Head of Social, Trellis
+[p] The Discovery feed is unfair. It's like a content moodboard that updates itself with proven hits every single week.
+[div] Dieter Hofmann
+[div] Creator strategist
+[p] We were paying $179/mo for a tool that only gave us follower counts. PostSnag gives us actual post performance for free.
+[div] Priya Iyer
+[div] Growth lead, Auralis
+[p] Pulled a competitor's entire 2025 timeline in two minutes. Spotted three formats we weren't running. Built a content plan in an afternoon.
+[div] Amara Okafor
+[div] Head of Social, Trellis
+[p] The Discovery feed is unfair. It's like a content moodboard that updates itself with proven hits every single week.
+[div] Dieter Hofmann
+[div] Creator strategist
+[p] We were paying $179/mo for a tool that only gave us follower counts. PostSnag gives us actual post performance for free.
+[div] Priya Iyer
+[div] Growth lead, Auralis
+[p] Hand Claude the JSON export and ask for patterns — five minutes later you have a content brief that would have taken a week.
+[div] Marcus Lehrer
+[div] Independent strategist
+[p] Studied 8 profiles in our category in an hour. The day/time heatmap alone changed our schedule for the better.
+[div] Yui Tanabe
+[div] Social lead, Polysift
+[p] I run a small agency. PostSnag replaced a junior analyst's first three days of every new client onboarding. Easily worth it.
+[div] Lina Rosado
+[div] Founder, Glydex Social
+[p] Hand Claude the JSON export and ask for patterns — five minutes later you have a content brief that would have taken a week.
+[div] Marcus Lehrer
+[div] Independent strategist
+[p] Studied 8 profiles in our category in an hour. The day/time heatmap alone changed our schedule for the better.
+[div] Yui Tanabe
+[div] Social lead, Polysift
+[p] I run a small agency. PostSnag replaced a junior analyst's first three days of every new client onboarding. Easily worth it.
+[div] Lina Rosado
+[div] Founder, Glydex Social
+[p] Finally a Facebook research tool that doesn't require proxies or fake accounts. Just install and go.
+[div] James Whitfield
+[div] Performance marketer
+[p] The export to Markdown and straight into ChatGPT workflow is genuinely one of the most useful things I've added to my stack.
+[div] Sofia Mendes
+[div] Content director, Vanta
+[p] Our whole team uses it now. We run competitive audits in the time it used to take one person just to gather the data.
+[div] Kwame Asante
+[div] Social media manager
+[p] Finally a Facebook research tool that doesn't require proxies or fake accounts. Just install and go.
+[div] James Whitfield
+[div] Performance marketer
+[p] The export to Markdown and straight into ChatGPT workflow is genuinely one of the most useful things I've added to my stack.
+[div] Sofia Mendes
+[div] Content director, Vanta
+[p] Our whole team uses it now. We run competitive audits in the time it used to take one person just to gather the data.
+[div] Kwame Asante
+[div] Social media manager
+[span] What you get
+[h2] Every data point, captured for you.
+[p] Likes, shares, captions, post times, follower counts — every metric Facebook shows, automatically collected.
+[span] Likes
+[span] Comments
+[span] Shares
+[span] Video plays
+[span] Post type
+[span] Caption text
+[span] Date posted
+[span] Time posted
+[span] Likes
+[span] Comments
+[span] Shares
+[span] Video plays
+[span] Post type
+[span] Caption text
+[span] Date posted
+[span] Time posted
+[span] Followers & following
+[span] Total posts collected
+[span] Posts per day of week
+[span] Content type breakdown
+[span] Top performing post types
+[span] Average engagement
+[span] Outlier posts
+[span] Top performing content
+[span] Followers & following
+[span] Total posts collected
+[span] Posts per day of week
+[span] Content type breakdown
+[span] Top performing post types
+[span] Average engagement
+[span] Outlier posts
+[span] Top performing content
+[span] Pricing
+[h2] Free to install.
+[h2] Honest when ready.
+[p] Start for free with no card required. Upgrade when you're ready.
+[div] Free
+[div] For trying it out
+[div] No card. No expiration.
+[a] Try PostSnag Now
+[div] Includes
+[span] Chrome extension
+[span] Live sidebar capture
+[span] 3 profile scans per week, 30 posts each
+[span] Dashboard preview
+[span] Best value
+[div] Lifetime
+[div] Pay once, use forever
+[span] $139
+[span] once
+[div] Your last payment, ever.
+[button] Get Lifetime
+[div] Includes
+[span] Unlimited profile & Facebook Group tracking
+[span] Full dashboard with built-in analytics
+[span] Sort & rank every captured post
+[span] Discovery feed (top 1%)
+[span] Organize by group, folders & bookmarks
+[span] AI exports for profiles & groups
+[span] Every scan saved for good
+[span] One-time payment, locked at launch rate
+[span] All future features included
+[span] Priority email support
+[div] Pro
+[div] For power users
+[span] $19
+[span] /month
+[div] Cancel anytime
+[button] Start Pro
+[div] Includes
+[span] Unlimited profile & Facebook Group tracking
+[span] Full dashboard with built-in analytics
+[span] Sort & rank every captured post
+[span] Discovery feed (top 1%)
+[span] Organize by group, folders & bookmarks
+[span] AI exports for profiles & groups
+[span] Every scan saved for good
+[p] 14-day money-back guarantee on Pro and Lifetime.
+[h2] Stop guessing.
+[h2] Start saving.
+[p] Free Chrome extension. No credit card. Works on any Facebook profile. Sixty seconds to set up.
+[a] Add PostSnag To Chrome
+[span] 14-day money-back
+[span] No credit card to start
+[span] Cancel anytime
+[span] FAQ
+[h2] Questions? We've
+[h2] already answered.
+[h3] Have a question we didn't cover?
+[p] Email a human. We answer within a business day.
+[a] Contact us
+[span] Is this against Facebook's terms of service?
+[div] PostSnag runs in your browser using your own logged-in session. No API access, no proxies, no automated requests. It reads what's already on your screen as you scroll — the same data you'd see manually.
+[span] Will my account get banned?
+[div] No unusual activity is triggered. The extension reads what's already rendered as you scroll. It's a structured note-taker, not a scraper hitting Facebook's servers.
+[span] What gets captured per post?
+[div] Post type (text, photo, video, reel, link, album), likes, comments, shares, video plays, the full caption, and exact date and time posted.
+[span] Does it work on Facebook Groups?
+[div] Profiles ship first. Groups is next on the roadmap. Lifetime members get it automatically when it ships, at no extra cost.
+[span] How is this different from other tools?
+[div] Most Facebook research tools either need complex setups with proxies and aged accounts, or just give you follower counts. PostSnag captures actual post-level engagement using your existing session — it's faster, cheaper, and the only tool with a built-in outlier feed.
+[span] Can I get a refund?
+[div] Yes. 14-day no-questions-asked refund on Pro and Lifetime. Install the extension first, try it on a real profile, then upgrade.
+[p] Still have questions?
+[a] Visit Help Center
+[span] Share
+[span] PostSnag
+[p] The Chrome extension and dashboard for capturing and studying posts from any profile, page, or group on Facebook.
+[a] Features
+[a] How it works
+[button] Creators
+[span] Ask AI about PostSnag
+[span] PostSnag
+[span] Not affiliated with or endorsed by Meta Platforms.

@@ -1,0 +1,364 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face{font-family:"Mona Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/MonaSans-Regular.woff") format("woff");}
+        @font-face{font-family:"Mona Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/MonaSans-Regular.woff2") format("woff2");}
+
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "Mona Sans", sans-serif;
+        }
+
+        .fr3-bg {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .fr3-scene {
+          position: absolute;
+          inset: 0;
+        }
+
+        .fr3-stage {
+          position: absolute;
+          inset: 0;
+        }
+
+        /* Browser-window mockup — geometry is FIXED for the whole shot: the
+           approved hero video is hoisted to the host root at a static pixel
+           rect (data-frame-video-x/y/width/height), so this frame never
+           translates/tilts once mounted, or the chrome would drift out of
+           register with the video underneath. The entrance below is a
+           scale+opacity+tiny-rotation settle IN PLACE, not a positional drift. */
+        .fr3-window {
+          position: absolute;
+          left: 150px;
+          top: 130px;
+          width: 1050px;
+          height: 650px;
+          background: #ffffff;
+          border: 1.5px solid rgba(35, 57, 135, 0.2);
+          border-radius: 14px;
+          overflow: hidden;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        .fr3-topbar {
+          position: relative;
+          height: 48px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 0 18px;
+          background: rgba(35, 57, 135, 0.03);
+          border-bottom: 1px solid rgba(35, 57, 135, 0.15);
+        }
+
+        .fr3-dot {
+          width: 11px;
+          height: 11px;
+          border-radius: 50%;
+          background: #c9c9d1;
+        }
+
+        /* Placeholder screen fill behind the hoisted video's fixed rect.
+           The real hoisted video element paints on top of this once mounted;
+           this exists only so the frame is never a bare hole if it fails to load. */
+        .fr3-screen-area {
+          position: absolute;
+          left: 2px;
+          top: 50px;
+          right: 2px;
+          bottom: 2px;
+          background: #f4f4f7;
+        }
+
+        /* Camera wrapper scoped to the tray ONLY (never the window/video) so
+           the push-in never scales the fixed-geometry hero video out of
+           register with its declared host rect. */
+        .fr3-tray-cam {
+          position: absolute;
+          inset: 0;
+          transform-origin: 81% 44%;
+          will-change: transform;
+        }
+
+        .fr3-tray {
+          position: absolute;
+          left: 1270px;
+          top: 170px;
+          width: 560px;
+          height: 600px;
+          box-sizing: border-box;
+          background: #ffffff;
+          border: 1.5px solid rgba(35, 57, 135, 0.2);
+          border-radius: 14px;
+          padding: 28px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 16px;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        .fr3-eyebrow {
+          font-family: "Mona Sans", sans-serif;
+          font-weight: 600;
+          font-size: 19px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #233987;
+        }
+
+        .fr3-card {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 14px 16px;
+          background: rgba(35, 57, 135, 0.04);
+          border: 1.5px solid rgba(35, 57, 135, 0.2);
+          border-radius: 12px;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        .fr3-glow {
+          position: absolute;
+          inset: -3px;
+          border-radius: 15px;
+          background: radial-gradient(ellipse at center, rgba(35, 57, 135, 0.35), transparent 70%);
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .fr3-thumb {
+          position: relative;
+          width: 52px;
+          height: 52px;
+          flex-shrink: 0;
+          border-radius: 10px;
+          background: rgba(35, 57, 135, 0.14);
+          display: grid;
+          place-items: center;
+        }
+
+        .fr3-thumb-play {
+          width: 0;
+          height: 0;
+          margin-left: 3px;
+          border-top: 7px solid transparent;
+          border-bottom: 7px solid transparent;
+          border-left: 11px solid #233987;
+        }
+
+        .fr3-lines {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .fr3-line {
+          height: 10px;
+          border-radius: 5px;
+          background: rgba(10, 21, 53, 0.14);
+        }
+
+        .fr3-badge {
+          position: absolute;
+          top: -18px;
+          right: -18px;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #233987;
+          display: grid;
+          place-items: center;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+      </style>
+
+      <div id="root" data-composition-id="03-auto-capture" data-start="0" data-duration="10.143" data-width="1920" data-height="1080">
+        <div class="clip fr3-bg" data-start="0" data-duration="10.143" data-track-index="1"></div>
+
+        <div class="clip fr3-scene" data-start="0" data-duration="10.143" data-track-index="2">
+          <div class="fr3-stage" id="fr3-stage">
+            <div class="fr3-window" id="fr3-window">
+              <div class="fr3-topbar">
+                <span class="fr3-dot"></span>
+                <span class="fr3-dot"></span>
+                <span class="fr3-dot"></span>
+              </div>
+              <div class="fr3-screen-area"></div>
+
+              <!-- Approved hero video: a real captured Facebook-feed scroll clip.
+                   Hoisted to the host root by assemble-index.mjs; the x/y/width/height
+                   below match this window's interior exactly (left+2, top+48+2,
+                   width-4, height-48-4), so the mounted video sits precisely inside
+                   the chrome drawn above. -->
+              <!-- approved frame video hoisted by assemble-index -->
+            </div>
+
+            <div class="fr3-tray-cam" id="fr3-tray-cam">
+              <div class="fr3-tray" id="fr3-tray">
+                <div class="fr3-eyebrow">Auto-Capture</div>
+
+                <div class="fr3-card" id="fr3-card-1">
+                  <div class="fr3-glow"></div>
+                  <div class="fr3-thumb"><div class="fr3-thumb-play"></div></div>
+                  <div class="fr3-lines">
+                    <div class="fr3-line" style="width: 62%"></div>
+                    <div class="fr3-line" style="width: 92%"></div>
+                  </div>
+                </div>
+
+                <div class="fr3-card" id="fr3-card-2">
+                  <div class="fr3-glow"></div>
+                  <div class="fr3-thumb"><div class="fr3-thumb-play"></div></div>
+                  <div class="fr3-lines">
+                    <div class="fr3-line" style="width: 70%"></div>
+                    <div class="fr3-line" style="width: 48%"></div>
+                  </div>
+                </div>
+
+                <div class="fr3-card" id="fr3-card-3">
+                  <div class="fr3-glow"></div>
+                  <div class="fr3-thumb"><div class="fr3-thumb-play"></div></div>
+                  <div class="fr3-lines">
+                    <div class="fr3-line" style="width: 54%"></div>
+                    <div class="fr3-line" style="width: 96%"></div>
+                  </div>
+                </div>
+
+                <div class="fr3-card" id="fr3-card-4">
+                  <div class="fr3-glow"></div>
+                  <div class="fr3-thumb"><div class="fr3-thumb-play"></div></div>
+                  <div class="fr3-lines">
+                    <div class="fr3-line" style="width: 80%"></div>
+                    <div class="fr3-line" style="width: 58%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fr3-badge" id="fr3-badge">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M4 10.5L8 14.5L16 5.5"
+                    stroke="#FFFFFF"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          var tl = gsap.timeline({ paused: true });
+
+          // --- Scene 1 (0.0-3.3s): browser window settles from a slight tilt. ---
+          // Position never changes (must stay in register with the fixed-rect
+          // hoisted video) — the "drift in" reads through scale + a couple
+          // degrees of rotation resolving to 0, not translation.
+          tl.fromTo(
+            "#fr3-window",
+            { scale: 0.92, opacity: 0, y: 16, rotation: -2 },
+            { scale: 1, opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "power3.out" },
+            0,
+          );
+
+          // --- Scene 2 (3.3-7.1s): capture-tray slides in from the right edge. ---
+          tl.fromTo(
+            "#fr3-tray",
+            { x: 60, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+            3.3,
+          );
+
+          // Post-cards spring-pop-entrance, staggered in sync with the scroll,
+          // each landing with a soft cobalt tick-glow (two-step opacity pulse).
+          var cardTimes = [3.6, 4.35, 5.1, 5.85];
+          cardTimes.forEach(function (at, i) {
+            var n = i + 1;
+            tl.fromTo(
+              "#fr3-card-" + n,
+              { scale: 0, opacity: 0 },
+              { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" },
+              at,
+            );
+            tl.fromTo(
+              "#fr3-card-" + n + " .fr3-glow",
+              { opacity: 0 },
+              { opacity: 0.55, duration: 0.16, ease: "power1.out" },
+              at,
+            );
+            tl.to(
+              "#fr3-card-" + n + " .fr3-glow",
+              { opacity: 0, duration: 0.36, ease: "power1.in" },
+              at + 0.16,
+            );
+          });
+
+          // Camera slow push-in toward the tray (multi-phase-camera), scoped to
+          // the tray wrapper only — never the window/video — so the fixed-rect
+          // hero video is never scaled out of register.
+          tl.fromTo(
+            "#fr3-tray-cam",
+            { scale: 1 },
+            { scale: 1.055, duration: 3.2, ease: "power3.out" },
+            3.3,
+          );
+
+          // --- Scene 3 (7.1-9.643s): checkmark badge, final punctuation. ---
+          tl.fromTo(
+            "#fr3-badge",
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" },
+            7.2,
+          );
+
+          // Subtle jitter on the settled badge (sine-wave-loop, low amplitude) —
+          // runs only after the pop tween above has fully finished (7.7s).
+          var phase = { p: 0 };
+          var badgeEl = document.getElementById("fr3-badge");
+          tl.to(
+            phase,
+            {
+              p: Math.PI * 2,
+              duration: 1.74,
+              ease: "none",
+              onUpdate: function () {
+                var s = 1 + Math.sin(phase.p) * 0.012;
+                var yy = Math.sin(phase.p) * 2;
+                if (badgeEl) badgeEl.style.transform = "translateY(" + yy + "px) scale(" + s + ")";
+              },
+            },
+            7.9,
+          );
+
+          window.__timelines["03-auto-capture"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

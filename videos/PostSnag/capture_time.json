@@ -1,0 +1,6 @@
+﻿{
+    "command":  "npx hyperframes capture https://postsnag.com -o ./capture",
+    "seconds":  306.4,
+    "exitCode":  0,
+    "finishedAt":  "2026-07-18T08:12:13.9462363Z"
+}

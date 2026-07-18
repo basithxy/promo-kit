@@ -1,0 +1,307 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Mona Sans",
+      "fontSize": "56px",
+      "fontWeight": "700",
+      "lineHeight": "58.8px",
+      "letterSpacing": "-1.68px",
+      "color": "lab(7.78201 -0.0000149012 0)",
+      "sampleText": "Stop Guessing What To Post On Facebook"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Mona Sans",
+      "fontSize": "48px",
+      "fontWeight": "600",
+      "lineHeight": "50.4px",
+      "letterSpacing": "-0.96px",
+      "color": "#0A0A0A",
+      "sampleText": "Built To Track Facebook Content Without The Work"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Mona Sans",
+      "fontSize": "36px",
+      "fontWeight": "600",
+      "lineHeight": "39.6px",
+      "letterSpacing": "-0.72px",
+      "color": "lab(7.78201 -0.0000149012 0)",
+      "sampleText": "Capture Posts From Any Facebook Profile, Page, Or Group"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Mona Sans",
+      "fontSize": "30px",
+      "fontWeight": "700",
+      "lineHeight": "34.5px",
+      "letterSpacing": "-0.75px",
+      "color": "#0A0A0A",
+      "sampleText": "Captures Every Post As You Scroll"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Mona Sans",
+      "fontSize": "18px",
+      "fontWeight": "700",
+      "lineHeight": "24.75px",
+      "letterSpacing": "-0.45px",
+      "color": "lab(7.78201 -0.0000149012 0)",
+      "sampleText": "Personal profiles"
+    },
+    {
+      "role": "label",
+      "fontFamily": "Geist",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "#0F172A",
+      "sampleText": ""
+    },
+    {
+      "role": "link",
+      "fontFamily": "Mona Sans",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "#0A0A0A",
+      "sampleText": ""
+    },
+    {
+      "role": "body",
+      "fontFamily": "Mona Sans",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(27.036 0 0)",
+      "sampleText": "PostSnag lets you sort, capture, organize, and analyze winni"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      2,
+      4,
+      6,
+      8,
+      12,
+      16,
+      20,
+      24,
+      32,
+      40,
+      80
+    ],
+    "baseUnit": 8
+  },
+  "radius": [
+    "8px",
+    "24px",
+    "999px",
+    "3.35544e+07px"
+  ],
+  "shadows": [
+    {
+      "value": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(16, 24, 48, 0.04) 0px 2px 6px 0px",
+      "count": 1
+    }
+  ],
+  "buttons": [
+    {
+      "label": "Try PostSnag Now",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0A0A0A",
+      "padding": "0px 20px",
+      "borderRadius": "999px",
+      "border": "1px solid rgb(236, 236, 241)",
+      "boxShadow": "none",
+      "fontSize": "14.5px",
+      "fontWeight": "500",
+      "height": "46px"
+    },
+    {
+      "label": "Get Lifetime",
+      "background": "#233987",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "0px 20px",
+      "borderRadius": "999px",
+      "border": "0px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "14.5px",
+      "fontWeight": "500",
+      "height": "46px"
+    },
+    {
+      "label": "button",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "lab(48.496 0 0)",
+      "padding": "0px",
+      "borderRadius": "8px",
+      "border": "1px solid rgb(236, 236, 241)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "36px"
+    },
+    {
+      "label": "Creators",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.75)",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.75)",
+      "boxShadow": "none",
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "height": "19.5px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0A0A0A",
+      "padding": "48px 0px 40px",
+      "borderRadius": "28px",
+      "border": "0px solid rgb(10, 10, 10)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "367px"
+    },
+    {
+      "label": "card",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0A0A0A",
+      "padding": "0px",
+      "borderRadius": "20px",
+      "border": "0px none rgb(10, 10, 10)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "465px"
+    },
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0F172A",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(15, 23, 42)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "150px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "transparent",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#0A0A0A",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "0px solid rgb(10, 10, 10)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "67px"
+  },
+  "chips": [
+    {
+      "label": "Add to Chrome",
+      "background": "#233987",
+      "color": "#FFFFFF",
+      "padding": "0px 20px",
+      "borderRadius": "3.35544e+07px",
+      "border": "0px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "40px"
+    },
+    {
+      "label": "Features",
+      "background": "#FFFFFF",
+      "color": "#4B4B55",
+      "padding": "6px 12px",
+      "borderRadius": "999px",
+      "border": "1px solid rgb(236, 236, 241)",
+      "boxShadow": "rgba(16, 16, 32, 0.02) 0px 1px 0px 0px",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "height": "32px"
+    },
+    {
+      "label": "How it works",
+      "background": "#FFFFFF",
+      "color": "#FFFFFF",
+      "padding": "6px 12px",
+      "borderRadius": "999px",
+      "border": "1px solid rgba(255, 255, 255, 0.12)",
+      "boxShadow": "none",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "height": "32px"
+    },
+    {
+      "label": "Add PostSnag To Chrome",
+      "background": "#FFFFFF",
+      "color": "lab(7.78201 -0.0000149012 0)",
+      "padding": "0px 20px",
+      "borderRadius": "3.35544e+07px",
+      "border": "0px solid lab(7.78201 -0.0000149012 0)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "44px"
+    }
+  ],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "linear-gradient(rgb(236, 243, 252) 0%, rgb(245, 248, 253) 55%, rgb(255, 255, 255) 100%)",
+      "area": 2950136
+    },
+    {
+      "value": "linear-gradient(rgb(255, 255, 255) 0%, rgb(246, 250, 254) 100%)",
+      "area": 1802460
+    },
+    {
+      "value": "linear-gradient(rgb(255, 255, 255) 0%, rgb(242, 247, 253) 100%)",
+      "area": 1510440
+    },
+    {
+      "value": "radial-gradient(60% 80% at 20% 100%, rgba(91, 125, 255, 0.4) 0%, rgba(91, 125, 255, 0) 70%), radial-gradient(40% 80% at 90% 0%, rgba(154, 175, 255, 0.3) 0%, rgba(154, 175, 255, 0) 70%)",
+      "area": 516437
+    },
+    {
+      "value": "linear-gradient(rgb(21, 37, 79) 0%, rgb(14, 27, 61) 55%, rgb(11, 23, 53) 100%)",
+      "area": 319094
+    },
+    {
+      "value": "linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)",
+      "area": 408104
+    }
+  ],
+  "glass": []
+}

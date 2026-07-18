@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata only for this source file; the HyperFrames runtime discards
+         everything outside <template> when it clones this sub-composition. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face{font-family:"Mona Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/MonaSans-Regular.woff") format("woff");}
+        @font-face{font-family:"Mona Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/MonaSans-Regular.woff2") format("woff2");}
+
+        /* Root: style via #root only — a class on the data-composition-id element
+           gets scoped out of matching at assembly (see hyperframes-core Pitfall 3). */
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: "Mona Sans", sans-serif;
+        }
+
+        /* Full-bleed ground lives on a class="clip" layer, never on #root itself. */
+        .intro-02-bg {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+        }
+
+        .intro-02-content {
+          position: absolute;
+          inset: 0;
+        }
+
+        .intro-02-stage {
+          position: absolute;
+          left: 50%;
+          top: 43%;
+          transform: translate(-50%, -50%);
+          width: 92cqw;
+        }
+
+        /* Separate inner wrapper carries the jitter tween — never GSAP-animate a
+           transform prop on an element that also has a CSS transform (the CSS
+           centering above would be silently overwritten). */
+        .intro-02-jitter {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        /* Ambient glow — sits behind the lockup, un-triggered bloom, blooms on the
+           final payoff beat. z-index below the hero content. */
+        .intro-02-glow {
+          /* Centered via inset (not a CSS transform) so the GSAP scale tween
+             below can own `transform` outright with no baked centering to lose. */
+          position: absolute;
+          z-index: 0;
+          left: 5cqw;
+          right: 5cqw;
+          top: 20cqh;
+          bottom: 20cqh;
+          transform-origin: 50% 50%;
+          background: radial-gradient(ellipse at center, rgba(35, 57, 135, 0.55) 0%, rgba(35, 57, 135, 0.18) 45%, rgba(35, 57, 135, 0) 72%);
+          opacity: 0;
+          pointer-events: none;
+          will-change: transform, opacity;
+        }
+
+        .intro-02-hero-slot {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          height: 17cqh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .intro-02-hero-layer {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .intro-02-word-wrap {
+          position: relative;
+          display: inline-block;
+        }
+
+        .intro-02-word {
+          position: relative;
+          z-index: 1;
+          font-size: 4.2cqw;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          line-height: 1.08;
+          color: #0a0a0a;
+          white-space: nowrap;
+        }
+
+        .intro-02-underline {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -0.55cqw;
+          height: 0.38cqw;
+          border-radius: 2px;
+          background: #233987;
+          transform: scaleX(0);
+          transform-origin: left center;
+        }
+
+        .intro-02-logo {
+          display: block;
+          width: 36cqw;
+          height: auto;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        .intro-02-tagline-row {
+          position: relative;
+          z-index: 2;
+          margin-top: 3.2cqh;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+          justify-content: center;
+          gap: 0 0.55cqw;
+          max-width: 78cqw;
+          transform-origin: 50% 50%;
+        }
+
+        .intro-02-tag-word {
+          font-size: 1.7cqw;
+          font-weight: 500;
+          line-height: 1.35;
+          color: #0a1535;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="02-intro" data-start="0" data-duration="5.577" data-width="1920" data-height="1080">
+        <div
+          class="clip intro-02-bg"
+          data-start="0"
+          data-duration="5.577"
+          data-track-index="0"
+        ></div>
+
+        <div
+          class="clip intro-02-content"
+          data-start="0"
+          data-duration="5.577"
+          data-track-index="1"
+        >
+          <div class="intro-02-stage" id="intro-02-stage">
+            <div class="intro-02-jitter" id="intro-02-jitter">
+              <div class="intro-02-glow" id="intro-02-glow"></div>
+
+              <div class="intro-02-hero-slot">
+                <div class="intro-02-hero-layer" id="intro-02-intro-layer">
+                  <span class="intro-02-word-wrap">
+                    <span class="intro-02-word">Introducing</span>
+                    <span class="intro-02-underline" id="intro-02-underline"></span>
+                  </span>
+                </div>
+                <div class="intro-02-hero-layer" id="intro-02-logo-layer" style="opacity: 0;">
+                  <img
+                    class="intro-02-logo"
+                    id="intro-02-logo"
+                    src="assets/logo-cf8f6ce7.svg"
+                    alt="PostSnag"
+                  />
+                </div>
+              </div>
+
+              <div class="intro-02-tagline-row" id="intro-02-tagline-row">
+                <span class="intro-02-tag-word" id="intro-02-tw1">Snag</span>
+                <span class="intro-02-tag-word" id="intro-02-tw2">any</span>
+                <span class="intro-02-tag-word" id="intro-02-tw3">post,</span>
+                <span class="intro-02-tag-word" id="intro-02-tw4">build</span>
+                <span class="intro-02-tag-word" id="intro-02-tw5">your</span>
+                <span class="intro-02-tag-word" id="intro-02-tw6">swipe</span>
+                <span class="intro-02-tag-word" id="intro-02-tw7">file</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+
+          const introWord = document.querySelector("#intro-02-intro-layer .intro-02-word");
+          const underline = document.getElementById("intro-02-underline");
+          const introLayer = document.getElementById("intro-02-intro-layer");
+          const logoLayer = document.getElementById("intro-02-logo-layer");
+          const logo = document.getElementById("intro-02-logo");
+          const glow = document.getElementById("intro-02-glow");
+          const taglineRow = document.getElementById("intro-02-tagline-row");
+          const tw4 = document.getElementById("intro-02-tw4");
+          const tw5 = document.getElementById("intro-02-tw5");
+          const tw6 = document.getElementById("intro-02-tw6");
+          const tw7 = document.getElementById("intro-02-tw7");
+
+          // ---- Scene 1 (0.0-1.7s): "Introducing" lands, underline draws, then
+          // hard-cuts to the PostSnag lockup (logo asset already carries the
+          // wordmark), which spring-pops in beside/where the word was. ----
+
+          // "Introducing" arrives immediately — the frame's hero content must be
+          // visible by t<=0.5s; fromTo states the collapsed start explicitly so a
+          // seek to t=0 is correct.
+          tl.fromTo(
+            introWord,
+            { autoAlpha: 0, y: 16 },
+            { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" },
+            0,
+          );
+
+          // Drawn cobalt underline (css-marker-patterns, highlight-mode sweep).
+          tl.fromTo(
+            underline,
+            { scaleX: 0 },
+            { scaleX: 1, duration: 0.4, ease: "power2.out" },
+            0.35,
+          );
+
+          // Hard cut: "Introducing" is instantly gone (discrete-text-sequence —
+          // whole-state swap, zero-duration set, a sanctioned visibility exception),
+          // as the VO names the product. The lockup pops in on a smooth long-tail
+          // settle (spring-pop-entrance) — no overshoot.
+          tl.set(introLayer, { autoAlpha: 0 }, 0.85);
+          tl.fromTo(
+            logo,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" },
+            0.85,
+          );
+          tl.set(logoLayer, { opacity: 1 }, 0.85);
+
+          // ---- Scene 2 (1.7-3.6s): tagline assembles per-word beneath the held
+          // wordmark (dynamic-content-sequencing / word-by-word tagline build).
+          // The lockup itself holds steady — no re-animation. ----
+          const TAG_WORDS = [
+            { el: document.getElementById("intro-02-tw1"), at: 1.7 },
+            { el: document.getElementById("intro-02-tw2"), at: 1.88 },
+            { el: document.getElementById("intro-02-tw3"), at: 2.03 },
+            { el: tw4, at: 2.25 },
+            { el: tw5, at: 2.45 },
+            { el: tw6, at: 2.65 },
+            { el: tw7, at: 2.85 },
+          ];
+          TAG_WORDS.forEach((w) => {
+            tl.fromTo(
+              w.el,
+              { autoAlpha: 0, y: 10 },
+              { autoAlpha: 1, y: 0, duration: 0.28, ease: "power3.out" },
+              w.at,
+            );
+          });
+
+          // ---- Scene 3 (3.6-5.077s): on "finally see what works," the tagline's
+          // last words swap in-place (discrete-text-sequence — instant textContent
+          // swap, no animation between states) to land on "what works"; a soft
+          // cobalt glow blooms behind the resolved lockup (ambient-glow-bloom,
+          // bloom-and-hold — the remaining window is short, so no idle breathe).
+          // Holds to end with only a subtle jitter. ----
+          const SWAP_AT = 3.6;
+          tl.call(
+            () => {
+              tw4.textContent = "see";
+              tw5.textContent = "what";
+              tw6.textContent = "works.";
+            },
+            null,
+            SWAP_AT,
+          );
+          // tw7 ("file") is dropped — the resolved phrase is one word shorter.
+          tl.set(tw7, { autoAlpha: 0, display: "none" }, SWAP_AT);
+
+          // Small completion pulse on the swapped words so the "land" reads as a beat.
+          tl.fromTo(
+            [tw4, tw5, tw6],
+            { scale: 1 },
+            { scale: 1.06, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1 },
+            SWAP_AT,
+          );
+
+          // Ambient glow bloom-in, landing together with the payoff swap.
+          tl.fromTo(
+            glow,
+            { opacity: 0, scale: 0.86 },
+            { opacity: 0.3, scale: 1, duration: 0.65, ease: "power2.out" },
+            SWAP_AT,
+          );
+
+          // Subtle bounded jitter during the final hold — deterministic sine read
+          // off tl.time() via a proxy driver, not a CSS/infinite loop.
+          const JITTER_START = 4.25;
+          const JITTER_DUR = 5.077 - JITTER_START;
+          const jitterPhase = { p: 0 };
+          tl.to(
+            jitterPhase,
+            {
+              p: Math.PI * 2 * 1.4,
+              duration: JITTER_DUR,
+              ease: "none",
+              onUpdate: () => {
+                const s = Math.sin(jitterPhase.p);
+                gsap.set("#intro-02-jitter", { y: s * 2 });
+              },
+            },
+            JITTER_START,
+          );
+
+          window.__timelines["02-intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
