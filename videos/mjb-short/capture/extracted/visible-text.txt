@@ -1,0 +1,105 @@
+[a] Benefits for Job Seekers
+[a] Student Discount
+[button] Get Started
+[span] Powered by Jobba AI
+[h1] Land Your Dream Job Faster with
+[span] Jobba
+[p] Upload your LinkedIn, let Jobba build a tailored resume, write cover letters, and track your applications — all in one place.
+[h2] Lost Track of Your Job Applications?
+[p] Three simple steps to organise your job search and get hired faster.
+[span] Step
+[h3] Import Your Profile
+[p] Upload your CV or import your LinkedIn profile. Jobba instantly scans your skills and builds your personalised profile.
+[span] Step
+[h3] Create Your Job Tracker
+[p] Paste any job description. Jobba scans the role and creates a smart tracker to manage your job applications.
+[span] Step
+[h3] Be Personalized
+[p] Jobba matches job requirements to your profile and generates tailored resumes and cover letters for each role.
+[h2] Everything You Need to
+[h2] Land Your Next Job
+[p] From tracking applications to creating tailored resumes, cover letters, and interview preparation, our platform makes your job search faster, smarter, and stress-free.
+[h3] Create, Save, and Switch Resumes Instantly
+[p] Create tailored resumes for any job role in seconds. Edit once, then instantly switch between versions with one click.
+[h3] Personalised Cover Letters in Seconds
+[p] Generate job-specific cover letters in seconds. Easily tailor and send applications faster while AI handles the hard work.
+[h3] Track Every Application With Ease
+[p] See all your submitted applications in one clear dashboard. Stay on top of deadlines, follow-ups, and progress without any stress.
+[h2] Extract Job Descriptions Instantly from Any Job Post
+[p] Our browser extension instantly extracts clean job descriptions from job postings, so you can apply smarter and faster.
+[span] Add to Firefox
+[span] Add to Chrome
+[h2] Job Hunting Shouldn't
+[h2] Be a Full-Time Job
+[p] We get it. Searching for jobs is stressful and exhausting. Jobba takes the heavy lifting off your plate so you can focus on opportunities, not busy work.
+[h3] Save Your Time
+[span] 90% Faster
+[p] Quickly generate tailored resumes and cover letters with AI. Spend minutes applying instead of hours.
+[h3] Peace of Mind
+[span] 100% Peace of Mind
+[p] Skip the messy spreadsheets — Jobba keeps everything organised, simple, and easy to manage.
+[h3] Boost Your Profile
+[span] 3x More Interviews
+[p] Get ATS-friendly resumes and polished cover letters designed to highlight your strengths and get noticed.
+[h3] Stay in Control
+[span] No Missed Opportunities
+[p] Track all your applications in one dashboard and stay organised with deadlines and follow-ups.
+[h2] Ready to Change How You
+[span] Job Hunt?
+[p] Join thousands of Gen Z professionals who've already transformed their career journey with Jobba.
+[div] 5 min
+[div] Average Setup Time
+[div] 48 hrs
+[div] First Interview
+[div] 2 weeks
+[div] Average Time to Offer
+[h2] Choose Your Career Growth Plan
+[p] Start for free and upgrade when you're ready. No hidden fees, no surprises — just the tools you need to land your next role faster.
+[h3] Free
+[p] Perfect for getting started with your job search
+[span] Forever
+[span] 10 Job Trackers
+[span] Store upto 10 Resumes
+[span] Free Resume Template
+[span] Free Cover Letter Template
+[span] 25 Monthly Free Credits
+[span] Access to Interview Preparation Resources
+[span] Email Support
+[button] Start Free
+[span] Most Popular
+[h3] Pro
+[p] Everything you need to land your dream job faster
+[span] $4.99
+[span] /month
+[span] Unlimited Job Trackers
+[span] Unlimited Resume Storage
+[span] Premium Resume Templates
+[span] Premium Cover Letter Templates
+[span] 150 Monthly Credits
+[span] Access to Interview Preparation Resources
+[span] Priority Support
+[button] Subscribe to Pro
+[h2] Kickstart Your Career, 50% Off for Students
+[p] Get full access to resumes, cover letters, and application tracking at 50% off while you study.
+[a] Apply for Student Discount
+[span] Ready to Transform Your Career?
+[h2] Your Next Job is Just
+[span] One Click
+[h2] Away
+[p] The Jobba community is incredible. We share tips, celebrate wins, and support each other throughout the job search journey.
+[a] Register Now & Kick Start Your Career
+[p] "Don't let another opportunity slip by. Your dream job is waiting – let Jobba help you get there."
+[p] - The Jobba Team
+[h3] My Job Bucket
+[p] Powered by Jobba AI
+[p] Transforming how Gen Z professionals approach their career journey. From resume creation to job tracking, we've got you covered.
+[span] Made with Love for Job Seekers
+[a] About Us
+[a] Student Discount
+[a] System Status
+[a] Change Log
+[a] Privacy Policy
+[a] Terms of Service
+[a] Disclaimer
+[p] © 2026 My Job Bucket. All Rights Reserved.
+[span] All Systems Operational

@@ -1,0 +1,23 @@
+{
+  "video": "mjb-short",
+  "startedAt": "2026-07-23T13:11:42.189Z",
+  "finishedAt": "2026-07-23T14:40:00.000Z",
+  "finishedAtSource": "progress.json lastUpdated (phase: done)",
+  "sessionsSpanned": 1,
+  "activeSeconds": 3469,
+  "activeTime": "57m 49s",
+  "elapsedSeconds": 5298,
+  "elapsedTime": "1h 28m",
+  "renderSeconds": 87.6,
+  "renderTime": "1m 28s",
+  "captureSeconds": null,
+  "captureTime": null,
+  "totalsByModel": {
+    "claude-sonnet-5": {
+      "input": 40,
+      "output": 6532,
+      "cacheRead": 4045419,
+      "cacheCreate": 20914
+    }
+  }
+}

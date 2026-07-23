@@ -1,0 +1,211 @@
+{
+  "files": [
+    {
+      "file": "0ee4b8f05dcd9fee-s.1q0qwmqzyniyk.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "13ae3e01af63c0ce-s.35p9_4tnsm_o4.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "2bbe8d2671613f1f-s.0k62hbripvv8p.woff2",
+      "family": "Inter",
+      "rawFamily": "Inter",
+      "subfamily": "Regular",
+      "postscript": "Inter-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "2c55a0e60120577a-s.0-dom-5bn10r2.woff2",
+      "family": "Inter",
+      "rawFamily": "Inter",
+      "subfamily": "Regular",
+      "postscript": "Inter-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "5476f68d60460930-s.2uwcyprjm3xu3.woff2",
+      "family": "Inter",
+      "rawFamily": "Inter",
+      "subfamily": "Regular",
+      "postscript": "Inter-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "family": "Inter",
+      "rawFamily": "Inter",
+      "subfamily": "Regular",
+      "postscript": "Inter-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "9c72aa0f40e4eef8-s.1y4-pdgsjb-pw.woff2",
+      "family": "Inter",
+      "rawFamily": "Inter",
+      "subfamily": "Regular",
+      "postscript": "Inter-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "9eba4caf7edd2921-s.02gir8avbbwr_.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "ab57efd000576a30-s.p.3fofz6dws3mg0.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "ad66f9afd8947f86-s.3lvt2whj97whp.woff2",
+      "family": "Inter",
+      "rawFamily": "Inter",
+      "subfamily": "Regular",
+      "postscript": "Inter-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "b8d1f0a88dfecec3-s.1e3bxj0ebt1gg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "f6752bd2263820da-s.3hqxvms4e79hg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    }
+  ],
+  "families": [
+    {
+      "family": "Inter",
+      "weights": [
+        400
+      ],
+      "variable": true,
+      "fileCount": 6,
+      "files": [
+        "2bbe8d2671613f1f-s.0k62hbripvv8p.woff2",
+        "2c55a0e60120577a-s.0-dom-5bn10r2.woff2",
+        "5476f68d60460930-s.2uwcyprjm3xu3.woff2",
+        "83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+        "9c72aa0f40e4eef8-s.1y4-pdgsjb-pw.woff2",
+        "ad66f9afd8947f86-s.3lvt2whj97whp.woff2"
+      ]
+    },
+    {
+      "family": "Inter Tight",
+      "weights": [
+        400
+      ],
+      "variable": true,
+      "fileCount": 6,
+      "files": [
+        "0ee4b8f05dcd9fee-s.1q0qwmqzyniyk.woff2",
+        "13ae3e01af63c0ce-s.35p9_4tnsm_o4.woff2",
+        "9eba4caf7edd2921-s.02gir8avbbwr_.woff2",
+        "ab57efd000576a30-s.p.3fofz6dws3mg0.woff2",
+        "b8d1f0a88dfecec3-s.1e3bxj0ebt1gg.woff2",
+        "f6752bd2263820da-s.3hqxvms4e79hg.woff2"
+      ]
+    }
+  ],
+  "unidentified": [],
+  "meta": {
+    "generatedAt": "2026-07-23T13:17:30.376Z",
+    "tool": "fontkit"
+  }
+}

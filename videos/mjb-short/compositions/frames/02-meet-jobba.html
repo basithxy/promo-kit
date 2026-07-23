@@ -1,0 +1,233 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("capture/assets/fonts/2bbe8d2671613f1f-s.0k62hbripvv8p.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      font-family: "Inter", sans-serif;
+    }
+
+    /* Full-bleed ground lives on a dedicated clip layer, never on #root. */
+    .meet-jobba-bg {
+      position: absolute;
+      inset: 0;
+      background: #08060f;
+    }
+
+    .meet-jobba-glow {
+      position: absolute;
+      left: 50%;
+      top: 46%;
+      width: 900px;
+      height: 900px;
+      margin-left: -450px;
+      margin-top: -450px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(124, 46, 255, 0.35) 0%,
+        rgba(233, 52, 189, 0.14) 45%,
+        rgba(8, 6, 15, 0) 72%
+      );
+    }
+
+    .meet-jobba-hero {
+      position: absolute;
+      inset: 0;
+    }
+
+    .meet-jobba-meet {
+      position: absolute;
+      left: 0;
+      top: 250px;
+      width: 100%;
+      text-align: center;
+      font-size: 2.4cqw;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #99a1af;
+    }
+
+    .meet-jobba-wordmark-stack {
+      position: absolute;
+      left: 0;
+      top: 330px;
+      width: 100%;
+      height: 240px;
+      display: grid;
+      place-items: center;
+      transform-origin: 50% 50%;
+      will-change: transform;
+    }
+
+    .meet-jobba-wordmark {
+      grid-area: 1 / 1;
+      margin: 0;
+      font-size: 11cqw;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .meet-jobba-wordmark-solid {
+      color: #7c2eff;
+    }
+
+    .meet-jobba-wordmark-gradient {
+      background-image: linear-gradient(90deg, #7c2eff 0%, #e934bd 50%, #7c2eff 100%);
+      background-size: 300% 100%;
+      background-position: 100% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .meet-jobba-promise {
+      position: absolute;
+      left: 0;
+      top: 700px;
+      width: 100%;
+      text-align: center;
+      font-size: 2cqw;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #99a1af;
+    }
+
+    .meet-jobba-word {
+      display: inline-block;
+      margin: 0 0.28em;
+    }
+
+    .meet-jobba-badge {
+      position: absolute;
+      right: 64px;
+      top: 815px;
+      width: 150px;
+      height: auto;
+      display: block;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-meet-jobba" data-width="1920" data-height="1080" data-duration="3.679">
+    <div class="meet-jobba-bg clip" data-start="0" data-duration="3.679" data-track-index="0">
+      <div class="meet-jobba-glow" id="meet-jobba-glow"></div>
+    </div>
+
+    <div class="meet-jobba-hero clip" data-start="0" data-duration="3.679" data-track-index="1">
+      <div class="meet-jobba-meet" id="meet-jobba-meet">Meet</div>
+
+      <div class="meet-jobba-wordmark-stack" id="meet-jobba-wordmark-stack">
+        <h1
+          class="meet-jobba-wordmark meet-jobba-wordmark-solid"
+          id="meet-jobba-wordmark-solid"
+          data-layout-allow-occlusion="true"
+        >
+          Jobba
+        </h1>
+        <h1 class="meet-jobba-wordmark meet-jobba-wordmark-gradient" id="meet-jobba-wordmark-gradient">Jobba</h1>
+      </div>
+
+      <p class="meet-jobba-promise" id="meet-jobba-promise">
+        <span class="meet-jobba-word" id="meet-jobba-word-0">One</span>
+        <span class="meet-jobba-word" id="meet-jobba-word-1">upload.</span>
+        <span class="meet-jobba-word" id="meet-jobba-word-2">Everything,</span>
+        <span class="meet-jobba-word" id="meet-jobba-word-3">handled.</span>
+      </p>
+    </div>
+
+    <img
+      class="meet-jobba-badge clip"
+      id="meet-jobba-badge"
+      src="assets/logo-69859b93.svg"
+      alt=""
+      data-start="0"
+      data-duration="3.679"
+      data-track-index="2"
+    />
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // ---- Scene 1 (0.0-1.27s): "Meet" resolves, Jobba wordmark spring-pops
+      // with a purple->pink->purple gradient sweep that settles to solid purple.
+
+      tl.fromTo(
+        "#meet-jobba-glow",
+        { opacity: 0.28, scale: 0.82 },
+        { opacity: 0.62, scale: 1, duration: 0.6, ease: "power2.out" },
+        0.1,
+      );
+
+      tl.fromTo(
+        "#meet-jobba-meet",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+        0.05,
+      );
+
+      // Hero pop — visible well before t=0.5s (smooth long-tail settle, no overshoot).
+      tl.fromTo(
+        "#meet-jobba-wordmark-stack",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.42, ease: "power3.out" },
+        0.18,
+      );
+
+      // Gradient sweep through the letterforms (percent axis inverted: 100% -> 0% = left->right).
+      tl.fromTo(
+        "#meet-jobba-wordmark-gradient",
+        { backgroundPosition: "100% 50%" },
+        { backgroundPosition: "0% 50%", duration: 0.45, ease: "none" },
+        0.55,
+      );
+
+      // Settle: crossfade the gradient copy away, revealing the solid-purple twin beneath.
+      tl.to("#meet-jobba-wordmark-gradient", { opacity: 0, duration: 0.2, ease: "power2.in" }, 1.0);
+
+      // ---- Scene 2 (1.27-3.179s): muted one-line promise types in beneath the
+      // wordmark, per-word staggered reveal paced by each word's length; then a
+      // deliberate hold — no drift, no jitter.
+
+      var words = ["One", "upload.", "Everything,", "handled."];
+      var WORD_START = 1.35;
+      var WORD_BASE_GAP = 0.12;
+      var SEC_PER_CHAR = 0.018;
+      var WORD_RISE_DUR = 0.25;
+
+      var cursor = WORD_START;
+      for (var i = 0; i < words.length; i++) {
+        tl.fromTo(
+          "#meet-jobba-word-" + i,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: WORD_RISE_DUR, ease: "power2.out" },
+          cursor,
+        );
+        cursor += WORD_BASE_GAP + words[i].length * SEC_PER_CHAR;
+      }
+
+      // Trust badge — a quiet supporting accent, arrives after the promise settles.
+      tl.fromTo(
+        "#meet-jobba-badge",
+        { opacity: 0 },
+        { opacity: 0.85, duration: 0.4, ease: "power2.out" },
+        1.6,
+      );
+
+      window.__timelines["02-meet-jobba"] = tl;
+    })();
+  </script>
+</template>

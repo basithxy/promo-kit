@@ -1,0 +1,262 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "72px",
+      "fontWeight": "700",
+      "lineHeight": "90px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Land Your Dream Job Faster with Jobba"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "60px",
+      "fontWeight": "700",
+      "lineHeight": "60px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Lost Track of Your Job Applications?"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "48px",
+      "fontWeight": "800",
+      "lineHeight": "52.8px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Extract Job Descriptions Instantly from Any Job Post"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "48px",
+      "fontWeight": "700",
+      "lineHeight": "60px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Ready to Change How You Job Hunt?"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "24px",
+      "fontWeight": "700",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Import Your Profile"
+    },
+    {
+      "role": "body",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "20px",
+      "fontWeight": "500",
+      "lineHeight": "32.5px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+      "sampleText": "Our browser extension instantly extracts clean job descripti"
+    },
+    {
+      "role": "heading-4",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Product"
+    },
+    {
+      "role": "link",
+      "fontFamily": "ui-sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(85.1236 -0.612259 -3.7138)",
+      "sampleText": "Blogs"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48,
+      64,
+      80,
+      128
+    ],
+    "baseUnit": 8
+  },
+  "radius": [
+    "8px",
+    "14px",
+    "16px",
+    "24px",
+    "3.35544e+07px"
+  ],
+  "shadows": [],
+  "buttons": [
+    {
+      "label": "Get Started",
+      "background": "transparent",
+      "backgroundImage": "linear-gradient(to right in oklab, rgb(148, 51, 231) 0%, rgb(218, 39, 121) 100%)",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "8px 16px",
+      "borderRadius": "8px",
+      "border": "0px solid lab(82.4073 2.48769 -7.06395)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "36px"
+    },
+    {
+      "label": "Start Free",
+      "background": "lab(16.1051 -1.18239 -11.7533)",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "12px 24px",
+      "borderRadius": "14px",
+      "border": "0px solid lab(18.4735 4.22837 -10.352)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "height": "48px"
+    },
+    {
+      "label": "Subscribe to Pro",
+      "background": "transparent",
+      "backgroundImage": "linear-gradient(to right in oklab, rgb(148, 51, 231) 0%, rgb(218, 39, 121) 100%)",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "12px 24px",
+      "borderRadius": "14px",
+      "border": "0px solid lab(18.4735 4.22837 -10.352)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "height": "48px"
+    },
+    {
+      "label": "Apply for Student Discount",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "lab(3.04768 -1.31044 -4.08459)",
+      "padding": "12px 32px",
+      "borderRadius": "14px",
+      "border": "0px solid lab(18.4735 4.22837 -10.352)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "height": "48px"
+    },
+    {
+      "label": "Register Now & Kick Start Your Career",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "lab(97.6172 1.69092 0.0164032)",
+      "padding": "24px 32px",
+      "borderRadius": "8px",
+      "border": "0px solid lab(18.4735 4.22837 -10.352)",
+      "boxShadow": "none",
+      "fontSize": "18px",
+      "fontWeight": "600",
+      "height": "48px"
+    }
+  ],
+  "cards": [],
+  "nav": {
+    "label": "navigation",
+    "background": "lab(2.74175 0 0.00000596046 / 0.8)",
+    "backgroundImage": "",
+    "backdropFilter": "blur(16px)",
+    "color": "lab(3.04768 -1.31044 -4.08459)",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "65px"
+  },
+  "chips": [
+    {
+      "label": "Step 1",
+      "background": "oklab(0.277998 -0.00751148 -0.0321264 / 0.5)",
+      "color": "lab(3.04768 -1.31044 -4.08459)",
+      "padding": "4px 12px",
+      "borderRadius": "3.35544e+07px",
+      "border": "1px solid lab(27.1134 -0.956401 -12.3224)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "34px"
+    }
+  ],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "radial-gradient(circle, rgba(70, 202, 229, 0.3) 0%, rgba(60, 24, 241, 0.3) 30%, rgba(147, 51, 234, 0.3) 60%, rgba(236, 72, 153, 0.3) 100%)",
+      "area": 1582080
+    },
+    {
+      "value": "linear-gradient(in oklab, rgb(255, 18, 97) 0%, rgb(45, 9, 246) 100%)",
+      "area": 512000
+    },
+    {
+      "value": "linear-gradient(to right bottom in oklab, rgb(139, 49, 255) 0%, rgb(184, 62, 250) 50%, rgb(233, 76, 217) 100%)",
+      "area": 515320
+    },
+    {
+      "value": "linear-gradient(rgba(236, 72, 153, 0.5), rgba(147, 51, 234, 0.5), rgba(60, 24, 241, 0.5), rgba(70, 202, 229, 0.5))",
+      "area": 462848
+    },
+    {
+      "value": "linear-gradient(in oklab, rgb(22, 9, 63) 0%, rgb(22, 9, 63) 50%, rgba(0, 0, 0, 0) 100%)",
+      "area": 552960
+    },
+    {
+      "value": "linear-gradient(to right in oklab, rgb(148, 51, 231) 0%, rgb(218, 39, 121) 100%)",
+      "area": 254990
+    }
+  ],
+  "glass": [
+    {
+      "backdropFilter": "blur(8px)",
+      "background": "oklab(0 0 0 / 0.5)",
+      "border": "1px solid lab(16.1051 -1.18239 -11.7533)",
+      "borderRadius": "24px",
+      "boxShadow": "",
+      "area": 514080
+    },
+    {
+      "backdropFilter": "blur(8px)",
+      "background": "oklab(0 0 0 / 0.4)",
+      "border": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+      "borderRadius": "16px",
+      "boxShadow": "",
+      "area": 251712
+    },
+    {
+      "backdropFilter": "blur(8px)",
+      "background": "linear-gradient(to right bottom, oklab(0.622989 -0.0378532 -0.210606 / 0.1) 0%, oklab(0.626994 0.147781 -0.219928 / 0.1) 100%)",
+      "border": "2px solid oklab(0.622989 -0.0378532 -0.210606 / 0.5)",
+      "borderRadius": "24px",
+      "boxShadow": "",
+      "area": 175616
+    }
+  ]
+}

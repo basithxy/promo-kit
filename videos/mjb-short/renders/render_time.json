@@ -1,0 +1,6 @@
+{
+    "command":  "npx hyperframes render --skill=product-launch-video --quality standard --output renders/video.mp4",
+    "seconds":  87.6,
+    "exitCode":  0,
+    "finishedAt":  "2026-07-23T14:05:32.1359939Z"
+}

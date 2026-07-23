@@ -1,0 +1,402 @@
+<template>
+  <style>
+    #root {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      font-family: "TrackItAll-Inter", sans-serif;
+    }
+
+    @font-face {
+      font-family: "TrackItAll-Inter";
+      src: url("assets/fonts/2bbe8d2671613f1f-s.0k62hbripvv8p.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    .track-it-all-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #0b0814 0%, #08060f 55%, #0a0712 100%);
+    }
+
+    /* ── Board card ── */
+    .track-it-all-board {
+      position: absolute;
+      left: 64px;
+      top: 130px;
+      width: 1080px;
+      padding: 40px;
+      box-sizing: border-box;
+      background: rgba(124, 46, 255, 0.04);
+      border: 1.5px solid rgba(124, 46, 255, 0.2);
+      border-radius: 14px;
+      z-index: 2;
+    }
+
+    .track-it-all-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b79cff;
+      margin: 0 0 10px;
+    }
+
+    .track-it-all-title {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #ffffff;
+      margin: 0 0 28px;
+    }
+
+    .track-it-all-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .track-it-all-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 26px;
+      box-sizing: border-box;
+      background: rgba(124, 46, 255, 0.05);
+      border: 1.5px solid rgba(124, 46, 255, 0.18);
+      border-radius: 12px;
+      will-change: transform, opacity;
+    }
+
+    .track-it-all-row-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .track-it-all-company {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .track-it-all-role {
+      font-size: 15px;
+      font-weight: 400;
+      color: #99a1af;
+      line-height: 1.2;
+    }
+
+    .track-it-all-status {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: rgba(124, 46, 255, 0.85);
+      border-radius: 100px;
+      padding: 7px 16px;
+      white-space: nowrap;
+    }
+
+    /* ── Stats ── */
+    .track-it-all-glow {
+      position: absolute;
+      left: 1054px;
+      top: 10px;
+      width: 932px;
+      height: 480px;
+      z-index: 1;
+      background: radial-gradient(
+        closest-side,
+        rgba(91, 33, 182, 0.9) 0%,
+        rgba(91, 33, 182, 0.4) 45%,
+        rgba(91, 33, 182, 0) 75%
+      );
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .track-it-all-stat {
+      position: absolute;
+      top: 140px;
+      width: 324px;
+      padding: 32px 24px;
+      box-sizing: border-box;
+      background: rgba(124, 46, 255, 0.04);
+      border: 1.5px solid rgba(124, 46, 255, 0.2);
+      border-radius: 14px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .track-it-all-stat--1 {
+      left: 1184px;
+    }
+
+    .track-it-all-stat--2 {
+      left: 1532px;
+    }
+
+    .track-it-all-counter-wrap {
+      width: 200px;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+    }
+
+    .track-it-all-counter {
+      font-variant-numeric: tabular-nums;
+      font-size: 64px;
+      font-weight: 700;
+      color: #7c2eff;
+      line-height: 1;
+      transform-origin: 50% 50%;
+      display: inline-block;
+    }
+
+    .track-it-all-counter-suffix {
+      font-size: 36px;
+      font-weight: 700;
+      color: #7c2eff;
+      line-height: 1;
+      margin-left: 4px;
+      display: inline-block;
+    }
+
+    .track-it-all-stat-label {
+      margin-top: 14px;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #99a1af;
+      line-height: 1.3;
+    }
+  </style>
+
+  <div id="root" data-composition-id="04-track-it-all" data-width="1920" data-height="1080" data-duration="6.345">
+    <div class="track-it-all-bg clip" data-start="0" data-duration="6.345" data-track-index="0"></div>
+
+    <div class="track-it-all-board clip" data-start="0" data-duration="6.345" data-track-index="1">
+      <div class="track-it-all-eyebrow">Application Tracker</div>
+      <div class="track-it-all-title">Applications</div>
+      <div class="track-it-all-rows">
+        <div id="track-it-all-row-0" class="track-it-all-row">
+          <div class="track-it-all-row-info">
+            <div class="track-it-all-company">Nova Labs</div>
+            <div class="track-it-all-role">Frontend Engineer</div>
+          </div>
+          <div class="track-it-all-status">Interview</div>
+        </div>
+        <div id="track-it-all-row-1" class="track-it-all-row">
+          <div class="track-it-all-row-info">
+            <div class="track-it-all-company">Acme Corp</div>
+            <div class="track-it-all-role">Product Designer</div>
+          </div>
+          <div class="track-it-all-status">Applied</div>
+        </div>
+        <div id="track-it-all-row-2" class="track-it-all-row">
+          <div class="track-it-all-row-info">
+            <div class="track-it-all-company">Flux Inc</div>
+            <div class="track-it-all-role">Software Engineer</div>
+          </div>
+          <div class="track-it-all-status">Applied</div>
+        </div>
+        <div id="track-it-all-row-3" class="track-it-all-row">
+          <div class="track-it-all-row-info">
+            <div class="track-it-all-company">Bright Dev</div>
+            <div class="track-it-all-role">UX Researcher</div>
+          </div>
+          <div class="track-it-all-status">Offer</div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="track-it-all-glow"
+      class="track-it-all-glow clip"
+      data-start="4.35"
+      data-duration="1.995"
+      data-track-index="6"
+    ></div>
+
+    <div
+      id="track-it-all-stat-1"
+      class="track-it-all-stat track-it-all-stat--1 clip"
+      data-start="2.9"
+      data-duration="3.445"
+      data-track-index="7"
+    >
+      <div class="track-it-all-counter-wrap">
+        <span id="track-it-all-counter-1" class="track-it-all-counter">0</span
+        ><span id="track-it-all-suffix-1" class="track-it-all-counter-suffix">%</span>
+      </div>
+      <div id="track-it-all-label-1" class="track-it-all-stat-label">Faster</div>
+    </div>
+
+    <div
+      id="track-it-all-stat-2"
+      class="track-it-all-stat track-it-all-stat--2 clip"
+      data-start="4.35"
+      data-duration="1.995"
+      data-track-index="8"
+    >
+      <div class="track-it-all-counter-wrap">
+        <span id="track-it-all-counter-2" class="track-it-all-counter">0</span
+        ><span id="track-it-all-suffix-2" class="track-it-all-counter-suffix">&times;</span>
+      </div>
+      <div id="track-it-all-label-2" class="track-it-all-stat-label">More Interviews</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+
+      var tl = gsap.timeline({ paused: true });
+
+      // ── Scene 1 (0.0–0.6s): board settles wide, established static ──
+      tl.fromTo(
+        ".track-it-all-board",
+        { opacity: 0, scale: 1.04 },
+        { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out", transformOrigin: "50% 50%" },
+        0,
+      );
+
+      // ── Scene 2 (0.6–2.9s): row cards spring in, staggered cascade, ──
+      // converging from a shared center point toward their list slot
+      // (center-outward-expansion) with a smooth pop settle (spring-pop-entrance).
+      var ROWS = [
+        { id: "track-it-all-row-0", start: 0.6, offsetY: 189 },
+        { id: "track-it-all-row-1", start: 1.1, offsetY: 63 },
+        { id: "track-it-all-row-2", start: 1.6, offsetY: -63 },
+        { id: "track-it-all-row-3", start: 2.1, offsetY: -189 },
+      ];
+      var ROW_DUR = 0.55;
+
+      ROWS.forEach(function (row) {
+        var el = document.getElementById(row.id);
+        tl.fromTo(
+          el,
+          { opacity: 0, scale: 0.82, y: row.offsetY },
+          { opacity: 1, scale: 1, y: 0, duration: ROW_DUR, ease: "power3.out" },
+          row.start,
+        );
+      });
+
+      // ── Scene 3 (2.9–4.35s): stat pill 1 materializes, counts 0→90 ──
+      // (counting-dynamic-scale)
+      tl.fromTo(
+        "#track-it-all-stat-1",
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
+        2.9,
+      );
+
+      var counter1 = document.getElementById("track-it-all-counter-1");
+      var state1 = { value: 0 };
+      var COUNT1_DUR = 0.9;
+      var COUNT1_START = 2.95;
+      var START1_SCALE = 30 / 64;
+
+      tl.to(
+        state1,
+        {
+          value: 90,
+          duration: COUNT1_DUR,
+          ease: "power2.out",
+          onUpdate: function () {
+            counter1.textContent = Math.round(state1.value).toLocaleString();
+          },
+        },
+        COUNT1_START,
+      );
+      tl.fromTo(
+        counter1,
+        { scale: START1_SCALE },
+        { scale: 1, duration: COUNT1_DUR, ease: "power2.out" },
+        COUNT1_START,
+      );
+      tl.fromTo(
+        "#track-it-all-suffix-1",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" },
+        COUNT1_START + COUNT1_DUR,
+      );
+      tl.fromTo(
+        "#track-it-all-label-1",
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        3.0,
+      );
+
+      // ── Scene 4 (4.35–5.845s): stat pill 2 counts 0→3, glow bloom behind ──
+      // the stat row lands with the second stat's settle (ambient-glow-bloom)
+      tl.fromTo(
+        "#track-it-all-stat-2",
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
+        4.35,
+      );
+
+      var counter2 = document.getElementById("track-it-all-counter-2");
+      var state2 = { value: 0 };
+      var COUNT2_DUR = 0.9;
+      var COUNT2_START = 4.4;
+      var START2_SCALE = 30 / 64;
+
+      tl.to(
+        state2,
+        {
+          value: 3,
+          duration: COUNT2_DUR,
+          ease: "power2.out",
+          onUpdate: function () {
+            counter2.textContent = Math.round(state2.value).toLocaleString();
+          },
+        },
+        COUNT2_START,
+      );
+      tl.fromTo(
+        counter2,
+        { scale: START2_SCALE },
+        { scale: 1, duration: COUNT2_DUR, ease: "power2.out" },
+        COUNT2_START,
+      );
+      tl.fromTo(
+        "#track-it-all-suffix-2",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" },
+        COUNT2_START + COUNT2_DUR,
+      );
+      tl.fromTo(
+        "#track-it-all-label-2",
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        4.55,
+      );
+
+      // Bloom lands as one beat with stat 2's count settle (4.35 + 0.95 = 5.3
+      // ≈ COUNT2_START + COUNT2_DUR). Bloom-and-hold variation — the remaining
+      // window is short, so no idle breathe.
+      tl.fromTo(
+        "#track-it-all-glow",
+        { opacity: 0, scale: 0.85 },
+        { opacity: 0.28, scale: 1, duration: 0.95, ease: "power2.out", transformOrigin: "50% 50%" },
+        4.35,
+      );
+
+      window.__timelines["04-track-it-all"] = tl;
+    })();
+  </script>
+</template>

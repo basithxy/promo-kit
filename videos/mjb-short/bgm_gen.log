@@ -1,0 +1,5 @@
+  bgm: launched musicgen (detached, pid 14936) → assets/bgm/track.wav
+✓ audio engine → D:\Projects\promo-kit\videos\mjb-short\audio_meta.json
+  heygen: no  ·  ran: bgm
+  voices: 5  ·  bgm: musicgen (pending)  ·  sfx: 0
+  total voice duration: 20.566s

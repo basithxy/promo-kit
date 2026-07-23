@@ -1,0 +1,16 @@
+[
+  {
+    "index": 0,
+    "url": "https://myjobbucket.com/frontend/about-landing.mp4",
+    "filename": "about-landing.mp4",
+    "width": 512,
+    "height": 768,
+    "sourceWidth": 512,
+    "sourceHeight": 768,
+    "heading": "Save Your Time",
+    "caption": "Quickly generate tailored resumes and cover letters with AI. Spend minutes applying instead of hours.",
+    "ariaLabel": "",
+    "preview": "assets/videos/previews/video-0-preview.png",
+    "localPath": "assets/videos/about-landing.mp4"
+  }
+]

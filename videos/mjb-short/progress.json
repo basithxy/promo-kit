@@ -1,0 +1,6 @@
+{
+  "currentPhase": "done",
+  "completedPhases": ["research", "storyboard", "compose", "lint", "render", "qc"],
+  "lastUpdated": "2026-07-23T14:40:00.000Z",
+  "notes": "All 5 frames built and assembled. Caught and fixed a real asset mislabel: logo-69859b93.svg (auto-selected by capture's filename heuristic as 'the brand mark') is actually a Product Hunt trust badge, not Jobba's logo - frame 2's worker handled it gracefully as a small trust accent, frame 5 had wrongly morphed the badge into the CTA and was hand-fixed to use a typography wordmark instead. Also fixed: missing data-duration on frame roots (broke transitions inject), font path mismatches (assets/fonts/ vs capture/assets/fonts/, caused a runtime 404 in check), and BGM wiring (workflow's own merge steps kept clearing the pending MusicGen job markers - patched audio_meta.json by hand once assets/bgm/track.wav existed). npx hyperframes check passed clean (0 errors, contrast 37/37 AA). Rendered at --quality standard wrapped in keep-awake (87.6s wall clock, logged to renders/render_time.json). output.mp4 copied from renders/video.mp4 and QC'd via 5 extracted frames from the actual rendered file - all clean. Captions skipped per CLAUDE.md default (not requested)."
+}

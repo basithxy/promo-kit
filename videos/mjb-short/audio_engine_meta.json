@@ -1,0 +1,129 @@
+{
+  "tts_provider": "kokoro",
+  "voice_id": "af_sky",
+  "bgm": null,
+  "bgm_pending": false,
+  "bgm_provider": null,
+  "bgm_pid": null,
+  "bgm_log": null,
+  "bgm_mode": null,
+  "bgm_target_duration_s": null,
+  "bgm_seed_duration_s": null,
+  "bgm_loop_count": null,
+  "voices": [
+    {
+      "id": "01",
+      "path": "assets/voice/01.wav",
+      "duration_s": 3.456,
+      "words": []
+    },
+    {
+      "id": "02",
+      "path": "assets/voice/02.wav",
+      "duration_s": 3.179,
+      "words": []
+    },
+    {
+      "id": "03",
+      "path": "assets/voice/03.wav",
+      "duration_s": 4.907,
+      "words": []
+    },
+    {
+      "id": "04",
+      "path": "assets/voice/04.wav",
+      "duration_s": 5.845,
+      "words": []
+    },
+    {
+      "id": "05",
+      "path": "assets/voice/05.wav",
+      "duration_s": 3.179,
+      "words": []
+    }
+  ],
+  "sfx": [
+    {
+      "id": "02",
+      "name": "pop",
+      "file": "assets/sfx/pop.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 0.72,
+      "volume": 0.35
+    },
+    {
+      "id": "02",
+      "name": "chime",
+      "file": "assets/sfx/chime.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 2.5,
+      "volume": 0.35
+    },
+    {
+      "id": "03",
+      "name": "typing",
+      "file": "assets/sfx/typing.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 1.5,
+      "volume": 0.35
+    },
+    {
+      "id": "03",
+      "name": "click",
+      "file": "assets/sfx/click.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 0.37,
+      "volume": 0.35
+    },
+    {
+      "id": "03",
+      "name": "pop",
+      "file": "assets/sfx/pop.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 0.72,
+      "volume": 0.35
+    },
+    {
+      "id": "04",
+      "name": "pop",
+      "file": "assets/sfx/pop.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 0.72,
+      "volume": 0.35
+    },
+    {
+      "id": "04",
+      "name": "ping",
+      "file": "assets/sfx/ping.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 1.32,
+      "volume": 0.35
+    },
+    {
+      "id": "05",
+      "name": "click",
+      "file": "assets/sfx/click.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 0.37,
+      "volume": 0.35
+    },
+    {
+      "id": "05",
+      "name": "chime",
+      "file": "assets/sfx/chime.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 2.5,
+      "volume": 0.35
+    }
+  ],
+  "total_duration_s": 20.566
+}

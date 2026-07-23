@@ -1,0 +1,106 @@
+<template>
+  <style>
+    #root {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      font-family: "TheGrind-Inter", sans-serif;
+    }
+
+    @font-face {
+      font-family: "TheGrind-Inter";
+      src: url("assets/fonts/2bbe8d2671613f1f-s.0k62hbripvv8p.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    .the-grind-bg {
+      position: absolute;
+      inset: 0;
+      background: #08060f;
+    }
+
+    .the-grind-line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      font-family: "TheGrind-Inter", sans-serif;
+      font-weight: 800;
+      font-size: 108px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: #ffffff;
+    }
+
+    .the-grind-line .tint {
+      color: #b57a7a;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-the-grind" data-width="1920" data-height="1080" data-duration="3.856">
+    <div class="the-grind-bg clip" data-start="0" data-duration="3.856" data-track-index="0"></div>
+
+    <div
+      id="the-grind-line"
+      class="the-grind-line clip"
+      data-start="0"
+      data-duration="3.856"
+      data-track-index="1"
+    ></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+
+      var lineEl = document.getElementById("the-grind-line");
+
+      // Discrete state swap — each entry displays from its t until the next
+      // entry's t, with an INSTANT jump (no fade/slide) reproducing the
+      // discrete-text-sequence mechanic at sentence granularity for the
+      // problem-kinetic-type-beats hard-cut shape.
+      var STATES = [
+        { t: 0.0, html: "Another resume." },
+        { t: 1.15, html: "Another cover letter." },
+        { t: 2.3, html: 'Another <span class="tint">rejection</span>.' },
+      ];
+
+      function htmlAt(time) {
+        for (var i = STATES.length - 1; i >= 0; i--) {
+          if (time >= STATES[i].t) return STATES[i].html;
+        }
+        return "";
+      }
+
+      // Ensure the first state is present even before the first seek/tick,
+      // so the hero line is on screen at t=0 without depending on onUpdate
+      // firing pre-seek.
+      lineEl.innerHTML = STATES[0].html;
+
+      var tl = gsap.timeline({ paused: true });
+
+      var driver = { t: 0 };
+      tl.to(
+        driver,
+        {
+          t: 3.456,
+          duration: 3.456,
+          ease: "none",
+          onUpdate: function () {
+            lineEl.innerHTML = htmlAt(driver.t);
+          },
+        },
+        0,
+      );
+
+      window.__timelines["01-the-grind"] = tl;
+    })();
+  </script>
+</template>

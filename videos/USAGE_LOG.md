@@ -10,4 +10,5 @@
 | PostSnag | 2026-07-18T09:48:00.000Z | claude-sonnet-5 | 32 | 8180 | 1577543 | 1 | 25m 2s | 1h 43m | not measured |
 | PostSnag | 2026-07-18T09:48:00.000Z | claude-sonnet-5 | 34 | 8619 | 2057924 | 1 | 1h 43m | 1h 43m | 2m 35s |
 | BSP | 2026-07-18T20:50:00.000Z | claude-sonnet-5 | 104 | 18254 | 5655617 | 1 | 15m 31s | 1h 17m | not measured |
-| BSP | 2026-07-18T20:50:00.000Z | claude-sonnet-5 | 130 | 23451 | 9950425 | 1 | 50m 51s | 1h 17m | 1m 21s |
+| BSP | 2026-07-18T20:50:00.000Z | claude-sonnet-5 | 130 | 23451 | 9950425 | 1 | 50m 51s | 1h 17m | 1m 21s || mjb-short | 2026-07-23T14:40:00.000Z | claude-sonnet-5 | 28 | 5086 | 1534155 | 1 | 15m 24s | 1h 28m | not measured |
+| mjb-short | 2026-07-23T14:40:00.000Z | claude-sonnet-5 | 40 | 6532 | 4045419 | 1 | 57m 49s | 1h 28m | 1m 28s |

@@ -1,0 +1,63 @@
+# Asset Descriptions
+
+⚠️  GEMINI_API_KEY not set — descriptions below are catalog-derived (alt text, headings, section context, filename) instead of Vision-generated. To get richer Vision descriptions on the next capture, set GEMINI_API_KEY (or GOOGLE_API_KEY) and re-run.
+
+The `logo-<hash>.svg` filename prefix is a structural hint (DOM said this SVG was inside a `<header>`, home-link `<a>`, or had an aria-label matching the page brand). To pick the actual brand logo without Vision, open the `logo-*` candidates in a previewer or rasterize them with `sharp` before referencing — composing a fake logo ships off-brand in the final video.
+
+- about-landing.mp4 — [video] Quickly generate tailored resumes and cover letters with AI. Spend minutes applying instead of hours., ~512×768
+- be-personalized.jpg — 200KB, be personalized
+- blue-astronaut.jpg — 249KB, blue astronaut
+- create-save-and-switch-resumes-instantly.jpg — 68KB, create save and switch resumes instantly
+- create-your-job-tracker.jpg — 184KB, create your job tracker
+- everything-you-need-toland-your-next-job.jpg — 50KB, everything you need toland your next job
+- favicon.ico — 15KB, favicon
+- green-astronaut.jpg — 214KB, green astronaut
+- import-your-profile.jpg — 173KB, import your profile
+- land-your-dream-job-faster-with-jobba.png — 989KB, land your dream job faster with jobba
+- logo-69859b93.svg — 2KB, logo 69859b93
+- my-job-bucket-student-offer-50-off.jpg — 291KB, my job bucket student offer 50 off
+- personalized-cover-letters-in-seconds.jpg — 120KB, personalized cover letters in seconds
+- purple-astronaut.jpg — 176KB, purple astronaut
+- save-job-description-to-my-job-bucket.jpg — 31KB, save job description to my job bucket
+- svg-bf70a58f.svg — 2KB, svg bf70a58f
+- svg-bf8f0325.svg — 16KB, svg bf8f0325
+- svgs/logo-a06e04af.svg — logo a06e04af
+- svgs/svg-036f2891-2.svg — svg 036f2891 2
+- svgs/svg-036f2891-3.svg — svg 036f2891 3
+- svgs/svg-036f2891-4.svg — svg 036f2891 4
+- svgs/svg-036f2891-5.svg — svg 036f2891 5
+- svgs/svg-036f2891-6.svg — svg 036f2891 6
+- svgs/svg-036f2891-7.svg — svg 036f2891 7
+- svgs/svg-036f2891.svg — svg 036f2891
+- svgs/svg-0cee8534.svg — svg 0cee8534
+- svgs/svg-30321c9a.svg — svg 30321c9a
+- svgs/svg-435af944.svg — svg 435af944
+- svgs/svg-79bf7a38.svg — svg 79bf7a38
+- svgs/svg-8dce601e.svg — svg 8dce601e
+- svgs/svg-9697f2e0.svg — svg 9697f2e0
+- svgs/svg-a405c9de-2.svg — svg a405c9de 2
+- svgs/svg-a405c9de-3.svg — svg a405c9de 3
+- svgs/svg-a405c9de-4.svg — svg a405c9de 4
+- svgs/svg-a405c9de-5.svg — svg a405c9de 5
+- svgs/svg-a405c9de-6.svg — svg a405c9de 6
+- svgs/svg-a405c9de-7.svg — svg a405c9de 7
+- svgs/svg-a405c9de.svg — svg a405c9de
+- svgs/svg-a9f4215e.svg — svg a9f4215e
+- svgs/svg-b069faed.svg — svg b069faed
+- svgs/svg-b44ddddd.svg — svg b44ddddd
+- svgs/svg-d19b5279.svg — svg d19b5279
+- svgs/svg-d77dfa37.svg — svg d77dfa37
+- svgs/svg-e7e0b256.svg — svg e7e0b256
+- svgs/svg-f1486cd1.svg — svg f1486cd1
+- fonts/0ee4b8f05dcd9fee-s.1q0qwmqzyniyk.woff2 — font file
+- fonts/13ae3e01af63c0ce-s.35p9_4tnsm_o4.woff2 — font file
+- fonts/2bbe8d2671613f1f-s.0k62hbripvv8p.woff2 — font file
+- fonts/2c55a0e60120577a-s.0-dom-5bn10r2.woff2 — font file
+- fonts/5476f68d60460930-s.2uwcyprjm3xu3.woff2 — font file
+- fonts/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 — font file
+- fonts/9c72aa0f40e4eef8-s.1y4-pdgsjb-pw.woff2 — font file
+- fonts/9eba4caf7edd2921-s.02gir8avbbwr_.woff2 — font file
+- fonts/ab57efd000576a30-s.p.3fofz6dws3mg0.woff2 — font file
+- fonts/ad66f9afd8947f86-s.3lvt2whj97whp.woff2 — font file
+- fonts/b8d1f0a88dfecec3-s.1e3bxj0ebt1gg.woff2 — font file
+- fonts/f6752bd2263820da-s.3hqxvms4e79hg.woff2 — font file
