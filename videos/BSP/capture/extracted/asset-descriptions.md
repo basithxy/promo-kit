@@ -1,0 +1,115 @@
+# Asset Descriptions
+
+⚠️  GEMINI_API_KEY not set — descriptions below are catalog-derived (alt text, headings, section context, filename) instead of Vision-generated. To get richer Vision descriptions on the next capture, set GEMINI_API_KEY (or GOOGLE_API_KEY) and re-run.
+
+The `logo-<hash>.svg` filename prefix is a structural hint (DOM said this SVG was inside a `<header>`, home-link `<a>`, or had an aria-label matching the page brand). To pick the actual brand logo without Vision, open the `logo-*` candidates in a previewer or rasterize them with `sharp` before referencing — composing a fake logo ships off-brand in the final video.
+
+- 65aa5bc03cd105900717149069-03-367x367.jpg — 25KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 2", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc03cd105900717149069-03-400x400.jpg — 28KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 2", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc03cd105900717149069-03-560x560.jpg — 46KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 2", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc03cd105900717149069-03.jpg — 70KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 2", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc05772a5900717149069-04-367x367.jpg — 21KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 3", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc05772a5900717149069-04-400x400.jpg — 25KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 3", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc05772a5900717149069-04-560x560.jpg — 41KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 3", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc05772a5900717149069-04-600x600.jpg — 49KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 3", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- 65aa5bc05772a5900717149069-04.jpg — 62KB, "Broad Spectrum Protection Cream Spf 50+ For Adults And Children - Image 3", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- barrier-protective-lation-spf-50-for-bod.png — 180KB, barrier protective lation spf 50 for bod
+- broad-spectrum-protection-cream-spf-50-f.jpg — 54KB, broad spectrum protection cream spf 50 f
+- creamy-body-wash-gel-bio-compatibleph-ne.png — 54KB, creamy body wash gel bio compatibleph ne
+- favicon.png — 1KB, favicon
+- featured-box.png — 10KB, featured box
+- h-stimupurin-specialist-shampoo-stimulat.png — 32KB, h stimupurin specialist shampoo stimulat
+- hero-10.png — 73KB, hero 10
+- hero-11.png — 34KB, hero 11
+- hero-9.png — 40KB, hero 9
+- history-thumb.png — 15KB, history thumb
+- image-18.jpg — 15KB, image 18
+- image-20.png — 12KB, image 20
+- image-22.png — 13KB, image 22
+- image-23.png — 220KB, image 23
+- image-24.png — 41KB, image 24
+- image-25.png — 77KB, image 25
+- image-26.png — 35KB, image 26
+- image-27.png — 87KB, image 27
+- image-28.png — 20KB, image 28
+- image-29.png — 37KB, image 29
+- image-30.png — 17KB, image 30
+- image-32.png — 12KB, image 32
+- image-35.jpg — 10KB, image 35
+- image-37.png — 20KB, image 37
+- image-40.png — 18KB, image 40
+- image-44.webp — 11KB, image 44
+- image-45.webp — 12KB, image 45
+- image-46.webp — 11KB, image 46
+- image-47.webp — 29KB, image 47
+- image-48.webp — 19KB, image 48
+- image-49.webp — 25KB, image 49
+- image-51.webp — 18KB, image 51
+- image-52.png — 28KB, image 52
+- info.png — 18KB, "Koko", section: "Broad Spectrum Protection Cream Spf 50+ For Adults And Child", above fold
+- koko.png — 14KB, koko
+- mintpayinfoiconwoocommerce.png — 18KB, mintpayinfoiconwoocommerce
+- payment-gateways.png — 29KB, payment gateways
+- pharmaceris-corneo-sensilium-dermo-regen.jpg — 35KB, pharmaceris corneo sensilium dermo regen
+- pharmaceris-h-jpg.webp — 10KB, pharmaceris h jpg
+- pharmaceris-puri-sebogel-antibacterial-f.png — 31KB, pharmaceris puri sebogel antibacterial f
+- pharmaceris-stimulinum-hair-growth-stimu.jpg — 49KB, pharmaceris stimulinum hair growth stimu
+- pharmacersi-h-purin-special-anti-dandruf.jpg — 67KB, pharmacersi h purin special anti dandruf
+- prebiotic-micellar-water-for-extremely-s.png — 34KB, prebiotic micellar water for extremely s
+- product-type-product.png — 87KB, product type product
+- retinol-night-cream-adult-acne.png — 51KB, retinol night cream adult acne
+- side-banner-e2-80-93-1.png — 22KB, side banner e2 80 93 1
+- svgs/logo-008dcd79.svg — logo 008dcd79
+- svgs/svg-3bf6a463.svg — svg 3bf6a463
+- svgs/svg-6a16e1d7-10.svg — svg 6a16e1d7 10
+- svgs/svg-6a16e1d7-11.svg — svg 6a16e1d7 11
+- svgs/svg-6a16e1d7-12.svg — svg 6a16e1d7 12
+- svgs/svg-6a16e1d7-13.svg — svg 6a16e1d7 13
+- svgs/svg-6a16e1d7-14.svg — svg 6a16e1d7 14
+- svgs/svg-6a16e1d7-15.svg — svg 6a16e1d7 15
+- svgs/svg-6a16e1d7-16.svg — svg 6a16e1d7 16
+- svgs/svg-6a16e1d7-17.svg — svg 6a16e1d7 17
+- svgs/svg-6a16e1d7-18.svg — svg 6a16e1d7 18
+- svgs/svg-6a16e1d7-19.svg — svg 6a16e1d7 19
+- svgs/svg-6a16e1d7-2.svg — svg 6a16e1d7 2
+- svgs/svg-6a16e1d7-20.svg — svg 6a16e1d7 20
+- svgs/svg-6a16e1d7-21.svg — svg 6a16e1d7 21
+- svgs/svg-6a16e1d7-3.svg — svg 6a16e1d7 3
+- svgs/svg-6a16e1d7-4.svg — svg 6a16e1d7 4
+- svgs/svg-6a16e1d7-5.svg — svg 6a16e1d7 5
+- svgs/svg-6a16e1d7-6.svg — svg 6a16e1d7 6
+- svgs/svg-6a16e1d7-7.svg — svg 6a16e1d7 7
+- svgs/svg-6a16e1d7-8.svg — svg 6a16e1d7 8
+- svgs/svg-6a16e1d7-9.svg — svg 6a16e1d7 9
+- svgs/svg-6a16e1d7.svg — svg 6a16e1d7
+- svgs/svg-6e23ae46.svg — svg 6e23ae46
+- fonts/awsm-jobs-icomoon.ttf — font file
+- fonts/awsm-jobs-icomoon.woff — font file
+- fonts/bootstrap-icons.woff — font file
+- fonts/bootstrap-icons.woff2 — font file
+- fonts/eicons.ttf — font file
+- fonts/eicons.woff — font file
+- fonts/eicons.woff2 — font file
+- fonts/fa-brands-400.ttf — font file
+- fonts/fa-brands-400.woff2 — font file
+- fonts/fa-regular-400.ttf — font file
+- fonts/fa-regular-400.woff2 — font file
+- fonts/fa-solid-900.woff2 — font file
+- fonts/fontawesome-webfont.ttf — font file
+- fonts/fontawesome-webfont.woff — font file
+- fonts/ionicons.ttf — font file
+- fonts/ionicons.woff — font file
+- fonts/loyalty.ttf — font file
+- fonts/loyalty.woff — font file
+- fonts/Montserrat-Regular.otf — font file
+- fonts/opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwte6f15m.woff2 — font file
+- fonts/opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwtu6f15m.woff2 — font file
+- fonts/opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwu06f15m.woff2 — font file
+- fonts/opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwuk6f15m.woff2 — font file
+- fonts/opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwvu6f15m.woff2 — font file
+- fonts/opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwxu6f15m.woff2 — font file
+- fonts/raty.ttf — font file
+- fonts/raty.woff — font file
+- fonts/WooCommerce.ttf — font file
+- fonts/WooCommerce.woff — font file
+- fonts/WooCommerce.woff2 — font file

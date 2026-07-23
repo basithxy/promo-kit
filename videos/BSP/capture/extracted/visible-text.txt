@@ -1,0 +1,996 @@
+[b] WELCOME TO CHRISTELL LUXURY WELLNESS
+[a] CHRISTELL LUXURY BRIDAL
+[a] CHRISTELL LUXURY AYURVEDA
+[a] THE ELIXIR CLINIC
+[a] CHRISTELL CROWN
+[a] CHRISTELL LUXURY WELLNESS VILLA
+[a] CHRISTELL SPARKLE
+[a] My Account
+[a] My Wishlist
+[a] Cart
+[a] Register
+[a] Log In
+[option] All Categories
+[option] Oily Skin
+[option] Brands
+[option] Mesoestetic
+[option] Nature’s Way
+[option] Floslek
+[option] Desembre
+[option] Pharmaceris
+[option] Skin & Face
+[option] Wrinkles
+[option] Sensitive Skin
+[option] Teenage
+[option] Dry Skin
+[option] Acne
+[option] Acne Scars
+[option] Anti Ageing
+[option] Brightening
+[option] Dark Spots
+[option] Eye
+[option] Lips
+[option] Make Up
+[option] Body
+[option] Hair
+[option] Hair Loss
+[option] Gift Vouchers & Gift Packs
+[option] Gift Packs
+[option] Bundle Pack
+[option] Gift Vouchers
+[option] Pigmentation
+[option] Accessories
+[option] Maintenance
+[option] Pharmacy
+[option] other
+[p] All Categories
+[li] All Categories
+[li] Oily Skin
+[li] Brands
+[li] Mesoestetic
+[li] Nature’s Way
+[li] Floslek
+[li] Desembre
+[li] Pharmaceris
+[li] Skin & Face
+[li] Wrinkles
+[li] Sensitive Skin
+[li] Teenage
+[li] Dry Skin
+[li] Acne
+[li] Acne Scars
+[li] Anti Ageing
+[li] Brightening
+[li] Dark Spots
+[li] Eye
+[li] Lips
+[li] Make Up
+[li] Body
+[li] Hair
+[li] Hair Loss
+[li] Gift Vouchers & Gift Packs
+[li] Gift Packs
+[li] Bundle Pack
+[li] Gift Vouchers
+[li] Pigmentation
+[li] Accessories
+[li] Maintenance
+[li] Pharmacy
+[li] other
+[span] CALL US NOW
+[b] 0094 117 499 299
+[span] 0 ITEMS
+[a] View cart
+[li] No products in the cart.
+[a] Home
+[a] Shop
+[a] Brand
+[a] Christell
+[a] Mesoestetic
+[a] Nature’s Way
+[a] Beauty by Rosh
+[a] Floslek
+[a] Desembre
+[a] Pharmaceris
+[a] Redvin
+[a] Isispharma
+[a] Skin & Face
+[a] Sensitive Skin
+[a] Dry Skin
+[a] Normal Skin
+[a] Brightening
+[a] Make Up
+[a] Lips
+[a] Eye
+[a] Dark Spots
+[a] Teenage
+[a] Anti Ageing
+[a] Acne
+[a] Acne Scars
+[a] Body
+[a] Stretch Marks
+[a] Body
+[a] Wellbeing
+[a] Hair
+[a] Hair Loss
+[a] Hair
+[a] Gift Vouchers & Gift Packs
+[a] Gift Vouchers
+[a] Gift Packs
+[a] Avurudu Offers
+[a] MAJOR SERVICES
+[a] Skin & Face
+[a] ACNE
+[a] ACNE SCARS
+[a] ROSACEA (PINK FACE)
+[a] WARTS AND CORNS
+[a] KELOIDS (HYPERTROPHIC SCARS )
+[a] LIQUID NITROGEN CRYOFREEZING
+[a] TEETH WHITENING
+[a] KERATOSIS PILARIS
+[a] ECZEMA
+[a] PIGMENTATION
+[a] SEBORRHEIC DERMATITIS
+[a] XANTHELASMA PALPEBRARUM
+[a] Skin & Face
+[a] UNWANTED SKIN GROWTHS
+[a] LARGE PORES
+[a] SKIN POLISHING
+[a] OXYGEN FACIAL TREATMENT
+[a] Skin Glow & Lightening
+[a] DRY SKIN
+[a] Clinical Facial Therapies
+[a] MESOTHERAPY
+[a] Non-surgical Skin Tightening
+[a] HYDRADERMABRASION
+[a] BOTOX TREATMENT
+[a] FRACTIONAL LASER RESURFACING
+[a] Endolift – Non-Surgical Skin Tightening and Contouring
+[a] Skin & Face
+[a] PRP VAMPIRE FACIAL
+[a] THREAD LIFTING
+[a] LIQUID FACE LIFT
+[a] IPL PHOTO FACIAL
+[a] MICRO NEEDLING
+[a] DERMAL FILLERS
+[a] CHEMICAL PEEL
+[a] LED PHOTOTHERAPY
+[a] DARK CIRCLES
+[a] Hair
+[a] LASER HAIR REMOVAL
+[a] PATCHY HAIR LOSS / ALOPECIA AREATA
+[a] LASER HAIR REMOVAL
+[a] HAIR LOSS
+[a] DANDRUFF
+[a] Body
+[a] LASER TATTOO REMOVAL
+[a] STRETCH MARKS
+[a] EXCESSIVE SWEATING
+[a] MEDICAL CAMOUFLAGING
+[a] About Us
+[a] About Christell
+[a] Our Specialists
+[a] Membership
+[a] Careers
+[a] Contact Us
+[a] News
+[a] Acne Lab
+[a] Hair Restoration Lab
+[a] CSR Projects
+[a] Don’t miss out
+[a] Coming Soon
+[option] All Categories
+[option] Oily Skin
+[option] Brands
+[option] Mesoestetic
+[option] Nature’s Way
+[option] Floslek
+[option] Desembre
+[option] Pharmaceris
+[option] Skin & Face
+[option] Wrinkles
+[option] Sensitive Skin
+[option] Teenage
+[option] Dry Skin
+[option] Acne
+[option] Acne Scars
+[option] Anti Ageing
+[option] Brightening
+[option] Dark Spots
+[option] Eye
+[option] Lips
+[option] Make Up
+[option] Body
+[option] Hair
+[option] Hair Loss
+[option] Gift Vouchers & Gift Packs
+[option] Gift Packs
+[option] Bundle Pack
+[option] Gift Vouchers
+[option] Pigmentation
+[option] Accessories
+[option] Maintenance
+[option] Pharmacy
+[option] other
+[p] All Categories
+[li] All Categories
+[li] Oily Skin
+[li] Brands
+[li] Mesoestetic
+[li] Nature’s Way
+[li] Floslek
+[li] Desembre
+[li] Pharmaceris
+[li] Skin & Face
+[li] Wrinkles
+[li] Sensitive Skin
+[li] Teenage
+[li] Dry Skin
+[li] Acne
+[li] Acne Scars
+[li] Anti Ageing
+[li] Brightening
+[li] Dark Spots
+[li] Eye
+[li] Lips
+[li] Make Up
+[li] Body
+[li] Hair
+[li] Hair Loss
+[li] Gift Vouchers & Gift Packs
+[li] Gift Packs
+[li] Bundle Pack
+[li] Gift Vouchers
+[li] Pigmentation
+[li] Accessories
+[li] Maintenance
+[li] Pharmacy
+[li] other
+[span] 0 ITEMS
+[a] View cart
+[li] No products in the cart.
+[h1] Broad Spectrum Protection Cream Spf 50+ For Adults And Children
+[span] Home
+[span] Shop
+[span] Body
+[span] Dry Skin
+[span] Pharmaceris
+[li] Broad Spectrum Protection Cream Spf 50+ For Adults And Children
+[div] Hot
+[h2] Broad Spectrum Protection Cream Spf 50+ For Adults And Children
+[span] Emotopic soothing & softening body emollient cream
+[span] HYDRATING LIPID-REPLENISHING BODY BALM preventing dry skin and recurring dryness 400 ml
+[span] out of 5
+[a] ( There are no reviews yet. )
+[bdi] 6,900.00
+[div] 3 X
+[b] Rs. 2,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,300.00
+[div] with
+[strong] SPECTRUM PROTECT | 50ml | For Adults & Children
+[p] Pharmaceris S Spectrum Protect SPF 50+ provides broad spectrum protection against UVA, UVB, HEV and IR rays for sensitive, dry and allergy-prone skin. Enriched with Shea Butter, Vitamin E and AntileuDNAprotect, it hydrates, prevents sunburn, dark spots and sun-induced ageing. Lightweight, water-resistant and safe for the whole family including babies from 6 months. Clinically and dermatologically tested.
+[span] Availability:
+[span] 7 in stock
+[span] SKU:
+[span] 839
+[span] Categories:
+[a] Body
+[a] Dry Skin
+[a] Pharmaceris
+[button] Add to cart
+[a] Facebook
+[a] Twitter
+[a] LinkedIn
+[a] Google +
+[a] Email
+[span] Add to wishlist
+[a] Compare
+[li] Description
+[li] Reviews (0)
+[p] A premium dermatological sunscreen specially formulated for delicate, sensitive and dry skin that is prone to allergies and hyperpigmentation. This ultra-light cream delivers very high protection from the full spectrum of harmful radiation — UVA, UVB, HEV (visible light) and IR (infrared) rays that reach the earth’s surface.
+[p] Suitable for babies over 6 months, children and adults, making it the perfect family sun protection solution. Clinically and dermatologically tested for even the most sensitive skin types.
+[h3] KEY BENEFITS
+[strong] Broad Spectrum SPF 50+
+[li] — protects against UVA, UVB, HEV & IR radiation
+[strong] AntileuDNAprotect
+[li] — creates a powerful barrier for the skin’s immune system
+[strong] Deeply hydrating
+[li] — nourishes, moisturises and regenerates the skin
+[strong] Minimises sun reactions
+[li] — reduces irritation, redness, sunburn, sun rash, discolourations & allergic reactions
+[strong] Family-safe formula
+[li] — suitable for babies (6 months+), children & adults
+[strong] Water-resistant
+[li] formula
+[strong] Clinically & dermatologically tested
+[li] on very sensitive skin
+[h3] KEY INGREDIENTS
+[strong] AntileuDNAprotect –
+[li] Protects skin’s immune system & DNA from radiation damage
+[strong] Shea Butter –
+[li] Deep nourishment, prevents dryness & hypersensitivity
+[strong] Vitamin E (Tocopherol) –
+[li] Antioxidant protection, skin repair
+[strong] Broad Spectrum UVA/UVB Filters –
+[li] Maximum sun protection across all wavelengths
+[h3] HOW TO USE
+[li] Apply a sufficient amount of cream on the face
+[li] Use 20–30 minutes before sun exposure
+[li] Reapply every 2 hours and after bathing or swimming
+[li] Suitable for daily use
+[h2] Reviews
+[p] There are no reviews yet.
+[h3] Be the first to review “Broad Spectrum Protection Cream Spf 50+ For Adults And Children”
+[p] You must be
+[a] logged in
+[p] to post a review.
+[h5] ISLANDWIDE DELIVERY
+[p] Delivery within 3-7 working days
+[h5] CREDIT CARDS &
+[h5] CASH ON DELIVERY
+[span] SHOP NOW
+[h3] Featured Product
+[span] Ultimate Skin Renewal Set
+[span] out of 5
+[bdi] 23,550.00
+[span] Original price was: රු23,550.00.
+[bdi] 19,950.00
+[span] Current price is: රු19,950.00.
+[div] 3 X
+[b] Rs. 6,650.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු6,650.00
+[div] with
+[span] Broad Spectrum Protection Cream Spf 50+ For Adults And Children
+[span] out of 5
+[bdi] 6,900.00
+[div] 3 X
+[b] Rs. 2,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,300.00
+[div] with
+[span] Mesoestetic age element® anti-wrinkle eye contour 15ml
+[span] out of 5
+[bdi] 17,500.00
+[div] 3 X
+[b] Rs. 5,833.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු5,833.33
+[div] with
+[h2] Related products
+[a] Hair
+[a] Pharmaceris
+[h3] Pharmacersi H-purin special anti-dandruff shampoo
+[span] out of 5
+[bdi] 7,100.00
+[div] 3 X
+[b] Rs. 2,366.67
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,366.67
+[div] with
+[a] Add to cart
+[a] Pharmaceris
+[h3] Prebiotic Micellar Water For Extremely Sensitive Skin
+[span] out of 5
+[bdi] 4,900.00
+[div] 3 X
+[b] Rs. 1,633.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු1,633.33
+[div] with
+[a] Add to cart
+[a] Acne
+[a] Pharmaceris
+[h3] Pharmaceris Puri-Sebogel Antibacterial face gel-wash
+[span] out of 5
+[bdi] 4,950.00
+[div] 3 X
+[b] Rs. 1,650.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු1,650.00
+[div] with
+[a] Add to cart
+[div] -20%
+[a] Dry Skin
+[a] Floslek
+[a] Make Up
+[h3] Floslek Phyto-Collagen Set – Moisturizing Day and Night Cream + Anti-wrinkle Serum
+[span] out of 5
+[bdi] 14,375.00
+[span] Original price was: රු14,375.00.
+[bdi] 11,500.00
+[span] Current price is: රු11,500.00.
+[div] 3 X
+[b] Rs. 3,833.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු3,833.33
+[div] with
+[a] Add to cart
+[a] Hair Loss
+[a] Hair
+[a] Pharmaceris
+[a] Maintenance
+[h3] H-Stimupurin – Specialist Shampoo stimulating hair growth
+[span] out of 5
+[bdi] 7,450.00
+[div] 3 X
+[b] Rs. 2,483.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,483.33
+[div] with
+[a] Add to cart
+[a] Body
+[a] Pharmaceris
+[h3] BARRIER PROTECTIVE LATION SPF 50+ for body: SUN BODY PROTECT 150 ml
+[span] out of 5
+[bdi] 6,900.00
+[div] 3 X
+[b] Rs. 2,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,300.00
+[div] with
+[a] Add to cart
+[a] Skin & Face
+[a] Pharmaceris
+[h3] Pharmaceris Corneo-sensilium Dermo-regenerating soothing cream
+[span] out of 5
+[bdi] 7,450.00
+[div] 3 X
+[b] Rs. 2,483.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,483.33
+[div] with
+[a] Add to cart
+[div] -20%
+[a] Pharmaceris
+[h3] Creamy Body Wash Gel Bio Compatible,ph-neutral
+[span] out of 5
+[bdi] 8,625.00
+[span] Original price was: රු8,625.00.
+[bdi] 6,900.00
+[span] Current price is: රු6,900.00.
+[div] 3 X
+[b] Rs. 2,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,300.00
+[div] with
+[a] Add to cart
+[a] Hair
+[a] Pharmaceris
+[a] Maintenance
+[h3] Pharmaceris Stimulinum Hair growth stimulating conditioner
+[span] out of 5
+[bdi] 6,750.00
+[div] 3 X
+[b] Rs. 2,250.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,250.00
+[div] with
+[a] Add to cart
+[a] Acne Scars
+[a] Pharmaceris
+[a] Pharmacy
+[h3] Retinol Night Cream Adult Acne
+[span] out of 5
+[bdi] 7,100.00
+[div] 3 X
+[b] Rs. 2,366.67
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,366.67
+[div] with
+[a] Add to cart
+[a] Hair
+[a] Pharmaceris
+[h3] Pharmacersi H-purin special anti-dandruff shampoo
+[span] out of 5
+[bdi] 7,100.00
+[div] 3 X
+[b] Rs. 2,366.67
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,366.67
+[div] with
+[a] Add to cart
+[a] Pharmaceris
+[h3] Prebiotic Micellar Water For Extremely Sensitive Skin
+[span] out of 5
+[bdi] 4,900.00
+[div] 3 X
+[b] Rs. 1,633.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු1,633.33
+[div] with
+[a] Add to cart
+[a] Acne
+[a] Pharmaceris
+[h3] Pharmaceris Puri-Sebogel Antibacterial face gel-wash
+[span] out of 5
+[bdi] 4,950.00
+[div] 3 X
+[b] Rs. 1,650.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු1,650.00
+[div] with
+[a] Add to cart
+[div] -20%
+[a] Dry Skin
+[a] Floslek
+[a] Make Up
+[h3] Floslek Phyto-Collagen Set – Moisturizing Day and Night Cream + Anti-wrinkle Serum
+[span] out of 5
+[bdi] 14,375.00
+[span] Original price was: රු14,375.00.
+[bdi] 11,500.00
+[span] Current price is: රු11,500.00.
+[div] 3 X
+[b] Rs. 3,833.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු3,833.33
+[div] with
+[a] Add to cart
+[a] Hair Loss
+[a] Hair
+[a] Pharmaceris
+[a] Maintenance
+[h3] H-Stimupurin – Specialist Shampoo stimulating hair growth
+[span] out of 5
+[bdi] 7,450.00
+[div] 3 X
+[b] Rs. 2,483.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,483.33
+[div] with
+[a] Add to cart
+[a] Body
+[a] Pharmaceris
+[h3] BARRIER PROTECTIVE LATION SPF 50+ for body: SUN BODY PROTECT 150 ml
+[span] out of 5
+[bdi] 6,900.00
+[div] 3 X
+[b] Rs. 2,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,300.00
+[div] with
+[a] Add to cart
+[a] Skin & Face
+[a] Pharmaceris
+[h3] Pharmaceris Corneo-sensilium Dermo-regenerating soothing cream
+[span] out of 5
+[bdi] 7,450.00
+[div] 3 X
+[b] Rs. 2,483.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,483.33
+[div] with
+[a] Add to cart
+[div] -20%
+[a] Pharmaceris
+[h3] Creamy Body Wash Gel Bio Compatible,ph-neutral
+[span] out of 5
+[bdi] 8,625.00
+[span] Original price was: රු8,625.00.
+[bdi] 6,900.00
+[span] Current price is: රු6,900.00.
+[div] 3 X
+[b] Rs. 2,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,300.00
+[div] with
+[a] Add to cart
+[a] Hair
+[a] Pharmaceris
+[a] Maintenance
+[h3] Pharmaceris Stimulinum Hair growth stimulating conditioner
+[span] out of 5
+[bdi] 6,750.00
+[div] 3 X
+[b] Rs. 2,250.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,250.00
+[div] with
+[a] Add to cart
+[a] Acne Scars
+[a] Pharmaceris
+[a] Pharmacy
+[h3] Retinol Night Cream Adult Acne
+[span] out of 5
+[bdi] 7,100.00
+[div] 3 X
+[b] Rs. 2,366.67
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,366.67
+[div] with
+[a] Add to cart
+[h2] Featured Products
+[span] Ultimate Skin Renewal Set
+[span] out of 5
+[bdi] 23,550.00
+[span] Original price was: රු23,550.00.
+[bdi] 19,950.00
+[span] Current price is: රු19,950.00.
+[div] 3 X
+[b] Rs. 6,650.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු6,650.00
+[div] with
+[span] Broad Spectrum Protection Cream Spf 50+ For Adults And Children
+[span] out of 5
+[bdi] 6,900.00
+[div] 3 X
+[b] Rs. 2,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු2,300.00
+[div] with
+[span] Mesoestetic age element® anti-wrinkle eye contour 15ml
+[span] out of 5
+[bdi] 17,500.00
+[div] 3 X
+[b] Rs. 5,833.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු5,833.33
+[div] with
+[h2] Best Selling Products
+[span] Fresh Antiperspirant Deo roll-on for sensitive skin - 50 ml
+[span] out of 5
+[bdi] 4,900.00
+[div] 3 X
+[b] Rs. 1,633.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු1,633.33
+[div] with
+[span] Spot Lightening Toner
+[span] out of 5
+[bdi] 5,950.00
+[div] 3 X
+[b] Rs. 1,983.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු1,983.33
+[div] with
+[span] 24k Gold Blasting Ampoule - 100ML
+[strong] 4.00
+[span] out of 5
+[bdi] 12,900.00
+[div] 3 X
+[b] Rs. 4,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු4,300.00
+[div] with
+[h2] Latest Products
+[span] FLOSLEK Vitamin C 10% Lightening Serum - 30ml
+[span] out of 5
+[bdi] 12,100.00
+[div] 3 X
+[b] Rs. 4,033.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු4,033.33
+[div] with
+[span] Anti-Dandruff Shampoo & Hair Growth Conditioner Duo
+[span] out of 5
+[bdi] 13,850.00
+[span] Original price was: රු13,850.00.
+[bdi] 11,080.00
+[span] Current price is: රු11,080.00.
+[div] 3 X
+[b] Rs. 3,693.33
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු3,693.33
+[div] with
+[span] The Ultimate Glow & Protect Duo
+[span] out of 5
+[bdi] 24,500.00
+[span] Original price was: රු24,500.00.
+[bdi] 19,980.00
+[span] Current price is: රු19,980.00.
+[div] 3 X
+[b] Rs. 6,660.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු6,660.00
+[div] with
+[h2] Top Rated products
+[span] 24k Gold Blasting Ampoule - 100ML
+[strong] 4.00
+[span] out of 5
+[bdi] 12,900.00
+[div] 3 X
+[b] Rs. 4,300.00
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු4,300.00
+[div] with
+[span] Mesoestetic age element® brightening cream 50ml
+[span] out of 5
+[bdi] 17,450.00
+[div] 3 X
+[b] Rs. 5,816.67
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු5,816.67
+[div] with
+[span] E-Gift Voucher | LKR 5,000
+[span] out of 5
+[bdi] 5,000.00
+[div] 3 X
+[b] Rs. 1,666.67
+[b] 3.5%
+[div] Cashback with
+[div] or 3 X
+[b] රු1,666.67
+[div] with
+[h3] Contact Info
+[strong] Address:
+[span] 47/1, Galle Road, Bambalapitiya, Colombo 04, Sri Lanka.
+[span] Christell One Galle Face Mall,  Level 3, Colombo - 02.
+[span] 0112 333 944
+[span] Christell Luxury Wellness Villa, No 06, Lauris Lane, Colombo 4.
+[span] 0117 499 299
+[strong] Email:
+[a] customercare@christellclinic.com
+[a] Facebook
+[a] Youtube
+[a] Instagram
+[a] Linkedin
+[h3] Site Map
+[a] Home
+[a] Shop
+[a] Major Services
+[a] About Us
+[a] Contact Us
+[a] News
+[a] Membership
+[a] Careers
+[a] Don’t miss out
+[a] Coming Soon
+[a] Terms & Conditions
+[a] Privacy Policy
+[a] Return and Cancellation Policy
+[a] Arrange Return
+[h3] Popular Tags
+[a] Anti aging
+[a] EYE CARE
+[a] featured
+[a] Floslek
+[a] Hair
+[a] MESOESTETIC
+[a] NEW
+[a] Pigmentation
+[a] REVIVE LASHES
+[a] Skin brightening
+[a] Skin firmness / Strength
+[a] Sun protection
+[a] WHITE&BEAUTY
+[span] Christell Skin © Copyright 2025 All Rights Reserved. Powered by
+[a] Azbow (Pvt) Ltd
+[option] All Categories
+[option] Oily Skin
+[option] Brands
+[option] Mesoestetic
+[option] Nature’s Way
+[option] Floslek
+[option] Desembre
+[option] Pharmaceris
+[option] Skin & Face
+[option] Wrinkles
+[option] Sensitive Skin
+[option] Teenage
+[option] Dry Skin
+[option] Acne
+[option] Acne Scars
+[option] Anti Ageing
+[option] Brightening
+[option] Dark Spots
+[option] Eye
+[option] Lips
+[option] Make Up
+[option] Body
+[option] Hair
+[option] Hair Loss
+[option] Gift Vouchers & Gift Packs
+[option] Gift Packs
+[option] Bundle Pack
+[option] Gift Vouchers
+[option] Pigmentation
+[option] Accessories
+[option] Maintenance
+[option] Pharmacy
+[option] other
+[p] All Categories
+[li] All Categories
+[li] Oily Skin
+[li] Brands
+[li] Mesoestetic
+[li] Nature’s Way
+[li] Floslek
+[li] Desembre
+[li] Pharmaceris
+[li] Skin & Face
+[li] Wrinkles
+[li] Sensitive Skin
+[li] Teenage
+[li] Dry Skin
+[li] Acne
+[li] Acne Scars
+[li] Anti Ageing
+[li] Brightening
+[li] Dark Spots
+[li] Eye
+[li] Lips
+[li] Make Up
+[li] Body
+[li] Hair
+[li] Hair Loss
+[li] Gift Vouchers & Gift Packs
+[li] Gift Packs
+[li] Bundle Pack
+[li] Gift Vouchers
+[li] Pigmentation
+[li] Accessories
+[li] Maintenance
+[li] Pharmacy
+[li] other
+[a] Home
+[a] Shop
+[a] Brand
+[a] Christell
+[a] Mesoestetic
+[a] Nature’s Way
+[a] Beauty by Rosh
+[a] Floslek
+[a] Desembre
+[a] Pharmaceris
+[a] Redvin
+[a] Isispharma
+[a] Skin & Face
+[a] Sensitive Skin
+[a] Dry Skin
+[a] Normal Skin
+[a] Brightening
+[a] Make Up
+[a] Lips
+[a] Eye
+[a] Dark Spots
+[a] Teenage
+[a] Anti Ageing
+[a] Acne
+[a] Acne Scars
+[a] Body
+[a] Stretch Marks
+[a] Body
+[a] Wellbeing
+[a] Test
+[a] Hair
+[a] Hair Loss
+[a] Hair
+[a] Test 2
+[a] Gift Vouchers & Gift Packs
+[a] Gift Vouchers
+[a] Gift Packs
+[a] Avurudu Offers
+[a] MAJOR SERVICES
+[a] Skin & Face
+[a] ACNE
+[a] ACNE SCARS
+[a] ROSACEA (PINK FACE)
+[a] WARTS AND CORNS
+[a] KELOIDS (HYPERTROPHIC SCARS )
+[a] LIQUID NITROGEN CRYOFREEZING
+[a] TEETH WHITENING
+[a] KERATOSIS PILARIS
+[a] ECZEMA
+[a] PIGMENTATION
+[a] SEBORRHEIC DERMATITIS
+[a] XANTHELASMA PALPEBRARUM
+[a] Skin & Face
+[a] UNWANTED SKIN GROWTHS
+[a] LARGE PORES
+[a] SKIN POLISHING
+[a] OXYGEN FACIAL TREATMENT
+[a] Skin Glow & Lightening
+[a] DRY SKIN
+[a] Clinical Facial Therapies
+[a] MESOTHERAPY
+[a] Non-surgical Skin Tightening
+[a] HYDRADERMABRASION
+[a] BOTOX TREATMENT
+[a] FRACTIONAL LASER RESURFACING
+[a] Endolift – Non-Surgical Skin Tightening and Contouring
+[a] Skin & Face
+[a] PRP VAMPIRE FACIAL
+[a] THREAD LIFTING
+[a] LIQUID FACE LIFT
+[a] IPL PHOTO FACIAL
+[a] MICRO NEEDLING
+[a] DERMAL FILLERS
+[a] CHEMICAL PEEL
+[a] LED PHOTOTHERAPY
+[a] DARK CIRCLES
+[a] Hair
+[a] LASER HAIR REMOVAL
+[a] PATCHY HAIR LOSS / ALOPECIA AREATA
+[a] LASER HAIR REMOVAL
+[a] HAIR LOSS
+[a] DANDRUFF
+[a] Body
+[a] LASER TATTOO REMOVAL
+[a] STRETCH MARKS
+[a] EXCESSIVE SWEATING
+[a] MEDICAL CAMOUFLAGING
+[a] About Us
+[a] About Christell
+[a] Our Specialists
+[a] Membership
+[a] Careers
+[a] Contact Us
+[a] News
+[a] Acne Lab
+[a] Hair Restoration Lab
+[a] CSR Projects
+[a] Don’t miss out
+[a] Coming Soon

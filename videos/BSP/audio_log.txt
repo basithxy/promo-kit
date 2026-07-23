@@ -1,0 +1,14 @@
+· tts: kokoro · voice af_heart · 4 line(s)
+  voice 01: assets/voice/01.wav (2.795s, 0 words)
+  voice 02: assets/voice/02.wav (5.205s, 0 words)
+  voice 03: assets/voice/03.wav (12.992s, 0 words)
+  voice 04: assets/voice/04.wav (5.333s, 0 words)
+· bgm: disabled
+✓ audio engine → D:\New folder\promo-kit\videos\BSP\audio_engine_meta.json
+  heygen: no  ·  ran: tts,bgm
+  voices: 4  ·  bgm: none  ·  sfx: 0
+  total voice duration: 26.325s
+
+anomalies (non-fatal):
+  - bgm: retrieve requires a HeyGen credential — skipped (no generate fallback for an explicit retrieve)
+✓ audio generate: 4 voice + no bgm → D:\New folder\promo-kit\videos\BSP\audio_meta.json

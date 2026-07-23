@@ -1,0 +1,543 @@
+{
+  "files": [
+    {
+      "file": "awsm-jobs-icomoon.ttf",
+      "family": "awsm-jobs-icomoon",
+      "rawFamily": "awsm-jobs-icomoon",
+      "subfamily": "Regular",
+      "postscript": "awsm-jobs-icomoon",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "awsm-jobs-icomoon.woff",
+      "family": "awsm-jobs-icomoon",
+      "rawFamily": "awsm-jobs-icomoon",
+      "subfamily": "Regular",
+      "postscript": "awsm-jobs-icomoon",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "bootstrap-icons.woff",
+      "family": "bootstrap-icons",
+      "rawFamily": "bootstrap-icons",
+      "subfamily": "Regular",
+      "postscript": "bootstrap-icons",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "bootstrap-icons.woff2",
+      "family": "bootstrap-icons",
+      "rawFamily": "bootstrap-icons",
+      "subfamily": "Regular",
+      "postscript": "bootstrap-icons",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "eicons.ttf",
+      "family": "eicons",
+      "rawFamily": "eicons",
+      "subfamily": "Regular",
+      "postscript": "eicons",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "eicons.woff",
+      "family": "eicons",
+      "rawFamily": "eicons",
+      "subfamily": "Regular",
+      "postscript": "eicons",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "eicons.woff2",
+      "family": "eicons",
+      "rawFamily": "eicons",
+      "subfamily": "Regular",
+      "postscript": "eicons",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "fa-brands-400.ttf",
+      "family": "Font Awesome 6 Brands",
+      "rawFamily": "Font Awesome 6 Brands Regular",
+      "subfamily": "Regular",
+      "postscript": "FontAwesome6Brands-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "fa-brands-400.woff2",
+      "family": "Font Awesome 6 Brands",
+      "rawFamily": "Font Awesome 6 Brands Regular",
+      "subfamily": "Regular",
+      "postscript": "FontAwesome6Brands-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "fa-regular-400.ttf",
+      "family": "Font Awesome 6 Free",
+      "rawFamily": "Font Awesome 6 Free Regular",
+      "subfamily": "Regular",
+      "postscript": "FontAwesome6Free-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "fa-regular-400.woff2",
+      "family": "Font Awesome 6 Free",
+      "rawFamily": "Font Awesome 6 Free Regular",
+      "subfamily": "Regular",
+      "postscript": "FontAwesome6Free-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "fa-solid-900.woff2",
+      "family": "Font Awesome 6 Free Solid",
+      "rawFamily": "Font Awesome 6 Free Solid",
+      "subfamily": "Solid",
+      "postscript": "FontAwesome6Free-Solid",
+      "weight": 900,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "fontawesome-webfont.ttf",
+      "family": "FontAwesome",
+      "rawFamily": "FontAwesome",
+      "subfamily": "Regular",
+      "postscript": "FontAwesome",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "fontawesome-webfont.woff",
+      "family": "FontAwesome",
+      "rawFamily": "FontAwesome",
+      "subfamily": "Regular",
+      "postscript": "FontAwesome",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "ionicons.ttf",
+      "family": "Ionicons",
+      "rawFamily": "Ionicons",
+      "subfamily": "Medium",
+      "postscript": "Ionicons",
+      "weight": 500,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "ionicons.woff",
+      "family": "Ionicons",
+      "rawFamily": "Ionicons",
+      "subfamily": "Medium",
+      "postscript": "Ionicons",
+      "weight": 500,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "loyalty.ttf",
+      "family": "loyalty",
+      "rawFamily": "loyalty",
+      "subfamily": "Regular",
+      "postscript": "loyalty",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "loyalty.woff",
+      "family": "loyalty",
+      "rawFamily": "loyalty",
+      "subfamily": "Regular",
+      "postscript": "loyalty",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "Montserrat-Regular.otf",
+      "family": "Montserrat",
+      "rawFamily": "Montserrat",
+      "subfamily": "Regular",
+      "postscript": "Montserrat-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwte6f15m.woff2",
+      "family": "Open Sans",
+      "rawFamily": "Open Sans",
+      "subfamily": "Italic",
+      "postscript": "OpenSans-Italic",
+      "weight": 400,
+      "style": "italic",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwtu6f15m.woff2",
+      "family": "Open Sans",
+      "rawFamily": "Open Sans",
+      "subfamily": "Italic",
+      "postscript": "OpenSans-Italic",
+      "weight": 400,
+      "style": "italic",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwu06f15m.woff2",
+      "family": "Open Sans",
+      "rawFamily": "Open Sans",
+      "subfamily": "Italic",
+      "postscript": "OpenSans-Italic",
+      "weight": 400,
+      "style": "italic",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwuk6f15m.woff2",
+      "family": "Open Sans",
+      "rawFamily": "Open Sans",
+      "subfamily": "Italic",
+      "postscript": "OpenSans-Italic",
+      "weight": 400,
+      "style": "italic",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwvu6f15m.woff2",
+      "family": "Open Sans",
+      "rawFamily": "Open Sans",
+      "subfamily": "Italic",
+      "postscript": "OpenSans-Italic",
+      "weight": 400,
+      "style": "italic",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwxu6f15m.woff2",
+      "family": "Open Sans",
+      "rawFamily": "Open Sans",
+      "subfamily": "Italic",
+      "postscript": "OpenSans-Italic",
+      "weight": 400,
+      "style": "italic",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "raty.ttf",
+      "family": "raty",
+      "rawFamily": "raty",
+      "subfamily": "Regular",
+      "postscript": "raty",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "raty.woff",
+      "family": "raty",
+      "rawFamily": "raty",
+      "subfamily": "Regular",
+      "postscript": "raty",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "WooCommerce.ttf",
+      "family": "WooCommerce",
+      "rawFamily": "WooCommerce",
+      "subfamily": "Regular",
+      "postscript": "WooCommerce",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "WooCommerce.woff",
+      "family": "WooCommerce",
+      "rawFamily": "WooCommerce",
+      "subfamily": "Regular",
+      "postscript": "WooCommerce",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    },
+    {
+      "file": "WooCommerce.woff2",
+      "family": "WooCommerce",
+      "rawFamily": "WooCommerce",
+      "subfamily": "Regular",
+      "postscript": "WooCommerce",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [],
+      "identified": true,
+      "isIcon": true
+    }
+  ],
+  "families": [
+    {
+      "family": "awsm-jobs-icomoon",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "awsm-jobs-icomoon.ttf",
+        "awsm-jobs-icomoon.woff"
+      ]
+    },
+    {
+      "family": "bootstrap-icons",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "bootstrap-icons.woff",
+        "bootstrap-icons.woff2"
+      ]
+    },
+    {
+      "family": "eicons",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 3,
+      "files": [
+        "eicons.ttf",
+        "eicons.woff",
+        "eicons.woff2"
+      ]
+    },
+    {
+      "family": "Font Awesome 6 Brands",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "fa-brands-400.ttf",
+        "fa-brands-400.woff2"
+      ]
+    },
+    {
+      "family": "Font Awesome 6 Free",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "fa-regular-400.ttf",
+        "fa-regular-400.woff2"
+      ]
+    },
+    {
+      "family": "Font Awesome 6 Free Solid",
+      "weights": [
+        900
+      ],
+      "variable": false,
+      "fileCount": 1,
+      "files": [
+        "fa-solid-900.woff2"
+      ]
+    },
+    {
+      "family": "FontAwesome",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "fontawesome-webfont.ttf",
+        "fontawesome-webfont.woff"
+      ]
+    },
+    {
+      "family": "Ionicons",
+      "weights": [
+        500
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "ionicons.ttf",
+        "ionicons.woff"
+      ]
+    },
+    {
+      "family": "loyalty",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "loyalty.ttf",
+        "loyalty.woff"
+      ]
+    },
+    {
+      "family": "Montserrat",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 1,
+      "files": [
+        "Montserrat-Regular.otf"
+      ]
+    },
+    {
+      "family": "Open Sans",
+      "weights": [
+        400
+      ],
+      "variable": true,
+      "fileCount": 6,
+      "files": [
+        "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwte6f15m.woff2",
+        "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwtu6f15m.woff2",
+        "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwu06f15m.woff2",
+        "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwuk6f15m.woff2",
+        "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwvu6f15m.woff2",
+        "opensans-memtyags126mizpba-ufuicvxscekx2cmqvxlwqwxu6f15m.woff2"
+      ]
+    },
+    {
+      "family": "raty",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 2,
+      "files": [
+        "raty.ttf",
+        "raty.woff"
+      ]
+    },
+    {
+      "family": "WooCommerce",
+      "weights": [
+        400
+      ],
+      "variable": false,
+      "fileCount": 3,
+      "files": [
+        "WooCommerce.ttf",
+        "WooCommerce.woff",
+        "WooCommerce.woff2"
+      ]
+    }
+  ],
+  "unidentified": [],
+  "meta": {
+    "generatedAt": "2026-07-18T19:39:12.106Z",
+    "tool": "fontkit"
+  }
+}

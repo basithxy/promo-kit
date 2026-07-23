@@ -1,0 +1,23 @@
+{
+  "video": "BSP",
+  "startedAt": "2026-07-18T19:32:39.000Z",
+  "finishedAt": "2026-07-18T20:50:00.000Z",
+  "finishedAtSource": "progress.json lastUpdated (phase: done)",
+  "sessionsSpanned": 1,
+  "activeSeconds": 3051,
+  "activeTime": "50m 51s",
+  "elapsedSeconds": 4641,
+  "elapsedTime": "1h 17m",
+  "renderSeconds": 81.1,
+  "renderTime": "1m 21s",
+  "captureSeconds": null,
+  "captureTime": null,
+  "totalsByModel": {
+    "claude-sonnet-5": {
+      "input": 130,
+      "output": 23451,
+      "cacheRead": 9950425,
+      "cacheCreate": 95638
+    }
+  }
+}

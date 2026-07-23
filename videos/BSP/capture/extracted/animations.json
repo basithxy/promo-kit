@@ -1,0 +1,54 @@
+{
+  "summary": {
+    "webAnimations": 1,
+    "cssDeclarations": 330,
+    "scrollTargets": 0,
+    "cdpAnimations": 21,
+    "canvases": 0
+  },
+  "namedAnimations": [
+    "menuFadeInDown"
+  ],
+  "scrollTriggeredElements": 0,
+  "representativeAnimations": [
+    {
+      "type": "CSSTransition",
+      "playState": "running",
+      "animationName": null,
+      "targetSelector": "div.owl-stage",
+      "targetRect": {
+        "x": -1960.072998046875,
+        "y": 2101.125,
+        "width": 6000,
+        "height": 665.390625,
+        "top": 2101.125,
+        "right": 4039.927001953125,
+        "bottom": 2766.515625,
+        "left": -1960.072998046875
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "transform": "translate3d(-2100px, 0px, 0px)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "transform": "translate3d(-2400px, 0px, 0px)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 250,
+        "delay": 0,
+        "iterations": 1,
+        "easing": "ease",
+        "direction": "normal"
+      }
+    }
+  ]
+}

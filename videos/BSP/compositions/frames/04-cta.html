@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- head is metadata only; the runtime discards everything outside <template> -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face{font-family:"Montserrat";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/Montserrat-Regular.otf") format("opentype");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.ttf") format("truetype");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.woff") format("woff");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.woff2") format("woff2");}
+        @font-face{font-family:"Open Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/OpenSans-Regular.woff2") format("woff2");}
+
+        /* Root: styled by #root only (never a class — see hyperframes-core Pitfall 3). */
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Montserrat", sans-serif;
+          container-type: size;
+        }
+
+        .cta-04-bg {
+          position: absolute;
+          inset: 0;
+        }
+        .cta-04-glow {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(circle at 18% 12%, rgba(158, 174, 228, 0.13) 0%, rgba(158, 174, 228, 0) 58%),
+            radial-gradient(circle at 84% 88%, rgba(238, 211, 160, 0.14) 0%, rgba(238, 211, 160, 0) 55%),
+            radial-gradient(circle at 88% 10%, rgba(173, 186, 232, 0.10) 0%, rgba(173, 186, 232, 0) 50%);
+        }
+        .cta-04-grain {
+          position: absolute;
+          inset: 0;
+          opacity: 0.04;
+          mix-blend-mode: overlay;
+          pointer-events: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+          background-size: 120px 120px;
+        }
+
+        .cta-04-content {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 96px;
+        }
+
+        .cta-04-titlepill {
+          display: flex;
+          align-items: center;
+          width: fit-content;
+          padding: 20px 44px;
+          background: #d99c2b;
+          border: 0.2cqw solid #1e1e1e;
+          border-radius: 9999px;
+          box-shadow: 0.3cqw 0.3cqw 0 rgba(26, 26, 26, 0.08);
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        .cta-04-titlepill span {
+          font-family: "Montserrat", sans-serif;
+          font-size: 0.95cqw;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #1e1e1e;
+          white-space: nowrap;
+        }
+
+        .cta-04-jar {
+          display: block;
+          width: 620px;
+          height: 620px;
+          object-fit: contain;
+          margin-top: 40px;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        .cta-04-url {
+          font-family: "Montserrat", sans-serif;
+          font-size: 2.8cqw;
+          font-weight: 700;
+          color: #777777;
+          letter-spacing: 0;
+          margin-top: 36px;
+          white-space: nowrap;
+          will-change: transform, opacity;
+        }
+
+        .cta-04-accent {
+          width: 80px;
+          height: 4px;
+          border-radius: 9999px;
+          background: #263c87;
+          margin-top: 20px;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="04-cta" data-width="1920" data-height="1080" data-duration="5.333">
+        <!-- lowest content track: full-bleed cream ground + atmosphere (never on #root) -->
+        <div id="cta-04-bg" class="clip cta-04-bg" data-start="0" data-duration="5.333" data-track-index="0">
+          <div class="cta-04-glow"></div>
+          <div class="cta-04-grain"></div>
+        </div>
+
+        <!-- Scene 1 (0.0-2.0s): jar scales up small->full and settles centered.
+             Scene 2 (2.0-5.3s): title-pill spring-pops in, URL builds in left->right,
+             accent-line settles beneath. Holds dead-static for the back half. -->
+        <div id="cta-04-content" class="clip cta-04-content" data-start="0" data-duration="5.333" data-track-index="1">
+          <div class="cta-04-titlepill" id="cta-04-titlepill">
+            <span>Dermatologically Tested</span>
+          </div>
+          <img
+            class="cta-04-jar"
+            id="cta-04-jar"
+            src="assets/broad-spectrum-protection-cream-spf-50-f.jpg"
+            alt=""
+          />
+          <div class="cta-04-url" id="cta-04-url">christellskin.com</div>
+          <div class="cta-04-accent" id="cta-04-accent"></div>
+        </div>
+      </div>
+
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Scene 1 — jar build: small -> full, settles centered as the VO opens
+        // "Dermatologically tested, family-safe -". fromTo so the collapsed
+        // start is correct under seek.
+        tl.fromTo(
+          "#cta-04-jar",
+          { scale: 0.35, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 1.1, ease: "power3.out" },
+          0.15,
+        );
+
+        // Scene 2 — title-pill spring-pops in above the jar as the VO lands
+        // "grab yours today at christellskin.com".
+        tl.fromTo(
+          "#cta-04-titlepill",
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" },
+          2.0,
+        );
+
+        // URL builds in left->right (a plain fade/slide, not a typewriter).
+        tl.fromTo(
+          "#cta-04-url",
+          { x: -60, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+          2.15,
+        );
+
+        // Coral accent-line settles beneath. All motion resolves by ~2.9s,
+        // leaving the back half of the 5.333s frame as a dead-static hold.
+        tl.fromTo(
+          "#cta-04-accent",
+          { scale: 0.3, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" },
+          2.5,
+        );
+
+        window.__timelines["04-cta"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

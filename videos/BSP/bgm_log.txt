@@ -1,0 +1,5 @@
+  bgm: launched musicgen (detached, pid 18624) → assets/bgm/track.wav
+✓ audio engine → D:\New folder\promo-kit\videos\BSP\audio_meta.json
+  heygen: no  ·  ran: bgm
+  voices: 4  ·  bgm: musicgen (pending)  ·  sfx: 0
+  total voice duration: 26.325s

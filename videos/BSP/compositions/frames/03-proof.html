@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face{font-family:"Montserrat";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/Montserrat-Regular.otf") format("opentype");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.ttf") format("truetype");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.woff") format("woff");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.woff2") format("woff2");}
+        @font-face{font-family:"Open Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/OpenSans-Regular.woff2") format("woff2");}
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: "Montserrat", sans-serif;
+        }
+
+        /* ---- atmosphere (full-bleed ground, on its own clip layer) ---- */
+        .p3-atmosphere {
+          position: absolute;
+          inset: 0;
+          background-color: #ffffff;
+          background-image:
+            radial-gradient(circle at 14% 18%, rgba(158, 174, 228, 0.13) 0%, rgba(158, 174, 228, 0) 46%),
+            radial-gradient(circle at 88% 82%, rgba(222, 170, 73, 0.11) 0%, rgba(222, 170, 73, 0) 46%),
+            radial-gradient(circle at 92% 10%, rgba(122, 144, 218, 0.09) 0%, rgba(122, 144, 218, 0) 40%);
+        }
+        .p3-atmosphere::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          opacity: 0.04;
+          mix-blend-mode: multiply;
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        }
+
+        /* ---- jar layer ---- */
+        .p3-jar-layer {
+          position: absolute;
+          inset: 0;
+        }
+        .p3-jar-box {
+          position: absolute;
+          left: 1120px;
+          top: 140px;
+          width: 704px;
+          height: 800px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .p3-jar-outer {
+          width: 100%;
+          height: 100%;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+        .p3-jar-zoom {
+          width: 100%;
+          height: 100%;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+        .p3-jar-persp {
+          width: 100%;
+          height: 100%;
+          perspective: 1400px;
+        }
+        .p3-jar-turntable {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          backface-visibility: hidden;
+          will-change: transform;
+        }
+        .p3-jar-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        /* ---- callout cards ---- */
+        .p3-cards-layer {
+          position: absolute;
+          inset: 0;
+        }
+        .p3-card {
+          position: absolute;
+          left: 96px;
+          width: 920px;
+          height: 150px;
+          background: #ffffff;
+          border: 0.2cqw solid #1e1e1e;
+          border-radius: 32px;
+          box-shadow: 0.4cqw 0.4cqw 0 rgba(26, 26, 26, 0.08);
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          padding: 0 2cqw;
+          box-sizing: border-box;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+        #p3-card-1 { top: 170px; }
+        #p3-card-2 { top: 432px; }
+        #p3-card-3 { top: 694px; }
+
+        .p3-card-icon {
+          flex: 0 0 auto;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          border: 0.2cqw solid #1e1e1e;
+          display: grid;
+          place-items: center;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 800;
+          font-size: 1.5cqw;
+        }
+        #p3-card-1 .p3-card-icon { background: #263c87; color: #ffffff; }
+        #p3-card-2 .p3-card-icon { background: #9eaee4; color: #1e1e1e; }
+        #p3-card-3 .p3-card-icon { background: #deaa49; color: #1e1e1e; }
+
+        .p3-card-text {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          min-width: 0;
+        }
+        .p3-card-headline {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 1.9cqw;
+          line-height: 1.1;
+          color: #777777;
+          margin: 0;
+          white-space: nowrap;
+        }
+        .p3-card-body {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          font-size: 1.25cqw;
+          line-height: 1.3;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #777777;
+          margin: 0;
+          white-space: nowrap;
+        }
+
+        .p3-accent {
+          position: absolute;
+          left: 1036px;
+          width: 84px;
+          height: 4px;
+          border-radius: 9999px;
+          background: #263c87;
+          transform-origin: 0% 50%;
+          will-change: transform;
+        }
+        #p3-accent-1 { top: 243px; }
+        #p3-accent-2 { top: 505px; }
+        #p3-accent-3 { top: 767px; }
+      </style>
+
+      <div id="root" data-composition-id="03-proof" data-width="1920" data-height="1080" data-duration="13.392">
+        <div id="p3-atmosphere" class="clip p3-atmosphere" data-start="0" data-duration="13.392" data-track-index="0"></div>
+
+        <div id="p3-jar-layer" class="clip p3-jar-layer" data-start="0" data-duration="13.392" data-track-index="1">
+          <div class="p3-jar-box">
+            <div class="p3-jar-outer" id="p3-jar-outer">
+              <div class="p3-jar-zoom" id="p3-jar-zoom">
+                <div class="p3-jar-persp">
+                  <div class="p3-jar-turntable" id="p3-jar-turntable">
+                    <img
+                      id="p3-jar-a"
+                      class="p3-jar-img"
+                      src="assets/65aa5bc05772a5900717149069-04.jpg"
+                      alt=""
+                    />
+                    <img
+                      id="p3-jar-b"
+                      class="p3-jar-img"
+                      src="assets/65aa5bc03cd105900717149069-03.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="p3-cards-layer" class="clip p3-cards-layer" data-start="0" data-duration="13.392" data-track-index="2">
+          <div class="p3-card" id="p3-card-1">
+            <div class="p3-card-icon">1</div>
+            <div class="p3-card-text">
+              <p class="p3-card-headline">Broad-Spectrum SPF 50</p>
+              <p class="p3-card-body">UVA &middot; UVB &middot; HEV &middot; IR</p>
+            </div>
+          </div>
+          <div class="p3-accent" id="p3-accent-1"></div>
+
+          <div class="p3-card" id="p3-card-2">
+            <div class="p3-card-icon">2</div>
+            <div class="p3-card-text">
+              <p class="p3-card-headline">Shea Butter + Vitamin E</p>
+              <p class="p3-card-body">Calms &amp; hydrates</p>
+            </div>
+          </div>
+          <div class="p3-accent" id="p3-accent-2"></div>
+
+          <div class="p3-card" id="p3-card-3">
+            <div class="p3-card-icon">3</div>
+            <div class="p3-card-text">
+              <p class="p3-card-headline">Water-Resistant &middot; Family-Safe</p>
+              <p class="p3-card-body">Babies 6 months and up</p>
+            </div>
+          </div>
+          <div class="p3-accent" id="p3-accent-3"></div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // ---- jar entrance: visible well before t=0.5s ----
+        tl.fromTo(
+          "#p3-jar-outer",
+          { opacity: 0, scale: 0.92, y: 24 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power3.out" },
+          0.05
+        );
+
+        // ---- continuous Ken Burns zoom-in, runs 0.55s -> 12.0s, then settles ----
+        tl.fromTo(
+          "#p3-jar-zoom",
+          { scale: 1 },
+          { scale: 1.06, duration: 11.45, ease: "none" },
+          0.55
+        );
+
+        // ---- continuous slow turntable rotation, same window, phase-driven (deterministic) ----
+        const p3Turntable = document.getElementById("p3-jar-turntable");
+        const p3Phase = { p: 0 };
+        const P3_TURNTABLE_CYCLES = 3; // ~3.8s per gentle cycle over 11.45s
+        tl.to(
+          p3Phase,
+          {
+            p: Math.PI * 2 * P3_TURNTABLE_CYCLES,
+            duration: 11.45,
+            ease: "none",
+            onUpdate: () => {
+              const deg = Math.sin(p3Phase.p) * 8; // +-8deg gentle turntable
+              p3Turntable.style.transform = "rotateY(" + deg + "deg)";
+            },
+          },
+          0.55
+        );
+
+        // ---- jar crossfades to alternate studio angle partway through Scene 2 ----
+        tl.fromTo("#p3-jar-b", { opacity: 0 }, { opacity: 1, duration: 1.0, ease: "power1.inOut" }, 6.3);
+        tl.fromTo("#p3-jar-a", { opacity: 1 }, { opacity: 0, duration: 1.0, ease: "power1.inOut" }, 6.3);
+
+        // ---- Scene 1 (0.0-4.3s): callout card 1 arrives on "It blocks UVA, UVB..." ----
+        tl.fromTo(
+          "#p3-card-1",
+          { opacity: 0, scale: 0, y: 24 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          0.6
+        );
+        tl.fromTo(
+          "#p3-accent-1",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.4, ease: "power2.out" },
+          1.15
+        );
+
+        // ---- Scene 2 (4.3-8.6s): callout card 2 arrives on "Shea Butter and Vitamin E..." ----
+        tl.fromTo(
+          "#p3-card-2",
+          { opacity: 0, scale: 0, y: 24 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          4.5
+        );
+        tl.fromTo(
+          "#p3-accent-2",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.4, ease: "power2.out" },
+          5.05
+        );
+
+        // ---- Scene 3 (8.6-13.0s): callout card 3 arrives on "Lightweight, water-resistant..." ----
+        tl.fromTo(
+          "#p3-card-3",
+          { opacity: 0, scale: 0, y: 24 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          8.8
+        );
+        tl.fromTo(
+          "#p3-accent-3",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.4, ease: "power2.out" },
+          9.35
+        );
+
+        // All motion completes by t=12.0s; last ~1s (12.0-12.992) holds fully still.
+
+        window.__timelines["03-proof"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

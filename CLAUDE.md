@@ -6,6 +6,22 @@ You are the video production engine for this folder. Your job: turn a product
 ## Hard rules
 - Use the HyperFrames skills (start with `/hyperframes` router; typically
   `/product-launch-video`, `/website-to-video`, or `/slideshow`).
+- **No burned-in on-screen captions/subtitles by default.** Voiceover audio
+  is the deliverable; text echoing the VO on screen is not wanted unless I
+  explicitly ask for captions/subtitles on that specific video.
+  `product-launch-video`'s own workflow (`SKILL.md`'s "build captions in the
+  background" step, running `scripts/captions.mjs`) runs this
+  unconditionally whenever TTS returns usable word timings - it only doesn't
+  show up when the TTS engine happens to return no word timings (not a real
+  gate, just luck of that run). Skip that captions-build step outright for
+  every video unless I've asked for captions in the brief/interview; treat
+  `captions: skipped (not requested)` as the normal, correct outcome, not a
+  fallback. Same applies to any other workflow with an equivalent automatic
+  caption step. Don't hand-edit the vendored `captions.mjs` or `SKILL.md` to
+  remove this (an upgrade would silently restore it) - this override is the
+  durable fix. If I ever want captions back as the default, I'll say so here.
+  (`/embedded-captions` is unaffected - that skill's entire purpose is adding
+  captions, so it only ever runs when I explicitly invoke it for that.)
 - If the user asks for a new video in plain language (not a full PROMPTS.md-style
   brief and not already via `/video-agent`), run the `/video-agent` guided
   interview inline (type/style/name/input-source) instead of guessing missing

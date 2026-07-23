@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face{font-family:"Montserrat";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/Montserrat-Regular.otf") format("opentype");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.ttf") format("truetype");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.woff") format("woff");}
+        @font-face{font-family:"WooCommerce";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/WooCommerce-Regular.woff2") format("woff2");}
+        @font-face{font-family:"Open Sans";font-weight:400;font-style:normal;font-display:block;src:url("assets/fonts/OpenSans-Regular.woff2") format("woff2");}
+
+        /* Root — styled by #root only (never a class), per sub-composition contract. */
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: "Montserrat", sans-serif;
+        }
+
+        /* Generic clip baseline — full-bleed layer, visibility owned by the framework. */
+        #root .clip {
+          position: absolute;
+          inset: 0;
+        }
+
+        /* — Background / atmosphere layer (full-bleed ground lives on a clip, never on #root) — */
+        #hk1-bg {
+          background:
+            radial-gradient(60cqw 60cqw at 22% 28%, rgba(158, 174, 228, 0.12), transparent 70%),
+            radial-gradient(55cqw 55cqw at 80% 76%, rgba(222, 170, 73, 0.1), transparent 70%),
+            #ffffff;
+        }
+        #hk1-bg::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMjAnIGhlaWdodD0nMTIwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC44NScgbnVtT2N0YXZlcz0nMicgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjxmZUNvbG9yTWF0cml4IHR5cGU9J21hdHJpeCcgdmFsdWVzPScwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjA4IDAnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTIwJyBoZWlnaHQ9JzEyMCcgZmlsdGVyPSd1cmwoI24pJy8+PC9zdmc+");
+          background-repeat: repeat;
+          background-size: 120px 120px;
+          opacity: 0.55;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+
+        /* — Kinetic-type stage — */
+        #hk1-stage {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 0 5cqw 8cqh 5cqw;
+          gap: 1.4cqw;
+          text-align: center;
+        }
+
+        .hk1-line {
+          margin: 0;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 4.6cqw;
+          line-height: 1.05;
+          letter-spacing: -0.02em;
+          color: #777777;
+          max-width: 78cqw;
+        }
+
+        .hk1-word-wrap {
+          position: relative;
+          display: inline-block;
+        }
+
+        .hk1-accent {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -0.55cqw;
+          height: 0.32cqw;
+          min-height: 4px;
+          background: #263c87;
+          border-radius: 9999px;
+          transform-origin: left center;
+        }
+      </style>
+
+      <div id="root" data-composition-id="01-hook" data-width="1920" data-height="1080" data-duration="3.195">
+        <div class="clip" id="hk1-bg" data-start="0" data-duration="3.195" data-track-index="0"></div>
+
+        <div class="clip" id="hk1-stage" data-start="0" data-duration="3.195" data-track-index="1">
+          <div class="hk1-line" id="hk1-line1">Sun damage doesn&rsquo;t care</div>
+          <div class="hk1-line" id="hk1-line2">
+            how
+            <span class="hk1-word-wrap">sensitive<span class="hk1-accent" id="hk1-accent"></span></span>
+            your skin is.
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Scene 1 (0.0–1.3s) — first line fades + slides up into center.
+        tl.fromTo(
+          "#hk1-line1",
+          { y: 42, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" },
+          0.05,
+        );
+
+        // Scene 2 (1.3–2.8s) — second clause stacks beneath as the VO reaches it.
+        tl.fromTo(
+          "#hk1-line2",
+          { y: 34, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" },
+          1.3,
+        );
+
+        // Coral accent-line draws left→right under "sensitive" once the line has landed.
+        tl.fromTo(
+          "#hk1-accent",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.42, ease: "power2.out" },
+          1.95,
+        );
+
+        // Holds static to the end — no exit tween (not the final frame; the root
+        // transition owns the exit).
+        window.__timelines["01-hook"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
